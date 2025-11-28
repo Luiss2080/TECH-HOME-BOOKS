@@ -13,7 +13,21 @@ return new class extends Migration
     {
         Schema::create('configuraciones', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('colegio_id')->nullable()->constrained('colegios')->onDelete('cascade');
+            $table->string('clave')->unique();
+            $table->text('valor');
+            $table->string('tipo')->default('string'); // 'string', 'integer', 'boolean', 'json', 'float'
+            $table->text('descripcion')->nullable();
+            $table->string('categoria')->default('general'); // 'general', 'academico', 'notificaciones', etc.
+            $table->boolean('es_global')->default(true); // si aplica a todo el sistema o solo al colegio
+            $table->boolean('es_editable')->default(true);
+            $table->text('opciones_validas')->nullable(); // valores permitidos (JSON)
             $table->timestamps();
+            
+            // Índices
+            $table->index(['colegio_id', 'categoria']);
+            $table->index(['es_global', 'categoria']);
+            $table->index('clave');
         });
     }
 
