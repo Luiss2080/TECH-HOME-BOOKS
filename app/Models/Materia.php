@@ -24,7 +24,7 @@ class Materia extends Model
 
     public function docentes()
     {
-        return $this->hasMany(Docente::class);
+        return $this->belongsToMany(Docente::class, 'docente_materia');
     }
 
     public function estudiantes()

@@ -37,7 +37,7 @@ class Docente extends Authenticatable
 
     public function materias()
     {
-        return $this->hasMany(Materia::class);
+        return $this->belongsToMany(Materia::class, 'docente_materia');
     }
 
     public function cursos()
