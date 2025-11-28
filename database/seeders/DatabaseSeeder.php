@@ -16,11 +16,22 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            // Configuraciones base del sistema
             ConfiguracionesSeeder::class,
+            
+            // Sistema de roles y permisos
+            RolesPermisosSeeder::class,
+            
+            // Datos de usuarios e instituciones
             UsersSeeder::class,
             ColegiosSeeder::class,
             CursosSeeder::class,
             MateriasSeeder::class,
+            
+            // Períodos académicos
+            PeriodosAcademicosSeeder::class,
+            
+            // Usuarios específicos del sistema
             DocentesSeeder::class,
             EstudiantesSeeder::class,
         ]);
