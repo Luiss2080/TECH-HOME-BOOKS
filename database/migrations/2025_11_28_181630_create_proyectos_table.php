@@ -35,7 +35,6 @@ return new class extends Migration
             $table->index(['materia_id', 'estado']);
             $table->index(['docente_id', 'fecha_inicio']);
             $table->index(['fecha_entrega', 'estado']);
-            $table->fullText(['titulo', 'descripcion']);
         });
     }
 

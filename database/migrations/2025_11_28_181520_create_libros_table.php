@@ -36,7 +36,6 @@ return new class extends Migration
             $table->index(['categoria', 'estado']);
             $table->index(['materia_id', 'disponibilidad']);
             $table->index('isbn');
-            $table->fullText(['titulo', 'autor', 'descripcion']);
         });
     }
 
