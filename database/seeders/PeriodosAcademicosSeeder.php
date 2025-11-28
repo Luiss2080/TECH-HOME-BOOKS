@@ -22,7 +22,7 @@ class PeriodosAcademicosSeeder extends Seeder
             $periodos = [
                 [
                     'nombre' => 'Primer Bimestre',
-                    'codigo' => 'B1_' . $anoActual,
+                    'codigo' => 'B1_' . $anoActual . '_C' . $colegio->id,
                     'tipo' => 'bimestre',
                     'fecha_inicio' => Carbon::createFromDate($anoActual, 2, 1)->format('Y-m-d'),
                     'fecha_fin' => Carbon::createFromDate($anoActual, 4, 15)->format('Y-m-d'),
@@ -31,7 +31,7 @@ class PeriodosAcademicosSeeder extends Seeder
                 ],
                 [
                     'nombre' => 'Segundo Bimestre',
-                    'codigo' => 'B2_' . $anoActual,
+                    'codigo' => 'B2_' . $anoActual . '_C' . $colegio->id,
                     'tipo' => 'bimestre',
                     'fecha_inicio' => Carbon::createFromDate($anoActual, 4, 16)->format('Y-m-d'),
                     'fecha_fin' => Carbon::createFromDate($anoActual, 6, 30)->format('Y-m-d'),
@@ -40,7 +40,7 @@ class PeriodosAcademicosSeeder extends Seeder
                 ],
                 [
                     'nombre' => 'Tercer Bimestre',
-                    'codigo' => 'B3_' . $anoActual,
+                    'codigo' => 'B3_' . $anoActual . '_C' . $colegio->id,
                     'tipo' => 'bimestre',
                     'fecha_inicio' => Carbon::createFromDate($anoActual, 8, 1)->format('Y-m-d'),
                     'fecha_fin' => Carbon::createFromDate($anoActual, 10, 15)->format('Y-m-d'),
@@ -49,7 +49,7 @@ class PeriodosAcademicosSeeder extends Seeder
                 ],
                 [
                     'nombre' => 'Cuarto Bimestre',
-                    'codigo' => 'B4_' . $anoActual,
+                    'codigo' => 'B4_' . $anoActual . '_C' . $colegio->id,
                     'tipo' => 'bimestre',
                     'fecha_inicio' => Carbon::createFromDate($anoActual, 10, 16)->format('Y-m-d'),
                     'fecha_fin' => Carbon::createFromDate($anoActual, 12, 20)->format('Y-m-d'),

@@ -32,7 +32,7 @@ return new class extends Migration
             // Índices y restricciones
             $table->index(['proyecto_id', 'estado']);
             $table->index('fecha_entrega');
-            $table->unique(['proyecto_id', 'estudiante_id', 'trabajo_grupal_id']);
+            $table->unique(['proyecto_id', 'estudiante_id', 'trabajo_grupal_id'], 'entrega_proyectos_unique');
         });
     }
 

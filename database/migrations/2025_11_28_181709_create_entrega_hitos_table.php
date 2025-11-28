@@ -29,7 +29,7 @@ return new class extends Migration
             // Índices y restricciones
             $table->index(['hito_proyecto_id', 'estado']);
             $table->index('fecha_entrega');
-            $table->unique(['hito_proyecto_id', 'estudiante_id', 'trabajo_grupal_id']);
+            $table->unique(['hito_proyecto_id', 'estudiante_id', 'trabajo_grupal_id'], 'entrega_hitos_unique');
         });
     }
 
