@@ -16,24 +16,44 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            // Configuraciones base del sistema
+            // 1. Configuraciones base del sistema
             ConfiguracionesSeeder::class,
             
-            // Sistema de roles y permisos
+            // 2. Sistema de roles y permisos
             RolesPermisosSeeder::class,
             
-            // Datos de usuarios e instituciones
+            // 3. Datos de usuarios e instituciones (orden importante)
             UsersSeeder::class,
             ColegiosSeeder::class,
             CursosSeeder::class,
             MateriasSeeder::class,
             
-            // Períodos académicos
+            // 4. Períodos académicos
             PeriodosAcademicosSeeder::class,
             
-            // Usuarios específicos del sistema
+            // 5. Usuarios específicos del sistema
             DocentesSeeder::class,
             EstudiantesSeeder::class,
+            
+            // 6. Contenido educativo
+            LibrosSeeder::class,
+            MaterialesSeeder::class,
+            
+            // 7. Actividades académicas (requieren docentes y materias)
+            TareasSeeder::class,
+            ExamenesSeeder::class,
+            ProyectosSeeder::class,
+            
+            // 8. Evaluaciones y seguimiento (requieren estudiantes y actividades)
+            CalificacionesSeeder::class,
+            AsistenciasSeeder::class,
+            CertificadosSeeder::class,
+            
+            // 9. Organización académica
+            HorariosSeeder::class,
+            
+            // 10. Sistema de comunicación
+            NotificacionesSeeder::class,
         ]);
     }
 }
