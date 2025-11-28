@@ -30,8 +30,6 @@ return new class extends Migration
             $table->index(['tarea_id', 'estado']);
             $table->index(['estudiante_id', 'fecha_entrega']);
             $table->unique(['tarea_id', 'estudiante_id', 'trabajo_grupal_id']);
-            // Asegurar que la entrega pertenezca a un estudiante O a un trabajo grupal
-            $table->check('(estudiante_id IS NOT NULL AND trabajo_grupal_id IS NULL) OR (estudiante_id IS NULL AND trabajo_grupal_id IS NOT NULL)');
         });
     }
 

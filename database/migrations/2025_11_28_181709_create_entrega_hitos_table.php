@@ -30,7 +30,6 @@ return new class extends Migration
             $table->index(['hito_proyecto_id', 'estado']);
             $table->index('fecha_entrega');
             $table->unique(['hito_proyecto_id', 'estudiante_id', 'trabajo_grupal_id']);
-            $table->check('(estudiante_id IS NOT NULL AND trabajo_grupal_id IS NULL) OR (estudiante_id IS NULL AND trabajo_grupal_id IS NOT NULL)');
         });
     }
 

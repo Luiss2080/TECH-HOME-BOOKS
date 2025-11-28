@@ -25,12 +25,10 @@ return new class extends Migration
             $table->text('observaciones_docente')->nullable();
             $table->timestamps();
             
-            // Índices y restricciones
+            // Índices
             $table->index(['tarea_id', 'estado']);
             $table->index(['proyecto_id', 'estado']);
             $table->index('lider_grupo_id');
-            // Asegurar que el trabajo grupal pertenezca a una tarea O a un proyecto
-            $table->check('(tarea_id IS NOT NULL AND proyecto_id IS NULL) OR (tarea_id IS NULL AND proyecto_id IS NOT NULL)');
         });
     }
 
