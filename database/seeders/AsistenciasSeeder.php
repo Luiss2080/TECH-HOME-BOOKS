@@ -39,7 +39,9 @@ class AsistenciasSeeder extends Seeder
                     } elseif ($probabilidad <= 92) {
                         $estado = 'tardanza';
                         $minutosTardanza = rand(5, 30);
-                        $horaRegistro = '07:' . str_pad(rand(0, 59) + $minutosTardanza, 2, '0', STR_PAD_LEFT) . ':00';
+                        $minutosBase = rand(0, 30);
+                        $minutosTotal = min($minutosBase + $minutosTardanza, 59);
+                        $horaRegistro = '07:' . str_pad($minutosTotal, 2, '0', STR_PAD_LEFT) . ':00';
                         $observaciones = "Llegó {$minutosTardanza} minutos tarde";
                     } elseif ($probabilidad <= 96) {
                         $estado = 'justificado';
