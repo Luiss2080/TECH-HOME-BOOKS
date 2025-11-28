@@ -13,7 +13,19 @@ return new class extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('curso_id')->constrained('cursos')->onDelete('cascade');
+            $table->string('nombre');
+            $table->string('codigo')->unique(); // código único de la materia
+            $table->text('descripcion')->nullable();
+            $table->integer('horas_semanales')->default(4);
+            $table->json('objetivos')->nullable(); // objetivos de aprendizaje
+            $table->string('color')->default('#007bff'); // color para identificación visual
+            $table->enum('estado', ['activa', 'inactiva'])->default('activa');
             $table->timestamps();
+            
+            // Índices
+            $table->index(['curso_id', 'estado']);
+            $table->index('codigo');
         });
     }
 
