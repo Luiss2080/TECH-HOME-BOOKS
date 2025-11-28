@@ -30,9 +30,8 @@ return new class extends Migration
             $table->enum('estado', ['borrador', 'definitiva', 'anulada'])->default('definitiva');
             $table->timestamps();
             
-            // Índices
+            // Índices (morphs ya crea automáticamente el índice para evaluacion_type, evaluacion_id)
             $table->index(['estudiante_id', 'materia_id', 'periodo_academico']);
-            $table->index(['evaluacion_type', 'evaluacion_id']);
             $table->index(['docente_id', 'fecha_evaluacion']);
             $table->index('tipo_evaluacion');
         });
