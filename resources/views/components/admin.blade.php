@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Administrador - Asociación 1ro de Junio</title>
+    <title>Dashboard Administrador - TECH HOME BOOKS</title>
     <link rel="icon" type="image/png" href="{{ asset('images/LogoAsociacion.png') }}">
     
     <!-- Precargar fuentes -->
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Meta tags -->
-    <meta name="description" content="Dashboard administrativo de la Asociación 1ro de Junio. Gestión profesional de mototaxis.">
+    <meta name="description" content="Dashboard administrativo de TECH HOME BOOKS.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- CSS del Dashboard -->
@@ -56,69 +56,69 @@
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 14l5-5 5 5z"/>
                                 </svg>
-                                +2.1%
+                                Activos
                             </div>
                         </div>
-                        <div class="stat-number">{{ \App\Models\Conductor::count() ?? '24' }}</div>
-                        <div class="stat-label">Total Conductores</div>
-                        <div class="stat-subtitle">Incremento desde el mes pasado</div>
+                        <div class="stat-number">{{ \App\Models\User::count() }}</div>
+                        <div class="stat-label">Usuarios Totales</div>
+                        <div class="stat-subtitle">Administradores, Docentes y Estudiantes</div>
                     </div>
                     
                     <div class="stats-card">
                         <div class="stat-header">
                             <div class="stat-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                                    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"/>
                                 </svg>
                             </div>
                             <div class="stat-trend">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 14l5-5 5 5z"/>
                                 </svg>
-                                +5.4%
+                                En curso
                             </div>
                         </div>
-                        <div class="stat-number">{{ \App\Models\Vehiculo::count() ?? '10' }}</div>
-                        <div class="stat-label">Vehículos Activos</div>
-                        <div class="stat-subtitle">Incremento desde el mes pasado</div>
+                        <div class="stat-number">{{ \App\Models\Curso::count() }}</div>
+                        <div class="stat-label">Cursos Habilitados</div>
+                        <div class="stat-subtitle">Gestión Académica Actual</div>
                     </div>
                     
                     <div class="stats-card">
                         <div class="stat-header">
                             <div class="stat-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/>
+                                    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
                                 </svg>
                             </div>
                             <div class="stat-trend">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 14l5-5 5 5z"/>
                                 </svg>
-                                +12.3%
+                                Disponibles
                             </div>
                         </div>
-                        <div class="stat-number">{{ \App\Models\Viaje::whereDate('created_at', today())->count() ?? '12' }}</div>
-                        <div class="stat-label">Viajes Hoy</div>
-                        <div class="stat-subtitle">Incremento desde ayer</div>
+                        <div class="stat-number">{{ \App\Models\Libro::count() }}</div>
+                        <div class="stat-label">Libros Digitales</div>
+                        <div class="stat-subtitle">Biblioteca Virtual</div>
                     </div>
                     
                     <div class="stats-card">
                         <div class="stat-header">
                             <div class="stat-icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4.8c0-.7.33-1.35.85-1.78L12 6c.55-.37 1.3-.37 1.85 0l7.15 5.42c.52.43.85 1.08.85 1.78V18c0 1.11-.89 2-2 2H6c-1.11 0-2-.89-2-2z"/>
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
                                 </svg>
                             </div>
                             <div class="stat-trend">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 14l5-5 5 5z"/>
                                 </svg>
-                                +3.2%
+                                Registradas
                             </div>
                         </div>
-                        <div class="stat-number">{{ \App\Models\Cliente::count() ?? '2' }}</div>
-                        <div class="stat-label">Clientes Nuevos</div>
-                        <div class="stat-subtitle">En proceso</div>
+                        <div class="stat-number">{{ \App\Models\Materia::count() }}</div>
+                        <div class="stat-label">Materias</div>
+                        <div class="stat-subtitle">Plan de Estudios</div>
                     </div>
                 </div>
 
@@ -127,45 +127,45 @@
                     <h2 class="section-title">Acciones Rápidas</h2>
                     <div class="actions-grid">
                         
-                        <!-- Crear Conductor -->
+                        <!-- Gestionar Usuarios -->
                         <div class="action-card">
                             <div class="action-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Agregar Conductor</h3>
-                            <p class="action-description">Registra un nuevo conductor en el sistema</p>
-                            <a href="/conductores/crear" class="action-btn">
-                                Crear Conductor
+                            <h3 class="action-title">Gestionar Usuarios</h3>
+                            <p class="action-description">Administrar docentes, estudiantes y administrativos</p>
+                            <a href="#" class="action-btn">
+                                Ver Usuarios
                             </a>
                         </div>
                         
-                        <!-- Nuevo Vehículo -->
+                        <!-- Cursos y Materias -->
                         <div class="action-card">
                             <div class="action-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/>
+                                    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Registrar Vehículo</h3>
-                            <p class="action-description">Añade un nuevo vehículo a la flota</p>
-                            <a href="/vehiculos/crear" class="action-btn">
-                                Agregar Vehículo
+                            <h3 class="action-title">Académico</h3>
+                            <p class="action-description">Gestión de cursos, materias y horarios</p>
+                            <a href="#" class="action-btn">
+                                Gestión Académica
                             </a>
                         </div>
                         
-                        <!-- Ver Reportes -->
+                        <!-- Biblioteca -->
                         <div class="action-card">
                             <div class="action-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                                    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Generar Reportes</h3>
-                            <p class="action-description">Consulta estadísticas y reportes del sistema</p>
-                            <a href="/reportes" class="action-btn">
-                                Ver Reportes
+                            <h3 class="action-title">Biblioteca</h3>
+                            <p class="action-description">Administrar libros y material educativo</p>
+                            <a href="#" class="action-btn">
+                                Ver Biblioteca
                             </a>
                         </div>
                         

@@ -14,7 +14,18 @@ class AuthController extends Controller
     public function showLoginForm()
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            $user = Auth::user();
+            switch ($user->rol) {
+                case 'admin':
+                    return redirect()->route('admin.dashboard');
+                case 'docente':
+                    return redirect()->route('docente.dashboard');
+                case 'estudiante':
+                    return redirect()->route('estudiante.dashboard');
+                default:
+                    Auth::logout();
+                    return view('auth.login');
+            }
         }
         return view('auth.login');
     }
@@ -32,7 +43,24 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+            
+            // Store user info in session for easy access in views
+            $request->session()->put('user_id', $user->id);
+            $request->session()->put('user_name', $user->name . ' ' . $user->apellido);
+            $request->session()->put('user_role', $user->rol);
+
+            // Redirect based on role
+            switch ($user->rol) {
+                case 'admin':
+                    return redirect()->route('admin.dashboard');
+                case 'docente':
+                    return redirect()->route('docente.dashboard');
+                case 'estudiante':
+                    return redirect()->route('estudiante.dashboard');
+                default:
+                    return redirect()->route('login')->withErrors(['email' => 'Rol no reconocido.']);
+            }
         }
 
         return back()->withErrors([
@@ -59,7 +87,18 @@ class AuthController extends Controller
     public function showRegistrationForm()
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            $user = Auth::user();
+            switch ($user->rol) {
+                case 'admin':
+                    return redirect()->route('admin.dashboard');
+                case 'docente':
+                    return redirect()->route('docente.dashboard');
+                case 'estudiante':
+                    return redirect()->route('estudiante.dashboard');
+                default:
+                    Auth::logout();
+                    return view('auth.login');
+            }
         }
         return view('auth.registro');
     }

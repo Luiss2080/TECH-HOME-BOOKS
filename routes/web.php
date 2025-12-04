@@ -21,5 +21,25 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+// Dashboard Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        $user = Auth::user();
+        switch ($user->rol) {
+            case 'admin':
+                return redirect()->route('admin.dashboard');
+            case 'docente':
+                return redirect()->route('docente.dashboard');
+            case 'estudiante':
+                return redirect()->route('estudiante.dashboard');
+            default:
+                Auth::logout();
+                return redirect()->route('login')->withErrors(['email' => 'Rol no reconocido.']);
+        }
+    })->name('dashboard');
+
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/docente/dashboard', [App\Http\Controllers\Docente\DashboardController::class, 'index'])->name('docente.dashboard');
+    Route::get('/estudiante/dashboard', [App\Http\Controllers\Estudiante\DashboardController::class, 'index'])->name('estudiante.dashboard');
+});
 
