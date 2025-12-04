@@ -4,11 +4,13 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    // Si el usuario está autenticado, redirigir al dashboard
+    // Forzar logout y limpiar sesión al acceder a la raíz
     if (Auth::check()) {
-        return redirect()->route('dashboard');
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
     }
-    // Si no está autenticado, mostrar login
+    // Ir siempre al login como punto de entrada
     return redirect()->route('login');
 });
 
@@ -27,10 +29,23 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// Dashboard Routes
+// Ruta para limpiar sesión completamente (útil para debugging)
+Route::get('/clear-session', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('login')->with('message', 'Sesión limpiada correctamente');
+});
+
+// Dashboard Routes - Requieren autenticación
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         $user = Auth::user();
+        if (!$user || !$user->rol) {
+            Auth::logout();
+            return redirect()->route('login')->withErrors(['error' => 'Sesión inválida.']);
+        }
+        
         switch ($user->rol) {
             case 'admin':
                 return redirect()->route('admin.dashboard');
@@ -40,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
                 return redirect()->route('estudiante.dashboard');
             default:
                 Auth::logout();
-                return redirect()->route('login')->withErrors(['email' => 'Rol no reconocido.']);
+                return redirect()->route('login')->withErrors(['error' => 'Rol no reconocido.']);
         }
     })->name('dashboard');
 

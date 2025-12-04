@@ -13,20 +13,15 @@ class AuthController extends Controller
      */
     public function showLoginForm()
     {
+        // SIEMPRE mostrar el login - no redirigir automáticamente
+        // Si hay sesión activa, limpiarla para empezar desde cero
         if (Auth::check()) {
-            $user = Auth::user();
-            switch ($user->rol) {
-                case 'admin':
-                    return redirect()->route('admin.dashboard');
-                case 'docente':
-                    return redirect()->route('docente.dashboard');
-                case 'estudiante':
-                    return redirect()->route('estudiante.dashboard');
-                default:
-                    Auth::logout();
-                    return view('auth.login');
-            }
+            Auth::logout();
+            request()->session()->invalidate();
+            request()->session()->regenerateToken();
         }
+        
+        // Mostrar el formulario de login
         return view('auth.login');
     }
 
@@ -40,14 +35,18 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
+        // Log para debugging
+        \Log::info('Intento de login', ['email' => $credentials['email']]);
+
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
             $user = Auth::user();
+            \Log::info('Login exitoso', ['user_id' => $user->id, 'rol' => $user->rol]);
             
             // Store user info in session for easy access in views
             $request->session()->put('user_id', $user->id);
-            $request->session()->put('user_name', $user->name . ' ' . $user->apellido);
+            $request->session()->put('user_name', $user->name . ' ' . ($user->apellido ?? ''));
             $request->session()->put('user_role', $user->rol);
 
             // Redirect based on role
@@ -59,10 +58,12 @@ class AuthController extends Controller
                 case 'estudiante':
                     return redirect()->route('estudiante.dashboard');
                 default:
+                    Auth::logout();
                     return redirect()->route('login')->withErrors(['email' => 'Rol no reconocido.']);
             }
         }
 
+        \Log::info('Login fallido', ['email' => $credentials['email']]);
         return back()->withErrors([
             'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ])->onlyInput('email');

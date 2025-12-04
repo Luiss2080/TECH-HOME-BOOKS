@@ -105,14 +105,6 @@
     <script src="{{ asset('js/layouts/sidebar.js') }}"></script>
     <script src="{{ asset('js/layouts/header.js') }}"></script>
     <script src="{{ asset('js/layouts/footer.js') }}"></script>
-    <script src="{{ asset('js/dashboard/admin.js') }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof DashboardManager !== 'undefined') {
-                new DashboardManager();
-            }
-        });
-    </script>
     
 </body>
 </html>
