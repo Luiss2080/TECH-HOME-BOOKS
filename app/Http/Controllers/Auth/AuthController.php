@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -13,15 +14,7 @@ class AuthController extends Controller
      */
     public function showLoginForm()
     {
-        // SIEMPRE mostrar el login - no redirigir automáticamente
-        // Si hay sesión activa, limpiarla para empezar desde cero
-        if (Auth::check()) {
-            Auth::logout();
-            request()->session()->invalidate();
-            request()->session()->regenerateToken();
-        }
-        
-        // Mostrar el formulario de login
+        // Para debugging, mostrar siempre el login sin limpiar sesión automáticamente
         return view('auth.login');
     }
 
@@ -36,13 +29,13 @@ class AuthController extends Controller
         ]);
 
         // Log para debugging
-        \Log::info('Intento de login', ['email' => $credentials['email']]);
+        Log::info('Intento de login', ['email' => $credentials['email']]);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
             $user = Auth::user();
-            \Log::info('Login exitoso', ['user_id' => $user->id, 'rol' => $user->rol]);
+            Log::info('Login exitoso', ['user_id' => $user->id, 'rol' => $user->rol]);
             
             // Store user info in session for easy access in views
             $request->session()->put('user_id', $user->id);
@@ -63,7 +56,7 @@ class AuthController extends Controller
             }
         }
 
-        \Log::info('Login fallido', ['email' => $credentials['email']]);
+        Log::info('Login fallido', ['email' => $credentials['email']]);
         return back()->withErrors([
             'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ])->onlyInput('email');

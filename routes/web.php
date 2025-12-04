@@ -14,18 +14,17 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::middleware('guest')->group(function () {
-    Route::get('/login', [App\Http\Controllers\Auth\AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [App\Http\Controllers\Auth\AuthController::class, 'login']);
-    
-    Route::get('/registro', [App\Http\Controllers\Auth\AuthController::class, 'showRegistrationForm'])->name('register.show');
-    Route::post('/registro', [App\Http\Controllers\Auth\AuthController::class, 'register'])->name('register.submit');
-    Route::post('/registro/verificar', [App\Http\Controllers\Auth\AuthController::class, 'register'])->name('register.verify'); // Placeholder using same method for now
-    
-    Route::get('/password/reset', function () {
-        return view('auth.recuperar');
-    })->name('password.request');
-});
+// Rutas de autenticación (sin middleware guest por ahora para debugging)
+Route::get('/login', [App\Http\Controllers\Auth\AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\AuthController::class, 'login']);
+
+Route::get('/registro', [App\Http\Controllers\Auth\AuthController::class, 'showRegistrationForm'])->name('register.show');
+Route::post('/registro', [App\Http\Controllers\Auth\AuthController::class, 'register'])->name('register.submit');
+Route::post('/registro/verificar', [App\Http\Controllers\Auth\AuthController::class, 'register'])->name('register.verify');
+
+Route::get('/password/reset', function () {
+    return view('auth.recuperar');
+})->name('password.request');
 
 Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
@@ -35,6 +34,16 @@ Route::get('/clear-session', function () {
     request()->session()->invalidate();
     request()->session()->regenerateToken();
     return redirect()->route('login')->with('message', 'Sesión limpiada correctamente');
+});
+
+// Ruta de prueba para login directo
+Route::get('/test-login', function () {
+    $user = \App\Models\User::where('email', 'admin@tech-home.com')->first();
+    if ($user) {
+        Auth::login($user);
+        return redirect()->route('admin.dashboard');
+    }
+    return 'Usuario no encontrado';
 });
 
 // Dashboard Routes - Requieren autenticación
