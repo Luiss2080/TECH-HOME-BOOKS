@@ -25,11 +25,11 @@ class AdminCheck
         }
 
         // Verificar si el usuario tiene rol de administrador
-        if (session('user_role') !== 'administrador') {
+        if (session('user_role') !== 'admin') {
             if ($request->expectsJson()) {
                 return response()->json(['error' => 'Acceso denegado'], 403);
             }
-            return redirect()->route('dashboard')->with('error', 'No tienes permisos para acceder a esta sección. Solo administradores.');
+            return redirect()->route('login')->with('error', 'No tienes permisos de administrador para acceder a esta sección.');
         }
 
         return $next($request);
