@@ -14,7 +14,6 @@ class AuthController extends Controller
      */
     public function showLoginForm()
     {
-        // Para debugging, mostrar siempre el login sin limpiar sesión automáticamente
         return view('auth.login');
     }
 
@@ -23,42 +22,37 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        // Log para debugging
-        Log::info('Intento de login', ['email' => $credentials['email']]);
-
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
             $request->session()->regenerate();
-
-            $user = Auth::user();
-            Log::info('Login exitoso', ['user_id' => $user->id, 'rol' => $user->rol]);
             
-            // Store user info in session for easy access in views
-            $request->session()->put('user_id', $user->id);
-            $request->session()->put('user_name', $user->name . ' ' . ($user->apellido ?? ''));
-            $request->session()->put('user_role', $user->rol);
-
-            // Redirect based on role
-            switch ($user->rol) {
-                case 'admin':
-                    return redirect()->intended('/admin/dashboard');
-                case 'docente':
-                    return redirect()->intended('/docente/dashboard');
-                case 'estudiante':
-                    return redirect()->intended('/estudiante/dashboard');
-                default:
-                    Auth::logout();
-                    return redirect()->route('login')->withErrors(['error' => 'Rol no reconocido.']);
+            // Si es una petición AJAX, devolver JSON
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login exitoso',
+                    'redirect' => '/admin/dashboard'
+                ]);
             }
+            
+            // Si es petición normal, redirigir
+            return redirect('/admin/dashboard');
         }
 
-        Log::info('Login fallido', ['email' => $credentials['email']]);
+        // Si falló el login
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Las credenciales no son correctas.'
+            ], 422);
+        }
+
         return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+            'email' => 'Las credenciales no son correctas.',
         ])->onlyInput('email');
     }
 
