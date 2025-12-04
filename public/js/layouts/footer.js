@@ -4,409 +4,373 @@
  */
 
 class FooterManager {
-    constructor() {
-        this.footer = null;
-        this.scrollToTopBtn = null;
-        this.statsCounters = [];
-        this.notificationCenter = null;
-        this.themeToggle = null;
-        this.currentTheme = "dark";
-        this.scrollThreshold = 300;
-        this.counterAnimated = false;
-        this.observerOptions = {
-            threshold: 0.3,
-            rootMargin: "0px 0px -50px 0px",
-        };
+  constructor() {
+    this.footer = null;
+    this.scrollToTopBtn = null;
+    this.statsCounters = [];
+    this.notificationCenter = null;
+    this.themeToggle = null;
+    this.currentTheme = 'dark';
+    this.scrollThreshold = 300;
+    this.counterAnimated = false;
+    this.observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-        this.init();
+    this.init();
+  }
+
+  init() {
+    this.bindElements();
+    this.bindEvents();
+    this.setupScrollToTop();
+    this.setupStatsCounters();
+    this.setupThemeToggle();
+    this.setupNotifications();
+    this.setupIntersectionObserver();
+    this.updateFooterData();
+    
+    console.log('📄 FOOTER: Sistema de pie de página inicializado correctamente');
+  }
+
+  bindElements() {
+    this.footer = document.querySelector('.system-footer');
+    this.scrollToTopBtn = document.querySelector('.scroll-to-top');
+    this.statsCounters = Array.from(document.querySelectorAll('[data-counter]'));
+    this.themeToggle = document.querySelector('.theme-toggle');
+    this.notificationCenter = document.querySelector('.notification-center');
+  }
+
+  bindEvents() {
+    // Scroll events
+    window.addEventListener('scroll', this.throttle(this.handleScroll.bind(this), 16));
+    
+    // Scroll to top button
+    if (this.scrollToTopBtn) {
+      this.scrollToTopBtn.addEventListener('click', this.scrollToTop.bind(this));
     }
 
-    init() {
-        this.bindElements();
-        this.bindEvents();
-        this.setupScrollToTop();
-        this.setupStatsCounters();
-        this.setupThemeToggle();
-        this.setupNotifications();
-        this.setupIntersectionObserver();
-        this.updateFooterData();
-
-        console.log(
-            "📄 FOOTER: Sistema de pie de página inicializado correctamente"
-        );
+    // Theme toggle
+    if (this.themeToggle) {
+      this.themeToggle.addEventListener('click', this.toggleTheme.bind(this));
     }
 
-    bindElements() {
-        this.footer = document.querySelector(".system-footer");
-        this.scrollToTopBtn = document.querySelector(".scroll-to-top");
-        this.statsCounters = Array.from(
-            document.querySelectorAll("[data-counter]")
-        );
-        this.themeToggle = document.querySelector(".theme-toggle");
-        this.notificationCenter = document.querySelector(
-            ".notification-center"
-        );
+    // Footer links
+    this.setupFooterLinks();
+
+    // Resize events
+    window.addEventListener('resize', this.throttle(this.handleResize.bind(this), 250));
+
+    // Visibility change
+    document.addEventListener('visibilitychange', this.handleVisibilityChange.bind(this));
+
+    // Before unload - save state
+    window.addEventListener('beforeunload', this.saveState.bind(this));
+  }
+
+  handleScroll() {
+    const scrollY = window.scrollY;
+
+    // Show/hide scroll to top button
+    if (scrollY > this.scrollThreshold) {
+      this.showScrollToTop();
+    } else {
+      this.hideScrollToTop();
     }
 
-    bindEvents() {
-        // Scroll events
-        window.addEventListener(
-            "scroll",
-            this.throttle(this.handleScroll.bind(this), 16)
-        );
+    // Update scroll progress
+    this.updateScrollProgress();
+  }
 
-        // Scroll to top button
-        if (this.scrollToTopBtn) {
-            this.scrollToTopBtn.addEventListener(
-                "click",
-                this.scrollToTop.bind(this)
-            );
-        }
-
-        // Theme toggle
-        if (this.themeToggle) {
-            this.themeToggle.addEventListener(
-                "click",
-                this.toggleTheme.bind(this)
-            );
-        }
-
-        // Footer links
-        this.setupFooterLinks();
-
-        // Resize events
-        window.addEventListener(
-            "resize",
-            this.throttle(this.handleResize.bind(this), 250)
-        );
-
-        // Visibility change
-        document.addEventListener(
-            "visibilitychange",
-            this.handleVisibilityChange.bind(this)
-        );
-
-        // Before unload - save state
-        window.addEventListener("beforeunload", this.saveState.bind(this));
+  showScrollToTop() {
+    if (this.scrollToTopBtn && !this.scrollToTopBtn.classList.contains('visible')) {
+      this.scrollToTopBtn.classList.add('visible');
+      this.scrollToTopBtn.style.transform = 'translateY(0) scale(1)';
+      this.scrollToTopBtn.style.opacity = '1';
     }
+  }
 
-    handleScroll() {
-        const scrollY = window.scrollY;
-
-        // Show/hide scroll to top button
-        if (scrollY > this.scrollThreshold) {
-            this.showScrollToTop();
-        } else {
-            this.hideScrollToTop();
-        }
-
-        // Update scroll progress
-        this.updateScrollProgress();
+  hideScrollToTop() {
+    if (this.scrollToTopBtn && this.scrollToTopBtn.classList.contains('visible')) {
+      this.scrollToTopBtn.classList.remove('visible');
+      this.scrollToTopBtn.style.transform = 'translateY(20px) scale(0.8)';
+      this.scrollToTopBtn.style.opacity = '0';
     }
+  }
 
-    showScrollToTop() {
-        if (
-            this.scrollToTopBtn &&
-            !this.scrollToTopBtn.classList.contains("visible")
-        ) {
-            this.scrollToTopBtn.classList.add("visible");
-            this.scrollToTopBtn.style.transform = "translateY(0) scale(1)";
-            this.scrollToTopBtn.style.opacity = "1";
-        }
-    }
+  scrollToTop() {
+    const duration = 800;
+    const startY = window.scrollY;
+    const startTime = performance.now();
 
-    hideScrollToTop() {
-        if (
-            this.scrollToTopBtn &&
-            this.scrollToTopBtn.classList.contains("visible")
-        ) {
-            this.scrollToTopBtn.classList.remove("visible");
-            this.scrollToTopBtn.style.transform = "translateY(20px) scale(0.8)";
-            this.scrollToTopBtn.style.opacity = "0";
-        }
-    }
+    const animateScroll = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function - easeInOutCubic
+      const easeProgress = progress < 0.5 
+        ? 4 * progress * progress * progress 
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
 
-    scrollToTop() {
-        const duration = 800;
-        const startY = window.scrollY;
-        const startTime = performance.now();
+      window.scrollTo(0, startY * (1 - easeProgress));
 
-        const animateScroll = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Easing function - easeInOutCubic
-            const easeProgress =
-                progress < 0.5
-                    ? 4 * progress * progress * progress
-                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-            window.scrollTo(0, startY * (1 - easeProgress));
-
-            if (progress < 1) {
-                requestAnimationFrame(animateScroll);
-            }
-        };
-
+      if (progress < 1) {
         requestAnimationFrame(animateScroll);
+      }
+    };
 
-        // Analytics
-        this.trackAction("scroll_to_top");
+    requestAnimationFrame(animateScroll);
+
+    // Analytics
+    this.trackAction('scroll_to_top');
+  }
+
+  updateScrollProgress() {
+    const progressBar = document.querySelector('.scroll-progress');
+    if (progressBar) {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      
+      progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
     }
+  }
 
-    updateScrollProgress() {
-        const progressBar = document.querySelector(".scroll-progress");
-        if (progressBar) {
-            const scrollTop = window.scrollY;
-            const docHeight =
-                document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
+  setupStatsCounters() {
+    if (this.statsCounters.length === 0) return;
 
-            progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
+    // Intersection Observer for counter animation
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.counterAnimated) {
+          this.animateCounters();
+          this.counterAnimated = true;
         }
+      });
+    }, this.observerOptions);
+
+    // Observe the footer stats section
+    const statsSection = document.querySelector('.footer-stats');
+    if (statsSection) {
+      this.observer.observe(statsSection);
     }
+  }
 
-    setupStatsCounters() {
-        if (this.statsCounters.length === 0) return;
+  animateCounters() {
+    this.statsCounters.forEach((counter, index) => {
+      const target = parseInt(counter.dataset.counter);
+      const duration = 2000 + (index * 200); // Stagger animation
+      const startValue = 0;
+      let startTime = null;
 
-        // Intersection Observer for counter animation
-        this.observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting && !this.counterAnimated) {
-                    this.animateCounters();
-                    this.counterAnimated = true;
-                }
-            });
-        }, this.observerOptions);
+      const animateCounter = (currentTime) => {
+        if (!startTime) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
 
-        // Observe the footer stats section
-        const statsSection = document.querySelector(".footer-stats");
-        if (statsSection) {
-            this.observer.observe(statsSection);
+        // Easing function
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.floor(startValue + (target - startValue) * easeProgress);
+
+        counter.textContent = this.formatNumber(currentValue);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateCounter);
+        } else {
+          counter.textContent = this.formatNumber(target);
+          counter.classList.add('animated');
         }
+      };
+
+      // Delay each counter
+      setTimeout(() => {
+        requestAnimationFrame(animateCounter);
+      }, index * 100);
+    });
+  }
+
+  formatNumber(num) {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K';
     }
+    return num.toString();
+  }
 
-    animateCounters() {
-        this.statsCounters.forEach((counter, index) => {
-            const target = parseInt(counter.dataset.counter);
-            const duration = 2000 + index * 200; // Stagger animation
-            const startValue = 0;
-            let startTime = null;
+  setupThemeToggle() {
+    // Load saved theme
+    this.currentTheme = localStorage.getItem('theme') || 'dark';
+    this.applyTheme(this.currentTheme);
+  }
 
-            const animateCounter = (currentTime) => {
-                if (!startTime) startTime = currentTime;
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+    this.applyTheme(this.currentTheme);
+    
+    // Analytics
+    this.trackAction('theme_toggle', { theme: this.currentTheme });
+  }
 
-                // Easing function
-                const easeProgress = 1 - Math.pow(1 - progress, 3);
-                const currentValue = Math.floor(
-                    startValue + (target - startValue) * easeProgress
-                );
-
-                counter.textContent = this.formatNumber(currentValue);
-
-                if (progress < 1) {
-                    requestAnimationFrame(animateCounter);
-                } else {
-                    counter.textContent = this.formatNumber(target);
-                    counter.classList.add("animated");
-                }
-            };
-
-            // Delay each counter
-            setTimeout(() => {
-                requestAnimationFrame(animateCounter);
-            }, index * 100);
-        });
+  applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    if (this.themeToggle) {
+      const icon = this.themeToggle.querySelector('.theme-icon');
+      if (icon) {
+        icon.innerHTML = theme === 'dark' 
+          ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 6.64l1.42-1.42"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>';
+      }
     }
+    
+    console.log(`🎨 Tema cambiado a: ${theme}`);
+  }
 
-    formatNumber(num) {
-        if (num >= 1000000) {
-            return (num / 1000000).toFixed(1) + "M";
-        } else if (num >= 1000) {
-            return (num / 1000).toFixed(1) + "K";
+  setupNotifications() {
+    // Check for system notifications periodically
+    this.notificationInterval = setInterval(() => {
+      this.checkSystemNotifications();
+    }, 60000); // Every minute
+
+    // Setup notification center if exists
+    if (this.notificationCenter) {
+      this.setupNotificationCenter();
+    }
+  }
+
+  checkSystemNotifications() {
+    // Simulated system notifications check
+    const notifications = this.getSystemNotifications();
+    
+    if (notifications.length > 0) {
+      this.updateNotificationIndicator(notifications.length);
+    }
+  }
+
+  getSystemNotifications() {
+    // This would typically fetch from an API
+    return [
+      {
+        id: 1,
+        type: 'info',
+        message: 'Actualización del sistema disponible',
+        timestamp: new Date()
+      }
+    ];
+  }
+
+  updateNotificationIndicator(count) {
+    const indicator = document.querySelector('.notification-indicator');
+    if (indicator) {
+      if (count > 0) {
+        indicator.textContent = count > 99 ? '99+' : count;
+        indicator.style.display = 'flex';
+        indicator.classList.add('pulse');
+      } else {
+        indicator.style.display = 'none';
+        indicator.classList.remove('pulse');
+      }
+    }
+  }
+
+  setupNotificationCenter() {
+    const toggle = this.notificationCenter.querySelector('.notification-toggle');
+    const panel = this.notificationCenter.querySelector('.notification-panel');
+    
+    if (toggle && panel) {
+      toggle.addEventListener('click', () => {
+        panel.classList.toggle('show');
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!this.notificationCenter.contains(e.target)) {
+          panel.classList.remove('show');
         }
-        return num.toString();
+      });
     }
+  }
 
-    setupThemeToggle() {
-        // Load saved theme
-        this.currentTheme = localStorage.getItem("theme") || "dark";
-        this.applyTheme(this.currentTheme);
-    }
-
-    toggleTheme() {
-        this.currentTheme = this.currentTheme === "dark" ? "light" : "dark";
-        this.applyTheme(this.currentTheme);
-
-        // Analytics
-        this.trackAction("theme_toggle", { theme: this.currentTheme });
-    }
-
-    applyTheme(theme) {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-
-        if (this.themeToggle) {
-            const icon = this.themeToggle.querySelector(".theme-icon");
-            if (icon) {
-                icon.innerHTML =
-                    theme === "dark"
-                        ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 6.64l1.42-1.42"/></svg>'
-                        : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>';
-            }
-        }
-
-        console.log(`🎨 Tema cambiado a: ${theme}`);
-    }
-
-    setupNotifications() {
-        // Check for system notifications periodically
-        this.notificationInterval = setInterval(() => {
-            this.checkSystemNotifications();
-        }, 60000); // Every minute
-
-        // Setup notification center if exists
-        if (this.notificationCenter) {
-            this.setupNotificationCenter();
-        }
-    }
-
-    checkSystemNotifications() {
-        // Simulated system notifications check
-        const notifications = this.getSystemNotifications();
-
-        if (notifications.length > 0) {
-            this.updateNotificationIndicator(notifications.length);
-        }
-    }
-
-    getSystemNotifications() {
-        // This would typically fetch from an API
-        return [
-            {
-                id: 1,
-                type: "info",
-                message: "Actualización del sistema disponible",
-                timestamp: new Date(),
-            },
-        ];
-    }
-
-    updateNotificationIndicator(count) {
-        const indicator = document.querySelector(".notification-indicator");
-        if (indicator) {
-            if (count > 0) {
-                indicator.textContent = count > 99 ? "99+" : count;
-                indicator.style.display = "flex";
-                indicator.classList.add("pulse");
-            } else {
-                indicator.style.display = "none";
-                indicator.classList.remove("pulse");
-            }
-        }
-    }
-
-    setupNotificationCenter() {
-        const toggle = this.notificationCenter.querySelector(
-            ".notification-toggle"
-        );
-        const panel = this.notificationCenter.querySelector(
-            ".notification-panel"
-        );
-
-        if (toggle && panel) {
-            toggle.addEventListener("click", () => {
-                panel.classList.toggle("show");
-            });
-
-            // Close when clicking outside
-            document.addEventListener("click", (e) => {
-                if (!this.notificationCenter.contains(e.target)) {
-                    panel.classList.remove("show");
-                }
-            });
-        }
-    }
-
-    setupFooterLinks() {
-        const footerLinks = document.querySelectorAll(".footer-link");
-
-        footerLinks.forEach((link) => {
-            link.addEventListener("click", (e) => {
-                const href = link.getAttribute("href");
-                const text = link.textContent.trim();
-
-                // Track footer link clicks
-                this.trackAction("footer_link_click", {
-                    link_text: text,
-                    link_url: href,
-                });
-
-                // Handle special links
-                if (href === "#contact") {
-                    e.preventDefault();
-                    this.openContactModal();
-                } else if (href === "#help") {
-                    e.preventDefault();
-                    this.openHelpModal();
-                }
-            });
-        });
-    }
-
-    openContactModal() {
-        // Create or show contact modal
-        console.log("📞 Abriendo modal de contacto");
-        this.showModal("contact");
-    }
-
-    openHelpModal() {
-        // Create or show help modal
-        console.log("❓ Abriendo modal de ayuda");
-        this.showModal("help");
-    }
-
-    showModal(type) {
-        let modal = document.getElementById(`${type}Modal`);
-
-        if (!modal) {
-            modal = this.createModal(type);
-            document.body.appendChild(modal);
-        }
-
-        modal.classList.add("show");
-        document.body.classList.add("modal-open");
-
-        // Close modal functionality
-        const closeBtn = modal.querySelector(".modal-close");
-        const backdrop = modal.querySelector(".modal-backdrop");
-
-        [closeBtn, backdrop].forEach((element) => {
-            if (element) {
-                element.addEventListener("click", () => this.hideModal(modal));
-            }
+  setupFooterLinks() {
+    const footerLinks = document.querySelectorAll('.footer-link');
+    
+    footerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        const text = link.textContent.trim();
+        
+        // Track footer link clicks
+        this.trackAction('footer_link_click', { 
+          link_text: text,
+          link_url: href 
         });
 
-        // ESC key to close
-        const handleEscape = (e) => {
-            if (e.key === "Escape") {
-                this.hideModal(modal);
-                document.removeEventListener("keydown", handleEscape);
-            }
-        };
-        document.addEventListener("keydown", handleEscape);
+        // Handle special links
+        if (href === '#contact') {
+          e.preventDefault();
+          this.openContactModal();
+        } else if (href === '#help') {
+          e.preventDefault();
+          this.openHelpModal();
+        }
+      });
+    });
+  }
+
+  openContactModal() {
+    // Create or show contact modal
+    console.log('📞 Abriendo modal de contacto');
+    this.showModal('contact');
+  }
+
+  openHelpModal() {
+    // Create or show help modal
+    console.log('❓ Abriendo modal de ayuda');
+    this.showModal('help');
+  }
+
+  showModal(type) {
+    let modal = document.getElementById(`${type}Modal`);
+    
+    if (!modal) {
+      modal = this.createModal(type);
+      document.body.appendChild(modal);
     }
+    
+    modal.classList.add('show');
+    document.body.classList.add('modal-open');
+    
+    // Close modal functionality
+    const closeBtn = modal.querySelector('.modal-close');
+    const backdrop = modal.querySelector('.modal-backdrop');
+    
+    [closeBtn, backdrop].forEach(element => {
+      if (element) {
+        element.addEventListener('click', () => this.hideModal(modal));
+      }
+    });
+    
+    // ESC key to close
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        this.hideModal(modal);
+        document.removeEventListener('keydown', handleEscape);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+  }
 
-    createModal(type) {
-        const modal = document.createElement("div");
-        modal.id = `${type}Modal`;
-        modal.className = "footer-modal";
-
-        const content = this.getModalContent(type);
-
-        modal.innerHTML = `
+  createModal(type) {
+    const modal = document.createElement('div');
+    modal.id = `${type}Modal`;
+    modal.className = 'footer-modal';
+    
+    const content = this.getModalContent(type);
+    
+    modal.innerHTML = `
       <div class="modal-backdrop"></div>
       <div class="modal-content">
         <div class="modal-header">
@@ -422,15 +386,15 @@ class FooterManager {
         </div>
       </div>
     `;
+    
+    return modal;
+  }
 
-        return modal;
-    }
-
-    getModalContent(type) {
-        const contents = {
-            contact: {
-                title: "Contacto",
-                body: `
+  getModalContent(type) {
+    const contents = {
+      contact: {
+        title: 'Contacto',
+        body: `
           <div class="contact-info">
             <div class="contact-item">
               <div class="contact-icon">📧</div>
@@ -454,11 +418,11 @@ class FooterManager {
               </div>
             </div>
           </div>
-        `,
-            },
-            help: {
-                title: "Centro de Ayuda",
-                body: `
+        `
+      },
+      help: {
+        title: 'Centro de Ayuda',
+        body: `
           <div class="help-sections">
             <div class="help-section">
               <h4>🚀 Inicio Rápido</h4>
@@ -477,158 +441,153 @@ class FooterManager {
               <p>Videos explicativos paso a paso.</p>
             </div>
           </div>
-        `,
-            },
-        };
+        `
+      }
+    };
+    
+    return contents[type] || { title: 'Modal', body: 'Contenido del modal' };
+  }
 
-        return (
-            contents[type] || { title: "Modal", body: "Contenido del modal" }
-        );
+  hideModal(modal) {
+    modal.classList.remove('show');
+    document.body.classList.remove('modal-open');
+    
+    // Remove modal after animation
+    setTimeout(() => {
+      if (modal.parentNode) {
+        modal.parentNode.removeChild(modal);
+      }
+    }, 300);
+  }
+
+  setupIntersectionObserver() {
+    // Observe footer for additional animations
+    if (this.footer) {
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.footer.classList.add('in-view');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      footerObserver.observe(this.footer);
+    }
+  }
+
+  updateFooterData() {
+    // Update copyright year
+    const copyrightYear = document.querySelector('.copyright-year');
+    if (copyrightYear) {
+      copyrightYear.textContent = new Date().getFullYear();
     }
 
-    hideModal(modal) {
-        modal.classList.remove("show");
-        document.body.classList.remove("modal-open");
-
-        // Remove modal after animation
-        setTimeout(() => {
-            if (modal.parentNode) {
-                modal.parentNode.removeChild(modal);
-            }
-        }, 300);
+    // Update system version
+    const versionElement = document.querySelector('.system-version');
+    if (versionElement) {
+      versionElement.textContent = this.getSystemVersion();
     }
 
-    setupIntersectionObserver() {
-        // Observe footer for additional animations
-        if (this.footer) {
-            const footerObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            this.footer.classList.add("in-view");
-                        }
-                    });
-                },
-                { threshold: 0.1 }
-            );
+    // Update last activity
+    this.updateLastActivity();
+  }
 
-            footerObserver.observe(this.footer);
+  getSystemVersion() {
+    // This would typically come from a config or API
+    return 'v2.1.0';
+  }
+
+  updateLastActivity() {
+    const lastActivityElement = document.querySelector('.last-activity');
+    if (lastActivityElement) {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('es-CO', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+      });
+      lastActivityElement.textContent = `Última actividad: ${timeString}`;
+    }
+  }
+
+  handleResize() {
+    // Adjust footer layout on resize if needed
+    if (window.innerWidth < 768) {
+      this.footer?.classList.add('mobile');
+    } else {
+      this.footer?.classList.remove('mobile');
+    }
+  }
+
+  handleVisibilityChange() {
+    if (document.hidden) {
+      // Page is hidden, pause any animations or intervals
+      clearInterval(this.notificationInterval);
+    } else {
+      // Page is visible again, resume
+      this.setupNotifications();
+      this.updateFooterData();
+    }
+  }
+
+  saveState() {
+    // Save any necessary state before page unload
+    const state = {
+      theme: this.currentTheme,
+      scrollPosition: window.scrollY,
+      timestamp: Date.now()
+    };
+    
+    localStorage.setItem('footerState', JSON.stringify(state));
+  }
+
+  restoreState() {
+    const savedState = localStorage.getItem('footerState');
+    if (savedState) {
+      try {
+        const state = JSON.parse(savedState);
+        
+        // Restore theme
+        if (state.theme) {
+          this.currentTheme = state.theme;
+          this.applyTheme(this.currentTheme);
         }
+      } catch (e) {
+        console.error('Error restoring footer state:', e);
+      }
     }
+  }
 
-    updateFooterData() {
-        // Update copyright year
-        const copyrightYear = document.querySelector(".copyright-year");
-        if (copyrightYear) {
-            copyrightYear.textContent = new Date().getFullYear();
-        }
-
-        // Update system version
-        const versionElement = document.querySelector(".system-version");
-        if (versionElement) {
-            versionElement.textContent = this.getSystemVersion();
-        }
-
-        // Update last activity
-        this.updateLastActivity();
+  trackAction(action, data = {}) {
+    // Analytics tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', action, {
+        event_category: 'footer',
+        ...data
+      });
     }
+    
+    console.log(`📊 Footer Action: ${action}`, data);
+  }
 
-    getSystemVersion() {
-        // This would typically come from a config or API
-        return "v2.1.0";
-    }
+  // Utility functions
+  throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
 
-    updateLastActivity() {
-        const lastActivityElement = document.querySelector(".last-activity");
-        if (lastActivityElement) {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString("es-CO", {
-                hour: "2-digit",
-                minute: "2-digit",
-            });
-            lastActivityElement.textContent = `Última actividad: ${timeString}`;
-        }
-    }
-
-    handleResize() {
-        // Adjust footer layout on resize if needed
-        if (window.innerWidth < 768) {
-            this.footer?.classList.add("mobile");
-        } else {
-            this.footer?.classList.remove("mobile");
-        }
-    }
-
-    handleVisibilityChange() {
-        if (document.hidden) {
-            // Page is hidden, pause any animations or intervals
-            clearInterval(this.notificationInterval);
-        } else {
-            // Page is visible again, resume
-            this.setupNotifications();
-            this.updateFooterData();
-        }
-    }
-
-    saveState() {
-        // Save any necessary state before page unload
-        const state = {
-            theme: this.currentTheme,
-            scrollPosition: window.scrollY,
-            timestamp: Date.now(),
-        };
-
-        localStorage.setItem("footerState", JSON.stringify(state));
-    }
-
-    restoreState() {
-        const savedState = localStorage.getItem("footerState");
-        if (savedState) {
-            try {
-                const state = JSON.parse(savedState);
-
-                // Restore theme
-                if (state.theme) {
-                    this.currentTheme = state.theme;
-                    this.applyTheme(this.currentTheme);
-                }
-            } catch (e) {
-                console.error("Error restoring footer state:", e);
-            }
-        }
-    }
-
-    trackAction(action, data = {}) {
-        // Analytics tracking
-        if (typeof gtag !== "undefined") {
-            gtag("event", action, {
-                event_category: "footer",
-                ...data,
-            });
-        }
-
-        console.log(`📊 Footer Action: ${action}`, data);
-    }
-
-    // Utility functions
-    throttle(func, limit) {
-        let inThrottle;
-        return function () {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => (inThrottle = false), limit);
-            }
-        };
-    }
-
-    // Public API methods
-    showNotification(message, type = "info", duration = 5000) {
-        const notification = document.createElement("div");
-        notification.className = `footer-notification ${type}`;
-        notification.innerHTML = `
+  // Public API methods
+  showNotification(message, type = 'info', duration = 5000) {
+    const notification = document.createElement('div');
+    notification.className = `footer-notification ${type}`;
+    notification.innerHTML = `
       <div class="notification-content">
         <div class="notification-icon">
           ${this.getNotificationIcon(type)}
@@ -637,66 +596,61 @@ class FooterManager {
         <button class="notification-close">×</button>
       </div>
     `;
+    
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => notification.classList.add('show'), 100);
+    
+    // Auto hide
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    }, duration);
+    
+    // Manual close
+    notification.querySelector('.notification-close').addEventListener('click', () => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    });
+  }
 
-        document.body.appendChild(notification);
+  getNotificationIcon(type) {
+    const icons = {
+      info: '🔵',
+      success: '✅',
+      warning: '⚠️',
+      error: '❌'
+    };
+    return icons[type] || icons.info;
+  }
 
-        // Show notification
-        setTimeout(() => notification.classList.add("show"), 100);
-
-        // Auto hide
-        setTimeout(() => {
-            notification.classList.remove("show");
-            setTimeout(() => notification.remove(), 300);
-        }, duration);
-
-        // Manual close
-        notification
-            .querySelector(".notification-close")
-            .addEventListener("click", () => {
-                notification.classList.remove("show");
-                setTimeout(() => notification.remove(), 300);
-            });
-    }
-
-    getNotificationIcon(type) {
-        const icons = {
-            info: "🔵",
-            success: "✅",
-            warning: "⚠️",
-            error: "❌",
-        };
-        return icons[type] || icons.info;
-    }
-
-    updateStats(newStats) {
-        Object.keys(newStats).forEach((key) => {
-            const element = document.querySelector(`[data-stat="${key}"]`);
-            if (element) {
-                const counter = element.querySelector("[data-counter]");
-                if (counter) {
-                    counter.dataset.counter = newStats[key];
-                    counter.textContent = this.formatNumber(newStats[key]);
-                }
-            }
-        });
-    }
-
-    destroy() {
-        // Cleanup
-        clearInterval(this.notificationInterval);
-        if (this.observer) {
-            this.observer.disconnect();
+  updateStats(newStats) {
+    Object.keys(newStats).forEach(key => {
+      const element = document.querySelector(`[data-stat="${key}"]`);
+      if (element) {
+        const counter = element.querySelector('[data-counter]');
+        if (counter) {
+          counter.dataset.counter = newStats[key];
+          counter.textContent = this.formatNumber(newStats[key]);
         }
+      }
+    });
+  }
 
-        // Remove event listeners
-        window.removeEventListener("scroll", this.handleScroll);
-        window.removeEventListener("resize", this.handleResize);
-        document.removeEventListener(
-            "visibilitychange",
-            this.handleVisibilityChange
-        );
-        window.removeEventListener("beforeunload", this.saveState);
+  destroy() {
+    // Cleanup
+    clearInterval(this.notificationInterval);
+    if (this.observer) {
+      this.observer.disconnect();
     }
+    
+    // Remove event listeners
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    window.removeEventListener('beforeunload', this.saveState);
+  }
 }
 
 // Estilos adicionales para efectos dinámicos
@@ -1008,7 +962,7 @@ document.head.appendChild(styleSheet);
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
-    new FooterManager();
+  new FooterManager();
 });
 
 // Exportar para uso global

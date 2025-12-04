@@ -17,10 +17,10 @@
     
     <!-- CSS del Dashboard -->
     <link rel="stylesheet" href="{{ asset('css/dashboard/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/sidebar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/header.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/loading.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/loading.css') }}">
     
     @stack('styles')
 </head>
@@ -67,8 +67,18 @@
     </script>
     
     <!-- JavaScript del Dashboard -->
-    <script src="{{ asset('js/components/loading.js') }}"></script>
-    <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+    <script src="{{ asset('js/layouts/loading.js') }}"></script>
+    <script src="{{ asset('js/layouts/sidebar.js') }}"></script>
+    <script src="{{ asset('js/layouts/header.js') }}"></script>
+    <script src="{{ asset('js/layouts/footer.js') }}"></script>
+    <script src="{{ asset('js/dashboard/admin.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof DashboardManager !== 'undefined') {
+                new DashboardManager();
+            }
+        });
+    </script>
     
     @stack('scripts')
 </body>

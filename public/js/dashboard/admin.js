@@ -3,6 +3,9 @@
  * Sistema de dashboard administrativo optimizado - Basado en el sitio web
  */
 
+(function() {
+'use strict';
+
 class DashboardManager {
     constructor() {
         this.dashboard = null;
@@ -1366,3 +1369,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Exportar para uso global
 window.DashboardManager = DashboardManager;
+
+})();

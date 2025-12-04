@@ -1,8 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
+    // Si el usuario está autenticado, redirigir al dashboard
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    }
+    // Si no está autenticado, mostrar login
     return redirect()->route('login');
 });
 
