@@ -1,0 +1,135 @@
+/* ============================================
+   403 ERROR PAGE STYLES
+   ============================================ */
+:root {
+    --accent-color: #ff4757; /* Red Neon */
+    --dark-bg: #000000;
+    --text-light: #ffffff;
+    --text-muted: #b0b0b0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.error-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 71, 87, 0.05) 0%,
+        #000000 70%
+    );
+}
+
+.error-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title Styles */
+.error-title {
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.title-line {
+    font-size: 3rem;
+    letter-spacing: 4px;
+    display: block;
+}
+
+.highlight-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+
+.highlight {
+    font-size: 8rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 30px rgba(255, 71, 87, 0.6),
+        0 0 60px rgba(255, 71, 87, 0.4);
+    display: block;
+    letter-spacing: 8px;
+    line-height: 1;
+}
+
+.error-subtitle {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.error-message {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* Button */
+.btn-home {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.2);
+}
+
+.btn-home:hover {
+    background: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 0 30px rgba(255, 71, 87, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title-line {
+        font-size: 2rem;
+    }
+    .highlight {
+        font-size: 5rem;
+    }
+    .error-subtitle {
+        font-size: 1.2rem;
+    }
+}
