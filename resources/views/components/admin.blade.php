@@ -257,6 +257,30 @@
     <script src="{{ asset('js/components/loading.js') }}"></script>
     <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
     
+    <!-- JavaScript del Header -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('profileDropdownToggle');
+            const dropdown = document.getElementById('profileDropdown');
+            
+            if(toggle && dropdown) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    toggle.setAttribute('aria-expanded', !isExpanded);
+                    dropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+    
     @stack('scripts')
 </body>
 </html>

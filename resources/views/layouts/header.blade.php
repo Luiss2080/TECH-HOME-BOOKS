@@ -21,7 +21,7 @@
     <!-- Center: Navigation (Desktop) -->
     <div class="header-center">
         <nav class="header-nav">
-            <a href="{{ route('dashboard') }}" class="header-link {{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="header-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -38,13 +38,12 @@
                 </svg>
                 <span>Reportes</span>
             </a>
-            <a href="{{ route('contact') }}" class="header-link">
+            <a href="{{ route('configuraciones.index') }}" class="header-link {{ request()->routeIs('configuraciones.*') ? 'active' : '' }}">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                 </svg>
-                <span>Ayuda</span>
+                <span>Configuración</span>
             </a>
         </nav>
     </div>
@@ -67,15 +66,15 @@
         <div class="user-profile-container">
             <button class="profile-trigger" id="profileDropdownToggle" aria-expanded="false">
                 <div class="user-avatar">
-                    @if(Auth::user()?->profile_photo_url)
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()?->name }}">
+                    @if(session('user_id'))
+                        <span>{{ substr(session('user_name') ?? 'A', 0, 1) }}</span>
                     @else
-                        <span>{{ substr(Auth::user()?->name ?? 'U', 0, 1) }}</span>
+                        <span>U</span>
                     @endif
                 </div>
                 <div class="user-info">
-                    <span class="user-name">{{ Auth::user()?->name ?? 'Usuario' }}</span>
-                    <span class="user-role-badge">{{ Auth::user()?->role ?? 'Admin' }}</span>
+                    <span class="user-name">{{ session('user_name') ?? 'Administrador Sistema' }}</span>
+                    <span class="user-role-badge">{{ ucfirst(session('user_role') ?? 'Admin') }}</span>
                 </div>
                 <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -86,15 +85,15 @@
             <div class="profile-dropdown" id="profileDropdown">
                 <div class="dropdown-header">
                     <div class="dropdown-user-avatar">
-                         @if(Auth::user()?->profile_photo_url)
-                            <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()?->name }}">
+                        @if(session('user_id'))
+                            <span>{{ substr(session('user_name') ?? 'A', 0, 1) }}</span>
                         @else
-                            <span>{{ substr(Auth::user()?->name ?? 'U', 0, 1) }}</span>
+                            <span>U</span>
                         @endif
                     </div>
                     <div class="dropdown-user-details">
-                        <span class="dropdown-user-name">{{ Auth::user()?->name ?? 'Usuario' }}</span>
-                        <span class="dropdown-user-email">{{ Auth::user()?->email ?? 'usuario@sistema.com' }}</span>
+                        <span class="dropdown-user-name">{{ session('user_name') ?? 'Administrador Sistema' }}</span>
+                        <span class="dropdown-user-email">{{ session('user_email') ?? 'admin@tech-home.com' }}</span>
                     </div>
                 </div>
                 

@@ -1,4 +1,4 @@
-{{-- Footer del Sistema - Asociación 1ro de Junio --}}
+{{-- Footer del Sistema - Tech Home Books --}}
 <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
 
 <footer class="dashboard-footer" id="systemFooter">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="card-info">
                             <span class="card-label">DIRECCIÓN PRINCIPAL</span>
-                            <span class="card-value">Av. Principal #123, Zona Norte</span>
+                            <span class="card-value">Av. Educación #456, Zona Central</span>
                             <span class="card-sub">Santa Cruz, Bolivia</span>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-info">
                             <span class="card-label">TELÉFONO DE CONTACTO</span>
-                            <span class="card-value">+591 700-12345</span>
+                            <span class="card-value">+591 700-54321</span>
                         </div>
                     </div>
 
@@ -42,7 +42,7 @@
                         </div>
                         <div class="card-info">
                             <span class="card-label">CORREO ELECTRÓNICO</span>
-                            <span class="card-value">contacto@primerodejunio.com</span>
+                            <span class="card-value">contacto@tech-home-books.com</span>
                         </div>
                     </div>
 
@@ -72,22 +72,22 @@
                     <div class="badge">
                         <!-- Shield Filled -->
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-                        <span>Seguridad Garantizada</span>
+                        <span>Datos Seguros</span>
                     </div>
                     <div class="badge">
                         <!-- Lightning Filled -->
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
-                        <span>Servicio Eficiente</span>
+                        <span>Educación Digital</span>
                     </div>
                     <div class="badge">
                         <!-- Users Filled -->
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                        <span>Atención al Socio</span>
+                        <span>Soporte Docente</span>
                     </div>
                 </div>
 
                 <div class="system-version-container">
-                    <span class="system-version">Sistema de Gestión v2.0</span>
+                    <span class="system-version">Sistema Educativo v1.0</span>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
             <div class="footer-brand-section">
                 <!-- Logo Image Added Here -->
                 <div class="brand-image-container">
-                    <img src="{{ asset('images/LogoAsociacion.png') }}" alt="Logo Asociación 1ro de Junio" class="brand-logo-img">
+                    <img src="{{ asset('images/logo-tech-home-books.png') }}" alt="Logo Tech Home Books" class="brand-logo-img">
                 </div>
 
                 <div class="brand-logo-container">
@@ -139,7 +139,7 @@
             <!-- Copyright & Legal -->
             <div class="footer-legal-section">
                 <div class="footer-copyright">
-                    <span>&copy; {{ date('Y') }} Asociación 1ro de Junio. Todos los derechos reservados.</span>
+                    <span>&copy; {{ date('Y') }} Tech Home Books. Todos los derechos reservados.</span>
                 </div>
                 <div class="footer-links-row">
                     <a href="#privacy">Política de Privacidad</a>
