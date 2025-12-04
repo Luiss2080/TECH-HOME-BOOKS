@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Administrador - TECH HOME BOOKS</title>
+    <title>Dashboard Administrador - Asociación 1ro de Junio</title>
     <link rel="icon" type="image/png" href="{{ asset('images/LogoAsociacion.png') }}">
     
     <!-- Precargar fuentes -->
@@ -12,15 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Meta tags -->
-    <meta name="description" content="Dashboard administrativo de TECH HOME BOOKS.">
+    <meta name="description" content="Dashboard administrativo de la Asociación 1ro de Junio. Gestión profesional de mototaxis.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- CSS del Dashboard -->
     <link rel="stylesheet" href="{{ asset('css/dashboard/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/layouts/sidebar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/layouts/header.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/layouts/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/layouts/loading.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/loading.css') }}">
     
     @stack('styles')
 </head>
@@ -129,45 +127,45 @@
                     <h2 class="section-title">Acciones Rápidas</h2>
                     <div class="actions-grid">
                         
-                        <!-- Gestionar Usuarios -->
+                        <!-- Gestionar Conductores -->
                         <div class="action-card">
                             <div class="action-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                                    <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Gestionar Usuarios</h3>
-                            <p class="action-description">Administrar docentes, estudiantes y administrativos</p>
-                            <a href="#" class="action-btn">
-                                Ver Usuarios
+                            <h3 class="action-title">Gestionar Conductores</h3>
+                            <p class="action-description">Administrar conductores y licencias</p>
+                            <a href="/conductores" class="action-btn">
+                                Ver Conductores
                             </a>
                         </div>
                         
-                        <!-- Cursos y Materias -->
+                        <!-- Registrar Vehículo -->
                         <div class="action-card">
                             <div class="action-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+                                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Académico</h3>
-                            <p class="action-description">Gestión de cursos, materias y horarios</p>
-                            <a href="#" class="action-btn">
-                                Gestión Académica
+                            <h3 class="action-title">Registrar Vehículo</h3>
+                            <p class="action-description">Añade un nuevo vehículo a la flota</p>
+                            <a href="/vehiculos/crear" class="action-btn">
+                                Agregar Vehículo
                             </a>
                         </div>
                         
-                        <!-- Biblioteca -->
+                        <!-- Ver Reportes -->
                         <div class="action-card">
                             <div class="action-icon">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Biblioteca</h3>
-                            <p class="action-description">Administrar libros y material educativo</p>
-                            <a href="#" class="action-btn">
-                                Ver Biblioteca
+                            <h3 class="action-title">Generar Reportes</h3>
+                            <p class="action-description">Consulta estadísticas y reportes del sistema</p>
+                            <a href="/reportes" class="action-btn">
+                                Ver Reportes
                             </a>
                         </div>
                         
@@ -195,16 +193,8 @@
     </script>
     
     <!-- JavaScript del Dashboard -->
-    <script src="{{ asset('js/layouts/loading.js') }}"></script>
-    <script src="{{ asset('js/layouts/sidebar.js') }}"></script>
-    <script src="{{ asset('js/layouts/header.js') }}"></script>
-    <script src="{{ asset('js/layouts/footer.js') }}"></script>
-    <script src="{{ asset('js/dashboard/admin.js') }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            new DashboardManager();
-        });
-    </script>
+    <script src="{{ asset('js/components/loading.js') }}"></script>
+    <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
     
     @stack('scripts')
 </body>
