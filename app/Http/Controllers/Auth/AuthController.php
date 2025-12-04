@@ -45,14 +45,14 @@ class AuthController extends Controller
             // Redirect based on role
             switch ($user->rol) {
                 case 'admin':
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->intended('/admin/dashboard');
                 case 'docente':
-                    return redirect()->route('docente.dashboard');
+                    return redirect()->intended('/docente/dashboard');
                 case 'estudiante':
-                    return redirect()->route('estudiante.dashboard');
+                    return redirect()->intended('/estudiante/dashboard');
                 default:
                     Auth::logout();
-                    return redirect()->route('login')->withErrors(['email' => 'Rol no reconocido.']);
+                    return redirect()->route('login')->withErrors(['error' => 'Rol no reconocido.']);
             }
         }
 
