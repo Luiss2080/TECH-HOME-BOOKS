@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso Sistema - Asociación 1ro de Junio</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/LogoAsociacion.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/LogoTech.png') }}">
 
     <!-- Precargar fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,12 +63,12 @@
                     <div class="brand-section">
                         <div class="logo-container">
                             <div class="logo-backdrop"></div>
-                            <img src="{{ asset('images/LogoAsociacion.png') }}" alt="ASOCIACIÓN 1RO DE JUNIO" class="brand-logo">
+                            <img src="{{ asset('images/LogoTech.png') }}" alt="TECH HOME" class="brand-logo">
                         </div>
                         <div class="brand-text">
-                            <h1 class="brand-title">1RO DE JUNIO</h1>
+                            <h1 class="brand-title">TECH HOME</h1>
                             <div class="brand-line"></div>
-                            <span class="brand-subtitle">ASOCIACIÓN DE MOTOTAXIS</span>
+                            <span class="brand-subtitle">ESCUELA DE ROBOTICA Y TECNOLOGIA AVANZADA</span>
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                     <div class="welcome-section">
                         <h2 class="welcome-title">¡Bienvenido!</h2>
                         <p class="welcome-description">
-                            Inicia sesión con tu cuenta y accede al sistema administrativo de la Asociación 1ro de Junio. Plataforma diseñada para la gestión integral de conductores, servicios de mototaxi y administración de la asociación.
+                            Inicia sesión con tu cuenta y accede al sistema administrativo de Tech Home. Plataforma diseñada para la gestión integral de cursos, estudiantes y administración de la escuela.
                         </p>
                     </div>
 
