@@ -3,7 +3,7 @@
     <div class="sidebar-header">
         <div class="logo-container">
             <div class="logo-icon">
-                <img src="{{ asset('images/logo-tech-home-books.png') }}" alt="Tech Home" class="logo-img">
+
             </div>
             <div class="logo-text">
                 <h1 class="brand-name">TECH HOME</h1>
@@ -144,7 +144,7 @@
 </aside>
     <!-- Logo del Sidebar -->
     <div class="sidebar-logo">
-        <img src="{{ asset('images/logo-tech-home-books.png') }}" alt="Logo Tech Home Books" class="sidebar-logo-image">
+
         <div class="sidebar-logo-text">
             <span class="sidebar-brand">TECH HOME BOOKS</span>
             <span class="sidebar-tagline">Sistema Educativo</span>

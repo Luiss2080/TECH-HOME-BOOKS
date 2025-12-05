@@ -34,5 +34,5 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('js/docente/dashboard.js') }}"></script>
+
 @endsection

@@ -15,19 +15,18 @@
 
 .dashboard-header {
     background: var(--header-bg);
-    border-bottom: 1px solid var(--border-color);
+    border: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     position: sticky;
-    top: 0;
+    top: 1rem;
     z-index: 90;
     height: 80px;
-    width: 100%;
-    /* Remove floating margins */
-    margin: 0;
-    border-radius: 0;
+    width: calc(100% - 4rem);
+    margin: 1rem 2rem;
+    border-radius: 24px;
     box-shadow: var(--shadow-sm);
 }
 

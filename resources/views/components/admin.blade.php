@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dashboard Admin - Tech Home Books')</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/logo-tech-home-books.png') }}">
+
     
     <!-- Precargar fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,7 +255,7 @@
     
     <!-- JavaScript del Dashboard -->
     <script src="{{ asset('js/components/loading.js') }}"></script>
-    <script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+
     <script src="{{ asset('js/components/sidebar.js') }}"></script>
     <script src="{{ asset('js/components/footer.js') }}"></script>
     
