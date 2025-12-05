@@ -45,6 +45,50 @@
 
     /* Fonts */
     --font-family: "Montserrat", sans-serif;
+
+    /* New Variables for Dark Mode Support */
+    --bg-surface: #ffffff;
+    --bg-surface-secondary: #f8fafc;
+    --input-bg: #f8fafc;
+    --dropdown-bg: #ffffff;
+}
+
+body.dark-mode {
+    /* Colors Overrides */
+    --light-bg: #1e293b;
+    --text-dark: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+
+    /* Backgrounds */
+    --bg-surface: #1e293b;
+    --bg-surface-secondary: #0f172a;
+    --input-bg: #0f172a;
+    --dropdown-bg: #1e293b;
+
+    /* Sidebar */
+    --sidebar-bg: #1e293b;
+    --sidebar-text: #cbd5e1;
+    --sidebar-text-active: #ffffff;
+    --sidebar-hover-bg: #334155;
+    --sidebar-hover-text: #fb7185;
+
+    /* Header */
+    --header-bg: #1e293b;
+    --header-text: #cbd5e1;
+    --header-text-dark: #f1f5f9;
+
+    /* Footer */
+    --footer-bg: #1e293b;
+    --footer-text: #cbd5e1;
+    --footer-heading: #f1f5f9;
+    --card-bg: #334155; /* Was #fff1f2 in light mode */
+
+    /* Shadows */
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3),
+        0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
 }
 
 /* ============================================
@@ -171,7 +215,7 @@ body {
 }
 
 .course-card {
-    background: #ffffff;
+    background: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 2rem;
@@ -312,7 +356,7 @@ body {
 }
 
 .lab-card {
-    background: #ffffff;
+    background: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 1.5rem;

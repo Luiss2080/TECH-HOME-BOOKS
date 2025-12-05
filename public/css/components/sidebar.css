@@ -64,7 +64,7 @@
     font-family: var(--font-family);
     font-weight: 800;
     font-size: 1.1rem;
-    color: #334155;
+    color: var(--header-text-dark);
     margin: 0;
     line-height: 1.2;
 }
@@ -72,7 +72,7 @@
 .brand-subtitle {
     font-family: var(--font-family);
     font-size: 0.75rem;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-weight: 500;
 }
 
@@ -96,7 +96,7 @@
     font-family: var(--font-family);
     font-size: 0.7rem;
     font-weight: 700;
-    color: #94a3b8;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 1rem;
@@ -176,7 +176,7 @@
 .sidebar-footer {
     padding: 1.5rem;
     border-top: 1px solid var(--border-color);
-    background: #ffffff;
+    background: var(--sidebar-bg);
 }
 
 .visit-site-btn {
@@ -208,7 +208,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem;
-    background-color: #f8fafc;
+    background-color: var(--bg-surface-secondary);
     border-radius: 16px;
     border: 1px solid var(--border-color);
 }
@@ -229,7 +229,7 @@
     font-family: var(--font-family);
     font-weight: 600;
     font-size: 0.9rem;
-    color: #334155;
+    color: var(--header-text-dark);
 }
 
 /* Switch Toggle */

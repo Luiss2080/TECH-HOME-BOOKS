@@ -10,7 +10,7 @@ class AsociacionLogin {
         this.isLoading = false;
         this.config = {
             minPasswordLength: 6,
-            emailRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            emailRegex: /.+@.+\..+/,
         };
         this.init();
     }
@@ -157,13 +157,15 @@ class AsociacionLogin {
 
         try {
             const formData = new FormData(this.form);
-            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
-            
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                ?.getAttribute("content");
+
             const response = await fetch("/login", {
                 method: "POST",
                 headers: {
                     "X-Requested-With": "XMLHttpRequest",
-                    "Accept": "application/json",
+                    Accept: "application/json",
                     "X-CSRF-TOKEN": csrfToken,
                 },
                 body: formData,
