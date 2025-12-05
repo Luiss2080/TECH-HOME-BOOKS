@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Asociación 1ro de Junio</title>
+    <title>Registro - Tech Home</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Únete a la Asociación 1ro de Junio. Registro seguro para conductores de mototaxi y miembros de nuestra comunidad.">
@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/LogoTech.png') }}">
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/auth/registro.css') }}">
@@ -56,7 +56,7 @@
                     <div class="brand-section">
                         <div class="logo-container">
                             <div class="logo-backdrop"></div>
-                            <img src="{{ asset('images/LogoAsociacion.png') }}" alt="ASOCIACIÓN 1RO DE JUNIO" class="brand-logo">
+                            <img src="{{ asset('images/LogoTech.png') }}" alt="TECH HOME" class="brand-logo">
                         </div>
                         <div class="brand-text">
                             <h1 class="brand-title">1RO DE JUNIO</h1>

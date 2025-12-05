@@ -15,13 +15,21 @@ Route::post('/login', [App\Http\Controllers\Auth\AuthController::class, 'login']
 Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
 
 // Rutas que necesita la vista de login
+// Rutas de recuperación de contraseña
 Route::get('/password/reset', function () {
-    return view('auth.login');
+    return redirect()->route('recuperar');
 })->name('password.request');
 
-Route::get('/registro', function () {
-    return view('auth.login');
-})->name('register.show');
+Route::get('/recuperar', function () {
+    return view('auth.recuperar', ['step' => 'email']);
+})->name('recuperar');
+
+// Rutas de registro
+Route::get('/registro', [App\Http\Controllers\Auth\AuthController::class, 'showRegistrationForm'])->name('register.show');
+Route::post('/registro', [App\Http\Controllers\Auth\AuthController::class, 'register'])->name('register.submit');
+Route::post('/registro/verify', function() {
+    return redirect()->route('login')->with('success', 'Cuenta verificada correctamente.');
+})->name('register.verify');
 
 // Dashboard protegido con middleware de autenticación y administrador
 Route::get('/admin/dashboard', function() {

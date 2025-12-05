@@ -3,11 +3,11 @@
 
 /* ===== VARIABLES ESENCIALES ===== */
 :root {
-    --green-primary: #00ff88;
-    --green-secondary: #00ff66;
+    --green-primary: #e11d48;
+    --green-secondary: #be123c;
     --white: #ffffff;
     --gray-light: #cccccc;
-    --gradient-main: linear-gradient(135deg, #00ff88 0%, #00ff66 100%);
+    --gradient-main: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
     --glass-dark: rgba(0, 0, 0, 0.8);
     --glass-light: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
@@ -35,7 +35,7 @@
 
 body {
     font-family: var(--font-body);
-    background: linear-gradient(135deg, #000000 0%, #001a0a 50%, #000000 100%);
+    background: linear-gradient(135deg, #450a0a 0%, #7f1d1d 50%, #450a0a 100%);
     color: var(--white);
     min-height: 100vh;
     display: flex;
@@ -156,7 +156,7 @@ body {
 
 /* ===== BRANDING IZQUIERDA ===== */
 .recovery-branding {
-    background: linear-gradient(135deg, #000000 0%, #0f0f0f 100%);
+    background: linear-gradient(135deg, #450a0a 0%, #7f1d1d 100%);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -275,7 +275,7 @@ body {
 }
 
 .brand-logo {
-    width: 120px;
+    width: 280px;
     height: auto;
     filter: drop-shadow(0 4px 20px rgba(0, 255, 136, 0.3));
     position: relative;

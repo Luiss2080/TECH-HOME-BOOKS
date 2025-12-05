@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Contraseña - Asociación 1ro de Junio</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/LogoAsociacion.png') }}">
+    <title>Recuperar Contraseña - Tech Home</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/LogoTech.png') }}">
 
     <!-- Precargar fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
                     <div class="brand-section">
                         <div class="logo-container">
                             <div class="logo-backdrop"></div>
-                            <img src="{{ asset('images/LogoAsociacion.png') }}" alt="ASOCIACIÓN 1RO DE JUNIO" class="brand-logo">
+                            <img src="{{ asset('images/LogoTech.png') }}" alt="TECH HOME" class="brand-logo">
                         </div>
                         <div class="brand-text">
                             <h1 class="brand-title">1RO DE JUNIO</h1>
@@ -73,7 +73,7 @@
                     <div class="welcome-section">
                         <h2 class="welcome-title">¡No te preocupes!</h2>
                         <p class="welcome-description">
-                            Recupera tu acceso al sistema administrativo de la Asociación 1ro de Junio en pocos pasos. Tu cuenta está protegida con los más altos estándares de seguridad para garantizar la protección de los datos de la asociación.
+                            Recupera tu acceso al sistema administrativo de Tech Home en pocos pasos. Tu cuenta está protegida con los más altos estándares de seguridad.
                         </p>
                     </div>
 
