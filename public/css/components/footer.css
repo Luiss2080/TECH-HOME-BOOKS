@@ -2,15 +2,7 @@
    FOOTER REDESIGN - LIGHT & RED THEME
    ============================================ */
 
-:root {
-    --footer-bg: #ffffff;
-    --footer-text: #64748b;
-    --footer-heading: #334155;
-    --primary-red: #e11d48;
-    --primary-red-hover: #be123c;
-    --card-bg: #fff1f2;
-    --border-color: #f1f5f9;
-}
+/* Variables moved to dashboard.css */
 
 .dashboard-footer {
     /* margin: 2rem 1rem 1rem 1rem; Removed to match dashboard.css */

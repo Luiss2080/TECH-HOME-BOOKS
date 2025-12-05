@@ -105,5 +105,4 @@ document.addEventListener("DOMContentLoaded", () => {
     LoadingScreen.init();
 
     // Link interception removed to prevent navigation issues
-    // document.querySelectorAll("a").forEach((link) => { ... });
 });

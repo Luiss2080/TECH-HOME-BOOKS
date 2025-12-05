@@ -129,7 +129,7 @@ class SidebarManager {
     }
 
     restoreState() {
-        // Restore active submenu state if needed
+        // State restoration logic if needed in future
     }
 }
 
