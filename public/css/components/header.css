@@ -1,33 +1,34 @@
 /* ============================================
-   HEADER (ENCABEZADO)
+   HEADER (ENCABEZADO) - LIGHT & RED THEME
    ============================================ */
 :root {
-    --primary-green: #00ff66;
-    --dark-bg: #0a0a0a;
-    --card-bg: rgba(255, 255, 255, 0.1);
-    --text-light: #e0e0e0;
-    --text-muted: #b0b0b0;
-    --border-color: rgba(255, 255, 255, 0.2);
-    --shadow-light: rgba(0, 255, 102, 0.1);
-    --shadow-medium: rgba(0, 255, 102, 0.2);
+    --header-bg: #ffffff;
+    --header-text: #64748b;
+    --header-text-dark: #334155;
+    --primary-red: #e11d48;
+    --primary-red-hover: #be123c;
+    --border-color: #f1f5f9;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     --transition: all 0.3s ease;
 }
 
 .dashboard-header {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--border-color);
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 1rem 2rem;
     position: sticky;
-    top: 1rem;
+    top: 0;
     z-index: 90;
     height: 80px;
-    margin: 1rem 1rem 0 1rem;
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    /* Remove floating margins */
+    margin: 0;
+    border-radius: 0;
+    box-shadow: var(--shadow-sm);
 }
 
 /* Left Section: Brand & Search */
@@ -40,7 +41,7 @@
 .header-brand .brand-text {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--primary-green);
+    color: var(--header-text-dark);
     margin: 0;
     letter-spacing: 0.5px;
 }
@@ -58,30 +59,35 @@
 .search-form svg {
     position: absolute;
     left: 14px;
-    color: var(--text-muted);
+    color: var(--header-text);
     pointer-events: none;
     transition: var(--transition);
 }
 
 .search-input {
-    background: rgba(255, 255, 255, 0.05);
+    background: #f8fafc;
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 0.7rem 1rem 0.7rem 2.8rem;
-    color: var(--text-light);
+    color: var(--header-text-dark);
     font-size: 0.9rem;
     width: 280px;
+    transition: var(--transition);
+}
+
+.search-input::placeholder {
+    color: #94a3b8;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: var(--primary-green);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 0 4px rgba(0, 255, 102, 0.1);
+    border-color: var(--primary-red);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1);
 }
 
 .search-input:focus + svg {
-    color: var(--primary-green);
+    color: var(--primary-red);
 }
 
 /* Center Section: Navigation */
@@ -94,19 +100,19 @@
 .header-nav {
     display: flex;
     gap: 1rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: #f8fafc;
     padding: 0.4rem;
     border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .header-link {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    color: var(--text-muted);
+    color: var(--header-text);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.9rem;
     transition: var(--transition);
     padding: 0.6rem 1.2rem;
@@ -119,23 +125,25 @@
 }
 
 .header-link:hover {
-    color: var(--text-light);
-    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-red);
+    background: #ffffff;
+    box-shadow: var(--shadow-sm);
 }
 
 .header-link:hover svg {
     opacity: 1;
+    color: var(--primary-red);
 }
 
 .header-link.active {
-    color: var(--dark-bg);
-    background: var(--primary-green);
-    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #e11d48, #be123c);
+    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.3);
 }
 
 .header-link.active svg {
     opacity: 1;
-    color: var(--dark-bg);
+    color: white;
 }
 
 /* Right Section: Actions & Profile */
@@ -150,9 +158,9 @@
 }
 
 .notification-btn {
-    background: rgba(255, 255, 255, 0.05);
+    background: #ffffff;
     border: 1px solid var(--border-color);
-    color: var(--text-muted);
+    color: var(--header-text);
     cursor: pointer;
     width: 42px;
     height: 42px;
@@ -164,9 +172,9 @@
 }
 
 .notification-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--primary-green);
-    border-color: var(--primary-green);
+    background: #fff1f2;
+    color: var(--primary-red);
+    border-color: var(--primary-red);
     transform: translateY(-2px);
 }
 
@@ -174,7 +182,7 @@
     position: absolute;
     top: -5px;
     right: -5px;
-    background: #ff4757;
+    background: var(--primary-red);
     color: white;
     font-size: 0.7rem;
     font-weight: 700;
@@ -185,8 +193,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--dark-bg);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ffffff;
+    box-shadow: var(--shadow-sm);
 }
 
 /* User Profile Dropdown */
@@ -198,7 +206,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: #ffffff;
     border: 1px solid var(--border-color);
     padding: 0.4rem 0.4rem 0.4rem 0.4rem;
     border-radius: 50px;
@@ -209,22 +217,22 @@
 
 .profile-trigger:hover,
 .profile-trigger[aria-expanded="true"] {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--primary-green);
+    background: #f8fafc;
+    border-color: var(--primary-red);
 }
 
 .user-avatar {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--primary-green), #00e055);
+    background: linear-gradient(135deg, #e11d48, #be123c);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    color: var(--dark-bg);
+    color: white;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff1f2;
 }
 
 .user-avatar img {
@@ -243,26 +251,26 @@
 
 .user-name {
     font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-light);
+    font-weight: 700;
+    color: var(--header-text-dark);
 }
 
 .user-role-badge {
     font-size: 0.7rem;
-    color: var(--primary-green);
+    color: var(--primary-red);
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
 
 .dropdown-arrow {
-    color: var(--text-muted);
+    color: var(--header-text);
     transition: transform 0.3s ease;
 }
 
 .profile-trigger[aria-expanded="true"] .dropdown-arrow {
     transform: rotate(180deg);
-    color: var(--primary-green);
+    color: var(--primary-red);
 }
 
 /* Dropdown Menu */
@@ -271,10 +279,10 @@
     top: calc(100% + 15px);
     right: 0;
     width: 280px;
-    background: #1a1a1a;
+    background: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
@@ -291,11 +299,7 @@
 
 .dropdown-header {
     padding: 1.5rem;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.02)
-    );
+    background: linear-gradient(to bottom, #f8fafc, #ffffff);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
@@ -305,14 +309,14 @@
 .dropdown-user-avatar {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, var(--primary-green), #00e055);
+    background: linear-gradient(135deg, #e11d48, #be123c);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 1.2rem;
-    color: var(--dark-bg);
+    color: white;
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -330,7 +334,7 @@
 .dropdown-user-name {
     display: block;
     font-weight: 700;
-    color: var(--text-light);
+    color: var(--header-text-dark);
     font-size: 1rem;
     white-space: nowrap;
     overflow: hidden;
@@ -340,7 +344,7 @@
 .dropdown-user-email {
     display: block;
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--header-text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -355,7 +359,7 @@
     align-items: center;
     gap: 1rem;
     padding: 0.8rem 1rem;
-    color: var(--text-muted);
+    color: var(--header-text);
     text-decoration: none;
     border-radius: 12px;
     transition: var(--transition);
@@ -368,27 +372,27 @@
 }
 
 .dropdown-item:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: #f8fafc;
 }
 
 .dropdown-item:hover .item-title {
-    color: var(--text-light);
+    color: var(--header-text-dark);
 }
 
 .dropdown-item:hover .item-icon {
-    color: var(--primary-green);
-    background: rgba(0, 255, 102, 0.1);
+    color: var(--primary-red);
+    background: #fff1f2;
 }
 
 .item-icon {
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.03);
+    background: #f1f5f9;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-muted);
+    color: var(--header-text);
     transition: var(--transition);
 }
 
@@ -400,30 +404,30 @@
 .item-title {
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--header-text);
     transition: var(--transition);
 }
 
 .item-subtitle {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: #94a3b8;
 }
 
 .dropdown-footer {
     padding: 0.5rem;
     border-top: 1px solid var(--border-color);
-    background: rgba(0, 0, 0, 0.2);
+    background: #f8fafc;
 }
 
 .dropdown-item.text-danger:hover {
-    background: rgba(255, 71, 87, 0.1);
+    background: #fef2f2;
 }
 
 .dropdown-item.text-danger:hover .item-title {
-    color: #ff4757;
+    color: #ef4444;
 }
 
 .dropdown-item.text-danger:hover .item-icon {
-    color: #ff4757;
-    background: rgba(255, 71, 87, 0.1);
+    color: #ef4444;
+    background: #fee2e2;
 }
