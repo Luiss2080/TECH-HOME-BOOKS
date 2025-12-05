@@ -13,7 +13,8 @@
 }
 
 .dashboard-footer {
-    margin: 2rem 1rem 1rem 1rem;
+    /* margin: 2rem 1rem 1rem 1rem; Removed to match dashboard.css */
+    margin-top: 2rem;
     padding: 3rem 2rem 1.5rem;
     background: var(--footer-bg);
     border: 1px solid var(--border-color);
@@ -21,7 +22,7 @@
     font-size: 0.9rem;
     color: var(--footer-text);
     position: relative;
-    width: auto; /* Allow it to fit container */
+    width: 100%; /* Full width */
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 

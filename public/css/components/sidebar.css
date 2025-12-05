@@ -20,25 +20,15 @@
 
 /* Layout Adjustments */
 /* Layout Adjustments */
-.dashboard-layout {
-    /* Grid definition is now centralized in dashboard.css to avoid conflicts */
-    /* We keep the grid-template-columns here just in case, but it should match */
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    min-height: 100vh;
-}
+/* Layout Adjustments */
+/* .dashboard-layout rule removed to avoid conflict with dashboard.css */
 
 .dashboard-sidebar {
-    width: 260px; /* Fixed width inside the 280px column */
-    height: calc(100vh - 2rem);
+    /* Layout properties handled in dashboard.css */
     background: var(--sidebar-bg);
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    position: fixed; /* Fix it to the viewport */
-    top: 1rem;
-    left: 1rem;
-    z-index: 50;
     overflow: hidden;
     border-radius: 24px;
     box-shadow: var(--shadow-md);

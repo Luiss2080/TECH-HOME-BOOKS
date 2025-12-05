@@ -65,31 +65,31 @@ body {
 /* ============================================
    LAYOUT PRINCIPAL
    ============================================ */
+/* ============================================
+   LAYOUT PRINCIPAL
+   ============================================ */
 .dashboard-layout {
-    display: flex; /* Changed to flex for sticky sidebar support */
+    display: flex;
     min-height: 100vh;
     width: 100%;
     background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
-    gap: 1rem; /* Gap between sidebar and content */
-    padding: 1rem; /* Padding around the layout */
+    gap: 1.5rem; /* Increased gap */
+    padding: 1.5rem; /* Increased padding */
+    align-items: flex-start; /* Ensure items align to top */
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
-    /* height: 100vh; Removed */
-    /* overflow-y: auto; Removed */
-    position: relative;
-    flex: 1; /* Take remaining space */
+    flex: 1;
     width: 100%;
     min-width: 0; /* Prevent flex overflow */
+    gap: 2rem; /* Gap between header, content, footer */
 }
 
 .dashboard-content {
-    padding: 2rem;
+    padding: 0; /* Remove padding as layout handles it */
     flex: 1;
-    max-width: 1400px; /* Limit width for better readability */
-    margin: 0 auto;
     width: 100%;
 }
 
@@ -98,19 +98,18 @@ body {
    ============================================ */
 .dashboard-sidebar {
     width: 280px;
-    height: calc(100vh - 2rem); /* Full height minus padding */
+    height: calc(100vh - 3rem); /* Adjust for layout padding */
     background: var(--sidebar-bg);
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    position: sticky; /* Sticky positioning */
-    top: 1rem; /* Stick to top with margin */
-    /* left: 1rem; Removed */
+    position: sticky;
+    top: 1.5rem; /* Match layout padding */
     z-index: 50;
     overflow: hidden;
     border-radius: 24px;
     box-shadow: var(--shadow-md);
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
 }
 
 .sidebar-header {
@@ -393,10 +392,11 @@ input:checked ~ .slider .sun-icon {
     top: 1rem;
     z-index: 90;
     min-height: 80px;
-    margin: 1rem 2rem; /* Floating margin */
+    /* margin: 1rem 2rem; Removed floating margin */
     border-radius: 24px;
     box-shadow: var(--shadow-sm);
-    width: calc(100% - 4rem); /* Full width minus margins */
+    width: 100%; /* Full width */
+    margin-bottom: 2rem; /* Add bottom spacing */
 }
 
 .header-left {
@@ -799,7 +799,8 @@ input:checked ~ .slider .sun-icon {
    FOOTER COMPONENT
    ============================================ */
 .dashboard-footer {
-    margin: 2rem 1rem 1rem 1rem;
+    /* margin: 2rem 1rem 1rem 1rem; Removed floating margin */
+    margin-top: 2rem;
     padding: 3rem 2rem 1.5rem;
     background: var(--footer-bg);
     border: 1px solid var(--border-color);
@@ -807,7 +808,7 @@ input:checked ~ .slider .sun-icon {
     font-size: 0.9rem;
     color: var(--footer-text);
     position: relative;
-    width: auto; /* Allow it to fit container */
+    width: 100%; /* Full width */
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 

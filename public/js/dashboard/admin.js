@@ -1,86 +1,11 @@
 /**
  * TECH HOME - Dashboard Script
- * Modernized & Optimized for the new Red Theme Interface
+ * Simplified & Optimized
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    initDashboard();
-});
-
-function initDashboard() {
-    setupEntranceAnimations();
-    setupCourseInteractions();
-    setupLabStatusChecks();
     console.log("🚀 Dashboard initialized successfully");
-}
-
-/**
- * 1. Entrance Animations
- * Adds a staggered fade-in effect to cards
- */
-function setupEntranceAnimations() {
-    const cards = document.querySelectorAll(".course-card, .lab-card");
-
-    cards.forEach((card, index) => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(20px)";
-        card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-
-        setTimeout(() => {
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-        }, 100 * index); // Staggered delay
-    });
-}
-
-/**
- * 2. Course Card Interactions
- * Adds simple feedback when clicking buttons
- */
-function setupCourseInteractions() {
-    const buttons = document.querySelectorAll(".course-btn");
-
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const card = btn.closest(".course-card");
-            const title = card.querySelector(".course-title").innerText;
-
-            // Simulate button loading state
-            const originalContent = btn.innerHTML;
-            btn.innerHTML = '<span class="spinner"></span> Procesando...';
-            btn.style.opacity = "0.8";
-
-            setTimeout(() => {
-                btn.innerHTML = originalContent;
-                btn.style.opacity = "1";
-                showToast(`Redirigiendo a: ${title}`, "success");
-            }, 800);
-        });
-    });
-}
-
-/**
- * 3. Laboratory Status Checks
- * Simulates real-time status updates for labs
- */
-function setupLabStatusChecks() {
-    const statuses = document.querySelectorAll(".lab-status");
-
-    // Randomly "check" status every 30-60 seconds
-    setInterval(() => {
-        const randomIdx = Math.floor(Math.random() * statuses.length);
-        const statusBadge = statuses[randomIdx];
-
-        if (statusBadge.classList.contains("maintenance")) return; // Don't flip maintenance
-
-        // Flash effect
-        statusBadge.style.opacity = "0.5";
-        setTimeout(() => {
-            statusBadge.style.opacity = "1";
-        }, 300);
-    }, 10000);
-}
+});
 
 /**
  * Utility: Toast Notification
