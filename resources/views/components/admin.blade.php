@@ -45,189 +45,156 @@
             <!-- Contenido principal -->
             <div class="dashboard-content">
                 
-                <!-- Tarjetas de Estadísticas -->
-                <div class="stats-grid">
-                    <div class="stats-card">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                                </svg>
-                            </div>
-                            <div class="stat-trend">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7 14l5-5 5 5z"/>
-                                </svg>
-                                +5.2%
-                            </div>
+                <!-- Sección: Cursos de Robótica e IA -->
+                <div class="dashboard-section">
+                    <div class="section-header-centered">
+                        <div class="section-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                            </svg>
                         </div>
-                        <div class="stat-number">{{ \App\Models\Estudiante::count() ?? '0' }}</div>
-                        <div class="stat-label">Total Estudiantes</div>
-                        <div class="stat-subtitle">Registrados en el sistema</div>
+                        <h2 class="section-title-large">Cursos de Robótica e IA</h2>
+                        <p class="section-subtitle">Formación especializada desde nivel básico hasta investigación avanzada</p>
                     </div>
-                    
-                    <div class="stats-card">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 14q1.25 0 2.125-.875T15 11V5q0-1.25-.875-2.125T12 2q-1.25 0-2.125.875T9 5v6q0 1.25.875 2.125T12 14Zm-8 4v-1.5q0-.75.4-1.4t1.15-.95q1.35-.65 2.725-1.025T12 13.5q1.7 0 3.075.375t2.725 1.025q.75.3 1.15.95t.4 1.4V18H4Z"/>
-                                </svg>
-                            </div>
-                            <div class="stat-trend">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7 14l5-5 5 5z"/>
-                                </svg>
-                                +2.1%
-                            </div>
-                        </div>
-                        <div class="stat-number">{{ \App\Models\Docente::count() ?? '0' }}</div>
-                        <div class="stat-label">Total Docentes</div>
-                        <div class="stat-subtitle">Activos en el sistema</div>
-                    </div>
-                    
-                    <div class="stats-card">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                                </svg>
-                            </div>
-                            <div class="stat-trend">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7 14l5-5 5 5z"/>
-                                </svg>
-                                +1.8%
-                            </div>
-                        </div>
-                        <div class="stat-number">{{ \App\Models\Colegio::count() ?? '0' }}</div>
-                        <div class="stat-label">Colegios Registrados</div>
-                        <div class="stat-subtitle">En la plataforma</div>
-                    </div>
-                    
-                    <div class="stats-card">
-                        <div class="stat-header">
-                            <div class="stat-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.11 0 2-.9 2-2V4c0-1.1-.89-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
-                                </svg>
-                            </div>
-                            <div class="stat-trend">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7 14l5-5 5 5z"/>
-                                </svg>
-                                +7.3%
-                            </div>
-                        </div>
-                        <div class="stat-number">{{ \App\Models\Libro::count() ?? '0' }}</div>
-                        <div class="stat-label">Libros Disponibles</div>
-                        <div class="stat-subtitle">En la biblioteca digital</div>
-                    </div>
-                </div>
 
-                <!-- Acciones Rápidas -->
-                <div class="quick-actions-section">
-                    <h2 class="section-title">Acciones Rápidas</h2>
-                    <div class="actions-grid">
-                        
-                        <!-- Nuevo Estudiante -->
-                        <div class="action-card">
-                            <div class="action-icon">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    <div class="courses-grid">
+                        <!-- Robótica Básica -->
+                        <div class="course-card">
+                            <div class="course-badge basic">BÁSICO</div>
+                            <div class="course-icon-wrapper blue">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Agregar Estudiante</h3>
-                            <p class="action-description">Registra un nuevo estudiante en el sistema</p>
-                            <a href="{{ route('estudiantes.index') }}" class="action-btn">
-                                Gestionar Estudiantes
+                            <h3 class="course-title">Robótica Básica</h3>
+                            <p class="course-desc">Introducción a la programación de robots</p>
+                            <div class="course-meta">
+                                <span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 40 horas</span>
+                            </div>
+                            <a href="#" class="course-btn btn-red">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                Comenzar
                             </a>
                         </div>
-                        
-                        <!-- Nuevo Docente -->
-                        <div class="action-card">
-                            <div class="action-icon">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 14q1.25 0 2.125-.875T15 11V5q0-1.25-.875-2.125T12 2q-1.25 0-2.125.875T9 5v6q0 1.25.875 2.125T12 14Z"/>
+
+                        <!-- Machine Learning -->
+                        <div class="course-card">
+                            <div class="course-badge intermediate">INTERMEDIO</div>
+                            <div class="course-icon-wrapper purple">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 16l-4-2.25L12 11.5l4 2.25L12 16zm0-2.5l-2.67-1.5L12 10.5l2.67 1.5L12 13.5z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Agregar Docente</h3>
-                            <p class="action-description">Registra un nuevo docente en la plataforma</p>
-                            <a href="{{ route('docentes.index') }}" class="action-btn">
-                                Gestionar Docentes
+                            <h3 class="course-title">Machine Learning</h3>
+                            <p class="course-desc">Algoritmos de aprendizaje automático aplicado</p>
+                            <div class="course-meta">
+                                <span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 60 horas</span>
+                            </div>
+                            <a href="#" class="course-btn btn-red">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                                Inscribirse
                             </a>
                         </div>
-                        
-                        <!-- Nuevo Colegio -->
-                        <div class="action-card">
-                            <div class="action-icon">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+
+                        <!-- Visión Artificial -->
+                        <div class="course-card">
+                            <div class="course-badge advanced">AVANZADO</div>
+                            <div class="course-icon-wrapper red">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Agregar Colegio</h3>
-                            <p class="action-description">Registra una nueva institución educativa</p>
-                            <a href="{{ route('colegios.index') }}" class="action-btn">
-                                Gestionar Colegios
+                            <h3 class="course-title">Visión Artificial</h3>
+                            <p class="course-desc">Procesamiento de imágenes y reconocimiento</p>
+                            <div class="course-meta">
+                                <span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 80 horas</span>
+                            </div>
+                            <a href="#" class="course-btn btn-red">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                Ver Curso
                             </a>
                         </div>
-                        
-                        <!-- Reportes -->
-                        <div class="action-card">
-                            <div class="action-icon">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+
+                        <!-- IoT y Automatización -->
+                        <div class="course-card">
+                            <div class="course-badge intermediate">INTERMEDIO</div>
+                            <div class="course-icon-wrapper cyan">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"/>
                                 </svg>
                             </div>
-                            <h3 class="action-title">Ver Reportes</h3>
-                            <p class="action-description">Accede a estadísticas y reportes del sistema</p>
-                            <a href="{{ route('reportes.index') }}" class="action-btn">
-                                Ver Reportes
+                            <h3 class="course-title">IoT y Automatización</h3>
+                            <p class="course-desc">Internet de las cosas y sistemas conectados</p>
+                            <div class="course-meta">
+                                <span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg> 50 horas</span>
+                            </div>
+                            <a href="#" class="course-btn btn-red">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                                Explorar
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Actividad Reciente -->
-                <div class="recent-activity-section">
-                    <h2 class="section-title">Actividad Reciente</h2>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                                </svg>
-                            </div>
-                            <div class="activity-content">
-                                <h4>Nuevo estudiante registrado</h4>
-                                <p>Se registró un nuevo estudiante en el sistema</p>
-                                <span class="activity-time">Hace 2 horas</span>
-                            </div>
+                <!-- Sección: Laboratorios Virtuales -->
+                <div class="dashboard-section">
+                    <div class="section-header-centered">
+                        <div class="section-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                            </svg>
                         </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.11 0 2-.9 2-2V4c0-1.1-.89-2-2-2z"/>
+                        <h2 class="section-title-large">Laboratorios Virtuales</h2>
+                        <p class="section-subtitle">Accede a las herramientas de desarrollo y simulación</p>
+                    </div>
+
+                    <div class="labs-grid">
+                        <!-- IDE -->
+                        <div class="lab-card">
+                            <div class="lab-status online">Online</div>
+                            <div class="lab-icon red">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
                                 </svg>
                             </div>
-                            <div class="activity-content">
-                                <h4>Nuevo libro agregado</h4>
-                                <p>Se agregó un nuevo libro a la biblioteca digital</p>
-                                <span class="activity-time">Hace 4 horas</span>
-                            </div>
+                            <h3 class="lab-title">IDE de Programación</h3>
+                            <p class="lab-desc">Entorno de desarrollo integrado</p>
                         </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 14q1.25 0 2.125-.875T15 11V5q0-1.25-.875-2.125T12 2q-1.25 0-2.125.875T9 5v6q0 1.25.875 2.125T12 14Z"/>
+
+                        <!-- Simulador -->
+                        <div class="lab-card">
+                            <div class="lab-status online">Online</div>
+                            <div class="lab-icon red">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 16l-4-2.25L12 11.5l4 2.25L12 16zm0-2.5l-2.67-1.5L12 10.5l2.67 1.5L12 13.5z"/>
                                 </svg>
                             </div>
-                            <div class="activity-content">
-                                <h4>Docente actualizado</h4>
-                                <p>Se actualizó la información de un docente</p>
-                                <span class="activity-time">Hace 6 horas</span>
+                            <h3 class="lab-title">Simulador 3D</h3>
+                            <p class="lab-desc">Pruebas en entornos virtuales</p>
+                        </div>
+
+                        <!-- IA Training -->
+                        <div class="lab-card">
+                            <div class="lab-status maintenance">Mantenimiento</div>
+                            <div class="lab-icon red">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                                </svg>
                             </div>
+                            <h3 class="lab-title">IA Training Hub</h3>
+                            <p class="lab-desc">Entrenamiento de modelos</p>
+                        </div>
+
+                        <!-- IoT Dashboard -->
+                        <div class="lab-card">
+                            <div class="lab-status online">Online</div>
+                            <div class="lab-icon red">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 13h-5v5c0 .55-.45 1-1 1s-1-.45-1-1v-5H6c-.55 0-1-.45-1-1s.45-1 1-1h5V6c0-.55.45-1 1-1s1 .45 1 1v5h5c.55 0 1 .45 1 1s-.45 1-1 1z"/>
+                                </svg>
+                            </div>
+                            <h3 class="lab-title">IoT Dashboard</h3>
+                            <p class="lab-desc">Monitorización en tiempo real</p>
                         </div>
                     </div>
                 </div>
