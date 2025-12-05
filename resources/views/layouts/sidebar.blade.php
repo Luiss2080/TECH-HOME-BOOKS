@@ -1,10 +1,10 @@
 <aside class="dashboard-sidebar" id="systemSidebar">
     <!-- Logo del Sidebar -->
     <div class="sidebar-logo">
-        <img src="{{ asset('images/LogoAsociacion.png') }}" alt="Logo Asociación" class="sidebar-logo-image">
+        <img src="{{ asset('images/logo-tech-home-books.png') }}" alt="Logo Tech Home Books" class="sidebar-logo-image">
         <div class="sidebar-logo-text">
-            <span class="sidebar-brand">1RO DE JUNIO</span>
-            <span class="sidebar-tagline">Sistema Admin</span>
+            <span class="sidebar-brand">TECH HOME BOOKS</span>
+            <span class="sidebar-tagline">Sistema Educativo</span>
         </div>
     </div>
 
@@ -14,7 +14,7 @@
             
             <!-- Dashboard -->
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <div class="nav-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -29,16 +29,29 @@
                 <span class="section-title">Gestión de Personal</span>
             </li>
 
-            <!-- Conductores -->
+            <!-- Estudiantes -->
             <li class="nav-item">
-                <a href="{{ route('conductores.index') }}" class="nav-link {{ request()->routeIs('conductores.*') ? 'active' : '' }}">
+                <a href="{{ route('estudiantes.index') }}" class="nav-link {{ request()->routeIs('estudiantes.*') ? 'active' : '' }}">
                     <div class="nav-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                         </svg>
                     </div>
-                    <span class="nav-text">Conductores</span>
-                    <span class="nav-badge">4</span>
+                    <span class="nav-text">Estudiantes</span>
+                    <span class="nav-badge">125</span>
+                </a>
+            </li>
+
+            <!-- Docentes -->
+            <li class="nav-item">
+                <a href="{{ route('docentes.index') }}" class="nav-link {{ request()->routeIs('docentes.*') ? 'active' : '' }}">
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 14q1.25 0 2.125-.875T15 11V5q0-1.25-.875-2.125T12 2q-1.25 0-2.125.875T9 5v6q0 1.25.875 2.125T12 14Zm-8 4v-1.5q0-.75.4-1.4t1.15-.95q1.35-.65 2.725-1.025T12 13.5q1.7 0 3.075.375t2.725 1.025q.75.3 1.15.95t.4 1.4V18H4Z"/>
+                        </svg>
+                    </div>
+                    <span class="nav-text">Docentes</span>
+                    <span class="nav-badge blue">15</span>
                 </a>
             </li>
 
@@ -51,37 +64,37 @@
                         </svg>
                     </div>
                     <span class="nav-text">Usuarios</span>
-                    <span class="nav-badge blue">28</span>
+                    <span class="nav-badge green">45</span>
                 </a>
             </li>
 
-            <!-- Sección: Flota y Vehículos -->
+            <!-- Sección: Academia -->
             <li class="nav-section">
-                <span class="section-title">Flota y Vehículos</span>
+                <span class="section-title">Academia</span>
             </li>
 
-            <!-- Vehículos -->
+            <!-- Colegios -->
             <li class="nav-item">
-                <a href="{{ route('vehiculos.index') }}" class="nav-link {{ request()->routeIs('vehiculos.*') ? 'active' : '' }}">
+                <a href="{{ route('colegios.index') }}" class="nav-link {{ request()->routeIs('colegios.*') ? 'active' : '' }}">
                     <div class="nav-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/>
+                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
                         </svg>
                     </div>
-                    <span class="nav-text">Vehículos</span>
+                    <span class="nav-text">Colegios</span>
                 </a>
             </li>
 
-            <!-- Viajes -->
+            <!-- Materias -->
             <li class="nav-item">
-                <a href="{{ route('viajes.index') }}" class="nav-link {{ request()->routeIs('viajes.*') ? 'active' : '' }}">
+                <a href="{{ route('materias.index') }}" class="nav-link {{ request()->routeIs('materias.*') ? 'active' : '' }}">
                     <div class="nav-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                         </svg>
                     </div>
-                    <span class="nav-text">Viajes</span>
-                    <span class="nav-badge green">12</span>
+                    <span class="nav-text">Materias</span>
+                    <span class="nav-badge purple">8</span>
                 </a>
             </li>
 
@@ -90,39 +103,42 @@
                 <span class="section-title">Administración</span>
             </li>
 
-            <!-- Clientes -->
+            <!-- Estudiantes -->
             <li class="nav-item">
-                <a href="{{ route('clientes.index') }}" class="nav-link {{ request()->routeIs('clientes.*') ? 'active' : '' }}">
+                <a href="{{ route('estudiantes.index') }}" class="nav-link {{ request()->routeIs('estudiantes.*') ? 'active' : '' }}">
                     <div class="nav-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.49.59-1.42 1.37L6 16.5V22h2v-6h2v6h8z"/>
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
                         </svg>
                     </div>
-                    <span class="nav-text">Clientes</span>
+                    <span class="nav-text">Estudiantes</span>
+                    <span class="nav-badge bg-blue">{{ $totalEstudiantes ?? '0' }}</span>
                 </a>
             </li>
 
-            <!-- Tarifas -->
+            <!-- Libros -->
             <li class="nav-item">
-                <a href="{{ route('tarifas.index') }}" class="nav-link {{ request()->routeIs('tarifas.*') ? 'active' : '' }}">
+                <a href="{{ route('libros.index') }}" class="nav-link {{ request()->routeIs('libros.*') ? 'active' : '' }}">
                     <div class="nav-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                            <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/>
                         </svg>
                     </div>
-                    <span class="nav-text">Tarifas</span>
+                    <span class="nav-text">Libros</span>
+                    <span class="nav-badge bg-green">{{ $totalLibros ?? '0' }}</span>
                 </a>
             </li>
 
-            <!-- Pagos -->
+            <!-- Calificaciones -->
             <li class="nav-item">
-                <a href="{{ route('pagos.index') }}" class="nav-link {{ request()->routeIs('pagos.*') ? 'active' : '' }}">
+                <a href="{{ route('calificaciones.index') }}" class="nav-link {{ request()->routeIs('calificaciones.*') ? 'active' : '' }}">
                     <div class="nav-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                         </svg>
                     </div>
-                    <span class="nav-text">Pagos</span>
+                    <span class="nav-text">Calificaciones</span>
+                    <span class="nav-badge bg-orange">{{ $totalCalificaciones ?? '0' }}</span>
                 </a>
             </li>
 
@@ -142,29 +158,29 @@
                     <span class="nav-text">Reportes</span>
                 </a>
                 <ul class="submenu">
-                    <li><a href="{{ route('reportes.conductores') }}" class="submenu-link {{ request()->routeIs('reportes.conductores') ? 'active' : '' }}">
+                    <li><a href="{{ route('reportes.estudiantes') }}" class="submenu-link {{ request()->routeIs('reportes.estudiantes') ? 'active' : '' }}">
                         <div class="nav-icon-mini">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+                                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
                             </svg>
                         </div>
-                        Conductores
+                        Estudiantes
                     </a></li>
-                    <li><a href="{{ route('reportes.viajes') }}" class="submenu-link {{ request()->routeIs('reportes.viajes') ? 'active' : '' }}">
+                    <li><a href="{{ route('reportes.materias') }}" class="submenu-link {{ request()->routeIs('reportes.materias') ? 'active' : '' }}">
                         <div class="nav-icon-mini">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                             </svg>
                         </div>
-                        Viajes
+                        Materias
                     </a></li>
-                    <li><a href="{{ route('reportes.ingresos') }}" class="submenu-link {{ request()->routeIs('reportes.ingresos') ? 'active' : '' }}">
+                    <li><a href="{{ route('reportes.calificaciones') }}" class="submenu-link {{ request()->routeIs('reportes.calificaciones') ? 'active' : '' }}">
                         <div class="nav-icon-mini">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                             </svg>
                         </div>
-                        Ingresos
+                        Calificaciones
                     </a></li>
                 </ul>
             </li>

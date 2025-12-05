@@ -45,11 +45,13 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     Route::get('/libros', function() { return view('components.admin'); })->name('libros.index');
     Route::get('/configuraciones', function() { return view('components.admin'); })->name('configuraciones.index');
     Route::get('/permisos', function() { return view('components.admin'); })->name('permisos.index');
+    Route::get('/calificaciones', function() { return view('components.admin'); })->name('calificaciones.index');
     
     // Reportes
     Route::get('/reportes', function() { return view('components.admin'); })->name('reportes.index');
     Route::get('/reportes/estudiantes', function() { return view('components.admin'); })->name('reportes.estudiantes');
     Route::get('/reportes/docentes', function() { return view('components.admin'); })->name('reportes.docentes');
+    Route::get('/reportes/materias', function() { return view('components.admin'); })->name('reportes.materias');
     Route::get('/reportes/calificaciones', function() { return view('components.admin'); })->name('reportes.calificaciones');
 });
 
