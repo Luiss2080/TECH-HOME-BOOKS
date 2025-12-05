@@ -10,14 +10,19 @@
 /* .dashboard-layout rule removed to avoid conflict with dashboard.css */
 
 .dashboard-sidebar {
-    /* Layout properties handled in dashboard.css */
+    width: 280px;
+    height: calc(100vh - 3rem); /* Adjust for layout padding */
     background: var(--sidebar-bg);
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 1.5rem; /* Match layout padding */
+    z-index: 50;
     overflow: hidden;
     border-radius: 24px;
     box-shadow: var(--shadow-md);
+    flex-shrink: 0;
 }
 
 /* Header & Logo */
