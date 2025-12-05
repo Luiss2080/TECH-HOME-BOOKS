@@ -59,26 +59,30 @@ body {
     ); /* Red Gradient Background */
     color: var(--text-dark);
     min-height: 100vh;
-    overflow-x: hidden;
+    /* overflow: hidden; Removed to allow body scroll */
 }
 
 /* ============================================
    LAYOUT PRINCIPAL
    ============================================ */
 .dashboard-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
+    display: flex; /* Changed to flex for sticky sidebar support */
     min-height: 100vh;
     width: 100%;
     background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+    gap: 1rem; /* Gap between sidebar and content */
+    padding: 1rem; /* Padding around the layout */
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow-y: auto; /* Make main content scrollable independently */
+    /* height: 100vh; Removed */
+    /* overflow-y: auto; Removed */
     position: relative;
+    flex: 1; /* Take remaining space */
+    width: 100%;
+    min-width: 0; /* Prevent flex overflow */
 }
 
 .dashboard-content {
@@ -93,19 +97,20 @@ body {
    SIDEBAR COMPONENT
    ============================================ */
 .dashboard-sidebar {
-    width: 260px; /* Fixed width inside the 280px column */
-    height: calc(100vh - 2rem);
+    width: 280px;
+    height: calc(100vh - 2rem); /* Full height minus padding */
     background: var(--sidebar-bg);
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    position: fixed; /* Fix it to the viewport */
-    top: 1rem;
-    left: 1rem;
+    position: sticky; /* Sticky positioning */
+    top: 1rem; /* Stick to top with margin */
+    /* left: 1rem; Removed */
     z-index: 50;
     overflow: hidden;
     border-radius: 24px;
     box-shadow: var(--shadow-md);
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .sidebar-header {
