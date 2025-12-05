@@ -13,7 +13,7 @@
 }
 
 .dashboard-footer {
-    margin: auto 2rem 1rem 2rem; /* Push to bottom with margins */
+    margin: 2rem 1rem 1rem 1rem;
     padding: 3rem 2rem 1.5rem;
     background: var(--footer-bg);
     border: 1px solid var(--border-color);
@@ -21,7 +21,8 @@
     font-size: 0.9rem;
     color: var(--footer-text);
     position: relative;
-    width: calc(100% - 4rem);
+    width: auto; /* Allow it to fit container */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 .footer-container {
