@@ -251,5 +251,6 @@
     </script>
     
     @stack('scripts')
+    <script src="{{ asset('js/dashboard/admin.js') }}"></script>
 </body>
 </html>
