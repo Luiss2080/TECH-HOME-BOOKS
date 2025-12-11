@@ -40,6 +40,37 @@
             <div class="shape shape-4"></div>
         </div>
         <div class="bg-grid"></div>
+        <!-- Elementos robóticos -->
+        <div class="tech-elements">
+            <div class="robot-parts">
+                <div class="gear gear-1"></div>
+                <div class="gear gear-2"></div>
+                <div class="gear gear-3"></div>
+                <div class="gear gear-4"></div>
+                <div class="circuit-board cb-1"></div>
+                <div class="circuit-board cb-2"></div>
+                <div class="circuit-board cb-3"></div>
+                <div class="circuit-board cb-4"></div>
+                <div class="led-indicator led-1"></div>
+                <div class="led-indicator led-2"></div>
+                <div class="led-indicator led-3"></div>
+                <div class="led-indicator led-4"></div>
+                <div class="led-indicator led-5"></div>
+                <div class="led-indicator led-6"></div>
+                <!-- Nuevos elementos robóticos -->
+                <div class="robot-eye re-1"></div>
+                <div class="robot-eye re-2"></div>
+                <div class="robot-eye re-3"></div>
+                <div class="data-stream ds-1"></div>
+                <div class="data-stream ds-2"></div>
+                <div class="data-stream ds-3"></div>
+                <div class="tech-particle tp-1"></div>
+                <div class="tech-particle tp-2"></div>
+                <div class="tech-particle tp-3"></div>
+                <div class="tech-particle tp-4"></div>
+                <div class="tech-particle tp-5"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Contenedor principal flotante -->
