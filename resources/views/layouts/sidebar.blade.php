@@ -3,7 +3,7 @@
     <div class="sidebar-header">
         <div class="logo-container">
             <div class="logo-icon">
-
+                <img src="{{ asset('images/faviconTH.png') }}" alt="TECH HOME" class="sidebar-logo">
             </div>
             <div class="logo-text">
                 <h1 class="brand-name">TECH HOME</h1>
