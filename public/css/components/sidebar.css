@@ -10,42 +10,44 @@
 /* .dashboard-layout rule removed to avoid conflict with dashboard.css */
 
 .dashboard-sidebar {
-    width: 280px;
-    height: calc(100vh - 3rem); /* Adjust for layout padding */
+    width: 240px;
+    height: calc(100vh - 1.5rem); /* Taller: less vertical gap */
     background: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color); /* Cleaner border */
     display: flex;
     flex-direction: column;
     position: sticky;
-    top: 1.5rem; /* Match layout padding */
+    top: 0.75rem; /* Less top spacing */
     z-index: 50;
     overflow: hidden;
-    border-radius: 24px;
-    box-shadow: var(--shadow-md);
+    border-radius: 20px; /* Consistent rounded corners */
+    box-shadow: var(--shadow-sm); /* Subtler shadow */
     flex-shrink: 0;
+    margin-left: 0.75rem; /* Small left margin for floating effect */
+    transition: var(--transition);
 }
 
 /* Header & Logo */
 .sidebar-header {
-    padding: 1.5rem;
+    padding: 1.2rem;
     border-bottom: 1px solid var(--border-color);
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .logo-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px; /* Smaller, compact */
+    height: 40px;
     background: linear-gradient(135deg, #ef4444, #dc2626);
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.2);
 }
 
 .sidebar-logo {
@@ -89,27 +91,28 @@
 .sidebar-scroll-content {
     flex: 1;
     overflow-y: auto;
-    padding: 1.5rem;
-    scrollbar-width: none; /* Firefox */
+    padding: 1rem; /* Compact padding */
+    scrollbar-width: none;
 }
 
 .sidebar-scroll-content::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
 }
 
 .nav-section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Less gap between sections */
 }
 
 .section-title {
     font-family: var(--font-family);
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.65rem; /* Smaller section title */
+    font-weight: 800;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 1rem;
-    padding-left: 0.75rem;
+    margin-bottom: 0.8rem;
+    padding-left: 0.5rem;
+    opacity: 0.8;
 }
 
 .nav-list {
@@ -119,39 +122,42 @@
 }
 
 .nav-item {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem; /* Tighter items */
 }
 
 .nav-link {
     display: flex;
     align-items: center;
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
+    padding: 0.65rem 0.8rem; /* Compact padding */
+    border-radius: 10px;
     color: var(--sidebar-text);
     text-decoration: none;
     transition: all 0.2s ease;
     font-family: var(--font-family);
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Slightly smaller text */
     position: relative;
+    border: 1px solid transparent;
 }
 
 .nav-link:hover {
     background-color: var(--sidebar-hover-bg);
     color: var(--sidebar-hover-text);
+    transform: translateX(3px); /* Subtle friction-less movement */
 }
 
 .nav-link.active {
     background: linear-gradient(135deg, #ef4444, #dc2626);
     color: var(--sidebar-text-active);
-    box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.25);
+    box-shadow: 0 4px 10px -3px rgba(220, 38, 38, 0.3);
+    border-color: transparent;
 }
 
 .nav-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 0.75rem;
+    margin-right: 0.6rem;
     transition: transform 0.2s ease;
 }
 
@@ -161,29 +167,32 @@
 
 .nav-text {
     flex: 1;
+    white-space: nowrap; /* Prevent wrap */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .nav-badge {
     background-color: #ef4444;
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-    min-width: 1.5rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px; /* Squircle badge */
+    min-width: 1.4rem;
     text-align: center;
     box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
 }
 
 .nav-link.active .nav-badge {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.25);
     color: white;
     box-shadow: none;
 }
 
 /* Footer Actions */
 .sidebar-footer {
-    padding: 1.5rem;
+    padding: 1rem;
     border-top: 1px solid var(--border-color);
     background: var(--sidebar-bg);
 }

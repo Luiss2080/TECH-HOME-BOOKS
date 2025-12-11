@@ -113,6 +113,7 @@
     color: var(--footer-heading);
     font-weight: 600;
     transition: all 0.3s ease;
+    border: 1px solid transparent; /* Match contact-card */
 }
 
 .badge svg {
@@ -120,8 +121,9 @@
 }
 
 .badge:hover {
-    background: #ffe4e6;
+    border-color: var(--primary-red);
     transform: translateX(5px);
+    background: var(--bg-surface-secondary);
 }
 
 /* Version Button */
