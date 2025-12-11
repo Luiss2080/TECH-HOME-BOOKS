@@ -89,11 +89,7 @@
                             <div class="logo-backdrop"></div>
                             <img src="{{ asset('images/LogoTech.png') }}" alt="Logo" class="brand-logo">
                         </div>
-                        <div class="brand-text">
-                            <h1 class="brand-title">1RO DE JUNIO</h1>
-                            <div class="brand-line"></div>
-                            <span class="brand-subtitle">ASOCIACIÓN DE MOTOTAXIS</span>
-                        </div>
+                        <div class="brand-line"></div>
                     </div>
 
                     <!-- Mensaje profesional -->
@@ -103,58 +99,6 @@
                             Forma parte de la Asociación 1ro de Junio, donde los conductores de mototaxi encuentran apoyo,
                             capacitación y oportunidades de crecimiento. Juntos construimos un futuro mejor para el transporte urbano.
                         </p>
-                    </div>
-
-                    <!-- Características destacadas -->
-                    <div class="features-section">
-                        <h3 class="features-title">Beneficios de ser miembro</h3>
-                        <div class="features-list">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 2L14.09 8.26L22 9L16 14.74L17.18 22.5L12 19.77L6.82 22.5L8 14.74L2 9L9.91 8.26L12 2Z" fill="currentColor"/>
-                                    </svg>
-                                </div>
-                                <div class="feature-content">
-                                    <h4>Apoyo Integral</h4>
-                                    <p>Respaldo legal y administrativo</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM5 19V5H19V19H5Z" fill="currentColor"/>
-                                        <path d="M7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H13V17H7V15Z" fill="currentColor"/>
-                                    </svg>
-                                </div>
-                                <div class="feature-content">
-                                    <h4>Capacitación</h4>
-                                    <p>Cursos y talleres especializados</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M16 4C18.21 4 20 5.79 20 8C20 10.21 18.21 12 16 12C13.79 12 12 10.21 12 8C12 5.79 13.79 4 16 4ZM16 14C18.67 14 22 15.34 22 18V20H10V18C10 15.34 13.33 14 16 14ZM8 12C10.21 12 12 10.21 12 8C12 5.79 10.21 4 8 4C5.79 4 4 5.79 4 8C4 10.21 5.79 12 8 12ZM8 14C5.33 14 0 15.34 0 18V20H8V18C8 16.97 8.67 15.69 10.03 14.72C9.4 14.27 8.7 14 8 14Z" fill="currentColor"/>
-                                    </svg>
-                                </div>
-                                <div class="feature-content">
-                                    <h4>Comunidad</h4>
-                                    <p>Red de apoyo entre conductores</p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
-                                    </svg>
-                                </div>
-                                <div class="feature-content">
-                                    <h4>Oportunidades</h4>
-                                    <p>Acceso a mejores trabajos</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Sección de redes sociales -->
@@ -525,57 +469,6 @@
                             </a>
                         </div>
                         @else
-                        <!-- Sección de beneficios adicionales -->
-                        <div class="benefits-section">
-                            <div class="benefits-features">
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M12 2L14.09 8.26L22 9L16 14.74L17.18 22.5L12 19.77L6.82 22.5L8 14.74L2 9L9.91 8.26L12 2Z" fill="currentColor"/>
-                                        </svg>
-                                    </div>
-                                    <div class="benefit-text">
-                                        <h4>Señales VIP</h4>
-                                        <p>Acceso prioritario a rutas</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM5 19V5H19V19H5Z" fill="currentColor"/>
-                                            <path d="M7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H13V17H7V15Z" fill="currentColor"/>
-                                        </svg>
-                                    </div>
-                                    <div class="benefit-text">
-                                        <h4>Academia Pro</h4>
-                                        <p>Capacitación especializada</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M16 4C18.21 4 20 5.79 20 8C20 10.21 18.21 12 16 12C13.79 12 12 10.21 12 8C12 5.79 13.79 4 16 4ZM16 14C18.67 14 22 15.34 22 18V20H10V18C10 15.34 13.33 14 16 14ZM8 12C10.21 12 12 10.21 12 8C12 5.79 10.21 4 8 4C5.79 4 4 5.79 4 8C4 10.21 5.79 12 8 12ZM8 14C5.33 14 0 15.34 0 18V20H8V18C8 16.97 8.67 15.69 10.03 14.72C9.4 14.27 8.7 14 8 14Z" fill="currentColor"/>
-                                        </svg>
-                                    </div>
-                                    <div class="benefit-text">
-                                        <h4>Comunidad</h4>
-                                        <p>Red de conductores unidos</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/>
-                                        </svg>
-                                    </div>
-                                    <div class="benefit-text">
-                                        <h4>Soporte 24/7</h4>
-                                        <p>Ayuda cuando la necesites</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="back-to-login">
                             <p>¿Ya tienes cuenta en el sistema?</p>
                             <a href="{{ route('login') }}" class="login-link">

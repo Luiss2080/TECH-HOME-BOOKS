@@ -589,17 +589,6 @@ class AsociacionRegistration {
             });
         }
 
-        // Animaciones para elementos de beneficios
-        document.querySelectorAll(".benefit-item").forEach((item, index) => {
-            item.addEventListener("mouseenter", () => {
-                item.style.transform = "translateY(-2px) scale(1.02)";
-            });
-
-            item.addEventListener("mouseleave", () => {
-                item.style.transform = "translateY(0) scale(1)";
-            });
-        });
-
         // Efectos en enlaces sociales
         document
             .querySelectorAll(".social-section .social-link")
