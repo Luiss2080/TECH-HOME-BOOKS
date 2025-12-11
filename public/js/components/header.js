@@ -1,5 +1,5 @@
 /**
- * HEADER MANAGER (Enhanced for Transparency)
+ * HEADER MANAGER (Solid Version)
  * Maneja la lógica de interactividad del header moderno.
  */
 
@@ -25,8 +25,9 @@ class HeaderManager {
     }
 
     init() {
-        this.bindEvents();
         console.log("✨ Header Manager Initialized");
+        // No scroll handler needed for solid header
+        this.bindEvents();
     }
 
     bindEvents() {
@@ -55,24 +56,6 @@ class HeaderManager {
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape") this.closeAllDropdowns();
         });
-    }
-
-    handleScroll() {
-        if (!this.header) {
-            this.header = document.querySelector(".dashboard-header");
-            if (!this.header) return;
-        }
-
-        // Add scrolled class if we are away from top
-        if (window.scrollY > 10) {
-            if (!this.header.classList.contains("scrolled")) {
-                this.header.classList.add("scrolled");
-            }
-        } else {
-            if (this.header.classList.contains("scrolled")) {
-                this.header.classList.remove("scrolled");
-            }
-        }
     }
 
     toggleDropdown(targetMenu, targetToggle) {
