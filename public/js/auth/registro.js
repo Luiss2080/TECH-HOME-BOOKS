@@ -37,11 +37,11 @@ class AsociacionRegistration {
     cacheElements() {
         this.form = document.getElementById("registerForm");
         this.inputs = {
-            nombre: document.getElementById("nombre"),
+            name: document.getElementById("name"),
             apellido: document.getElementById("apellido"),
             email: document.getElementById("email"),
             telefono: document.getElementById("telefono"),
-            pais: document.getElementById("pais"),
+            ci: document.getElementById("ci"),
             password: document.getElementById("password"),
             confirm_password: document.getElementById("confirm_password"),
             code: document.getElementById("code"),
@@ -151,9 +151,9 @@ class AsociacionRegistration {
 
     // ===== CONFIGURACIÓN POR PASOS ===== //
     focusFirstInput() {
-        if (this.inputs.nombre) {
+        if (this.inputs.name) {
             setTimeout(() => {
-                this.inputs.nombre.focus();
+                this.inputs.name.focus();
             }, 100);
         }
     }
@@ -217,12 +217,19 @@ class AsociacionRegistration {
         let message = "";
 
         switch (fieldName) {
-            case "nombre":
+            case "name":
             case "apellido":
                 isValid = value.length >= 2 && /^[a-zA-ZÀ-ÿ\s]+$/.test(value);
                 message = isValid
                     ? ""
                     : "Debe contener solo letras y al menos 2 caracteres";
+                break;
+
+            case "ci":
+                isValid = value.length >= 6 && /^\d+$/.test(value);
+                message = isValid
+                    ? ""
+                    : "La cédula debe contener solo números (mínimo 6 dígitos)";
                 break;
 
             case "email":
@@ -361,8 +368,9 @@ class AsociacionRegistration {
         if (this.currentStep === "register") {
             // Validar todos los campos requeridos
             const requiredFields = [
-                "nombre",
+                "name",
                 "apellido",
+                "ci",
                 "email",
                 "password",
                 "confirm_password",

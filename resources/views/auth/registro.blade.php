@@ -94,22 +94,64 @@
 
                     <!-- Mensaje profesional -->
                     <div class="welcome-section">
-                        <h2 class="welcome-title">¡Únete a Nosotros!</h2>
+                        <h2 class="welcome-title">¡Únete a TECH HOME!</h2>
                         <p class="welcome-description">
-                            Forma parte de la Asociación 1ro de Junio, donde los conductores de mototaxi encuentran apoyo,
-                            capacitación y oportunidades de crecimiento. Juntos construimos un futuro mejor para el transporte urbano.
+                            Forma parte de la comunidad educativa más innovadora en tecnología. Accede a cursos especializados, 
+                            certificaciones y una plataforma completa de aprendizaje digital.
                         </p>
+                    </div>
+
+                    <!-- Cards informativas -->
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L3 7L12 12L21 7L12 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 17L12 22L21 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 12L12 17L21 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h4>Encriptación Avanzada</h4>
+                                <p>Protección de datos de nivel bancario</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h4>Verificación por Email</h4>
+                                <p>Confirmación segura en tu correo</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h4>Proceso Rápido</h4>
+                                <p>Recupera tu acceso en minutos</p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Sección de redes sociales -->
                     <div class="social-section">
-                        <p class="social-text">¿Tienes dudas sobre nuestros servicios?</p>
-                        <h3 class="social-title">¡Contáctate con nosotros!</h3>
+                        <p class="social-text">¿Necesitas ayuda con la plataforma?</p>
+                        <h3 class="social-title">¡Estamos aquí para ayudarte!</h3>
                         <div class="social-media-links">
                             <a href="#" class="social-link tiktok" target="_blank">
                                 <div class="social-icon">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="currentColor"/>
+                                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.10z" fill="currentColor"/>
                                     </svg>
                                 </div>
                                 <span>TikTok</span>
@@ -170,7 +212,7 @@
                     @else
                     <div class="form-header">
                         <h2 class="form-title">Crear Cuenta</h2>
-                        <p class="form-subtitle">Ingresa tus datos para unirte a la Asociación 1ro de Junio</p>
+                        <p class="form-subtitle">Ingresa tus datos para unirte al instituto TECH HOME</p>
                     </div>
                     @endif
 
@@ -253,7 +295,7 @@
                         <!-- Fila de nombre y apellido -->
                         <div class="form-row">
                             <div class="input-group half-width">
-                                <label for="nombre" class="input-label">Nombre</label>
+                                <label for="name" class="input-label">Nombre</label>
                                 <div class="input-wrapper">
                                     <div class="input-icon">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -262,15 +304,15 @@
                                     </div>
                                     <input
                                         type="text"
-                                        id="nombre"
-                                        name="nombre"
+                                        id="name"
+                                        name="name"
                                         class="form-input"
-                                        placeholder="Tu nombre"
-                                        value="{{ old('nombre') }}"
+                                        placeholder="Tu nombre completo"
+                                        value="{{ old('name') }}"
                                         required
                                         autocomplete="given-name">
                                 </div>
-                                <div class="input-error" id="nombreError"></div>
+                                <div class="input-error" id="nameError"></div>
                             </div>
 
                             <div class="input-group half-width">
@@ -340,30 +382,27 @@
                             </div>
 
                             <div class="input-group half-width">
-                                <label for="pais" class="input-label">País</label>
+                                <label for="ci" class="input-label">Cédula de Identidad</label>
                                 <div class="input-wrapper">
                                     <div class="input-icon">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                                            <rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="7" y1="12" x2="13" y2="12" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="7" y1="16" x2="11" y2="16" stroke="currentColor" stroke-width="2"/>
                                         </svg>
                                     </div>
-                                    <select
-                                        id="pais"
-                                        name="pais"
-                                        class="form-input form-select"
+                                    <input
+                                        type="text"
+                                        id="ci"
+                                        name="ci"
+                                        class="form-input"
+                                        placeholder="Ej: 12345678"
+                                        value="{{ old('ci') }}"
                                         required
-                                        autocomplete="country">
-                                        <option value="">Selecciona tu país</option>
-                                        <option value="CO" {{ old('pais') == 'CO' ? 'selected' : '' }}>🇨🇴 Colombia</option>
-                                        <option value="VE" {{ old('pais') == 'VE' ? 'selected' : '' }}>🇻🇪 Venezuela</option>
-                                        <option value="EC" {{ old('pais') == 'EC' ? 'selected' : '' }}>🇪🇨 Ecuador</option>
-                                        <option value="PE" {{ old('pais') == 'PE' ? 'selected' : '' }}>🇵🇪 Perú</option>
-                                        <option value="PA" {{ old('pais') == 'PA' ? 'selected' : '' }}>🇵🇦 Panamá</option>
-                                        <option value="MX" {{ old('pais') == 'MX' ? 'selected' : '' }}>🇲🇽 México</option>
-                                        <option value="OTHER" {{ old('pais') == 'OTHER' ? 'selected' : '' }}>🌎 Otro</option>
-                                    </select>
+                                        autocomplete="off">
                                 </div>
-                                <div class="input-error" id="paisError"></div>
+                                <div class="input-error" id="ciError"></div>
                             </div>
                         </div>
 
@@ -418,14 +457,14 @@
                                 <input type="checkbox" name="acepta_terminos" id="acepta_terminos" class="checkbox-input" required {{ old('acepta_terminos') ? 'checked' : '' }}>
                                 <span class="checkbox-text">
                                     Acepto los <a href="#" class="link-terms">Términos y Condiciones</a>
-                                    y la <a href="#" class="link-privacy">Política de Privacidad</a> de la Asociación 1ro de Junio.
+                                    y la <a href="#" class="link-privacy">Política de Privacidad</a> de TECH HOME.
                                 </span>
                             </label>
 
                             <label class="checkbox-label">
                                 <input type="checkbox" name="acepta_marketing" id="acepta_marketing" class="checkbox-input" {{ old('acepta_marketing') ? 'checked' : '' }}>
                                 <span class="checkbox-text">
-                                    Deseo recibir información sobre eventos, capacitaciones y beneficios de la asociación.
+                                    Deseo recibir información sobre nuevos cursos, certificaciones y novedades de la plataforma.
                                 </span>
                             </label>
                         </div>
@@ -463,14 +502,14 @@
                             </a>
                         </div>
                         <div class="back-to-login">
-                            <p>¿Ya tienes cuenta en el sistema?</p>
+                            <p>¿Ya tienes cuenta en TECH HOME?</p>
                             <a href="{{ route('login') }}" class="login-link">
                                 ¡Inicia sesión aquí!
                             </a>
                         </div>
                         @else
                         <div class="back-to-login">
-                            <p>¿Ya tienes cuenta en el sistema?</p>
+                            <p>¿Ya tienes cuenta en TECH HOME?</p>
                             <a href="{{ route('login') }}" class="login-link">
                                 ¡Inicia sesión aquí!
                             </a>
