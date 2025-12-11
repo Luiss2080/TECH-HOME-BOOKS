@@ -227,19 +227,40 @@
                         <!-- Social Media Links -->
                         <div class="social-media-links">
                             <a href="#" class="social-link mototaxi" title="Servicios de Mototaxi">
-                                <div class="social-icon">🏍️</div>
+                                <div class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                        <path d="M12 2c-4.42 0-8 3.58-8 8 0 5.25 7.24 11.4 7.52 11.65.14.13.32.2.48.2s.34-.07.48-.2C12.76 21.4 20 15.25 20 10c0-4.42-3.58-8-8-8zm0 11.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                                        <circle cx="12" cy="10" r="2"/>
+                                        <path d="M6 18h12l-1 3H7l-1-3z"/>
+                                    </svg>
+                                </div>
                                 <span>Servicios</span>
                             </a>
                             <a href="#" class="social-link conductores" title="Conductores">
-                                <div class="social-icon">👨‍🎓</div>
+                                <div class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                        <path d="M15.5 8.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S14 6.17 14 7s.67 1.5 1.5 1.5z"/>
+                                        <path d="M8.5 8.5c.83 0 1.5-.67 1.5-1.5S9.33 5.5 8.5 5.5 7 6.17 7 7s.67 1.5 1.5 1.5z"/>
+                                    </svg>
+                                </div>
                                 <span>Conductores</span>
                             </a>
                             <a href="#" class="social-link tarifas" title="Tarifas">
-                                <div class="social-icon">💰</div>
+                                <div class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                        <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                                    </svg>
+                                </div>
                                 <span>Tarifas</span>
                             </a>
                             <a href="#" class="social-link support" title="Soporte">
-                                <div class="social-icon">💬</div>
+                                <div class="social-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>
+                                        <circle cx="12" cy="15" r="1.5"/>
+                                    </svg>
+                                </div>
                                 <span>Soporte 24/7</span>
                             </a>
                         </div>
