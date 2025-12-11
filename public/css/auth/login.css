@@ -314,20 +314,7 @@ body {
     z-index: 2;
 }
 
-.brand-title {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: var(--gradient-animated);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 3s ease-in-out infinite;
-    margin: 0;
-    letter-spacing: -0.02em;
-    text-align: center;
-}
+
 
 .brand-line {
     width: 100px;
@@ -337,17 +324,7 @@ body {
     border-radius: 2px;
 }
 
-.brand-subtitle {
-    display: block;
-    color: rgba(255, 255, 255, 0.9);
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    margin-top: 0.5rem;
-}
+
 
 /* ===== SECCIÓN DE BIENVENIDA ===== */
 .welcome-section {
@@ -450,10 +427,15 @@ body {
     flex-shrink: 0;
 }
 
-.social-logo {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    transition: var(--transition);
+}
+
+.social-link:hover .social-icon svg {
+    transform: scale(1.1);
 }
 
 .social-link span {
