@@ -159,11 +159,5 @@
         </div>
     </div>
 </header>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Init Head Manager
-        if(typeof HeaderManager !== 'undefined') {
-            new HeaderManager();
-        }
-    });
-</script>
+<!-- Header JS Loaded Here -->
+<script src="{{ asset('js/components/header.js') }}"></script>

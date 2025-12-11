@@ -1,10 +1,11 @@
 /**
- * HEADER MANAGER (Refactored)
- * Maneja la lógica de interactividad del nuevo header.
+ * HEADER MANAGER (Enhanced for Transparency)
+ * Maneja la lógica de interactividad del header moderno.
  */
 
 class HeaderManager {
     constructor() {
+        this.header = document.querySelector(".dashboard-header");
         this.dropdowns = {
             quickActions: {
                 toggle: document.getElementById("quickActionsToggle"),
@@ -25,7 +26,7 @@ class HeaderManager {
 
     init() {
         this.bindEvents();
-        console.log("✨ Header Refactorizado Inicializado");
+        console.log("✨ Header Manager Initialized");
     }
 
     bindEvents() {
@@ -33,6 +34,7 @@ class HeaderManager {
         Object.values(this.dropdowns).forEach(({ toggle, menu }) => {
             if (toggle && menu) {
                 toggle.addEventListener("click", (e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     this.toggleDropdown(menu, toggle);
                 });
@@ -40,9 +42,7 @@ class HeaderManager {
         });
 
         // Close when clicking outside
-        document.addEventListener("click", (e) => {
-            this.closeAllDropdowns();
-        });
+        document.addEventListener("click", (e) => this.closeAllDropdowns(e));
 
         // Prevent closing when clicking inside menu
         Object.values(this.dropdowns).forEach(({ menu }) => {
@@ -51,10 +51,28 @@ class HeaderManager {
             }
         });
 
-        // Escape key to close all
+        // Keyboard navigation
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape") this.closeAllDropdowns();
         });
+    }
+
+    handleScroll() {
+        if (!this.header) {
+            this.header = document.querySelector(".dashboard-header");
+            if (!this.header) return;
+        }
+
+        // Add scrolled class if we are away from top
+        if (window.scrollY > 10) {
+            if (!this.header.classList.contains("scrolled")) {
+                this.header.classList.add("scrolled");
+            }
+        } else {
+            if (this.header.classList.contains("scrolled")) {
+                this.header.classList.remove("scrolled");
+            }
+        }
     }
 
     toggleDropdown(targetMenu, targetToggle) {
@@ -81,5 +99,18 @@ class HeaderManager {
     }
 }
 
-// Attach to window just in case
+// Make globally available
 window.HeaderManager = HeaderManager;
+
+// Init if not already done by blade script
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        if (!window.headerManagerInstance) {
+            window.headerManagerInstance = new HeaderManager();
+        }
+    });
+} else {
+    if (!window.headerManagerInstance) {
+        window.headerManagerInstance = new HeaderManager();
+    }
+}
