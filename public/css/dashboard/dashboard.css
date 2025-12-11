@@ -55,34 +55,34 @@
 
 body.dark-mode {
     /* Colors Overrides */
-    --light-bg: #1e293b;
+    --light-bg: rgba(0, 0, 0, 0.9);
     --text-dark: #f1f5f9;
-    --text-muted: #94a3b8;
-    --border-color: #334155;
+    --text-muted: #d1d5db;
+    --border-color: rgba(255, 255, 255, 0.15);
 
     /* Backgrounds */
-    --bg-surface: #1e293b;
-    --bg-surface-secondary: #0f172a;
-    --input-bg: #0f172a;
-    --dropdown-bg: #1e293b;
+    --bg-surface: rgba(0, 0, 0, 0.9);
+    --bg-surface-secondary: rgba(0, 0, 0, 0.95);
+    --input-bg: rgba(0, 0, 0, 0.95);
+    --dropdown-bg: rgba(0, 0, 0, 0.9);
 
     /* Sidebar */
-    --sidebar-bg: #1e293b;
-    --sidebar-text: #cbd5e1;
+    --sidebar-bg: rgba(0, 0, 0, 0.9);
+    --sidebar-text: #d1d5db;
     --sidebar-text-active: #ffffff;
-    --sidebar-hover-bg: #334155;
+    --sidebar-hover-bg: rgba(255, 255, 255, 0.1);
     --sidebar-hover-text: #fb7185;
 
     /* Header */
-    --header-bg: #1e293b;
-    --header-text: #cbd5e1;
+    --header-bg: rgba(0, 0, 0, 0.9);
+    --header-text: #d1d5db;
     --header-text-dark: #f1f5f9;
 
     /* Footer */
-    --footer-bg: #1e293b;
-    --footer-text: #cbd5e1;
+    --footer-bg: rgba(0, 0, 0, 0.9);
+    --footer-text: #d1d5db;
     --footer-heading: #f1f5f9;
-    --card-bg: #334155; /* Was #fff1f2 in light mode */
+    --card-bg: rgba(255, 255, 255, 0.05); /* Was #fff1f2 in light mode */
 
     /* Shadows */
     --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3),
@@ -105,9 +105,10 @@ body {
         Roboto, sans-serif;
     background: linear-gradient(
         135deg,
-        #7f1d1d 0%,
-        #450a0a 100%
-    ); /* Red Gradient Background */
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.95) 50%,
+        rgba(0, 0, 0, 0.85) 100%
+    ); /* Dark gradient background matching login container */
     color: var(--text-dark);
     min-height: 100vh;
     /* overflow: hidden; Removed to allow body scroll */
@@ -120,7 +121,7 @@ body {
     display: flex;
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.95) 50%, rgba(0, 0, 0, 0.85) 100%);
     gap: 1.5rem; /* Increased gap */
     padding: 1.5rem; /* Increased padding */
     align-items: flex-start; /* Ensure items align to top */

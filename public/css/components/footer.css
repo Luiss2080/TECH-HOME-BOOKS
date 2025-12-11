@@ -63,7 +63,7 @@
 .contact-card:hover {
     border-color: var(--primary-red);
     transform: translateX(5px);
-    background: #ffe4e6;
+    background: var(--bg-surface-secondary);
 }
 
 .card-icon {
