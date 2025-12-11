@@ -45,7 +45,7 @@ body.dark-mode .dashboard-header {
 
 .header-search {
     position: relative;
-    width: 450px; /* Increased static width */
+    width: 350px; /* Decreased static width */
 }
 
 .search-form {
