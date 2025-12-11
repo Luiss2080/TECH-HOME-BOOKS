@@ -8,14 +8,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1.5rem;
+    padding: 0.8rem 1.7rem; /* Slightly more side padding */
     position: sticky;
-    top: 1rem; /* Floating offset */
+    top: 0;
     z-index: 90;
     min-height: 80px;
-    width: calc(100% - 3rem); /* floating width */
-    margin: 0 auto; /* Center it */
-    border-radius: 20px; /* Rounded corners */
+    width: 100%; /* Full width to match containers */
+    border-radius: 24px; /* Matching dashboard-section radius */
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
 }
@@ -46,7 +45,7 @@ body.dark-mode .dashboard-header {
 
 .header-search {
     position: relative;
-    width: 250px;
+    width: 450px; /* Increased static width */
 }
 
 .search-form {
@@ -83,7 +82,7 @@ body.dark-mode .search-input {
 }
 
 .search-input:focus {
-    width: 320px;
+    width: 100%; /* Keep static width */
     outline: none;
     border-color: var(--primary-red);
     background: var(--bg-surface);
