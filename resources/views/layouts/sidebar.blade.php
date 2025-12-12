@@ -174,6 +174,7 @@
                             </svg>
                         </span>
                         <span class="nav-text">Reportes</span>
+                        <span class="nav-badge">8</span>
                     </a>
                 </li>
             </ul>
