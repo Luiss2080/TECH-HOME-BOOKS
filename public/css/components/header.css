@@ -472,6 +472,17 @@ body.dark-mode .search-input {
     color: #b91c1c;
 }
 
+/* Dark Mode for Logout Button */
+body.dark-mode .logout-btn {
+    background: rgba(225, 29, 72, 0.15);
+    color: #fb7185;
+}
+
+body.dark-mode .logout-btn:hover {
+    background: rgba(225, 29, 72, 0.25);
+    color: #fca5a5;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .header-left {
