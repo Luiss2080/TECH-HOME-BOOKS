@@ -5,8 +5,7 @@
    ============================================ */
 .dashboard-section {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    /* max-width removed to match docentes index style */
     padding: 2rem 1rem;
 }
 
