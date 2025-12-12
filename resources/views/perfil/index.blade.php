@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <form action="{{ route('admin.usuarios.update', $user->id) }}" method="POST">
+                <form action="{{ route('perfil.update') }}" method="POST">
                     @csrf
                     @method('PUT')
                     
@@ -77,11 +77,11 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Teléfono</label>
-                            <input type="tel" name="phone" class="form-input" placeholder="+591 ..." value="">
+                            <input type="tel" name="phone" class="form-input" placeholder="+591 ..." value="{{ $user->telefono ?? '' }}">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Dirección</label>
-                            <input type="text" name="address" class="form-input" placeholder="Av. Principal #123" value="">
+                            <input type="text" name="address" class="form-input" placeholder="Av. Principal #123" value="{{ $user->direccion ?? '' }}">
                         </div>
                     </div>
 

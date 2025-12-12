@@ -31,21 +31,47 @@ class PerfilController extends Controller
 
     public function update(Request $request)
     {
-        //
-    }
+        $user = \App\Models\User::find(session('user_id'));
+        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,'.$user->id,
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+        ]);
 
-    public function cambiarPassword()
-    {
-        //
-    }
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'telefono' => $request->phone,
+            'direccion' => $request->address,
+        ]);
 
-    public function actualizarPassword(Request $request)
-    {
-        //
+        return redirect()->route('perfil.index')->with('success', 'Perfil actualizado correctamente.');
     }
 
     public function subirAvatar(Request $request)
     {
-        //
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user = \App\Models\User::find(session('user_id'));
+
+        if ($request->hasFile('avatar')) {
+            $imageName = time().'.'.$request->avatar->extension();
+            $request->avatar->move(public_path('images/avatars'), $imageName);
+
+            // Eliminar avatar anterior si no es el default
+            if ($user->avatar && $user->avatar !== 'default-avatar.png' && file_exists(public_path('images/avatars/'.$user->avatar))) {
+                unlink(public_path('images/avatars/'.$user->avatar));
+            }
+
+            $user->update(['avatar' => $imageName]);
+            
+            return response()->json(['success' => true, 'avatar_url' => asset('images/avatars/'.$imageName)]);
+        }
+
+        return response()->json(['success' => false], 400);
     }
 }

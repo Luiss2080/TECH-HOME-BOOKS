@@ -74,6 +74,8 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     
     // Perfil
     Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'index'])->name('perfil.index');
+    Route::put('/perfil/update', [App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update');
+    Route::post('/perfil/avatar', [App\Http\Controllers\PerfilController::class, 'subirAvatar'])->name('perfil.avatar');
     
     // Reportes
     Route::get('/reportes', [App\Http\Controllers\Admin\ReportesController::class, 'index'])->name('reportes.index');

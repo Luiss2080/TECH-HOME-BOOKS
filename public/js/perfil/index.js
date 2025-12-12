@@ -24,20 +24,51 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 2. Avatar Preview
+    // 2. Avatar Upload with AJAX
     const avatarInput = document.getElementById("avatarInput");
     const avatarPreview = document.querySelector(".profile-avatar");
 
     if (avatarInput && avatarPreview) {
         avatarInput.addEventListener("change", function (e) {
             const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    avatarPreview.src = e.target.result;
-                    // Optional: Submit form automatically or show save button
-                };
-                reader.readAsDataURL(file);
-            }
+            if (!file) return;
+
+            // Preview immediately
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                avatarPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            // Upload via AJAX
+            const formData = new FormData();
+            formData.append("avatar", file);
+
+            // Get CSRF Token
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                ?.getAttribute("content");
+
+            fetch("/perfil/avatar", {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken,
+                },
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        // Optional: Show success toast
+                        console.log("Avatar updated successfully");
+                    } else {
+                        alert("Error al subir la imagen");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("Error de conexión al subir imagen");
+                });
         });
     }
 
