@@ -25,7 +25,15 @@ class UsersSeeder extends Seeder
             'direccion' => 'Oficina Central',
             'rol' => 'admin',
             'estado' => 'activo',
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'biografia' => 'Administrador principal del sistema Tech Home.',
+            'genero' => 'masculino',
+            'profesion' => 'Ingeniero de Sistemas',
+            'nivel_estudios' => 'Maestría',
+            'website' => 'https://tech-home.com',
+            'facebook' => 'admin.tech',
+            'twitter' => '@admin_tech',
+            'linkedin' => 'admin-tech-system'
         ]);
         
         // Usuario docente de ejemplo
@@ -40,7 +48,12 @@ class UsersSeeder extends Seeder
             'direccion' => 'Zona Central',
             'rol' => 'docente',
             'estado' => 'activo',
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'biografia' => 'Docente apasionada por la enseñanza de matemáticas.',
+            'genero' => 'femenino',
+            'profesion' => 'Licenciada en Educación',
+            'nivel_estudios' => 'Licenciatura',
+            'linkedin' => 'maria-garcia-edu'
         ]);
         
         // Usuario estudiante de ejemplo
@@ -55,7 +68,21 @@ class UsersSeeder extends Seeder
             'direccion' => 'Zona Sur',
             'rol' => 'estudiante',
             'estado' => 'activo',
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'biografia' => 'Estudiante dedicado y curioso.',
+            'genero' => 'masculino',
+            'nivel_estudios' => 'Secundaria'
         ]);
+
+        // Generar 10 usuarios aleatorios adicionales
+        \App\Models\User::factory(10)->create()->each(function ($u) {
+            $u->update([
+                'profesion' => fake()->jobTitle(),
+                'biografia' => fake()->text(100),
+                'genero' => fake()->randomElement(['masculino', 'femenino']),
+                'facebook' => fake()->userName(),
+                'twitter' => '@' . fake()->userName()
+            ]);
+        });
     }
 }
