@@ -68,7 +68,6 @@
                         <th>Especialidad</th>
                         <th>Estado</th>
                         <th>Contrato</th>
-                        <th>Ranking</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -78,17 +77,21 @@
                             <td>
                                 <div class="user-info">
                                     <div class="avatar-circle">
-                                        {{ strtoupper(substr($docente->user->name ?? '?', 0, 1) . substr($docente->user->apellido ?? '?', 0, 1)) }}
+                                        @if($docente->user->avatar)
+                                            <img src="{{ asset('storage/' . $docente->user->avatar) }}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                                        @else
+                                            {{ strtoupper(substr($docente->user->name ?? '?', 0, 1) . substr($docente->user->apellido ?? '?', 0, 1)) }}
+                                        @endif
                                     </div>
                                     <div class="details">
-                                        <span class="name">{{ $docente->user->name ?? 'N/A' }} {{ $docente->user->apellido ?? '' }}</span>
-                                        <span class="role">{{ $docente->user->email ?? 'Sin email' }}</span>
+                                        <span class="name">{{ $docente->user->nombre_completo ?? 'Usuario Desconocido' }}</span>
+                                        <span class="role">{{ $docente->user->email ?? '' }}</span>
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="id-info">
-                                    <span class="primary-text">{{ $docente->user->ci ?? 'N/A' }}</span>
+                                    <span class="primary-text">{{ $docente->user->ci ?? '-' }}</span>
                                     <span class="sub-text">{{ $docente->codigo_docente }}</span>
                                 </div>
                             </td>
@@ -106,12 +109,6 @@
                                 <span class="badge contract">
                                     {{ ucfirst(str_replace('_', ' ', $docente->tipo_contrato)) }}
                                 </span>
-                            </td>
-                            <td>
-                                <div class="rating-badge">
-                                    <i class="fas fa-star"></i>
-                                    <span>5.0</span>
-                                </div>
                             </td>
                             <td>
                                 <div class="action-buttons">
@@ -133,7 +130,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center" style="padding: 3rem; color: var(--text-muted);">
+                            <td colspan="6" class="text-center" style="padding: 3rem; color: var(--text-muted);">
                                 No se encontraron docentes registrados
                             </td>
                         </tr>
