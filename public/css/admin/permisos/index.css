@@ -363,6 +363,18 @@
     border-color: #ea580c;
 }
 
+.btn-icon.delete {
+    background: #fef2f2;
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.btn-icon.delete:hover {
+    background: #dc2626;
+    color: white;
+    border-color: #dc2626;
+}
+
 /* Pagination */
 .pagination-wrapper {
     padding: 1.5rem;

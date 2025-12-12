@@ -104,6 +104,13 @@
                                     <button type="button" class="btn-icon edit" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </button>
+                                    <button type="button" class="btn-icon delete" onclick="confirmDelete({{ $permiso->id }})" title="Eliminar">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <form id="delete-form-{{ $permiso->id }}" action="{{ route('admin.permisos.destroy', $permiso->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -126,5 +133,14 @@
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/admin/permisos/index.js') }}"></script>
+    <script>
+        const swalTheme = {
+            confirmButtonColor: '#e11d48',
+            cancelButtonColor: '#64748b',
+            background: '#ffffff',
+            color: '#1e293b'
+        };
+    </script>
 @endsection

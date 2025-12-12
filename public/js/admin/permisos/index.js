@@ -43,3 +43,36 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = url.toString();
     }
 });
+
+function confirmDelete(id) {
+    if (typeof Swal === "undefined") {
+        if (confirm("¿Estás seguro de que deseas eliminar este permiso?")) {
+            document.getElementById("delete-form-" + id).submit();
+        }
+        return;
+    }
+
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta acción no se puede deshacer.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor:
+            typeof swalTheme !== "undefined"
+                ? swalTheme.confirmButtonColor
+                : "#e11d48",
+        cancelButtonColor:
+            typeof swalTheme !== "undefined"
+                ? swalTheme.cancelButtonColor
+                : "#64748b",
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+        background:
+            typeof swalTheme !== "undefined" ? swalTheme.background : "#ffffff",
+        color: typeof swalTheme !== "undefined" ? swalTheme.color : "#1e293b",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById("delete-form-" + id).submit();
+        }
+    });
+}
