@@ -3,37 +3,43 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Docente extends Authenticatable
+class Docente extends Model
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'docentes';
+
     protected $fillable = [
-        'nombre',
-        'apellido',
-        'ci',
-        'email',
-        'telefono',
-        'direccion',
-        'foto_perfil',
+        'user_id',
+        'colegio_id',
+        'codigo_docente',
         'especialidad',
         'titulo_profesional',
-        'estado',
+        'experiencia',
+        'tipo_contrato',
         'fecha_contratacion',
-        'password'
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
+        'estado_laboral',
+        'salario',
+        'observaciones'
     ];
 
     protected $casts = [
         'fecha_contratacion' => 'date',
-        'password' => 'hashed',
+        'salario' => 'decimal:2',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function colegio()
+    {
+        return $this->belongsTo(Colegio::class);
+    }
 
     public function materias()
     {
@@ -45,43 +51,9 @@ class Docente extends Authenticatable
         return $this->hasManyThrough(Curso::class, Materia::class);
     }
 
-    public function colegio()
-    {
-        return $this->hasOneThroughMany(Colegio::class, [Materia::class, Curso::class]);
-    }
-
     public function estudiantes()
     {
-        return $this->hasManyThroughMany(Estudiante::class, [Materia::class, Curso::class]);
-    }
-
-    public function tareas()
-    {
-        return $this->hasMany(Tarea::class);
-    }
-
-    public function examenes()
-    {
-        return $this->hasMany(Examen::class);
-    }
-
-    public function proyectos()
-    {
-        return $this->hasMany(Proyecto::class);
-    }
-
-    public function materiales()
-    {
-        return $this->hasMany(Material::class);
-    }
-
-    public function calificaciones()
-    {
-        return $this->hasMany(Calificacion::class);
-    }
-
-    public function asistencias()
-    {
-        return $this->hasMany(Asistencia::class);
+        // Esta relación es compleja y depende de cómo se estructure la relación docente-materia-curso-estudiante
+         return $this->hasManyThroughMany(Estudiante::class, [Materia::class, Curso::class]);
     }
 }
