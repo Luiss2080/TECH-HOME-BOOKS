@@ -21,10 +21,6 @@
                 </div>
             </div>
             <div class="header-actions">
-                <a href="#" class="btn-secondary-action" title="Exportar">
-                    <i class="fas fa-file-export"></i>
-                    <span>Exportar</span>
-                </a>
                 <a href="{{ route('admin.materias.create') }}" class="btn-primary-action">
                     <i class="fas fa-plus"></i>
                     <span>Nueva Materia</span>
@@ -57,6 +53,11 @@
                         <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50 por pág.</option>
                     </select>
                 </div>
+                
+                <a href="#" class="btn-primary-action" title="Exportar" style="padding: 0.75rem 1.5rem; border-radius: 12px;">
+                    <i class="fas fa-file-export"></i>
+                    <span>Exportar</span>
+                </a>
             </div>
         </div>
     </div>
