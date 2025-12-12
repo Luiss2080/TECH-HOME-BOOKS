@@ -116,16 +116,16 @@
                             </td>
                             <td>
                                 <div class="action-buttons">
-                                    <a href="{{ route('materias.show', $materia->id) }}" class="btn-icon view" title="Ver Detalles">
+                                    <a href="{{ route('admin.materias.show', $materia->id) }}" class="btn-icon view" title="Ver Detalles">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('materias.edit', $materia->id) }}" class="btn-icon edit" title="Editar">
+                                    <a href="{{ route('admin.materias.edit', $materia->id) }}" class="btn-icon edit" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <button type="button" class="btn-icon delete" onclick="confirmDelete({{ $materia->id }})" title="Eliminar">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
-                                    <form id="delete-form-{{ $materia->id }}" action="{{ route('materias.destroy', $materia->id) }}" method="POST" style="display: none;">
+                                    <form id="delete-form-{{ $materia->id }}" action="{{ route('admin.materias.destroy', $materia->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
