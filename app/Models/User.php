@@ -33,6 +33,13 @@ class User extends Authenticatable
         'ultimo_acceso',
         'biografia',
         'genero',
+        'profesion',
+        'nivel_estudios',
+        'website',
+        'facebook',
+        'twitter',
+        'linkedin',
+        'instagram',
     ];
 
     /**
