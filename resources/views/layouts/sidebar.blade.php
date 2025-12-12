@@ -41,6 +41,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.colegios.index') }}" class="nav-link {{ request()->routeIs('admin.colegios.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-4h8v4"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Colegios</span>
+                        <span class="nav-badge">2</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.cursos.index') }}" class="nav-link {{ request()->routeIs('admin.cursos.*') ? 'active' : '' }}">
                         <span class="nav-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
