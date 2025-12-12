@@ -68,23 +68,23 @@
                     
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label">Nombre</label>
+                            <label class="form-label"><i class="fas fa-user"></i> Nombre</label>
                             <input type="text" name="name" class="form-input" value="{{ $user->name }}" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Apellido</label>
+                            <label class="form-label"><i class="fas fa-user-tag"></i> Apellido</label>
                             <input type="text" name="apellido" class="form-input" value="{{ $user->apellido ?? '' }}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Cédula de Identidad</label>
+                            <label class="form-label"><i class="fas fa-id-card"></i> Cédula de Identidad</label>
                             <input type="text" name="ci" class="form-input" value="{{ $user->ci ?? '' }}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Fecha de Nacimiento</label>
+                            <label class="form-label"><i class="fas fa-birthday-cake"></i> Fecha de Nacimiento</label>
                             <input type="date" name="fecha_nacimiento" class="form-input" value="{{ $user->fecha_nacimiento ? \Carbon\Carbon::parse($user->fecha_nacimiento)->format('Y-m-d') : '' }}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Género</label>
+                            <label class="form-label"><i class="fas fa-venus-mars"></i> Género</label>
                             <select name="genero" class="form-input">
                                 <option value="">Seleccionar...</option>
                                 <option value="masculino" {{ ($user->genero ?? '') == 'masculino' ? 'selected' : '' }}>Masculino</option>
@@ -93,19 +93,19 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Correo Electrónico</label>
+                            <label class="form-label"><i class="fas fa-envelope"></i> Correo Electrónico</label>
                             <input type="email" name="email" class="form-input" value="{{ $user->email }}" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Teléfono</label>
+                            <label class="form-label"><i class="fas fa-phone"></i> Teléfono</label>
                             <input type="tel" name="phone" class="form-input" placeholder="+591 ..." value="{{ $user->telefono ?? '' }}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Dirección</label>
+                            <label class="form-label"><i class="fas fa-map-marker-alt"></i> Dirección</label>
                             <input type="text" name="address" class="form-input" placeholder="Av. Principal #123" value="{{ $user->direccion ?? '' }}">
                         </div>
                         <div class="form-group full-width">
-                            <label class="form-label">Biografía / Sobre mí</label>
+                            <label class="form-label"><i class="fas fa-align-left"></i> Biografía / Sobre mí</label>
                             <textarea name="biografia" class="form-input" rows="4" placeholder="Cuéntanos un poco sobre ti...">{{ $user->biografia ?? '' }}</textarea>
                         </div>
                     </div>
@@ -134,21 +134,21 @@
                     @csrf
                     <div class="form-grid">
                         <div class="form-group full-width">
-                            <label class="form-label">Contraseña Actual</label>
+                            <label class="form-label"><i class="fas fa-key"></i> Contraseña Actual</label>
                             <div class="password-group">
                                 <input type="password" name="current_password" class="form-input" required>
                                 <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Nueva Contraseña</label>
+                            <label class="form-label"><i class="fas fa-lock"></i> Nueva Contraseña</label>
                             <div class="password-group">
                                 <input type="password" name="new_password" class="form-input" required>
                                 <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Confirmar Contraseña</label>
+                            <label class="form-label"><i class="fas fa-check-circle"></i> Confirmar Contraseña</label>
                             <div class="password-group">
                                 <input type="password" name="new_password_confirmation" class="form-input" required>
                                 <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
