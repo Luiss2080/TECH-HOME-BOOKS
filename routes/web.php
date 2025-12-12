@@ -69,7 +69,7 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     Route::resource('laboratorios', App\Http\Controllers\Docente\LaboratorioController::class)->names('admin.laboratorios');
     
     Route::get('/configuraciones', function() { return view('components.admin'); })->name('configuraciones.index');
-    Route::get('/permisos', function() { return view('components.admin'); })->name('permisos.index');
+
     Route::get('/calificaciones', function() { return view('components.admin'); })->name('calificaciones.index');
     
     // Reportes
