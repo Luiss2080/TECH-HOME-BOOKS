@@ -60,6 +60,7 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     Route::resource('roles', App\Http\Controllers\Admin\RoleController::class)->names('admin.roles');
     // Materias
     Route::resource('materias', App\Http\Controllers\Admin\MateriaController::class)->names('admin.materias');
+    Route::resource('permisos', App\Http\Controllers\Admin\PermisosController::class)->names('admin.permisos');
     // Biblioteca
     Route::resource('libros', App\Http\Controllers\BibliotecaController::class);
     // Materiales
