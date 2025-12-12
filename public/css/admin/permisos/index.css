@@ -339,16 +339,28 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.btn-icon.view:hover {
+.btn-icon.view {
     background: #eff6ff;
     color: #2563eb;
     border-color: #bfdbfe;
 }
 
-.btn-icon.edit:hover {
+.btn-icon.view:hover {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.btn-icon.edit {
     background: #fff7ed;
     color: #ea580c;
     border-color: #fed7aa;
+}
+
+.btn-icon.edit:hover {
+    background: #ea580c;
+    color: white;
+    border-color: #ea580c;
 }
 
 /* Pagination */
