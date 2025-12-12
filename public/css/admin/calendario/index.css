@@ -472,3 +472,51 @@
     background: #fee2e2;
     color: #dc2626;
 }
+.event-badge.meeting {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+.event-badge.exam {
+    background: #fef9c3;
+    color: #ca8a04;
+}
+
+/* Dot Colors */
+.dot.academic {
+    background: #0ea5e9;
+}
+.dot.holiday {
+    background: #ef4444;
+}
+.dot.meeting {
+    background: #a855f7;
+}
+.dot.exam {
+    background: #eab308;
+}
+
+/* Enhanced Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.day-cell {
+    /* existing styles... */
+    animation: fadeInScale 0.3s ease-out backwards;
+}
+
+/* Stagger animation for cells */
+.day-cell:nth-child(n) {
+    animation-delay: 0.05s;
+}
+.day-cell:nth-child(7n) {
+    animation-delay: 0.1s;
+}
+/* ... simpler to just let them fade in or use JS to stagger. For CSS only, subtle fade is safer. */

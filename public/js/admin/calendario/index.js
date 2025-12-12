@@ -67,8 +67,18 @@ document.addEventListener("DOMContentLoaded", function () {
             let dots = "";
             if (i === 15)
                 dots = `<div class="event-dots"><span class="dot academic"></span></div>`;
+            if (i === 18)
+                dots = `<div class="event-dots"><span class="dot meeting"></span></div>`;
             if (i === 20)
                 dots = `<div class="event-dots"><span class="dot holiday"></span></div>`;
+            if (i === 22)
+                dots = `<div class="event-dots"><span class="dot exam"></span></div>`;
+            if (i === 24)
+                dots = `<div class="event-dots"><span class="dot holiday"></span></div>`;
+            if (i === 26)
+                dots = `<div class="event-dots"><span class="dot exam"></span></div>`;
+            if (i === 30)
+                dots = `<div class="event-dots"><span class="dot meeting"></span></div>`;
 
             days += `<div class="day-cell ${
                 isToday ? "today" : ""

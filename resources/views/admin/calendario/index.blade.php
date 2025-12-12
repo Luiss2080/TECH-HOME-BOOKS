@@ -111,7 +111,18 @@
                         <span class="event-badge academic">Académico</span>
                     </div>
                 </div>
-                <!-- Mock events -->
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">18</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="event-info">
+                        <h4>Reunión de Profesores</h4>
+                        <span class="event-badge meeting">Reunión</span>
+                    </div>
+                </div>
+
                 <div class="event-item">
                     <div class="event-date">
                         <span class="day">20</span>
@@ -120,6 +131,50 @@
                     <div class="event-info">
                         <h4>Fin de Semestre</h4>
                         <span class="event-badge holiday">Feriado</span>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="event-info">
+                        <h4>Examen Final Matemáticas</h4>
+                        <span class="event-badge exam">Examen</span>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">24</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="event-info">
+                        <h4>Fiesta de Navidad</h4>
+                        <span class="event-badge holiday">Social</span>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">26</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="event-info">
+                        <h4>Recuperatorio Física</h4>
+                        <span class="event-badge exam">Examen</span>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">30</span>
+                        <span class="month">DIC</span>
+                    </div>
+                    <div class="event-info">
+                        <h4>Cierre Administrativo</h4>
+                        <span class="event-badge meeting">Admin</span>
                     </div>
                 </div>
             </div>
