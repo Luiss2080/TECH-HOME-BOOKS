@@ -52,6 +52,11 @@
                         <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50 por pág.</option>
                     </select>
                 </div>
+
+                <a href="#" class="btn-primary-action">
+                    <i class="fas fa-file-export"></i>
+                    <span>Exportar</span>
+                </a>
             </div>
         </div>
     </div>
