@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentMonthDisplay = document.getElementById("currentMonthDisplay");
     const prevMonthBtn = document.getElementById("prevMonth");
     const nextMonthBtn = document.getElementById("nextMonth");
-    const btnToday = document.getElementById("btnToday");
     const btnNewEvent = document.getElementById("btnNewEvent");
 
     let date = new Date();
@@ -120,13 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
             currentYear++;
         }
         date.setFullYear(currentYear, currentMonth);
-        renderCalendar();
-    });
-
-    btnToday.addEventListener("click", () => {
-        date = new Date();
-        currentMonth = date.getMonth();
-        currentYear = date.getFullYear();
         renderCalendar();
     });
 
