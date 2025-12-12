@@ -68,20 +68,21 @@
                         <th>Permiso</th>
                         <th>Descripción</th>
                         <th>Roles Asignados</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($permisos as $permiso)
                         <tr>
                             <td>
-                                <span class="badge-modulo">
+                                <span class="badge-modulo" data-module="{{ $permiso->modulo }}">
                                     {{ ucfirst($permiso->modulo) }}
                                 </span>
                             </td>
                             <td>
                                 <div class="permiso-info">
-                                    <span class="name">{{ $permiso->nombre }}</span>
-                                    <span class="description">{{ $permiso->guard_name ?? 'web' }}</span>
+                                    <span class="name">{{ ucwords(str_replace('_', ' ', $permiso->nombre)) }}</span>
+                                    <span class="code-name">{{ $permiso->nombre }}</span>
                                 </div>
                             </td>
                             <td>
@@ -95,10 +96,20 @@
                                     <span>{{ $permiso->roles_count }} Roles</span>
                                 </div>
                             </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button type="button" class="btn-icon view" title="Ver Detalles">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn-icon edit" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center" style="padding: 3rem; color: var(--text-muted);">
+                            <td colspan="5" class="text-center" style="padding: 3rem; color: var(--text-muted);">
                                 No se encontraron permisos registrados
                             </td>
                         </tr>
