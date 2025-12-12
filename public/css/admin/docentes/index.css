@@ -38,14 +38,14 @@
 .icon-wrapper {
     width: 52px;
     height: 52px;
-    background: #fff1f2;
-    color: var(--primary-red);
-    border-radius: 16px;
+    background: var(--primary-red);
+    color: white;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.3);
 }
 
 .title-content h2 {
@@ -62,7 +62,7 @@
     font-weight: 500;
 }
 
-/* Primary Action Button */
+/* Primary Action Button (Red) */
 .btn-primary-action {
     background: var(--primary-red);
     color: white;
@@ -107,33 +107,36 @@
     left: 1.25rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
+    color: var(--primary-red);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 2;
 }
 
 .search-bar input {
     width: 100%;
-    background: var(--bg-surface-secondary);
-    border: 2px solid transparent;
-    padding: 1rem 1rem 1rem 3.25rem;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    padding: 1rem 1rem 1rem 3.5rem;
     border-radius: 14px;
     color: var(--text-dark);
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: all 0.3s ease;
     font-family: var(--font-family);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .search-bar input:focus {
     background: var(--bg-surface);
     border-color: var(--primary-red);
-    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.05);
+    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1),
+        0 4px 12px rgba(225, 29, 72, 0.1);
     outline: none;
 }
 
 .search-bar input:focus + i {
-    color: var(--primary-red);
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* Filter Group */
@@ -145,6 +148,15 @@
 
 .select-wrapper {
     position: relative;
+    background: var(--primary-red);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.select-wrapper:hover {
+    background: var(--primary-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.2);
 }
 
 .select-wrapper i {
@@ -152,23 +164,27 @@
     left: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-muted);
+    color: white;
     z-index: 1;
     font-size: 0.9rem;
 }
 
 .select-wrapper select {
     appearance: none;
-    background: var(--bg-surface-secondary);
-    border: 1px solid var(--border-color);
+    background: transparent;
+    border: none;
     padding: 0.75rem 2.5rem 0.75rem 2.5rem;
     border-radius: 12px;
-    color: var(--text-dark);
+    color: white;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
     font-size: 0.9rem;
     min-width: 140px;
+}
+
+.select-wrapper select option {
+    background: var(--bg-surface);
+    color: var(--text-dark);
 }
 
 .select-wrapper::after {
@@ -179,45 +195,36 @@
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-muted);
+    color: white;
     pointer-events: none;
     font-size: 0.8rem;
 }
 
-.select-wrapper select:hover {
-    border-color: var(--text-muted);
-    background: var(--bg-surface);
-}
-
-.btn-outline {
-    background: var(--bg-surface-secondary);
-    border: 1px solid var(--border-color);
-    color: var(--text-dark);
+.btn-secondary-action {
+    background: var(--primary-red);
+    border: none;
+    color: white;
     padding: 0.75rem 1.25rem;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.6rem;
     font-size: 0.9rem;
+    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.2);
 }
 
-.btn-outline i {
-    color: var(--text-muted);
+.btn-secondary-action i {
+    color: white;
     font-size: 1rem;
 }
 
-.btn-outline:hover {
-    background: var(--bg-surface);
-    border-color: var(--primary-red);
-    color: var(--primary-red);
-    transform: translateY(-1px);
-}
-
-.btn-outline:hover i {
-    color: var(--primary-red);
+.btn-secondary-action:hover {
+    background: var(--primary-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(225, 29, 72, 0.3);
 }
 
 /* Table Section */

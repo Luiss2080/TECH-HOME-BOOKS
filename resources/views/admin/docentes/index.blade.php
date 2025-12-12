@@ -44,12 +44,12 @@
                     </select>
                 </div>
                 
-                <button class="btn-outline">
+                <button class="btn-secondary-action">
                     <i class="fas fa-filter"></i>
                     <span>Filtros</span>
                 </button>
                 
-                <button class="btn-outline">
+                <button class="btn-secondary-action">
                     <i class="fas fa-file-export"></i>
                     <span>Exportar</span>
                 </button>
