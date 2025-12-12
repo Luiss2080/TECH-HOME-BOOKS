@@ -8,40 +8,52 @@
 
 @section('content')
 <div class="docentes-container">
-    <!-- Header -->
-    <div class="page-header">
-        <h2>
-            <i class="fas fa-chalkboard-teacher"></i>
-            Gestión de Docentes
-        </h2>
-        <div class="actions">
-            <a href="{{ route('admin.docentes.create') }}" class="btn-red">
-                <i class="fas fa-plus"></i> Nuevo Docente
-            </a>
-        </div>
-    </div>
-    
-    <!-- Filtros -->
-    <div class="filters-section">
-        <div class="search-wrapper">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Buscar por nombre, documento o especialidad..." value="{{ request('search') }}">
-        </div>
-        <div class="filter-controls">
-            <div class="show-entries">
-                <label>Mostrar</label>
-                <select id="entriesSelect">
-                    <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
-                    <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
-                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
-                </select>
+    <!-- Control Panel Section -->
+    <div class="control-panel">
+        <div class="panel-header">
+            <div class="header-title">
+                <div class="icon-wrapper">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="title-content">
+                    <h2>Gestión de Docentes</h2>
+                    <p class="subtitle">Administra el personal académico, asignaciones y evaluaciones</p>
+                </div>
             </div>
-            <button class="btn-filter">
-                <i class="fas fa-filter"></i> Filtros
-            </button>
-            <button class="btn-export">
-                <i class="fas fa-file-export"></i> Exportar
-            </button>
+            <div class="header-actions">
+                <a href="{{ route('admin.docentes.create') }}" class="btn-primary-action">
+                    <i class="fas fa-plus"></i>
+                    <span>Nuevo Docente</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="panel-content">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Buscar por nombre, documento o especialidad..." value="{{ request('search') }}">
+            </div>
+            
+            <div class="filter-group">
+                <div class="select-wrapper">
+                    <i class="fas fa-list-ol"></i>
+                    <select id="entriesSelect">
+                        <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10 por pág.</option>
+                        <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25 por pág.</option>
+                        <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50 por pág.</option>
+                    </select>
+                </div>
+                
+                <button class="btn-outline">
+                    <i class="fas fa-filter"></i>
+                    <span>Filtros</span>
+                </button>
+                
+                <button class="btn-outline">
+                    <i class="fas fa-file-export"></i>
+                    <span>Exportar</span>
+                </button>
+            </div>
         </div>
     </div>
     
