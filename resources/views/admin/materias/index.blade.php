@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="header-actions">
-                <a href="{{ route('materias.create') }}" class="btn-primary-action">
+                <a href="{{ route('admin.materias.create') }}" class="btn-primary-action">
                     <i class="fas fa-plus"></i>
                     <span>Nueva Materia</span>
                 </a>
