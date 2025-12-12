@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="header-actions">
-                <a href="{{ route('colegios.create') }}" class="btn-primary-action">
+                <a href="{{ route('admin.colegios.create') }}" class="btn-primary-action">
                     <i class="fas fa-plus"></i>
                     <span>Nuevo Colegio</span>
                 </a>
@@ -128,16 +128,16 @@
                             </td>
                             <td>
                                 <div class="action-buttons">
-                                    <a href="{{ route('colegios.show', $colegio->id) }}" class="btn-icon view" title="Ver Detalles">
+                                    <a href="{{ route('admin.colegios.show', $colegio->id) }}" class="btn-icon view" title="Ver Detalles">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('colegios.edit', $colegio->id) }}" class="btn-icon edit" title="Editar">
+                                    <a href="{{ route('admin.colegios.edit', $colegio->id) }}" class="btn-icon edit" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <button type="button" class="btn-icon delete" onclick="confirmDelete({{ $colegio->id }})" title="Eliminar">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
-                                    <form id="delete-form-{{ $colegio->id }}" action="{{ route('colegios.destroy', $colegio->id) }}" method="POST" style="display: none;">
+                                    <form id="delete-form-{{ $colegio->id }}" action="{{ route('admin.colegios.destroy', $colegio->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
