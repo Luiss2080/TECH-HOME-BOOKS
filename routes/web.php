@@ -44,7 +44,7 @@ Route::get('/dashboard', function() {
 // Rutas administrativas protegidas (solo administradores)
 Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     // Módulos principales
-    Route::get('/usuarios', function() { return view('components.admin'); })->name('usuarios.index');
+    Route::resource('usuarios', App\Http\Controllers\Admin\UsuarioController::class)->names('admin.usuarios');
     
     // Docentes
     Route::resource('docentes', App\Http\Controllers\Admin\DocenteController::class)->names('admin.docentes');
