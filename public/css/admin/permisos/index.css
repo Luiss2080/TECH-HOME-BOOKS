@@ -273,25 +273,88 @@
 }
 
 /* Dynamic Colors for known Modules (Optional - can be expanded) */
+/* Dynamic Colors for known Modules */
 .badge-modulo[data-module="asistencia"] {
     background: #e0f2fe;
-    color: #0284c7;
+    color: #0369a1;
     border-color: #bae6fd;
 }
 .badge-modulo[data-module="calificaciones"] {
     background: #fef9c3;
-    color: #ca8a04;
+    color: #b45309;
     border-color: #fde047;
 }
 .badge-modulo[data-module="usuarios"] {
     background: #dcfce7;
-    color: #16a34a;
+    color: #15803d;
     border-color: #bbf7d0;
 }
 .badge-modulo[data-module="roles"] {
     background: #fae8ff;
     color: #a21caf;
     border-color: #e879f9;
+}
+.badge-modulo[data-module="permisos"] {
+    background: #fce7f3;
+    color: #be185d;
+    border-color: #fbcfe8;
+}
+.badge-modulo[data-module="reportes"] {
+    background: #ffedd5;
+    color: #c2410c;
+    border-color: #fed7aa;
+}
+.badge-modulo[data-module="configuraciones"] {
+    background: #f1f5f9;
+    color: #334155;
+    border-color: #cbd5e1;
+}
+.badge-modulo[data-module="docentes"] {
+    background: #e0e7ff;
+    color: #4338ca;
+    border-color: #c7d2fe;
+}
+.badge-modulo[data-module="estudiantes"] {
+    background: #ecfccb;
+    color: #4d7c0f;
+    border-color: #d9f99d;
+}
+.badge-modulo[data-module="colegios"] {
+    background: #ccfbf1;
+    color: #0f766e;
+    border-color: #99f6e4;
+}
+.badge-modulo[data-module="cursos"] {
+    background: #ffe4e6;
+    color: #be123c;
+    border-color: #fecdd3;
+}
+.badge-modulo[data-module="materias"] {
+    background: #f3e8ff;
+    color: #7e22ce;
+    border-color: #d8b4fe;
+}
+.badge-modulo[data-module="biblioteca"] {
+    background: #fee2e2;
+    color: #b91c1c;
+    border-color: #fca5a5;
+}
+.badge-modulo[data-module="materiales"] {
+    background: #ffedd5;
+    color: #c2410c;
+    border-color: #fdba74;
+}
+.badge-modulo[data-module="laboratorios"] {
+    background: #e0f2fe;
+    color: #0284c7;
+    border-color: #7dd3fc;
+}
+
+/* Default fallback */
+.badge-modulo:not([data-module]) {
+    background: #f3f4f6;
+    color: #4b5563;
+    border-color: #e5e7eb;
 }
 
 /* Permiso Info Improvements */

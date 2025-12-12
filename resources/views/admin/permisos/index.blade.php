@@ -75,7 +75,7 @@
                     @forelse($permisos as $permiso)
                         <tr>
                             <td>
-                                <span class="badge-modulo" data-module="{{ $permiso->modulo }}">
+                                <span class="badge-modulo" data-module="{{ Str::slug($permiso->modulo) }}">
                                     {{ ucfirst($permiso->modulo) }}
                                 </span>
                             </td>
