@@ -20,6 +20,14 @@
                 </div>
             </div>
             <div class="header-actions">
+                <button class="btn-secondary-action">
+                    <i class="fas fa-file-export"></i>
+                    <span>Exportar</span>
+                </button>
+                <button class="btn-secondary-action">
+                    <i class="fas fa-list"></i>
+                    <span>Lista</span>
+                </button>
                 <button class="btn-primary-action" id="btnNewEvent">
                     <i class="fas fa-plus"></i>
                     <span>Nuevo Evento</span>
@@ -28,10 +36,35 @@
         </div>
 
         <div class="calendar-controls">
-            <button class="btn-nav" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+            <div class="nav-group">
+                <button class="btn-nav" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                <button class="btn-nav" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                <button class="btn-today" id="btnToday">Hoy</button>
+            </div>
+            
             <h3 class="current-month" id="currentMonthDisplay">Diciembre 2025</h3>
-            <button class="btn-nav" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
-            <button class="btn-today" id="btnToday">Hoy</button>
+            
+            <div class="filter-group-cal">
+                <select class="cal-select" id="monthSelect">
+                    <option value="0">Enero</option>
+                    <option value="1">Febrero</option>
+                    <option value="2">Marzo</option>
+                    <option value="3">Abril</option>
+                    <option value="4">Mayo</option>
+                    <option value="5">Junio</option>
+                    <option value="6">Julio</option>
+                    <option value="7">Agosto</option>
+                    <option value="8">Septiembre</option>
+                    <option value="9">Octubre</option>
+                    <option value="10">Noviembre</option>
+                    <option value="11" selected>Diciembre</option>
+                </select>
+                <select class="cal-select" id="yearSelect">
+                    <option value="2024">2024</option>
+                    <option value="2025" selected>2025</option>
+                    <option value="2026">2026</option>
+                </select>
+            </div>
         </div>
     </div>
 

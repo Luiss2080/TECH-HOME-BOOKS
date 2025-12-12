@@ -33,14 +33,14 @@
 .icon-wrapper {
     width: 52px;
     height: 52px;
-    background: var(--primary-accent);
+    background: var(--primary-red);
     color: white;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.3);
 }
 
 .title-content h2 {
@@ -75,12 +75,63 @@
     box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
 }
 
+.btn-secondary-action {
+    background: var(--bg-surface-secondary);
+    color: var(--text-dark);
+    padding: 0.875rem 1.5rem;
+    border-radius: 14px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-action:hover {
+    background: var(--border-color);
+    color: var(--text-dark);
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
 /* Calendar Controls */
 .calendar-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group-cal {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.cal-select {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-surface-secondary);
+    color: var(--text-dark);
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+
+.cal-select:hover {
+    border-color: var(--primary-red);
 }
 
 .btn-nav {
@@ -98,7 +149,7 @@
 }
 
 .btn-nav:hover {
-    background: var(--primary-accent);
+    background: var(--primary-red);
     color: white;
 }
 
@@ -108,6 +159,7 @@
     color: var(--text-dark);
     min-width: 200px;
     text-align: center;
+    text-transform: capitalize;
 }
 
 .btn-today {
@@ -119,11 +171,12 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    margin-left: 0.5rem;
 }
 
 .btn-today:hover {
-    border-color: var(--primary-accent);
-    color: var(--primary-accent);
+    border-color: var(--primary-red);
+    color: var(--primary-red);
 }
 
 /* Layout Grid */

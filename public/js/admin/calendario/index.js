@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Diciembre",
     ];
 
+    const monthSelect = document.getElementById("monthSelect");
+    const yearSelect = document.getElementById("yearSelect");
+
     function renderCalendar() {
         date.setDate(1);
         const firstDayIndex = date.getDay();
@@ -39,7 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Fix for Sunday start (0) or Monday start adaptation if needed.
         // Current Grid headers are Dom, Lun, Mar... so Sunday=0 is correct for 1st column.
 
+        // Sync Dropdowns
         currentMonthDisplay.innerText = `${months[currentMonth]} ${currentYear}`;
+        monthSelect.value = currentMonth;
+        yearSelect.value = currentYear;
 
         let days = "";
 
@@ -71,8 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Next Month Days
-        const remainingCells = 42 - (firstDayIndex + lastDay); // 6 rows * 7 cols = 42
-        for (let j = 1; j <= remainingCells; j++) {
+        // Fill remaining grid to ensure 6 rows (total 42 cells typically used in calendars) or just square it off
+        const totalCellsSoFar = firstDayIndex + lastDay;
+        const nextDays = 42 - totalCellsSoFar;
+
+        for (let j = 1; j <= nextDays; j++) {
             days += `<div class="day-cell next-date"><span class="day-number">${j}</span></div>`;
         }
 
@@ -80,6 +89,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     renderCalendar();
+
+    // Dropdown Listeners
+    monthSelect.addEventListener("change", (e) => {
+        currentMonth = parseInt(e.target.value);
+        date.setMonth(currentMonth);
+        renderCalendar();
+    });
+
+    yearSelect.addEventListener("change", (e) => {
+        currentYear = parseInt(e.target.value);
+        date.setFullYear(currentYear);
+        renderCalendar();
+    });
 
     prevMonthBtn.addEventListener("click", () => {
         currentMonth--;
