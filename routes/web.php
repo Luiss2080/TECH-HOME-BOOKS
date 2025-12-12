@@ -73,10 +73,10 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     Route::get('/calificaciones', function() { return view('components.admin'); })->name('calificaciones.index');
     
     // Reportes
-    Route::get('/reportes', function() { return view('components.admin'); })->name('reportes.index');
-    Route::get('/reportes/estudiantes', function() { return view('components.admin'); })->name('reportes.estudiantes');
-    Route::get('/reportes/docentes', function() { return view('components.admin'); })->name('reportes.docentes');
-    Route::get('/reportes/materias', function() { return view('components.admin'); })->name('reportes.materias');
-    Route::get('/reportes/calificaciones', function() { return view('components.admin'); })->name('reportes.calificaciones');
+    Route::get('/reportes', [App\Http\Controllers\Admin\ReportesController::class, 'index'])->name('reportes.index');
+    Route::get('/reportes/estudiantes', [App\Http\Controllers\Admin\ReportesController::class, 'estudiantes'])->name('reportes.estudiantes');
+    Route::get('/reportes/docentes', [App\Http\Controllers\Admin\ReportesController::class, 'docentes'])->name('reportes.docentes');
+    Route::get('/reportes/materias', [App\Http\Controllers\Admin\ReportesController::class, 'materias'])->name('reportes.materias');
+    Route::get('/reportes/calificaciones', [App\Http\Controllers\Admin\ReportesController::class, 'calificaciones'])->name('reportes.calificaciones');
 });
 
