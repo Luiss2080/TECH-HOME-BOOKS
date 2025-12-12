@@ -36,13 +36,16 @@
 
             <div class="profile-stats">
                 <div class="stat-item">
-                    <span class="stat-value">24</span>
-                    <span class="stat-label">Accesos</span>
+                    <span class="stat-value">{{ $user->created_at ? $user->created_at->format('d/m/Y') : '-' }}</span>
+                    <span class="stat-label">Miembro Desde</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value text-success">Activo</span>
+                    <span class="stat-value text-success">{{ $user->estado ?? 'Activo' }}</span>
                     <span class="stat-label">Estado</span>
                 </div>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                Último acceso: {{ $user->ultimo_acceso ? \Carbon\Carbon::parse($user->ultimo_acceso)->diffForHumans() : 'Nunca' }}
             </div>
         </div>
 
@@ -86,7 +89,7 @@
             </div>
 
             <!-- Botones de Acción -->
-            <div class="actions-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div class="actions-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
                 <a href="{{ route('perfil.edit') }}" class="action-card" style="text-decoration:none; background:var(--bg-surface); padding:2rem; border-radius:16px; border:1px solid var(--border-color); display:flex; flex-direction:column; align-items:center; text-align:center; transition:var(--transition); box-shadow:var(--shadow-sm);">
                     <div class="action-icon" style="width:60px; height:60px; background:rgba(225,29,72,0.1); color:var(--primary-red); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1rem;">
                         <i class="fas fa-user-edit"></i>
@@ -102,6 +105,35 @@
                     <h3 style="color:var(--text-dark); margin-bottom:0.5rem;">Seguridad</h3>
                     <p style="color:var(--text-muted); font-size:0.9rem;">Cambia tu contraseña y accesos</p>
                 </a>
+            </div>
+
+            <!-- Actividad Reciente -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Actividad Reciente</h3>
+                        <p>Últimos movimientos en el sistema</p>
+                    </div>
+                </div>
+
+                <ul class="activity-list" style="list-style: none; padding: 0;">
+                    @forelse($logs as $log)
+                        <li style="display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
+                            <div style="min-width: 40px; height: 40px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                                <i class="fas fa-dot-circle" style="color: var(--primary-red);"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.2rem;">{{ $log->accion }} - {{ $log->modulo }}</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">{{ $log->ip }} &bull; {{ $log->fecha_hora->diffForHumans() }}</p>
+                            </div>
+                        </li>
+                    @empty
+                        <li style="text-align: center; color: var(--text-muted); padding: 1rem;">No hay actividad reciente.</li>
+                    @endforelse
+                </ul>
             </div>
 
         </div>

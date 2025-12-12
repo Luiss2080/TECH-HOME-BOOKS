@@ -16,7 +16,13 @@ class PerfilController extends Controller
             return redirect()->route('login')->with('error', 'Sesión no válida.');
         }
 
-        return view('perfil.index', compact('user'));
+        // Obtener actividad reciente
+        $logs = \App\Models\LogSistema::where('usuario_id', $userId)
+                                       ->orderBy('fecha_hora', 'desc')
+                                       ->take(5)
+                                       ->get();
+
+        return view('perfil.index', compact('user', 'logs'));
     }
 
     public function show()
