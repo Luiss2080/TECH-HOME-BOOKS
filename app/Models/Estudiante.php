@@ -3,41 +3,37 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class Estudiante extends Authenticatable
+class Estudiante extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+
+    protected $table = 'estudiantes';
 
     protected $fillable = [
-        'nombre',
-        'apellido',
-        'ci',
-        'fecha_nacimiento',
-        'email',
-        'telefono',
-        'direccion',
-        'foto_perfil',
+        'user_id',
+        'colegio_id',
         'curso_id',
+        'codigo_estudiante',
         'tutor_nombre',
         'tutor_telefono',
         'tutor_email',
-        'estado',
+        'estado_academico',
         'fecha_inscripcion',
-        'password'
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
+        'observaciones',
+        'historial_academico'
     ];
 
     protected $casts = [
-        'fecha_nacimiento' => 'date',
         'fecha_inscripcion' => 'date',
-        'password' => 'hashed',
+        'historial_academico' => 'array'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function curso()
     {
@@ -46,22 +42,7 @@ class Estudiante extends Authenticatable
 
     public function colegio()
     {
-        return $this->hasOneThrough(Colegio::class, Curso::class);
-    }
-
-    public function materias()
-    {
-        return $this->hasManyThrough(Materia::class, Curso::class);
-    }
-
-    public function tareas()
-    {
-        return $this->hasManyThrough(Tarea::class, Materia::class);
-    }
-
-    public function entregas()
-    {
-        return $this->hasMany(EntregaTarea::class);
+        return $this->belongsTo(Colegio::class);
     }
 
     public function calificaciones()
@@ -74,23 +55,8 @@ class Estudiante extends Authenticatable
         return $this->hasMany(Asistencia::class);
     }
 
-    public function certificados()
+    public function entregas()
     {
-        return $this->hasMany(Certificado::class);
-    }
-
-    public function trabajosGrupales()
-    {
-        return $this->belongsToMany(TrabajoGrupal::class, 'trabajo_grupal_estudiante');
-    }
-
-    public function librosLeidos()
-    {
-        return $this->belongsToMany(Libro::class, 'lectura_libro')->withPivot('fecha_lectura', 'completado');
-    }
-
-    public function librosFavoritos()
-    {
-        return $this->belongsToMany(Libro::class, 'libro_favorito');
+        return $this->hasMany(EntregaTarea::class);
     }
 }

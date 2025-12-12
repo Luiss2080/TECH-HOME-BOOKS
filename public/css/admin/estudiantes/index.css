@@ -1,8 +1,8 @@
 /* ============================================
-   DOCENTES INDEX - DASHBOARD STYLE
+   ESTUDIANTES INDEX - DASHBOARD STYLE
    ============================================ */
 
-.docentes-container {
+.estudiantes-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -376,7 +376,6 @@
     gap: 0.3rem;
 }
 
-/* Actions */
 /* Actions */
 .action-buttons {
     display: flex;

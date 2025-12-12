@@ -49,7 +49,8 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     // Docentes
     Route::resource('docentes', App\Http\Controllers\Admin\DocenteController::class)->names('admin.docentes');
 
-    Route::get('/estudiantes', function() { return view('components.admin'); })->name('estudiantes.index');
+    // Estudiantes
+    Route::resource('estudiantes', App\Http\Controllers\Admin\EstudianteController::class)->names('admin.estudiantes');
     Route::get('/colegios', function() { return view('components.admin'); })->name('colegios.index');
     Route::get('/materias', function() { return view('components.admin'); })->name('materias.index');
     Route::get('/cursos', function() { return view('components.admin'); })->name('cursos.index');
