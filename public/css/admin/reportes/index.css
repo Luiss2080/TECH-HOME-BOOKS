@@ -213,15 +213,72 @@
     align-items: center;
     justify-content: center;
     border: none;
-    background: var(--bg-surface-secondary);
-    color: var(--text-muted);
+    background: #fff1f2; /* Light red bg */
+    color: var(--primary-red);
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 1rem;
+    border: 1px solid #fecdd3; /* Light red border */
 }
 
 .btn-quick-export:hover {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--primary-red);
+    color: white;
+    border-color: var(--primary-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.2);
+}
+
+/* Additional Card Themes */
+.card-icon.attendance {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+.btn-report.attendance {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+.btn-report.attendance:hover {
+    background: #0284c7;
+    color: white;
+}
+
+.card-icon.users {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+.btn-report.users {
+    background: #f3f4f6;
+    color: #374151;
+}
+.btn-report.users:hover {
+    background: #4b5563;
+    color: white;
+}
+
+.card-icon.library {
+    background: #ffedd5;
+    color: #c2410c;
+}
+.btn-report.library {
+    background: #ffedd5;
+    color: #9a3412;
+}
+.btn-report.library:hover {
+    background: #ea580c;
+    color: white;
+}
+
+.card-icon.labs {
+    background: #ccfbf1;
+    color: #0d9488;
+}
+.btn-report.labs {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+.btn-report.labs:hover {
+    background: #0d9488;
+    color: white;
 }
