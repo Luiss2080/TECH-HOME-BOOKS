@@ -44,7 +44,11 @@
             -->
             
             <div class="left-controls">
-                 <button class="btn-today" id="btnToday">Hoy</button>
+                <div class="view-toggles">
+                    <button class="view-btn active">Mes</button>
+                    <button class="view-btn">Semana</button>
+                    <button class="view-btn">Agenda</button>
+                </div>
             </div>
 
             <div class="center-nav">
@@ -54,12 +58,6 @@
             </div>
             
             <div class="filter-group-cal">
-                <div class="view-toggles">
-                    <button class="view-btn active">Mes</button>
-                    <button class="view-btn">Semana</button>
-                    <button class="view-btn">Agenda</button>
-                </div>
-
                 <select class="cal-select" id="monthSelect">
                     <!-- Options... -->
                     <option value="0">Enero</option>
