@@ -19,7 +19,14 @@
             </div>
         </div>
         <div class="header-actions">
-            <!-- Global Export Actions if needed -->
+            <button class="btn-primary-action">
+                <i class="fas fa-cog"></i>
+                <span>Configurar</span>
+            </button>
+            <button class="btn-primary-action" style="margin-left: 0.5rem;">
+                <i class="fas fa-file-export"></i>
+                <span>Exportar Todo</span>
+            </button>
         </div>
     </div>
 
@@ -33,7 +40,7 @@
                 <h3>Estudiantes</h3>
                 <p>Reportes de inscripciones, asistencia y rendimiento académico.</p>
                 <div class="card-actions">
-                    <a href="{{ route('reportes.estudiantes') }}" class="btn-report">
+                    <a href="{{ route('reportes.estudiantes') }}" class="btn-report students">
                         <span>Ver Reportes</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -53,7 +60,7 @@
                 <h3>Docentes</h3>
                 <p>Listados, asignaciones de carga horaria y evaluaciones.</p>
                 <div class="card-actions">
-                    <a href="{{ route('reportes.docentes') }}" class="btn-report">
+                    <a href="{{ route('reportes.docentes') }}" class="btn-report teachers">
                         <span>Ver Reportes</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -73,7 +80,7 @@
                 <h3>Calificaciones</h3>
                 <p>Promedios, boletines y actas de notas por curso.</p>
                 <div class="card-actions">
-                    <a href="{{ route('reportes.calificaciones') }}" class="btn-report">
+                    <a href="{{ route('reportes.calificaciones') }}" class="btn-report grades">
                         <span>Ver Reportes</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -93,7 +100,7 @@
                 <h3>Materias y Cursos</h3>
                 <p>Estadísticas de materias, avance curricular y cursos.</p>
                 <div class="card-actions">
-                    <a href="{{ route('reportes.materias') }}" class="btn-report">
+                    <a href="{{ route('reportes.materias') }}" class="btn-report subjects">
                         <span>Ver Reportes</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
