@@ -130,36 +130,36 @@
 
         </div>
     </div>
+</div>
 
-    <!-- Actividad Reciente (Full Width) -->
-    <div class="dashboard-section" style="margin-top: 1rem;">
-        <div class="settings-card">
-            <div class="card-header">
-                <div class="card-icon">
-                    <i class="fas fa-history"></i>
-                </div>
-                <div class="card-title">
-                    <h3>Actividad Reciente</h3>
-                    <p>Últimos movimientos en el sistema</p>
-                </div>
+<!-- Actividad Reciente (Contenedor Separado) -->
+<div class="dashboard-section" style="margin-top: 2rem;">
+    <div class="settings-card">
+        <div class="card-header">
+            <div class="card-icon">
+                <i class="fas fa-history"></i>
             </div>
-
-            <ul class="activity-list" style="list-style: none; padding: 0;">
-                @forelse($logs as $log)
-                    <li style="display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
-                        <div style="min-width: 40px; height: 40px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <i class="fas fa-dot-circle" style="color: var(--primary-red);"></i>
-                        </div>
-                        <div>
-                            <h4 style="font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.2rem;">{{ $log->accion }} - {{ $log->modulo }}</h4>
-                            <p style="font-size: 0.85rem; color: var(--text-muted);">{{ $log->ip_address }} &bull; {{ $log->created_at->diffForHumans() }}</p>
-                        </div>
-                    </li>
-                @empty
-                    <li style="text-align: center; color: var(--text-muted); padding: 1rem;">No hay actividad reciente.</li>
-                @endforelse
-            </ul>
+            <div class="card-title">
+                <h3>Actividad Reciente</h3>
+                <p>Últimos movimientos en el sistema</p>
+            </div>
         </div>
+
+        <ul class="activity-list" style="list-style: none; padding: 0;">
+            @forelse($logs as $log)
+                <li style="display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
+                    <div style="min-width: 40px; height: 40px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                        <i class="fas fa-dot-circle" style="color: var(--primary-red);"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.2rem;">{{ $log->accion }} - {{ $log->modulo }}</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">{{ $log->ip_address }} &bull; {{ $log->created_at->diffForHumans() }}</p>
+                    </div>
+                </li>
+            @empty
+                <li style="text-align: center; color: var(--text-muted); padding: 1rem;">No hay actividad reciente.</li>
+            @endforelse
+        </ul>
     </div>
 </div>
 @endsection

@@ -406,11 +406,18 @@
         margin-top: 1.5rem;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr;
+    .form-grid,
+    .info-grid {
+        grid-template-columns: 1fr !important;
     }
 
-    .form-group.full-width {
-        grid-column: span 1;
+    .form-group.full-width,
+    .info-item,
+    .info-item.full-width {
+        grid-column: span 1 !important;
+    }
+
+    .actions-grid {
+        grid-template-columns: 1fr !important;
     }
 }
