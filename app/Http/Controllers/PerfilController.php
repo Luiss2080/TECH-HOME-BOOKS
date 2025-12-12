@@ -18,7 +18,7 @@ class PerfilController extends Controller
 
         // Obtener actividad reciente
         $logs = \App\Models\LogSistema::where('usuario_id', $userId)
-                                       ->orderBy('fecha_hora', 'desc')
+                                       ->orderBy('created_at', 'desc')
                                        ->take(5)
                                        ->get();
 

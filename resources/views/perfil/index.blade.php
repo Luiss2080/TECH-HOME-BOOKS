@@ -127,7 +127,7 @@
                             </div>
                             <div>
                                 <h4 style="font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.2rem;">{{ $log->accion }} - {{ $log->modulo }}</h4>
-                                <p style="font-size: 0.85rem; color: var(--text-muted);">{{ $log->ip }} &bull; {{ $log->fecha_hora->diffForHumans() }}</p>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">{{ $log->ip_address }} &bull; {{ $log->created_at->diffForHumans() }}</p>
                             </div>
                         </li>
                     @empty
