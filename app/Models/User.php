@@ -31,6 +31,8 @@ class User extends Authenticatable
         'estado',
         'configuracion_notificaciones',
         'ultimo_acceso',
+        'biografia',
+        'genero',
     ];
 
     /**

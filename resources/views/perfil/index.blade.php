@@ -68,8 +68,29 @@
                     
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label">Nombre Completo</label>
+                            <label class="form-label">Nombre</label>
                             <input type="text" name="name" class="form-input" value="{{ $user->name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" name="apellido" class="form-input" value="{{ $user->apellido ?? '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Cédula de Identidad</label>
+                            <input type="text" name="ci" class="form-input" value="{{ $user->ci ?? '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" name="fecha_nacimiento" class="form-input" value="{{ $user->fecha_nacimiento ? \Carbon\Carbon::parse($user->fecha_nacimiento)->format('Y-m-d') : '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Género</label>
+                            <select name="genero" class="form-input">
+                                <option value="">Seleccionar...</option>
+                                <option value="masculino" {{ ($user->genero ?? '') == 'masculino' ? 'selected' : '' }}>Masculino</option>
+                                <option value="femenino" {{ ($user->genero ?? '') == 'femenino' ? 'selected' : '' }}>Femenino</option>
+                                <option value="otro" {{ ($user->genero ?? '') == 'otro' ? 'selected' : '' }}>Otro</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Correo Electrónico</label>
@@ -82,6 +103,10 @@
                         <div class="form-group">
                             <label class="form-label">Dirección</label>
                             <input type="text" name="address" class="form-input" placeholder="Av. Principal #123" value="{{ $user->direccion ?? '' }}">
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label">Biografía / Sobre mí</label>
+                            <textarea name="biografia" class="form-input" rows="4" placeholder="Cuéntanos un poco sobre ti...">{{ $user->biografia ?? '' }}</textarea>
                         </div>
                     </div>
 

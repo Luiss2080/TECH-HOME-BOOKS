@@ -35,16 +35,26 @@ class PerfilController extends Controller
         
         $request->validate([
             'name' => 'required|string|max:255',
+            'apellido' => 'nullable|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,'.$user->id,
+            'ci' => 'nullable|string|max:20|unique:users,ci,'.$user->id,
+            'fecha_nacimiento' => 'nullable|date',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:255',
+            'biografia' => 'nullable|string|max:500',
+            'genero' => 'nullable|in:masculino,femenino,otro',
         ]);
 
         $user->update([
             'name' => $request->name,
+            'apellido' => $request->apellido,
             'email' => $request->email,
+            'ci' => $request->ci,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
             'telefono' => $request->phone,
             'direccion' => $request->address,
+            'biografia' => $request->biografia,
+            'genero' => $request->genero,
         ]);
 
         return redirect()->route('perfil.index')->with('success', 'Perfil actualizado correctamente.');
