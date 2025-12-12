@@ -31,8 +31,27 @@
             </div>
             
             <h2 class="profile-name">{{ $user->name }} {{ $user->apellido }}</h2>
-            <span class="profile-role">{{ $user->rol ?? 'Usuario' }}</span>
+            <span class="profile-role">{{ $user->profesion ?? $user->rol ?? 'Usuario' }}</span>
             <p style="color: var(--text-muted); margin-bottom: 0.5rem;">{{ $user->email }}</p>
+
+            <!-- Redes Sociales -->
+            <div class="social-links" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+                @if($user->facebook)
+                    <a href="https://facebook.com/{{ $user->facebook }}" target="_blank" style="color: #1877f2; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                @endif
+                @if($user->twitter)
+                    <a href="https://twitter.com/{{ $user->twitter }}" target="_blank" style="color: #1da1f2; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                @endif
+                @if($user->linkedin)
+                    <a href="https://linkedin.com/in/{{ $user->linkedin }}" target="_blank" style="color: #0077b5; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                @endif
+                @if($user->instagram)
+                    <a href="https://instagram.com/{{ $user->instagram }}" target="_blank" style="color: #c32aa3; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                @endif
+                @if($user->website)
+                    <a href="{{ $user->website }}" target="_blank" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fas fa-globe"></i></a>
+                @endif
+            </div>
 
             <div class="profile-stats">
                 <div class="stat-item">
@@ -65,6 +84,14 @@
                 </div>
 
                 <div class="info-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                    <div class="info-item">
+                        <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">Profesión</label>
+                        <span style="font-weight:600; font-size:1.1rem; color:var(--text-dark);">{{ $user->profesion ?? 'No registrado' }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">Nivel de Estudios</label>
+                        <span style="font-weight:600; font-size:1.1rem; color:var(--text-dark);">{{ $user->nivel_estudios ?? 'No registrado' }}</span>
+                    </div>
                     <div class="info-item">
                         <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">CI / Documento</label>
                         <span style="font-weight:600; font-size:1.1rem; color:var(--text-dark);">{{ $user->ci ?? 'No registrado' }}</span>

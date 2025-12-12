@@ -78,6 +78,13 @@ class PerfilController extends Controller
             'address' => 'nullable|string|max:255',
             'biografia' => 'nullable|string|max:500',
             'genero' => 'nullable|in:masculino,femenino,otro',
+            'profesion' => 'nullable|string|max:255',
+            'nivel_estudios' => 'nullable|string|max:255',
+            'website' => 'nullable|url|max:255',
+            'facebook' => 'nullable|string|max:255',
+            'twitter' => 'nullable|string|max:255',
+            'linkedin' => 'nullable|string|max:255',
+            'instagram' => 'nullable|string|max:255',
         ]);
 
         $user->update([
@@ -90,6 +97,13 @@ class PerfilController extends Controller
             'direccion' => $request->address,
             'biografia' => $request->biografia,
             'genero' => $request->genero,
+            'profesion' => $request->profesion,
+            'nivel_estudios' => $request->nivel_estudios,
+            'website' => $request->website,
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'linkedin' => $request->linkedin,
+            'instagram' => $request->instagram,
         ]);
 
         return redirect()->route('perfil.index')->with('success', 'Perfil actualizado correctamente.');

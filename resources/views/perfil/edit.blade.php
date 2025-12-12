@@ -59,6 +59,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label class="form-label"><i class="fas fa-briefcase"></i> Profesión</label>
+                        <input type="text" name="profesion" class="form-input" value="{{ $user->profesion ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-graduation-cap"></i> Nivel de Estudios</label>
+                        <input type="text" name="nivel_estudios" class="form-input" value="{{ $user->nivel_estudios ?? '' }}">
+                    </div>
+                    <div class="form-group">
                         <label class="form-label"><i class="fas fa-envelope"></i> Correo Electrónico</label>
                         <input type="email" name="email" class="form-input" value="{{ $user->email }}" required>
                     </div>
@@ -69,6 +77,26 @@
                     <div class="form-group">
                         <label class="form-label"><i class="fas fa-map-marker-alt"></i> Dirección</label>
                         <input type="text" name="address" class="form-input" placeholder="Av. Principal #123" value="{{ $user->direccion ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fas fa-globe"></i> Website</label>
+                        <input type="text" name="website" class="form-input" placeholder="https://" value="{{ $user->website ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fab fa-facebook"></i> Facebook</label>
+                        <input type="text" name="facebook" class="form-input" placeholder="Usuario" value="{{ $user->facebook ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fab fa-twitter"></i> Twitter / X</label>
+                        <input type="text" name="twitter" class="form-input" placeholder="@usuario" value="{{ $user->twitter ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fab fa-linkedin"></i> LinkedIn</label>
+                        <input type="text" name="linkedin" class="form-input" placeholder="Usuario" value="{{ $user->linkedin ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"><i class="fab fa-instagram"></i> Instagram</label>
+                        <input type="text" name="instagram" class="form-input" placeholder="Usuario" value="{{ $user->instagram ?? '' }}">
                     </div>
                     <div class="form-group full-width">
                         <label class="form-label"><i class="fas fa-align-left"></i> Biografía / Sobre mí</label>
