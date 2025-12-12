@@ -163,6 +163,7 @@
                             </svg>
                         </span>
                         <span class="nav-text">Permisos</span>
+                        <span class="nav-badge">{{ \App\Models\Permiso::count() }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
