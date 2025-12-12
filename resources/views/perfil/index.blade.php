@@ -7,17 +7,66 @@
 @endsection
 
 @section('content')
-<div class="dashboard-section">
-    <!-- Header Centrado -->
-    <div class="section-header-centered">
-        <div class="section-icon">
-            <i class="fas fa-user-circle fa-2x"></i>
+    <!-- Header Tipo Panel de Control -->
+    <div class="control-panel">
+        <div class="panel-header">
+            <div class="header-title">
+                <div class="icon-wrapper">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="title-content">
+                    <h2>Mi Perfil</h2>
+                    <p class="subtitle">Gestiona tu información personal y seguridad de cuenta</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="{{ route('perfil.edit') }}" class="btn-primary-action">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Editar Perfil</span>
+                </a>
+            </div>
         </div>
-        <h2 class="section-title-large">Mi Perfil</h2>
-        <p class="section-subtitle">Gestiona tu información personal y seguridad de cuenta</p>
+
+        <div class="panel-content">
+            <!-- Barra de Estado (Simulando la barra de filtros/búsqueda) -->
+            <div class="stats-group">
+                <div class="stat-pill">
+                    <i class="fas fa-id-card"></i>
+                    <div class="info">
+                        <span class="label">Rol</span>
+                        <span class="value">{{ $user->rol ?? 'Usuario' }}</span>
+                    </div>
+                </div>
+                
+                <div class="stat-pill">
+                    <i class="fas fa-toggle-on"></i>
+                    <div class="info">
+                        <span class="label">Estado</span>
+                        <span class="value" style="color: #10b981;">Activo</span>
+                    </div>
+                </div>
+
+                <div class="stat-pill">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div class="info">
+                        <span class="label">Miembro Desde</span>
+                        <span class="value">{{ $user->created_at ? $user->created_at->format('d/m/Y') : '-' }}</span>
+                    </div>
+                </div>
+
+                <div class="stat-pill">
+                    <i class="fas fa-clock"></i>
+                    <div class="info">
+                        <span class="label">Último Acceso</span>
+                        <span class="value">{{ $user->ultimo_acceso ? \Carbon\Carbon::parse($user->ultimo_acceso)->diffForHumans() : 'Ahora' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Contenedor Principal Perfil -->
+<div class="dashboard-section">
+    <!-- Contenedor Principal Perfil (Header removido de aquí) -->
     <div class="profile-container">
         
         <!-- Izquierda: Tarjeta de Perfil -->
