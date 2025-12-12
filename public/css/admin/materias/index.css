@@ -86,6 +86,29 @@
     color: white;
 }
 
+/* Secondary Action Button (Outline/Gray) */
+.btn-secondary-action {
+    background: transparent;
+    color: var(--text-dark);
+    padding: 0.875rem 1.5rem;
+    border-radius: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 2px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.btn-secondary-action:hover {
+    background: var(--bg-surface-secondary);
+    border-color: var(--text-muted);
+    transform: translateY(-2px);
+    color: var(--text-dark);
+}
+
 /* Panel Content (Filters & Search) */
 .panel-content {
     display: flex;

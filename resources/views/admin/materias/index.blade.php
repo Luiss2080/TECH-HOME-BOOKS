@@ -21,6 +21,10 @@
                 </div>
             </div>
             <div class="header-actions">
+                <a href="#" class="btn-secondary-action" title="Exportar">
+                    <i class="fas fa-file-export"></i>
+                    <span>Exportar</span>
+                </a>
                 <a href="{{ route('admin.materias.create') }}" class="btn-primary-action">
                     <i class="fas fa-plus"></i>
                     <span>Nueva Materia</span>
