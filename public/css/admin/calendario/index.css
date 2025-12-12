@@ -75,25 +75,26 @@
     box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
 }
 
-/* Secondary Buttons - Red Theme */
+/* Secondary Buttons - Red Theme (Solid) */
 .btn-secondary-action {
-    background: transparent;
-    color: var(--primary-red);
+    background: var(--primary-red);
+    color: white;
     padding: 0.875rem 1.5rem;
     border-radius: 14px;
-    font-weight: 600;
-    border: 1px solid var(--primary-red);
+    font-weight: 700;
+    border: none;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.3);
 }
 
 .btn-secondary-action:hover {
-    background: var(--primary-red);
-    color: white;
-    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.2);
+    background: var(--primary-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
 }
 
 .header-actions {
@@ -109,48 +110,85 @@
     gap: 1.5rem;
     flex-wrap: wrap;
     position: relative;
+    padding: 0.5rem 0;
 }
 
 /* Center Nav (Arrows + Title) */
 .center-nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .current-month {
-    font-size: 1.75rem; /* Larger title */
+    font-size: 2rem;
     font-weight: 800;
-    color: white; /* Make it pop against dark background */
+    color: white;
     min-width: unset;
     text-align: center;
     text-transform: capitalize;
     margin: 0;
     letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .btn-nav.large-nav {
-    width: 44px;
-    height: 44px;
-    background: transparent;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05); /* Subtle bg */
     color: var(--text-muted);
-    font-size: 1.25rem;
-    border: 2px solid transparent;
+    font-size: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
 }
 
 .btn-nav.large-nav:hover {
-    color: var(--primary-red);
-    background: transparent;
-    transform: scale(1.1);
+    color: white;
+    background: var(--primary-red); /* Active state red */
+    border-color: var(--primary-red);
+    transform: scale(1.05);
 }
 
 /* Filter Group & Dropdowns */
 .filter-group-cal {
     display: flex;
     gap: 1rem;
+    align-items: center;
+}
+
+/* View Toggles */
+.view-toggles {
+    display: flex;
+    background: var(--bg-surface-secondary);
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-right: 1rem;
+}
+
+.view-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.view-btn.active {
+    background: var(--bg-surface);
+    color: var(--primary-red);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-btn:hover:not(.active) {
+    color: var(--text-light);
 }
 
 .cal-select {
