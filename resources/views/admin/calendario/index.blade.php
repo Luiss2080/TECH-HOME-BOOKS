@@ -36,16 +36,26 @@
         </div>
 
         <div class="calendar-controls">
-            <div class="nav-group">
-                <button class="btn-nav" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
-                <button class="btn-nav" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
-                <button class="btn-today" id="btnToday">Hoy</button>
-            </div>
+            <!-- Left: Filter Group (Dropdowns moved here or stays right? User said "mas opciones a lado de diciembre" helps intuitive... 
+                 Actually, looking at the previous user image, the arrows were on left, title center, dropdowns right.
+                 Current request: "las flechas de cambiar de mes deben estar en los costados de diciembre 2025".
+                 So structure: [Optional: "Hoy" button] [ < ] [ Title ] [ > ] [ Dropdowns ]
+                 Let's center the Title+Arrows combo.
+            -->
             
-            <h3 class="current-month" id="currentMonthDisplay">Diciembre 2025</h3>
+            <div class="left-controls">
+                 <button class="btn-today" id="btnToday">Hoy</button>
+            </div>
+
+            <div class="center-nav">
+                <button class="btn-nav large-nav" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                <h3 class="current-month" id="currentMonthDisplay">Diciembre 2025</h3>
+                <button class="btn-nav large-nav" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+            </div>
             
             <div class="filter-group-cal">
                 <select class="cal-select" id="monthSelect">
+                    <!-- Options... -->
                     <option value="0">Enero</option>
                     <option value="1">Febrero</option>
                     <option value="2">Marzo</option>
