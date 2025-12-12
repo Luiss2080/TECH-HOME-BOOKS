@@ -317,6 +317,32 @@
     border-top: 1px solid var(--border-color);
 }
 
+.action-btn-red {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, var(--primary-red), #9f1239);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(225, 29, 72, 0.3);
+    text-align: center;
+}
+
+.action-btn-red:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(225, 29, 72, 0.5);
+    background: linear-gradient(135deg, #ff1f4b, #be123c);
+}
+
+.action-btn-red i {
+    font-size: 1.2rem;
+}
+
 /* Password Input Group */
 .password-group {
     position: relative;
