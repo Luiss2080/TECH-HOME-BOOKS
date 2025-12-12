@@ -55,7 +55,8 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     // Cursos & Materias
     Route::resource('cursos', App\Http\Controllers\Admin\CursoController::class)->names('admin.cursos');
     Route::get('/materias', function() { return view('components.admin'); })->name('materias.index');
-    Route::get('/libros', function() { return view('components.admin'); })->name('libros.index');
+    // Biblioteca
+    Route::resource('libros', App\Http\Controllers\BibliotecaController::class);
     Route::get('/configuraciones', function() { return view('components.admin'); })->name('configuraciones.index');
     Route::get('/permisos', function() { return view('components.admin'); })->name('permisos.index');
     Route::get('/calificaciones', function() { return view('components.admin'); })->name('calificaciones.index');
