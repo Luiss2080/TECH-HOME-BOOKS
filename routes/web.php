@@ -72,6 +72,9 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
 
     Route::get('/calificaciones', function() { return view('components.admin'); })->name('calificaciones.index');
     
+    // Perfil
+    Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'index'])->name('perfil.index');
+    
     // Reportes
     Route::get('/reportes', [App\Http\Controllers\Admin\ReportesController::class, 'index'])->name('reportes.index');
     Route::get('/reportes/estudiantes', [App\Http\Controllers\Admin\ReportesController::class, 'estudiantes'])->name('reportes.estudiantes');
