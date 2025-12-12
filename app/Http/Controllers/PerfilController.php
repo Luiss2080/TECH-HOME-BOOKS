@@ -26,7 +26,36 @@ class PerfilController extends Controller
 
     public function edit()
     {
-        //
+        $user = \App\Models\User::find(session('user_id'));
+        if (!$user) return redirect()->route('login');
+        return view('perfil.edit', compact('user'));
+    }
+
+    public function cambiarPassword()
+    {
+        $user = \App\Models\User::find(session('user_id'));
+        if (!$user) return redirect()->route('login');
+        return view('perfil.security', compact('user'));
+    }
+
+    public function actualizarPassword(Request $request)
+    {
+        $user = \App\Models\User::find(session('user_id'));
+
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6|confirmed',
+        ]);
+
+        if (!\Illuminate\Support\Facades\Hash::check($request->current_password, $user->password)) {
+            return back()->with('error', 'La contraseña actual no es correcta.');
+        }
+
+        $user->update([
+            'password' => \Illuminate\Support\Facades\Hash::make($request->new_password)
+        ]);
+
+        return redirect()->route('perfil.index')->with('success', 'Contraseña actualizada correctamente.');
     }
 
     public function update(Request $request)

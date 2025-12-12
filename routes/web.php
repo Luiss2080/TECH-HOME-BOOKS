@@ -74,7 +74,10 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     
     // Perfil
     Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'index'])->name('perfil.index');
+    Route::get('/perfil/editar', [App\Http\Controllers\PerfilController::class, 'edit'])->name('perfil.edit');
     Route::put('/perfil/update', [App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update');
+    Route::get('/perfil/seguridad', [App\Http\Controllers\PerfilController::class, 'cambiarPassword'])->name('perfil.security');
+    Route::put('/perfil/password', [App\Http\Controllers\PerfilController::class, 'actualizarPassword'])->name('perfil.update-password');
     Route::post('/perfil/avatar', [App\Http\Controllers\PerfilController::class, 'subirAvatar'])->name('perfil.avatar');
     
     // Reportes

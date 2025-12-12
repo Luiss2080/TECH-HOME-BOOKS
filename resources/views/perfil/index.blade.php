@@ -23,15 +23,15 @@
         <!-- Izquierda: Tarjeta de Perfil -->
         <div class="profile-card">
             <div class="profile-avatar-wrapper">
-                <img src="{{ asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar">
+                <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar">
                 <label for="avatarInput" class="avatar-edit-btn" title="Cambiar foto">
                     <i class="fas fa-camera"></i>
                 </label>
                 <input type="file" id="avatarInput" hidden accept="image/*">
             </div>
             
-            <h2 class="profile-name">{{ $user->name ?? 'Usuario' }}</h2>
-            <span class="profile-role">{{ $user->role->name ?? 'Administrador' }}</span>
+            <h2 class="profile-name">{{ $user->name }} {{ $user->apellido }}</h2>
+            <span class="profile-role">{{ $user->rol ?? 'Usuario' }}</span>
             <p style="color: var(--text-muted); margin-bottom: 0.5rem;">{{ $user->email }}</p>
 
             <div class="profile-stats">
@@ -39,129 +39,69 @@
                     <span class="stat-value">24</span>
                     <span class="stat-label">Accesos</span>
                 </div>
-                <!-- Placeholder for future stats -->
                 <div class="stat-item">
-                    <span class="stat-value">Activo</span>
+                    <span class="stat-value text-success">Activo</span>
                     <span class="stat-label">Estado</span>
                 </div>
             </div>
         </div>
 
-        <!-- Derecha: Formularios de Edición -->
+        <!-- Derecha: Dashboard de Acciones y Resumen -->
         <div class="profile-content">
             
-            <!-- 1. Información Personal -->
+            <!-- Resumen de Datos -->
             <div class="settings-card">
                 <div class="card-header">
                     <div class="card-icon">
-                        <i class="fas fa-id-card"></i>
+                        <i class="fas fa-info-circle"></i>
                     </div>
                     <div class="card-title">
                         <h3>Información Personal</h3>
-                        <p>Actualiza tus datos de contacto y nombre</p>
+                        <p>Resumen de tus datos registrados</p>
                     </div>
                 </div>
 
-                <form action="{{ route('perfil.update') }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-user"></i> Nombre</label>
-                            <input type="text" name="name" class="form-input" value="{{ $user->name }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-user-tag"></i> Apellido</label>
-                            <input type="text" name="apellido" class="form-input" value="{{ $user->apellido ?? '' }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-id-card"></i> Cédula de Identidad</label>
-                            <input type="text" name="ci" class="form-input" value="{{ $user->ci ?? '' }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-birthday-cake"></i> Fecha de Nacimiento</label>
-                            <input type="date" name="fecha_nacimiento" class="form-input" value="{{ $user->fecha_nacimiento ? \Carbon\Carbon::parse($user->fecha_nacimiento)->format('Y-m-d') : '' }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-venus-mars"></i> Género</label>
-                            <select name="genero" class="form-input">
-                                <option value="">Seleccionar...</option>
-                                <option value="masculino" {{ ($user->genero ?? '') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                <option value="femenino" {{ ($user->genero ?? '') == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                                <option value="otro" {{ ($user->genero ?? '') == 'otro' ? 'selected' : '' }}>Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-                            <input type="email" name="email" class="form-input" value="{{ $user->email }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-phone"></i> Teléfono</label>
-                            <input type="tel" name="phone" class="form-input" placeholder="+591 ..." value="{{ $user->telefono ?? '' }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-map-marker-alt"></i> Dirección</label>
-                            <input type="text" name="address" class="form-input" placeholder="Av. Principal #123" value="{{ $user->direccion ?? '' }}">
-                        </div>
-                        <div class="form-group full-width">
-                            <label class="form-label"><i class="fas fa-align-left"></i> Biografía / Sobre mí</label>
-                            <textarea name="biografia" class="form-input" rows="4" placeholder="Cuéntanos un poco sobre ti...">{{ $user->biografia ?? '' }}</textarea>
-                        </div>
+                <div class="info-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                    <div class="info-item">
+                        <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">CI / Documento</label>
+                        <span style="font-weight:600; font-size:1.1rem; color:var(--text-dark);">{{ $user->ci ?? 'No registrado' }}</span>
                     </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn-submit">
-                            <i class="fas fa-save"></i> Guardar Cambios
-                        </button>
+                    <div class="info-item">
+                        <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">Teléfono</label>
+                        <span style="font-weight:600; font-size:1.1rem; color:var(--text-dark);">{{ $user->telefono ?? 'No registrado' }}</span>
                     </div>
-                </form>
+                    <div class="info-item">
+                        <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">Dirección</label>
+                        <span style="font-weight:600; font-size:1.1rem; color:var(--text-dark);">{{ $user->direccion ?? 'No registrado' }}</span>
+                    </div>
+                    <div class="info-item">
+                        <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">Fecha Nacimiento</label>
+                        <span style="font-weight:600; font-size:1.1rem; color:var(--text-dark);">{{ $user->fecha_nacimiento ?? 'No registrado' }}</span>
+                    </div>
+                    <div class="info-item full-width" style="grid-column: span 2;">
+                        <label style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:0.2rem;">Biografía</label>
+                        <p style="color:var(--text-dark); line-height:1.6;">{{ $user->biografia ?? 'Sin biografía.' }}</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- 2. Seguridad -->
-            <div class="settings-card">
-                <div class="card-header">
-                    <div class="card-icon">
+            <!-- Botones de Acción -->
+            <div class="actions-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                <a href="{{ route('perfil.edit') }}" class="action-card" style="text-decoration:none; background:var(--bg-surface); padding:2rem; border-radius:16px; border:1px solid var(--border-color); display:flex; flex-direction:column; align-items:center; text-align:center; transition:var(--transition); box-shadow:var(--shadow-sm);">
+                    <div class="action-icon" style="width:60px; height:60px; background:rgba(225,29,72,0.1); color:var(--primary-red); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1rem;">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <h3 style="color:var(--text-dark); margin-bottom:0.5rem;">Editar Perfil</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Actualiza tus datos personales y contacto</p>
+                </a>
+
+                <a href="{{ route('perfil.security') }}" class="action-card" style="text-decoration:none; background:var(--bg-surface); padding:2rem; border-radius:16px; border:1px solid var(--border-color); display:flex; flex-direction:column; align-items:center; text-align:center; transition:var(--transition); box-shadow:var(--shadow-sm);">
+                    <div class="action-icon" style="width:60px; height:60px; background:rgba(225,29,72,0.1); color:var(--primary-red); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; margin-bottom:1rem;">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="card-title">
-                        <h3>Seguridad</h3>
-                        <p>Cambia tu contraseña para mantener tu cuenta segura</p>
-                    </div>
-                </div>
-
-                <form action="#" method="POST">
-                    @csrf
-                    <div class="form-grid">
-                        <div class="form-group full-width">
-                            <label class="form-label"><i class="fas fa-key"></i> Contraseña Actual</label>
-                            <div class="password-group">
-                                <input type="password" name="current_password" class="form-input" required>
-                                <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-lock"></i> Nueva Contraseña</label>
-                            <div class="password-group">
-                                <input type="password" name="new_password" class="form-input" required>
-                                <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label"><i class="fas fa-check-circle"></i> Confirmar Contraseña</label>
-                            <div class="password-group">
-                                <input type="password" name="new_password_confirmation" class="form-input" required>
-                                <button type="button" class="toggle-password"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn-submit">
-                            <i class="fas fa-lock"></i> Actualizar Contraseña
-                        </button>
-                    </div>
-                </form>
+                    <h3 style="color:var(--text-dark); margin-bottom:0.5rem;">Seguridad</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Cambia tu contraseña y accesos</p>
+                </a>
             </div>
 
         </div>
