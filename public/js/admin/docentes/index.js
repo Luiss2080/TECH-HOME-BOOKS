@@ -39,17 +39,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Función global para eliminar (usada en el onclick)
 window.confirmDelete = function (docenteId) {
+    // Configuración tema (puede venir del backend o global)
+    const isDark = document.body.classList.contains("dark-mode");
+
     Swal.fire({
         title: "¿Estás seguro?",
-        text: "No podrás revertir esta acción de eliminar al docente",
+        text: "¡No podrás revertir esto!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#ff4b4b",
-        cancelButtonColor: "#1e1e24",
+        confirmButtonColor: "#e11d48",
+        cancelButtonColor: "#64748b",
         confirmButtonText: "Sí, eliminar",
         cancelButtonText: "Cancelar",
-        background: "#1e1e24",
-        color: "#fff",
+        background: isDark ? "#1e293b" : "#ffffff",
+        color: isDark ? "#f1f5f9" : "#1e293b",
     }).then((result) => {
         if (result.isConfirmed) {
             document.getElementById(`delete-form-${docenteId}`).submit();
