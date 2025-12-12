@@ -50,7 +50,7 @@
                     </select>
                 </div>
 
-                <a href="#" class="btn-primary-action" style="padding: 0.75rem 1.25rem; border-radius: 12px; font-size: 0.9rem;">
+                <a href="#" class="btn-primary-action">
                     <i class="fas fa-file-export"></i>
                     <span>Exportar</span>
                 </a>
