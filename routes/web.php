@@ -78,5 +78,8 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     Route::get('/reportes/docentes', [App\Http\Controllers\Admin\ReportesController::class, 'docentes'])->name('reportes.docentes');
     Route::get('/reportes/materias', [App\Http\Controllers\Admin\ReportesController::class, 'materias'])->name('reportes.materias');
     Route::get('/reportes/calificaciones', [App\Http\Controllers\Admin\ReportesController::class, 'calificaciones'])->name('reportes.calificaciones');
+
+    // Calendario
+    Route::get('/calendario', [App\Http\Controllers\Admin\CalendarioController::class, 'index'])->name('admin.calendario.index');
 });
 
