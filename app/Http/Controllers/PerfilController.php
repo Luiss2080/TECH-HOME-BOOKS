@@ -8,7 +8,15 @@ class PerfilController extends Controller
 {
     public function index()
     {
-        return view('perfil.index');
+        // Recuperar usuario desde la sesión manual
+        $userId = session('user_id');
+        $user = \App\Models\User::find($userId);
+        
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Sesión no válida.');
+        }
+
+        return view('perfil.index', compact('user'));
     }
 
     public function show()
