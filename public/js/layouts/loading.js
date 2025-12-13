@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let messageInterval = null;
 
     // Simulation Config
-    const duration = 3000; // Increased to 3s as requested
+    const duration = 5000; // Increased to 5s per user request (3s + 2s)
     const interval = 30;
     const steps = duration / interval;
     const increment = 100 / steps;
