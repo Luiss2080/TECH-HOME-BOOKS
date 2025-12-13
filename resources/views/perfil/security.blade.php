@@ -70,10 +70,10 @@
         <div class="profile-container">
             
             <!-- Izquierda: Sidebar Sticky (Reutilizado de Edit) -->
-            <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 0.5rem; position: sticky; top: 2rem; height: fit-content;">
+            <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 0; position: sticky; top: 2rem; height: fit-content;">
                 
                 <!-- Card 1: Avatar -->
-                <div class="profile-card" style="width: 100%; position: relative; top: 0; padding: 1.2rem;">
+                <div class="profile-card" style="width: 100%; position: relative; top: 0; padding: 1.2rem; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none; z-index: 2;">
                     <div class="profile-avatar-wrapper" style="margin-bottom: 0.5rem;">
                         <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" style="width: 100px; height: 100px;">
                     </div>
@@ -107,7 +107,7 @@
                 </div>
 
                 <!-- Card 2: Nivel de Perfil (Reutilizado) -->
-                <div class="profile-card" style="width: 100%; position: relative; padding: 1.5rem; align-items: flex-start; text-align: left;">
+                <div class="profile-card" style="width: 100%; position: relative; padding: 1.5rem; align-items: flex-start; text-align: left; border-top-left-radius: 0; border-top-right-radius: 0; margin-top: -5px; z-index: 1;">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; width: 100%; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
                         <div style="width: 45px; height: 45px; background: rgba(220, 38, 38, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary-red); font-size: 1.2rem;">
                             <i class="fas fa-chart-line"></i>
