@@ -138,12 +138,13 @@
                     @endforelse
                 </tbody>
             </table>
-    </div>
+    </div> <!-- Close table-responsive -->
+    </div> <!-- Close table-section -->
     
     <div class="pagination-wrapper">
         {{ $docentes->appends(request()->query())->links('pages.docentes') }}
     </div>
-</div>
+</div> <!-- Close docentes-container -->
 @endsection
 
 @section('js')

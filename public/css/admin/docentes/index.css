@@ -452,5 +452,5 @@
 /* Pagination */
 .pagination-wrapper {
     width: 100%;
-    margin-top: 3rem; /* Increased gap significantly */
+    margin-top: 0;
 }
