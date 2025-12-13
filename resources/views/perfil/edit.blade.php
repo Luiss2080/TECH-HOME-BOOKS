@@ -115,9 +115,10 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Nivel de Perfil -->
-                <div class="profile-card" style="width: 100%; position: relative; top: 0; padding: 2rem; align-items: flex-start; text-align: left;">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; width: 100%;">
+                <!-- Card 2: Nivel de Perfil y Detalles de Cuenta -->
+                <div class="profile-card" style="width: 100%; position: relative; padding: 1.5rem; align-items: flex-start; text-align: left;">
+                    <!-- Header: Nivel -->
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; width: 100%; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
                         <div style="width: 45px; height: 45px; background: rgba(220, 38, 38, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary-red); font-size: 1.2rem;">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -127,26 +128,53 @@
                         </div>
                     </div>
 
-                    <div style="width: 100%; margin-bottom: 2rem;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-size: 0.95rem;">
-                            <span style="color: var(--text-dark); font-weight: 600;">Completado</span>
+                    <!-- Progreso -->
+                    <div style="width: 100%; margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                            <span style="color: var(--text-dark); font-weight: 600;">Intermedio</span>
                             <span style="color: var(--primary-red); font-weight: 700;">85%</span>
                         </div>
-                        <div style="width: 100%; height: 8px; background: var(--bg-body); border-radius: 4px; overflow: hidden;">
-                            <div style="width: 85%; height: 100%; background: var(--primary-red); border-radius: 4px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);"></div>
+                        <div style="width: 100%; height: 6px; background: var(--bg-body); border-radius: 3px; overflow: hidden;">
+                            <div style="width: 85%; height: 100%; background: var(--primary-red); border-radius: 3px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);"></div>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            <i class="fas fa-info-circle"></i> Completa tu biografía para llegar al 100%.
+                        </p>
+                    </div>
+
+                    <!-- Grid de Badges -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; width: 100%; margin-bottom: 1.5rem;">
+                        <div style="background: var(--bg-body); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.2rem; margin-bottom: 0.3rem;"></i>
+                            <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Email</span>
+                            <span style="font-weight: 600; color: var(--text-dark); font-size: 0.85rem;">Verificado</span>
+                        </div>
+                        <div style="background: var(--bg-body); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.3rem;"></i>
+                            <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Seguridad</span>
+                            <span style="font-weight: 600; color: var(--text-dark); font-size: 0.85rem;">Alta</span>
                         </div>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%;">
-                        <div style="background: var(--bg-body); padding: 1rem; border-radius: 15px; text-align: center; border: 1px solid transparent; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--primary-red)'" onmouseout="this.style.borderColor='transparent'">
-                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
-                            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">Email</span>
-                            <span style="font-weight: 700; color: var(--text-dark); font-size: 0.95rem;">Verificado</span>
-                        </div>
-                        <div style="background: var(--bg-body); padding: 1rem; border-radius: 15px; text-align: center; border: 1px solid transparent; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--primary-red)'" onmouseout="this.style.borderColor='transparent'">
-                            <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
-                            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">Seguridad</span>
-                            <span style="font-weight: 700; color: var(--text-dark); font-size: 0.95rem;">Alta</span>
+                    <!-- Lista de Detalles Adicionales -->
+                    <div style="width: 100%;">
+                        <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">Detalles de Cuenta</h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                                <span style="color: var(--text-muted);"><i class="fas fa-fingerprint" style="width: 20px;"></i> ID Usuario</span>
+                                <span style="color: var(--text-dark); font-family: monospace; background: var(--bg-body); padding: 0.2rem 0.5rem; border-radius: 4px;">#{{ str_pad($user->id, 6, '0', STR_PAD_LEFT) }}</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                                <span style="color: var(--text-muted);"><i class="fas fa-globe-americas" style="width: 20px;"></i> Región</span>
+                                <span style="color: var(--text-dark);">Bolivia (BOT)</span>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                                <span style="color: var(--text-muted);"><i class="fas fa-key" style="width: 20px;"></i> 2FA</span>
+                                <span style="color: var(--text-muted); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">Activar <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
