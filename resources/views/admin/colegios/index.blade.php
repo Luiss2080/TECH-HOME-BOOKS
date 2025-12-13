@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/colegios/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
@@ -156,7 +157,7 @@
         </div>
         
         <div class="pagination-wrapper">
-            {{ $colegios->appends(request()->query())->links() }}
+            {{ $colegios->appends(request()->query())->links('pages.colegios') }}
         </div>
     </div>
 </div>
