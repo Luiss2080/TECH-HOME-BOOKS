@@ -285,11 +285,11 @@
                             </div>
                         </div>
 
-                        <div class="form-actions" style="gap: 1.5rem;">
-                            <a href="{{ route('perfil.index') }}" class="btn-cancel" style="padding: 1rem 2rem; color: var(--text-dark); text-decoration: none; font-weight: 700; border: 1px solid var(--border-color); border-radius: 12px; transition: all 0.3s;">
+                        <div class="actions-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                            <a href="{{ route('perfil.index') }}" class="action-btn-red" style="background: transparent; border: 2px solid var(--border-color); color: var(--text-muted); box-shadow: none;">
                                 Cancelar
                             </a>
-                            <button type="submit" class="action-btn-red" style="border: none; cursor: pointer; font-size: 1rem; width: auto; padding: 1rem 2.5rem;">
+                            <button type="submit" class="action-btn-red" style="width: 100%; border: none; cursor: pointer;">
                                 <i class="fas fa-save"></i> Guardar Cambios
                             </button>
                         </div>
