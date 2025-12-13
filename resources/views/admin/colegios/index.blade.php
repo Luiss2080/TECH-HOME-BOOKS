@@ -155,10 +155,10 @@
                 </tbody>
             </table>
         </div>
-        
-        <div class="pagination-wrapper">
-            {{ $colegios->appends(request()->query())->links('pages.colegios') }}
-        </div>
+    </div>
+    
+    <div class="pagination-wrapper">
+        {{ $colegios->appends(request()->query())->links('pages.colegios') }}
     </div>
 </div>
 @endsection
