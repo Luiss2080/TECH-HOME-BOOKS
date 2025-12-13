@@ -114,7 +114,7 @@
                     
                     <div style="margin-top: 2rem; width: 100%; text-align: left;">
                         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
+                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: center; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
                                 <i class="fas fa-user-edit"></i> Editar Perfil
                             </a>
                         </div>
@@ -246,7 +246,7 @@
                 </div>
                 
                 <!-- Card Informativa Adicional -->
-                <div class="settings-card" style="margin-top: 2rem;">
+                <div class="settings-card" style="margin-top: 1.5rem;">
                      <div class="card-header">
                         <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981; box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.1);">
                             <i class="fas fa-user-shield"></i>
