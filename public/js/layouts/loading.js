@@ -7,72 +7,149 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!overlay) return;
 
     let progress = 0;
-    const duration = 2000; // Minimum load time simulation (ms)
-    const interval = 50;
+    let loadingInterval = null;
+    let messageInterval = null;
+
+    // Simulation Config
+    const duration = 1500; // Faster for navigation
+    const interval = 30;
     const steps = duration / interval;
     const increment = 100 / steps;
 
     const messages = [
-        "Iniciando sistema...",
-        "Cargando configuraciones...",
-        "Verificando credenciales...",
-        "Estableciendo conexión segura...",
-        "Preparando interfaz...",
+        "Procesando solicitud...",
+        "Redirigiendo...",
+        "Cargando vista...",
+        "Espere por favor...",
     ];
 
-    let messageIndex = 0;
+    // Initialize: Show loader on first load (already visible via HTML)
+    startSimulation();
 
-    // Status message cycler
-    const messageInterval = setInterval(() => {
-        messageIndex = (messageIndex + 1) % messages.length;
-        statusText.style.opacity = "0";
-        setTimeout(() => {
-            statusText.textContent = messages[messageIndex];
-            statusText.style.opacity = "1";
-        }, 200);
-    }, 800);
+    // --- Global Navigation Handlers ---
 
-    // Progress simulation
-    const loadingInterval = setInterval(() => {
-        // Randomize increment slightly for realism
-        const randomIncrement = increment * (0.5 + Math.random());
-        progress += randomIncrement;
+    // 1. Handle Link Clicks
+    document.addEventListener("click", function (e) {
+        const link = e.target.closest("a");
 
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(loadingInterval);
-            clearInterval(messageInterval);
-            finishLoading();
+        if (link) {
+            const href = link.getAttribute("href");
+            const target = link.getAttribute("target");
+
+            // Validate if we should show loader
+            if (
+                href &&
+                !href.startsWith("#") &&
+                !href.startsWith("javascript:") &&
+                target !== "_blank" &&
+                !e.ctrlKey &&
+                !e.metaKey && // Open in new tab modifiers
+                !link.dataset.noLoader // Opt-out attribute
+            ) {
+                showLoader();
+            }
         }
+    });
 
-        updateUI(progress);
-    }, interval);
+    // 2. Handle Form Submissions
+    document.addEventListener("submit", function (e) {
+        const form = e.target;
+        if (!form.dataset.noLoader) {
+            showLoader();
+        }
+    });
 
-    // Ensure we handle window load event too
-    window.addEventListener("load", () => {
-        // If window loads faster than simulation (rare with this logic but possible),
-        // we could speed up to 100, but let's let the simulation finish for effect
-        // unless it's genuinely stuck.
-        // For now, relies on the interval finishing.
+    // 3. Handle Back/Forward Cache (BFCache)
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted) {
+            hideLoaderInstant();
+        }
+    });
+
+    // --- Loader Functions ---
+
+    function showLoader() {
+        if (overlay.classList.contains("hidden")) {
+            overlay.style.display = "flex";
+            // Force reflow
+            void overlay.offsetWidth;
+            overlay.classList.remove("hidden");
+
+            // Reset and start
+            resetLoader();
+            startSimulation();
+        }
+    }
+
+    function resetLoader() {
+        progress = 0;
+        progressBar.style.width = "0%";
+        percentageText.textContent = "0%";
+        statusText.textContent = "Cargando...";
+        statusText.style.opacity = "1";
+    }
+
+    function startSimulation() {
+        // clear existing intervals logic if any
+        if (loadingInterval) clearInterval(loadingInterval);
+        if (messageInterval) clearInterval(messageInterval);
+
+        let messageIndex = 0;
+
+        messageInterval = setInterval(() => {
+            messageIndex = (messageIndex + 1) % messages.length;
+            statusText.style.opacity = "0";
+            setTimeout(() => {
+                statusText.textContent = messages[messageIndex];
+                statusText.style.opacity = "1";
+            }, 200);
+        }, 600);
+
+        loadingInterval = setInterval(() => {
+            const randomIncrement = increment * (0.5 + Math.random());
+            progress += randomIncrement;
+
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(loadingInterval);
+                clearInterval(messageInterval);
+                // Wait for actual load, but if simulation ends first, keep it at 100
+                // For navigation, the page will unload, so this might not even be seen fully
+            }
+            updateUI(progress);
+        }, interval);
+    }
+
+    // Hide loader when page strictly finishes loading resources
+    window.addEventListener("load", function () {
+        progress = 100;
+        updateUI(100);
+        finishLoading();
     });
 
     function updateUI(value) {
+        if (!progressBar) return;
         const rounded = Math.floor(value);
         progressBar.style.width = `${value}%`;
         percentageText.textContent = `${rounded}%`;
     }
 
     function finishLoading() {
-        statusText.textContent = "¡Listo!";
-        progressBar.style.width = "100%";
-        percentageText.textContent = "100%";
+        if (loadingInterval) clearInterval(loadingInterval);
+        if (messageInterval) clearInterval(messageInterval);
 
         setTimeout(() => {
             overlay.classList.add("hidden");
-            // Optional: Remove from DOM after transition
             setTimeout(() => {
                 overlay.style.display = "none";
+                resetLoader(); // Ready for next time
             }, 500);
         }, 500);
+    }
+
+    function hideLoaderInstant() {
+        overlay.classList.add("hidden");
+        overlay.style.display = "none";
+        resetLoader();
     }
 });

@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/components/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/loading.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/loading.css') }}">
     
     @yield('css')
     @stack('styles')
@@ -70,7 +70,7 @@
     </script>
     
     <!-- JavaScript del Dashboard -->
-    <script src="{{ asset('js/components/loading.js') }}"></script>
+    <script src="{{ asset('js/layouts/loading.js') }}"></script>
 
     <script src="{{ asset('js/components/sidebar.js') }}"></script>
     <script src="{{ asset('js/components/footer.js') }}"></script>
