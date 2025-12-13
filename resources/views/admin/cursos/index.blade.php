@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/cursos/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
@@ -81,7 +82,7 @@
                         <tr>
                             <td>
                                 <div class="user-info">
-                                    <div class="avatar-circle" style="background: #fdf4ff; color: #a21caf;">
+                                    <div class="avatar-circle course-avatar">
                                         {{ substr($curso->grado ?? 'C', 0, 1) }}{{ substr($curso->seccion ?? '?', 0, 1) }}
                                     </div>
                                     <div class="details">
@@ -138,10 +139,10 @@
                 </tbody>
             </table>
         </div>
-        
-        <div class="pagination-wrapper">
-            {{ $cursos->appends(request()->query())->links() }}
-        </div>
+    </div>
+    
+    <div class="pagination-wrapper">
+        {{ $cursos->appends(request()->query())->links('pages.cursos') }}
     </div>
 </div>
 @endsection
