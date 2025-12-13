@@ -68,13 +68,14 @@
     <!-- Contenedor Principal (Clone del Index pero con Inputs) -->
     <div class="dashboard-section">
         <div class="profile-container">
-            <!-- Izquierda: Edición de Avatar y Resumen -->
+        <!-- Izquierda: Wrapper para Múltiples Cards -->
+        <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            
+            <!-- Card Principal de Perfil -->
             <div class="profile-card">
                 <div class="profile-avatar-wrapper">
-                    <!-- FIX: Logic identical to index.blade.php -->
                     <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" id="avatarPreview">
                     
-                    <!-- Botón Flotante para Subir Foto -->
                     <button type="button" class="avatar-edit-btn" onclick="document.getElementById('avatarInput').click()" title="Cambiar Foto">
                         <i class="fas fa-camera"></i>
                     </button>
@@ -93,7 +94,7 @@
 
                 <div class="profile-stats">
                     <div class="stat-item">
-                        <span class="stat-value">{{ \Carbon\Carbon::parse($user->created_at)->diffInDays() }}</span>
+                        <span class="stat-value">{{ intval(\Carbon\Carbon::parse($user->created_at)->diffInDays()) }}</span>
                         <span class="stat-label">Días</span>
                     </div>
                     <div class="stat-item">
@@ -111,6 +112,44 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Card Complementario Moderno: Nivel de Perfil -->
+            <div class="profile-card" style="border-top: none; padding: 2rem; align-items: flex-start; text-align: left;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="width: 40px; height: 40px; background: rgba(220, 38, 38, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary-red);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin: 0; color: var(--text-dark);">Nivel de Perfil</h3>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Estadísticas de cuenta</span>
+                    </div>
+                </div>
+
+                <div style="width: 100%; margin-bottom: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <span style="color: var(--text-dark); font-weight: 600;">Completado</span>
+                        <span style="color: var(--primary-red);">85%</span>
+                    </div>
+                    <div style="width: 100%; height: 6px; background: var(--bg-body); border-radius: 3px; overflow: hidden;">
+                        <div style="width: 85%; height: 100%; background: var(--primary-red); border-radius: 3px;"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%;">
+                    <div style="background: var(--bg-body); padding: 1rem; border-radius: 12px; text-align: center;">
+                        <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.2rem; margin-bottom: 0.5rem;"></i>
+                        <span style="display: block; font-size: 0.8rem; color: var(--text-muted);">Email</span>
+                        <span style="font-weight: 600; color: var(--text-dark);">Verificado</span>
+                    </div>
+                    <div style="background: var(--bg-body); padding: 1rem; border-radius: 12px; text-align: center;">
+                        <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.5rem;"></i>
+                        <span style="display: block; font-size: 0.8rem; color: var(--text-muted);">Seguridad</span>
+                        <span style="font-weight: 600; color: var(--text-dark);">Alta</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
             <!-- Derecha: Formulario de Edición -->
             <div class="profile-content">
