@@ -452,5 +452,5 @@
 /* Pagination */
 .pagination-wrapper {
     width: 100%;
-    margin-top: 1rem; /* Added gap between table and pagination */
+    margin-top: 3rem; /* Increased gap significantly */
 }
