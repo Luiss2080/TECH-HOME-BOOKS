@@ -100,8 +100,8 @@
                     <div style="margin-top: 2rem; width: 100%; text-align: left;">
                         <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Accesos Rápidos</h4>
                         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s; background: transparent; border: 1px solid var(--border-color); color: var(--text-dark); box-shadow: none;">
-                                <i class="fas fa-user-edit" style="color: var(--primary-red);"></i> Editar Perfil
+                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
+                                <i class="fas fa-user-edit"></i> Editar Perfil
                             </a>
                         </div>
                     </div>
@@ -142,6 +142,30 @@
                             <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.3rem;"></i>
                             <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Seguridad</span>
                             <span style="font-weight: 600; color: var(--text-dark); font-size: 0.85rem;">Alta</span>
+                        </div>
+                    </div>
+
+                    <!-- Lista de Detalles Adicionales -->
+                    <div style="width: 100%;">
+                        <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">Detalles de Cuenta</h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                                <span style="color: var(--text-muted);"><i class="fas fa-fingerprint" style="width: 20px;"></i> ID Usuario</span>
+                                <span style="color: var(--text-dark); font-family: monospace; background: var(--bg-body); padding: 0.2rem 0.5rem; border-radius: 4px;">#{{ str_pad($user->id, 6, '0', STR_PAD_LEFT) }}</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                                <span style="color: var(--text-muted);"><i class="fas fa-globe-americas" style="width: 20px;"></i> Región</span>
+                                <span style="color: var(--text-dark);">Bolivia (BOT)</span>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                                <span style="color: var(--text-muted);"><i class="fas fa-key" style="width: 20px;"></i> 2FA</span>
+                                <a href="#" class="action-btn-red" style="padding: 0.3rem 0.8rem; font-size: 0.75rem; width: auto; min-width: auto; border-radius: 8px;">
+                                    Activar <i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
