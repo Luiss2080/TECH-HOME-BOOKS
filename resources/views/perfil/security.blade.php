@@ -74,7 +74,7 @@
             <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 2rem; height: fit-content;">
                 
                 <!-- Card 1: Avatar -->
-                <div class="profile-card" style="width: 100%; position: relative; top: 0;">
+                <div class="profile-card" style="width: 100%; position: relative; top: 0; padding: 1rem;">
                     <div class="profile-avatar-wrapper">
                         <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" id="avatarPreview">
                         
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 2rem; width: 100%; text-align: left;">
+                    <div style="margin-top: 1.5rem; width: 100%; text-align: left;">
                         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
                             <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: center; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
                                 <i class="fas fa-user-edit"></i> Editar Perfil
@@ -191,7 +191,7 @@
 
             <!-- Derecha: Formulario de Seguridad -->
             <div class="profile-content">
-                <div class="settings-card" style="min-height: 535px;">
+                <div class="settings-card">
                     <div class="card-header">
                         <div class="card-icon">
                             <i class="fas fa-lock"></i>
@@ -288,7 +288,7 @@
                         </li>
                         <li style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
                             <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark);">Historial de Actividad</span>
-                            <a href="#" style="color: var(--primary-red); font-size: 0.85rem; text-decoration: none; font-weight: 600;">Ver Todo <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i></a>
+                            <a href="#" class="action-btn-red" style="padding: 0.4rem 1rem; font-size: 0.8rem; width: auto; min-width: auto; border-radius: 8px;">Ver Todo <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i></a>
                         </li>
                     </ul>
                 </div>
