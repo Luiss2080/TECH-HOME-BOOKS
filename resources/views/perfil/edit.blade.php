@@ -71,13 +71,8 @@
             <!-- Izquierda: Edición de Avatar y Resumen -->
             <div class="profile-card">
                 <div class="profile-avatar-wrapper">
-                    @if($user->avatar)
-                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="Perfil" class="profile-avatar" id="avatarPreview">
-                    @else
-                        <div class="profile-avatar" style="display: flex; align-items: center; justify-content: center; background: #ffe4e6; color: var(--primary-red); font-size: 3rem; font-weight: bold;">
-                            {{ strtoupper(substr($user->name, 0, 1) . substr($user->apellido ?? '', 0, 1)) }}
-                        </div>
-                    @endif
+                    <!-- FIX: Logic identical to index.blade.php -->
+                    <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" id="avatarPreview">
                     
                     <!-- Botón Flotante para Subir Foto -->
                     <button type="button" class="avatar-edit-btn" onclick="document.getElementById('avatarInput').click()" title="Cambiar Foto">
@@ -219,9 +214,12 @@
                             </div>
                         </div>
 
-                        <div class="form-actions">
-                            <a href="{{ route('perfil.index') }}" class="btn-cancel" style="margin-right: 1rem; padding: 1rem 2rem; color: var(--text-dark); text-decoration: none; font-weight: 600;">Cancelar</a>
-                            <button type="submit" class="btn-submit">
+                        <!-- FIX: Use action-btn-red for the submit button -->
+                        <div class="form-actions" style="gap: 1.5rem;">
+                            <a href="{{ route('perfil.index') }}" class="btn-cancel" style="padding: 1rem 2rem; color: var(--text-dark); text-decoration: none; font-weight: 700; border: 1px solid var(--border-color); border-radius: 12px; transition: all 0.3s;">
+                                Cancelar
+                            </a>
+                            <button type="submit" class="action-btn-red" style="border: none; cursor: pointer; font-size: 1rem; width: auto; padding: 1rem 2.5rem;">
                                 <i class="fas fa-save"></i> Guardar Cambios
                             </button>
                         </div>
