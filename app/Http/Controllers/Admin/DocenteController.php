@@ -23,7 +23,8 @@ class DocenteController extends Controller
             ->orWhere('especialidad', 'like', "%{$search}%");
         }
 
-        $docentes = $query->paginate(2);
+        $perPage = $request->input('per_page', 10);
+        $docentes = $query->paginate($perPage);
 
         return view('admin.docentes.index', compact('docentes'));
     }

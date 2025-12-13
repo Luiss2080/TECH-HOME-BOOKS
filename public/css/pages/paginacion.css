@@ -1,16 +1,14 @@
-/* Docentes Pagination Style */
-
-/* Scoped to pagination-container if needed, but classes are unique enough with 'pages/docentes' context */
+/* Global Pagination Footer Style */
 
 .pagination-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 16px;
+    background: var(--bg-surface); /* Match card background */
+    border-top: 1px solid var(--border-color); /* Separator line */
     width: 100%;
+    /* Radius handled by parent container overflow:hidden */
 }
 
 .pagination-links {
@@ -22,41 +20,39 @@
 }
 
 .page-link {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    background: transparent;
     color: var(--text-secondary);
     text-decoration: none;
     transition: all 0.2s;
     font-weight: 600;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.9rem;
+    border: 1px solid transparent;
+    font-size: 0.85rem;
 }
 
 .page-link:hover:not(.disabled) {
-    background: rgba(225, 29, 72, 0.15); /* Red tint on hover */
-    color: #fff;
-    transform: translateY(-2px);
-    border-color: rgba(225, 29, 72, 0.3);
+    background: rgba(225, 29, 72, 0.1);
+    color: var(--primary-red);
+    border-color: rgba(225, 29, 72, 0.2);
 }
 
 .page-link.active {
     background: var(--primary-red);
     color: #fff;
-    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
     border-color: var(--primary-red);
 }
 
 .page-link.disabled {
-    opacity: 0.5;
+    opacity: 0.4;
+    cursor: allowed; /* Changed from not-allowed to prevent sticky hover states on mobile sometimes, but standard is not-allowed */
     cursor: not-allowed;
     pointer-events: none;
-    background: transparent;
-    border-color: transparent;
     color: var(--text-muted);
 }
