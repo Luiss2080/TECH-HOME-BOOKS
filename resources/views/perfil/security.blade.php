@@ -69,45 +69,62 @@
     <div class="dashboard-section">
         <div class="profile-container">
             
-            <!-- Izquierda: Sidebar Sticky (Reutilizado de Edit) -->
-            <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 0; position: sticky; top: 2rem; height: fit-content;">
+            <!-- Izquierda: Sidebar Sticky con Multiple Cards -->
+            <!-- FIX: Apply sticky here, and align-self start to prevent stretching -->
+            <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 2rem; height: fit-content;">
                 
                 <!-- Card 1: Avatar -->
-                <div class="profile-card" style="width: 100%; position: relative; top: 0; padding: 1.2rem; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none; z-index: 2;">
-                    <div class="profile-avatar-wrapper" style="margin-bottom: 0.5rem;">
-                        <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" style="width: 100px; height: 100px;">
+                <div class="profile-card" style="width: 100%; position: relative; top: 0;">
+                    <div class="profile-avatar-wrapper">
+                        <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" id="avatarPreview">
+                        
+                        <!-- Removed edit button for security view context or keep it if desired, but user asked for "IGUAL". 
+                             If "IGUAL", I should probably keep it even if it doesn't work or hide it? 
+                             The prompt says "CARDS ... SEAN IGUAL". I will keep the structure exactly. 
+                             However, the avatar upload form is specific to the edit page. 
+                             I will keep the VISUALS but maybe disable the functional part if it requires JS not present? 
+                             The JS is in 'js/perfil/edit.js' or similar. 
+                             In security view, renaming the form ID might be safer if we don't want conflicts, but for "IGUAL" I'll stick to the structure.
+                             I will change the link at the bottom to "Editar Perfil" though, as discussed. -->
+                        
+                        <!-- Keeping the edit button visual but maybe it shouldn't be functional on security page? 
+                             The user said "IGUAL". I will copy it. -->
+                        <button type="button" class="avatar-edit-btn" style="cursor: default; opacity: 0.5;" title="Ir a editar perfil para cambiar foto">
+                            <i class="fas fa-camera"></i>
+                        </button>
                     </div>
 
-                    <h2 class="profile-name" style="font-size: 1.3rem; margin-bottom: 0.2rem;">{{ $user->name }}</h2>
-                    <span class="profile-role" style="font-size: 0.85rem; margin-bottom: 0.3rem;">
+                    <h2 class="profile-name">{{ $user->name }}</h2>
+                    <span class="profile-role">
                         <i class="fas fa-user-shield"></i> {{ $user->rol ?? 'Administrador' }}
                     </span>
                     
-                    <p style="color: var(--text-muted); margin-bottom: 0.8rem; font-size: 0.8rem;">{{ $user->email }}</p>
+                    <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">{{ $user->email }}</p>
 
-                    <div class="profile-stats" style="margin-bottom: 1rem; padding: 0.8rem 0;">
+                    <div class="profile-stats">
                         <div class="stat-item">
-                            <span class="stat-value" style="font-size: 1.1rem;">{{ intval(\Carbon\Carbon::parse($user->created_at)->diffInDays()) }}</span>
-                            <span class="stat-label" style="font-size: 0.7rem;">Días</span>
+                            <span class="stat-value">{{ intval(\Carbon\Carbon::parse($user->created_at)->diffInDays()) }}</span>
+                            <span class="stat-label">Días</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-value" style="color: #10b981; font-size: 1.1rem;">Active</span>
-                            <span class="stat-label" style="font-size: 0.7rem;">Estado</span>
+                            <span class="stat-value" style="color: #10b981;">Active</span>
+                            <span class="stat-label">Estado</span>
                         </div>
                     </div>
                     
-                    <div style="width: 100%; text-align: left;">
-                        <h4 style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;">Accesos Rápidos</h4>
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: center; padding: 0.6rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 10px; text-decoration: none; transition: all 0.2s; font-size: 0.9rem;">
+                    <div style="margin-top: 2rem; width: 100%; text-align: left;">
+                        <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Configuración</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
                                 <i class="fas fa-user-edit"></i> Editar Perfil
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: Nivel de Perfil (Reutilizado) -->
-                <div class="profile-card" style="width: 100%; position: relative; padding: 1.5rem; align-items: flex-start; text-align: left; border-top-left-radius: 0; border-top-right-radius: 0; margin-top: -5px; z-index: 1;">
+                <!-- Card 2: Nivel de Perfil y Detalles de Cuenta -->
+                <div class="profile-card" style="width: 100%; position: relative; padding: 1.5rem; align-items: flex-start; text-align: left;">
+                    <!-- Header: Nivel -->
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; width: 100%; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
                         <div style="width: 45px; height: 45px; background: rgba(220, 38, 38, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary-red); font-size: 1.2rem;">
                             <i class="fas fa-chart-line"></i>
@@ -118,7 +135,8 @@
                         </div>
                     </div>
 
-                    <div style="width: 100%; margin-bottom: 1rem;">
+                    <!-- Progreso -->
+                    <div style="width: 100%; margin-bottom: 1.5rem;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
                             <span style="color: var(--text-dark); font-weight: 600;">Intermedio</span>
                             <span style="color: var(--primary-red); font-weight: 700;">85%</span>
@@ -126,40 +144,44 @@
                         <div style="width: 100%; height: 6px; background: var(--bg-body); border-radius: 3px; overflow: hidden;">
                             <div style="width: 85%; height: 100%; background: var(--primary-red); border-radius: 3px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);"></div>
                         </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            <i class="fas fa-info-circle"></i> Completa tu biografía para llegar al 100%.
+                        </p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; width: 100%; margin-bottom: 1rem;">
-                        <div style="background: var(--bg-body); padding: 0.5rem; border-radius: 10px; text-align: center;">
-                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.2rem; margin-bottom: 0.2rem;"></i>
+                    <!-- Grid de Badges -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; width: 100%; margin-bottom: 1.5rem;">
+                        <div style="background: var(--bg-body); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.2rem; margin-bottom: 0.3rem;"></i>
                             <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Email</span>
-                            <span style="font-weight: 600; color: var(--text-dark); font-size: 0.8rem;">Verificado</span>
+                            <span style="font-weight: 600; color: var(--text-dark); font-size: 0.85rem;">Verificado</span>
                         </div>
-                        <div style="background: var(--bg-body); padding: 0.5rem; border-radius: 10px; text-align: center;">
-                            <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.2rem;"></i>
+                        <div style="background: var(--bg-body); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.3rem;"></i>
                             <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Seguridad</span>
-                            <span style="font-weight: 600; color: var(--text-dark); font-size: 0.8rem;">Alta</span>
+                            <span style="font-weight: 600; color: var(--text-dark); font-size: 0.85rem;">Alta</span>
                         </div>
                     </div>
 
                     <!-- Lista de Detalles Adicionales -->
                     <div style="width: 100%;">
-                        <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: 0.5px;">Detalles de Cuenta</h4>
+                        <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">Detalles de Cuenta</h4>
                         
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
                                 <span style="color: var(--text-muted);"><i class="fas fa-fingerprint" style="width: 20px;"></i> ID Usuario</span>
                                 <span style="color: var(--text-dark); font-family: monospace; background: var(--bg-body); padding: 0.2rem 0.5rem; border-radius: 4px;">#{{ str_pad($user->id, 6, '0', STR_PAD_LEFT) }}</span>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
                                 <span style="color: var(--text-muted);"><i class="fas fa-globe-americas" style="width: 20px;"></i> Región</span>
                                 <span style="color: var(--text-dark);">Bolivia (BOT)</span>
                             </div>
 
-                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
                                 <span style="color: var(--text-muted);"><i class="fas fa-key" style="width: 20px;"></i> 2FA</span>
-                                <a href="#" class="action-btn-red" style="padding: 0.2rem 0.6rem; font-size: 0.7rem; width: auto; min-width: auto; border-radius: 6px;">
-                                    Activar <i class="fas fa-chevron-right" style="font-size: 0.6rem;"></i>
+                                <a href="#" class="action-btn-red" style="padding: 0.3rem 0.8rem; font-size: 0.75rem; width: auto; min-width: auto; border-radius: 8px;">
+                                    Activar <i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i>
                                 </a>
                             </div>
                         </div>
