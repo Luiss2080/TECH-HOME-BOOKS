@@ -115,17 +115,25 @@
 
         <!-- Perfil de Usuario -->
         <div class="user-profile-container">
+            @php
+                $loggedInUser = auth()->user() ?? (session('user_id') ? \App\Models\User::find(session('user_id')) : null);
+                $initial = $loggedInUser ? substr($loggedInUser->name, 0, 1) : (session('user_name') ? substr(session('user_name'), 0, 1) : 'U');
+                $userName = $loggedInUser ? $loggedInUser->name : (session('user_name') ?? 'Usuario');
+                $userRole = $loggedInUser ? ($loggedInUser->rol ?? 'Admin') : 'ADMIN';
+                $userEmail = $loggedInUser ? $loggedInUser->email : (session('user_email') ?? 'admin@sistema.com');
+            @endphp
+
             <button class="profile-trigger" id="profileDropdownToggle" aria-expanded="false">
                 <div class="user-avatar-small">
-                    @if(session('user_id'))
-                        <span>{{ substr(session('user_name') ?? 'A', 0, 1) }}</span>
+                    @if($loggedInUser && $loggedInUser->avatar && file_exists(public_path('images/avatars/'.$loggedInUser->avatar)))
+                        <img src="{{ asset('images/avatars/'.$loggedInUser->avatar) }}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     @else
-                        <span>U</span>
+                        <span>{{ $initial }}</span>
                     @endif
                 </div>
                 <div class="user-meta-compact">
-                    <span class="user-name">{{ session('user_name') ?? 'Admin' }}</span>
-                    <span class="user-role-badge">ADMIN</span>
+                    <span class="user-name">{{ $userName }}</span>
+                    <span class="user-role-badge">{{ $userRole }}</span>
                 </div>
                 <svg class="dropdown-arrow-small" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -136,15 +144,15 @@
             <div class="profile-dropdown compact" id="profileDropdown">
                 <div class="pd-header-compact">
                     <div class="user-avatar-med">
-                        @if(session('user_id'))
-                            <span>{{ substr(session('user_name') ?? 'A', 0, 1) }}</span>
+                        @if($loggedInUser && $loggedInUser->avatar && file_exists(public_path('images/avatars/'.$loggedInUser->avatar)))
+                            <img src="{{ asset('images/avatars/'.$loggedInUser->avatar) }}" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                         @else
-                            <span>U</span>
+                            <span>{{ $initial }}</span>
                         @endif
                     </div>
                     <div class="pd-user-info">
-                        <strong>{{ session('user_name') ?? 'Usuario' }}</strong>
-                        <small>{{ session('user_email') ?? 'admin@sistema.com' }}</small>
+                        <strong>{{ $userName }}</strong>
+                        <small>{{ $userEmail }}</small>
                     </div>
                 </div>
                 

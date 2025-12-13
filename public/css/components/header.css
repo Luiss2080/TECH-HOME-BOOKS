@@ -104,7 +104,7 @@ body.dark-mode .search-input {
 .notification-btn {
     background: transparent;
     border: 1px solid transparent;
-    color: var(--header-text);
+    color: var(--primary-red); /* Default Red */
     cursor: pointer;
     width: 42px;
     height: 42px;
@@ -120,9 +120,10 @@ body.dark-mode .search-input {
 .notification-btn:hover,
 .action-btn.active,
 .notification-btn.active {
-    background: var(--bg-surface-secondary);
-    color: var(--primary-red);
+    background: var(--primary-red); /* Hover Background Red */
+    color: #ffffff; /* Hover Text White */
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3); /* Add glow effect */
 }
 
 /* Notification Badge */
