@@ -29,7 +29,7 @@ class AdminCheck
             if ($request->expectsJson()) {
                 return response()->json(['error' => 'Acceso denegado'], 403);
             }
-            return redirect()->route('login')->with('error', 'No tienes permisos de administrador para acceder a esta sección.');
+            abort(403);
         }
 
         return $next($request);

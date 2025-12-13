@@ -1,34 +1,26 @@
-/* ============================================
-   403 ERROR PAGE JS
-   ============================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    const logOutput = document.getElementById("logOutput");
+    const logs = [
+        "> Verifying credentials...",
+        "> Access token invalid or expired...",
+        "> 403 Forbidden Exception...",
+        "> Security protocols active...",
+        "> Incident logged.",
+    ];
+    let index = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const highlight = document.querySelector(".highlight");
-
-    if (highlight) {
-        // Shake animation function
-        function shakeElement() {
-            highlight.style.transition = "transform 0.1s";
-            highlight.style.transform = "translateX(5px)";
-            setTimeout(() => {
-                highlight.style.transform = "translateX(-5px)";
+    if (logOutput) {
+        setInterval(() => {
+            if (index < logs.length) {
+                logOutput.style.opacity = "0";
                 setTimeout(() => {
-                    highlight.style.transform = "translateX(5px)";
-                    setTimeout(() => {
-                        highlight.style.transform = "translateX(-5px)";
-                        setTimeout(() => {
-                            highlight.style.transform = "translateX(0)";
-                        }, 100);
-                    }, 100);
-                }, 100);
-            }, 100);
-        }
-
-        // Shake on load
-        setTimeout(shakeElement, 500);
-
-        // Shake on click/hover
-        highlight.addEventListener("mouseover", shakeElement);
-        highlight.addEventListener("click", shakeElement);
+                    logOutput.innerText = logs[index];
+                    logOutput.style.opacity = "1";
+                    index++;
+                }, 200);
+            } else {
+                index = 0;
+            }
+        }, 2000);
     }
 });

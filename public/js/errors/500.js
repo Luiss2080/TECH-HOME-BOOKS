@@ -1,24 +1,25 @@
-/* ============================================
-   500 ERROR PAGE JS
-   ============================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    const logOutput = document.getElementById("logOutput");
+    const logs = [
+        "> System Integrity Check...",
+        "> Internal Server Error Detected...",
+        "> Stack Trace Dumped...",
+        "> Attempting recovery...",
+        "> Please contact Admin.",
+    ];
+    let index = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const highlight = document.querySelector(".highlight");
-
-    if (highlight) {
-        // Random glitch intensity
+    if (logOutput) {
         setInterval(() => {
-            const intensity = Math.random() * 10;
-            if (intensity > 7) {
-                const x = Math.random() * 10 - 5;
-                const y = Math.random() * 10 - 5;
-
-                highlight.style.textShadow = `${x}px ${y}px 0 #a855f7, ${-x}px ${-y}px 0 #ffffff`;
-
+            if (index < logs.length) {
+                logOutput.style.opacity = "0";
                 setTimeout(() => {
-                    highlight.style.textShadow =
-                        "0 0 30px rgba(168, 85, 247, 0.6), 0 0 60px rgba(168, 85, 247, 0.4)";
-                }, 100);
+                    logOutput.innerText = logs[index];
+                    logOutput.style.opacity = "1";
+                    index++;
+                }, 200);
+            } else {
+                index = 0;
             }
         }, 2000);
     }

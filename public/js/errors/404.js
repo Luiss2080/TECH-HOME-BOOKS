@@ -1,23 +1,27 @@
-/* ============================================
-   404 ERROR PAGE JS
-   ============================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    const logOutput = document.getElementById("logOutput");
+    const logs = [
+        "> Searching database...",
+        "> Route parameter mismatch...",
+        "> 404 Exception caught...",
+        "> Displaying fallback view...",
+        "> Ready for navigation.",
+    ];
+    let index = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const highlight = document.querySelector(".highlight");
-    const container = document.querySelector(".error-container");
-
-    if (highlight && container) {
-        // Parallax effect on mouse move
-        container.addEventListener("mousemove", (e) => {
-            const x = (window.innerWidth - e.pageX * 2) / 50;
-            const y = (window.innerHeight - e.pageY * 2) / 50;
-
-            highlight.style.transform = `translateX(${x}px) translateY(${y}px)`;
-        });
-
-        // Reset on mouse leave
-        container.addEventListener("mouseleave", () => {
-            highlight.style.transform = "translateX(0) translateY(0)";
-        });
+    // Simple typing log effect for the error page
+    if (logOutput) {
+        setInterval(() => {
+            if (index < logs.length) {
+                logOutput.style.opacity = "0";
+                setTimeout(() => {
+                    logOutput.innerText = logs[index];
+                    logOutput.style.opacity = "1";
+                    index++;
+                }, 200);
+            } else {
+                index = 0; // Loop or stop? Let's loop for activity
+            }
+        }, 2000);
     }
 });
