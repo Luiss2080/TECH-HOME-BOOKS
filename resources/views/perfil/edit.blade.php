@@ -173,7 +173,9 @@
 
                             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
                                 <span style="color: var(--text-muted);"><i class="fas fa-key" style="width: 20px;"></i> 2FA</span>
-                                <span style="color: var(--text-muted); font-size: 0.8rem; cursor: pointer; text-decoration: underline;">Activar <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></span>
+                                <a href="#" class="action-btn-red" style="padding: 0.3rem 0.8rem; font-size: 0.75rem; width: auto; min-width: auto; border-radius: 8px;">
+                                    Activar <i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
