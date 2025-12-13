@@ -285,8 +285,9 @@
 .avatar-circle {
     width: 42px;
     height: 42px;
-    background: #ffe4e6;
+    background: rgba(225, 29, 72, 0.15);
     color: var(--primary-red);
+    border: 1px solid rgba(225, 29, 72, 0.2);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -346,28 +347,33 @@
 }
 
 .badge.level {
-    background: #f3e8ff;
-    color: #7e22ce;
+    background: rgba(126, 34, 206, 0.15);
+    color: #a855f7;
+    border: 1px solid rgba(126, 34, 206, 0.3);
 }
 
 .badge.level.inicial {
-    background: #ffedd5;
-    color: #c2410c;
+    background: rgba(194, 65, 12, 0.15);
+    color: #fb923c;
+    border: 1px solid rgba(194, 65, 12, 0.3);
 }
 
 .badge.level.primaria {
-    background: #e0f2fe;
-    color: #0369a1;
+    background: rgba(3, 105, 161, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(3, 105, 161, 0.3);
 }
 
 .badge.level.secundaria {
-    background: #f1f5f9;
-    color: #475569;
+    background: rgba(241, 245, 249, 0.1);
+    color: #94a3b8;
+    border: 1px solid rgba(241, 245, 249, 0.2);
 }
 
 .badge.students {
-    background: #f3f4f6;
-    color: #111827;
+    background: rgba(17, 24, 39, 0.4);
+    color: #d1d5db;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Actions */
@@ -397,41 +403,44 @@
 
 /* View Button - Blue */
 .btn-icon.view {
-    background: #eff6ff;
-    color: #2563eb;
-    border-color: #bfdbfe;
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-color: rgba(59, 130, 246, 0.3);
 }
 
 .btn-icon.view:hover {
     background: #2563eb;
     color: white;
     border-color: #2563eb;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
 }
 
 /* Edit Button - Yellow/Orange */
 .btn-icon.edit {
-    background: #fff7ed;
-    color: #ea580c;
-    border-color: #fed7aa;
+    background: rgba(249, 115, 22, 0.15);
+    color: #fb923c;
+    border-color: rgba(249, 115, 22, 0.3);
 }
 
 .btn-icon.edit:hover {
     background: #ea580c;
     color: white;
     border-color: #ea580c;
+    box-shadow: 0 0 15px rgba(234, 88, 12, 0.4);
 }
 
 /* Delete Button - Red */
 .btn-icon.delete {
-    background: #fef2f2;
-    color: #dc2626;
-    border-color: #fecaca;
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.3);
 }
 
 .btn-icon.delete:hover {
     background: #dc2626;
     color: white;
     border-color: #dc2626;
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
 }
 
 /* Pagination */
