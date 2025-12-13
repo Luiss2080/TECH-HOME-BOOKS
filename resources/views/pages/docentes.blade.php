@@ -3,11 +3,11 @@
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <span class="page-link disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                <span aria-hidden="true">&lsaquo;</span>
+                <i class="fas fa-chevron-left"></i>
             </span>
         @else
             <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="page-link" aria-label="@lang('pagination.previous')">
-                &lsaquo;
+                <i class="fas fa-chevron-left"></i>
             </a>
         @endif
 
@@ -30,14 +30,26 @@
             @endif
         @endforeach
 
+        {{-- Ghost Pages (Fill up to 5) --}}
+        @php
+            $totalPages = $paginator->lastPage();
+            $minPages = 5;
+        @endphp
+
+        @if ($totalPages < $minPages)
+            @for ($i = $totalPages + 1; $i <= $minPages; $i++)
+                <span class="page-link disabled ghost-page" aria-disabled="true">{{ $i }}</span>
+            @endfor
+        @endif
+
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
             <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="page-link" aria-label="@lang('pagination.next')">
-                &rsaquo;
+                <i class="fas fa-chevron-right"></i>
             </a>
         @else
             <span class="page-link disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                <span aria-hidden="true">&rsaquo;</span>
+                <i class="fas fa-chevron-right"></i>
             </span>
         @endif
     </div>
