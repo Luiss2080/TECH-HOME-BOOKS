@@ -1,9 +1,10 @@
 /* Reportes Index CSS */
 
 .reportes-container {
-    padding: 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
 }
 
 /* Header */
@@ -54,8 +55,20 @@
 /* Grid Layout */
 .reports-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .reports-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Report Card */
@@ -92,20 +105,24 @@
 
 /* Card Themes */
 .card-icon.students {
-    background: #dcfce7;
-    color: #16a34a;
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.3);
 }
 .card-icon.teachers {
-    background: #e0e7ff;
-    color: #4f46e5;
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.3);
 }
 .card-icon.grades {
-    background: #fef9c3;
-    color: #ca8a04;
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.3);
 }
 .card-icon.subjects {
-    background: #f3e8ff;
-    color: #9333ea;
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .card-content h3 {
@@ -148,39 +165,51 @@
 
 /* Report Button Themes */
 .btn-report.students {
-    background: #dcfce7;
-    color: #166534;
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.3);
 }
 .btn-report.students:hover {
     background: #16a34a;
     color: white;
+    border-color: #16a34a;
+    box-shadow: 0 0 15px rgba(22, 163, 74, 0.4);
 }
 
 .btn-report.teachers {
-    background: #e0e7ff;
-    color: #3730a3;
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.3);
 }
 .btn-report.teachers:hover {
     background: #4f46e5;
     color: white;
+    border-color: #4f46e5;
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
 }
 
 .btn-report.grades {
-    background: #fef9c3;
-    color: #854d0e;
+    background: rgba(234, 179, 8, 0.15);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.3);
 }
 .btn-report.grades:hover {
     background: #ca8a04;
     color: white;
+    border-color: #ca8a04;
+    box-shadow: 0 0 15px rgba(202, 138, 4, 0.4);
 }
 
 .btn-report.subjects {
-    background: #f3e8ff;
-    color: #6b21a8;
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.3);
 }
 .btn-report.subjects:hover {
     background: #9333ea;
     color: white;
+    border-color: #9333ea;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
 }
 
 /* Primary Action Button Reuse (from Dashboard/Roles) */
@@ -213,72 +242,88 @@
     align-items: center;
     justify-content: center;
     border: none;
-    background: #fff1f2; /* Light red bg */
-    color: var(--primary-red);
+    background: rgba(239, 68, 68, 0.15); /* Transparent red bg */
+    color: #f87171;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 1rem;
-    border: 1px solid #fecdd3; /* Light red border */
+    border: 1px solid rgba(239, 68, 68, 0.3); /* Transparent red border */
 }
 
 .btn-quick-export:hover {
-    background: var(--primary-red);
+    background: #dc2626;
     color: white;
-    border-color: var(--primary-red);
+    border-color: #dc2626;
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.2);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
 }
 
 /* Additional Card Themes */
 .card-icon.attendance {
-    background: #e0f2fe;
-    color: #0284c7;
+    background: rgba(14, 165, 233, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(14, 165, 233, 0.3);
 }
 .btn-report.attendance {
-    background: #e0f2fe;
-    color: #0369a1;
+    background: rgba(14, 165, 233, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(14, 165, 233, 0.3);
 }
 .btn-report.attendance:hover {
     background: #0284c7;
     color: white;
+    border-color: #0284c7;
+    box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
 }
 
 .card-icon.users {
-    background: #f3f4f6;
-    color: #4b5563;
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.3);
 }
 .btn-report.users {
-    background: #f3f4f6;
-    color: #374151;
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.3);
 }
 .btn-report.users:hover {
-    background: #4b5563;
+    background: #475569;
     color: white;
+    border-color: #475569;
+    box-shadow: 0 0 15px rgba(71, 85, 105, 0.4);
 }
 
 .card-icon.library {
-    background: #ffedd5;
-    color: #c2410c;
+    background: rgba(249, 115, 22, 0.15);
+    color: #fb923c;
+    border: 1px solid rgba(249, 115, 22, 0.3);
 }
 .btn-report.library {
-    background: #ffedd5;
-    color: #9a3412;
+    background: rgba(249, 115, 22, 0.15);
+    color: #fb923c;
+    border: 1px solid rgba(249, 115, 22, 0.3);
 }
 .btn-report.library:hover {
     background: #ea580c;
     color: white;
+    border-color: #ea580c;
+    box-shadow: 0 0 15px rgba(234, 88, 12, 0.4);
 }
 
 .card-icon.labs {
-    background: #ccfbf1;
-    color: #0d9488;
+    background: rgba(20, 184, 166, 0.15);
+    color: #2dd4bf;
+    border: 1px solid rgba(20, 184, 166, 0.3);
 }
 .btn-report.labs {
-    background: #ccfbf1;
-    color: #0f766e;
+    background: rgba(20, 184, 166, 0.15);
+    color: #2dd4bf;
+    border: 1px solid rgba(20, 184, 166, 0.3);
 }
 .btn-report.labs:hover {
     background: #0d9488;
     color: white;
+    border-color: #0d9488;
+    box-shadow: 0 0 15px rgba(13, 148, 136, 0.4);
 }
