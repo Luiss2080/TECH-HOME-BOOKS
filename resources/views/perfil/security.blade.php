@@ -101,7 +101,7 @@
                     
                     <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">{{ $user->email }}</p>
 
-                    <div class="profile-stats">
+                    <div class="profile-stats" style="margin-bottom: 0.5rem; padding: 0.8rem 0; padding-top: 0.8rem; margin-top: 0.5rem;">
                         <div class="stat-item">
                             <span class="stat-value">{{ intval(\Carbon\Carbon::parse($user->created_at)->diffInDays()) }}</span>
                             <span class="stat-label">Días</span>
@@ -112,10 +112,9 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 1rem; width: 100%; text-align: left;">
-                        <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Configuración</h4>
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: center; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
+                    <div style="margin-top: 0.8rem; width: 100%; text-align: left;">
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: center; display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
                                 <i class="fas fa-user-edit"></i> Editar Perfil
                             </a>
                         </div>
