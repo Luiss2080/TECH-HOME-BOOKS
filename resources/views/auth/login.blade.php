@@ -17,6 +17,8 @@
 
     <!-- CSS del login -->
     <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
+    <!-- CSS del Loading Screen -->
+    <link rel="stylesheet" href="{{ asset('css/layouts/loading.css') }}">
 
     <!-- Meta tags para SEO -->
     <meta name="description" content="Accede a tu cuenta en la Asociación 1ro de Junio. Sistema administrativo para gestión de conductores y servicios de mototaxi.">
@@ -31,6 +33,9 @@
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    @include('layouts.loading')
+
     <!-- Background animado -->
     <div class="login-background">
         <div class="bg-shapes">
@@ -313,6 +318,7 @@
 
     <!-- JavaScript -->
     <script src="{{ asset('js/auth/login.js') }}"></script>
+    <script src="{{ asset('js/layouts/loading.js') }}"></script>
 
     <!-- Analytics (opcional) -->
     <script>

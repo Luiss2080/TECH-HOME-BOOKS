@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let messageInterval = null;
 
     // Simulation Config
-    const duration = 1500; // Faster for navigation
+    const duration = 3000; // Increased to 3s as requested
     const interval = 30;
     const steps = duration / interval;
     const increment = 100 / steps;
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 overlay.style.display = "none";
                 resetLoader(); // Ready for next time
             }, 500);
-        }, 500);
+        }, 1000); // Wait 1s before hiding
     }
 
     function hideLoaderInstant() {
