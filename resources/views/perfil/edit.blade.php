@@ -3,17 +3,59 @@
 @section('title', 'Editar Perfil')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/perfil/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/perfil/edit.css') }}">
 @endsection
 
 @section('content')
 <div class="dashboard-section">
-    <div class="section-header-centered">
-        <div class="section-icon">
-            <i class="fas fa-user-edit fa-2x"></i>
+    <!-- Header Tipo Panel de Control -->
+    <div class="control-panel">
+        <div class="panel-header">
+            <div class="header-title">
+                <div class="icon-wrapper">
+                    <i class="fas fa-user-edit"></i>
+                </div>
+                <div class="title-content">
+                    <h2>Editar Información</h2>
+                    <p class="subtitle">Actualiza tus datos personales de contacto</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="{{ route('perfil.index') }}" class="btn-primary-action" style="background: var(--bg-surface); color: var(--text-dark); border: 1px solid var(--border-color);">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Volver al Perfil</span>
+                </a>
+            </div>
         </div>
-        <h2 class="section-title-large">Editar Información</h2>
-        <p class="section-subtitle">Actualiza tus datos personales de contacto</p>
+
+        <div class="panel-content">
+            <!-- Barra de Estado Informativa -->
+            <div class="stats-group">
+                <div class="stat-pill">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="info">
+                        <span class="label">Información</span>
+                        <span class="value">Datos Personales</span>
+                    </div>
+                </div>
+                
+                <div class="stat-pill">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="info">
+                        <span class="label">Privacidad</span>
+                        <span class="value">Segura</span>
+                    </div>
+                </div>
+
+                <div class="stat-pill">
+                    <i class="fas fa-pen-fancy"></i>
+                    <div class="info">
+                        <span class="label">Edición</span>
+                        <span class="value">Habilitada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="profile-container single-column">
@@ -105,7 +147,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <a href="{{ route('perfil.index') }}" class="btn-cancel" style="margin-right: 1rem; padding: 1rem 2rem; color: var(--text-dark); text-decoration: none;">Cancelar</a>
+                    <a href="{{ route('perfil.index') }}" class="btn-cancel" style="margin-right: 1rem; padding: 1rem 2rem; color: var(--text-dark); text-decoration: none; font-weight: 600;">Cancelar</a>
                     <button type="submit" class="btn-submit">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button>
