@@ -4,7 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/docentes/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/pages/docentes.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
