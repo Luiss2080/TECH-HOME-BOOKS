@@ -191,7 +191,7 @@
 
             <!-- Derecha: Formulario de Seguridad -->
             <div class="profile-content">
-                <div class="settings-card">
+                <div class="settings-card" style="min-height: 560px;">
                     <div class="card-header">
                         <div class="card-icon">
                             <i class="fas fa-lock"></i>
@@ -235,10 +235,10 @@
 
                         <!-- Botones Grid -->
                         <div class="actions-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-                            <a href="{{ route('perfil.index') }}" class="action-btn-red" style="background: transparent; border: 2px solid var(--primary-red); color: var(--primary-red); box-shadow: none;">
+                            <a href="{{ route('perfil.index') }}" class="action-btn-red" style="background: transparent; border: 2px solid var(--primary-red); color: var(--primary-red); box-shadow: none; justify-content: center;">
                                 Cancelar
                             </a>
-                            <button type="submit" class="action-btn-red" style="width: 100%; border: none; cursor: pointer;">
+                            <button type="submit" class="action-btn-red" style="width: 100%; border: none; cursor: pointer; justify-content: center;">
                                 <i class="fas fa-shield-alt"></i> Actualizar Contraseña
                             </button>
                         </div>
@@ -246,7 +246,7 @@
                 </div>
                 
                 <!-- Card Informativa Adicional -->
-                <div class="settings-card" style="margin-top: 1.5rem;">
+                <div class="settings-card" style="margin-top: 2rem;">
                      <div class="card-header">
                         <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981; box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.1);">
                             <i class="fas fa-user-shield"></i>
