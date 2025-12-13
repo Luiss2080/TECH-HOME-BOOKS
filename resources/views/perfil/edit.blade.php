@@ -286,7 +286,7 @@
                         </div>
 
                         <div class="actions-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
-                            <a href="{{ route('perfil.index') }}" class="action-btn-red" style="background: transparent; border: 2px solid var(--border-color); color: var(--text-muted); box-shadow: none;">
+                            <a href="{{ route('perfil.index') }}" class="action-btn-red" style="background: transparent; border: 2px solid var(--primary-red); color: var(--primary-red); box-shadow: none;">
                                 Cancelar
                             </a>
                             <button type="submit" class="action-btn-red" style="width: 100%; border: none; cursor: pointer;">
