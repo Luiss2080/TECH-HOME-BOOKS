@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="header-actions">
-                <a href="{{ route('perfil.index') }}" class="btn-primary-action" style="background: var(--bg-surface); color: var(--text-dark); border: 1px solid var(--border-color);">
+                <a href="{{ route('perfil.index') }}" class="action-btn-red">
                     <i class="fas fa-arrow-left"></i>
                     <span>Volver al Perfil</span>
                 </a>
@@ -108,8 +108,8 @@
                     <div style="margin-top: 2rem; width: 100%; text-align: left;">
                         <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Seguridad</h4>
                         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <a href="{{ route('perfil.security') }}" class="btn-secondary-action" style="background: var(--bg-body); color: var(--text-dark); border: 1px solid var(--border-color); justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
-                                <i class="fas fa-lock" style="color: var(--primary-red);"></i> Cambiar Contraseña
+                            <a href="{{ route('perfil.security') }}" class="action-btn-red" style="justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
+                                <i class="fas fa-lock"></i> Cambiar Contraseña
                             </a>
                         </div>
                     </div>
