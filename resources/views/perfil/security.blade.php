@@ -71,7 +71,7 @@
             
             <!-- Izquierda: Sidebar Sticky con Multiple Cards -->
             <!-- FIX: Apply sticky here, and align-self start to prevent stretching -->
-            <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 2rem; height: fit-content;">
+            <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 1rem; position: sticky; top: 2rem; height: fit-content;">
                 
                 <!-- Card 1: Avatar -->
                 <div class="profile-card" style="width: 100%; position: relative; top: 0; padding: 1rem;">
@@ -112,7 +112,8 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 1.5rem; width: 100%; text-align: left;">
+                    <div style="margin-top: 1rem; width: 100%; text-align: left;">
+                        <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Configuración</h4>
                         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
                             <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: center; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
                                 <i class="fas fa-user-edit"></i> Editar Perfil
