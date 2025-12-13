@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/estudiantes/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
@@ -56,11 +57,12 @@
             </div>
         </div>
     </div>
-    
-    <!-- Tabla -->
+
+    <!-- Table Section -->
     <div class="table-section">
         <div class="table-responsive">
             <table class="dashboard-table">
+                <!-- ... table content ... -->
                 <thead>
                     <tr>
                         <th>Estudiante</th>
@@ -144,13 +146,13 @@
                     @endforelse
                 </tbody>
             </table>
-        </div>
-        
-        <div class="pagination-wrapper">
-            {{ $estudiantes->appends(request()->query())->links() }}
-        </div>
+        </div> <!-- Close table-responsive -->
+    </div> <!-- Close table-section -->
+    
+    <div class="pagination-wrapper">
+        {{ $estudiantes->appends(request()->query())->links('pages.estudiantes') }}
     </div>
-</div>
+</div> <!-- Close container -->
 @endsection
 
 @section('js')
