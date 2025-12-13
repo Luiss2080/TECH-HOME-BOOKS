@@ -5,10 +5,11 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background: var(--bg-surface); /* Match card background */
-    border-top: 1px solid var(--border-color); /* Separator line */
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px; /* Restored rounded corners for isolation */
     width: 100%;
-    /* Radius handled by parent container overflow:hidden */
+    margin-top: 0; /* Wrapper handles spacing if needed, or flex gap */
 }
 
 .pagination-links {
@@ -25,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 10px; /* Slight roundness */
     background: transparent;
     color: var(--text-secondary);
     text-decoration: none;
@@ -40,6 +41,7 @@
     background: rgba(225, 29, 72, 0.1);
     color: var(--primary-red);
     border-color: rgba(225, 29, 72, 0.2);
+    transform: translateY(-2px);
 }
 
 .page-link.active {
@@ -51,7 +53,6 @@
 
 .page-link.disabled {
     opacity: 0.4;
-    cursor: allowed; /* Changed from not-allowed to prevent sticky hover states on mobile sometimes, but standard is not-allowed */
     cursor: not-allowed;
     pointer-events: none;
     color: var(--text-muted);

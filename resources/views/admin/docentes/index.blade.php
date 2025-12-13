@@ -138,9 +138,10 @@
                     @endforelse
                 </tbody>
             </table>
-        <div class="pagination-wrapper">
-            {{ $docentes->appends(request()->query())->links('pages.docentes') }}
-        </div>
+    </div>
+    
+    <div class="pagination-wrapper">
+        {{ $docentes->appends(request()->query())->links('pages.docentes') }}
     </div>
 </div>
 @endsection
