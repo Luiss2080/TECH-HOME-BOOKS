@@ -191,7 +191,7 @@
 
             <!-- Derecha: Formulario de Seguridad -->
             <div class="profile-content">
-                <div class="settings-card" style="min-height: 560px;">
+                <div class="settings-card" style="min-height: 535px;">
                     <div class="card-header">
                         <div class="card-icon">
                             <i class="fas fa-lock"></i>
@@ -246,7 +246,7 @@
                 </div>
                 
                 <!-- Card Informativa Adicional -->
-                <div class="settings-card" style="margin-top: 2rem;">
+                <div class="settings-card" style="margin-top: 1.5rem;">
                      <div class="card-header">
                         <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981; box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.1);">
                             <i class="fas fa-user-shield"></i>
@@ -278,6 +278,17 @@
                                 <strong style="display: block; font-size: 0.95rem;">Cierra sesión en dispositivos compartidos</strong>
                                 <span style="font-size: 0.85rem; color: var(--text-muted);">Asegúrate de no dejar tu cuenta abierta en equipos públicos.</span>
                             </div>
+                        </li>
+                         <li style="display: flex; gap: 0.8rem; align-items: start;">
+                            <i class="fas fa-bell" style="color: #10b981; margin-top: 4px;"></i>
+                            <div>
+                                <strong style="display: block; font-size: 0.95rem;">Alertas de Inicio de Sesión</strong>
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Recibe notificaciones ante accesos sospechosos.</span>
+                            </div>
+                        </li>
+                        <li style="margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark);">Historial de Actividad</span>
+                            <a href="#" style="color: var(--primary-red); font-size: 0.85rem; text-decoration: none; font-weight: 600;">Ver Todo <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i></a>
                         </li>
                     </ul>
                 </div>
