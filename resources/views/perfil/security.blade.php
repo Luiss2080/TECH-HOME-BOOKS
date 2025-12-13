@@ -113,7 +113,6 @@
                     </div>
                     
                     <div style="margin-top: 2rem; width: 100%; text-align: left;">
-                        <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Configuración</h4>
                         <div style="display: flex; flex-direction: column; gap: 0.8rem;">
                             <a href="{{ route('perfil.edit') }}" class="action-btn-red" style="justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
                                 <i class="fas fa-user-edit"></i> Editar Perfil
