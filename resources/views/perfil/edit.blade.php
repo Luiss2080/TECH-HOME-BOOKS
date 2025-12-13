@@ -28,7 +28,7 @@
         </div>
 
         <div class="panel-content">
-            <!-- Barra de Estado - IDÉNTICA al Index pero informativa -->
+            <!-- Barra de Estado -->
             <div class="stats-group">
                 <div class="stat-pill">
                     <i class="fas fa-id-card"></i>
@@ -65,93 +65,95 @@
         </div>
     </div>
 
-    <!-- Contenedor Principal (Clone del Index pero con Inputs) -->
+    <!-- Contenedor Principal -->
     <div class="dashboard-section">
         <div class="profile-container">
-        <!-- Izquierda: Wrapper para Múltiples Cards -->
-        <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem;">
             
-            <!-- Card Principal de Perfil -->
-            <div class="profile-card">
-                <div class="profile-avatar-wrapper">
-                    <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" id="avatarPreview">
+            <!-- Izquierda: Sidebar Sticky con Multiple Cards -->
+            <!-- FIX: Apply sticky here, and align-self start to prevent stretching -->
+            <div class="profile-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 2rem; height: fit-content;">
+                
+                <!-- Card 1: Avatar -->
+                <div class="profile-card" style="width: 100%; position: relative; top: 0;">
+                    <div class="profile-avatar-wrapper">
+                        <img src="{{ $user->avatar && file_exists(public_path('images/avatars/'.$user->avatar)) ? asset('images/avatars/'.$user->avatar) : asset('images/default-avatar.png') }}" alt="Avatar" class="profile-avatar" id="avatarPreview">
+                        
+                        <button type="button" class="avatar-edit-btn" onclick="document.getElementById('avatarInput').click()" title="Cambiar Foto">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <form id="avatarForm" action="{{ route('perfil.avatar') }}" method="POST" enctype="multipart/form-data" style="display: none;">
+                            @csrf
+                            <input type="file" id="avatarInput" name="avatar" accept="image/*" onchange="document.getElementById('avatarForm').submit()">
+                        </form>
+                    </div>
+
+                    <h2 class="profile-name">{{ $user->name }}</h2>
+                    <span class="profile-role">
+                        <i class="fas fa-user-shield"></i> {{ $user->rol ?? 'Administrador' }}
+                    </span>
                     
-                    <button type="button" class="avatar-edit-btn" onclick="document.getElementById('avatarInput').click()" title="Cambiar Foto">
-                        <i class="fas fa-camera"></i>
-                    </button>
-                    <form id="avatarForm" action="{{ route('perfil.avatar') }}" method="POST" enctype="multipart/form-data" style="display: none;">
-                        @csrf
-                        <input type="file" id="avatarInput" name="avatar" accept="image/*" onchange="document.getElementById('avatarForm').submit()">
-                    </form>
+                    <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">{{ $user->email }}</p>
+
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">{{ intval(\Carbon\Carbon::parse($user->created_at)->diffInDays()) }}</span>
+                            <span class="stat-label">Días</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" style="color: #10b981;">Active</span>
+                            <span class="stat-label">Estado</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; width: 100%; text-align: left;">
+                        <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Seguridad</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <a href="{{ route('perfil.security') }}" class="btn-secondary-action" style="background: var(--bg-body); color: var(--text-dark); border: 1px solid var(--border-color); justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
+                                <i class="fas fa-lock" style="color: var(--primary-red);"></i> Cambiar Contraseña
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <h2 class="profile-name">{{ $user->name }}</h2>
-                <span class="profile-role">
-                    <i class="fas fa-user-shield"></i> {{ $user->rol ?? 'Administrador' }}
-                </span>
-                
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">{{ $user->email }}</p>
+                <!-- Card 2: Nivel de Perfil -->
+                <div class="profile-card" style="width: 100%; position: relative; top: 0; padding: 2rem; align-items: flex-start; text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; width: 100%;">
+                        <div style="width: 45px; height: 45px; background: rgba(220, 38, 38, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary-red); font-size: 1.2rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.1rem; margin: 0; color: var(--text-dark); font-weight: 700;">Nivel de Perfil</h3>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">Estadísticas de cuenta</span>
+                        </div>
+                    </div>
 
-                <div class="profile-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">{{ intval(\Carbon\Carbon::parse($user->created_at)->diffInDays()) }}</span>
-                        <span class="stat-label">Días</span>
+                    <div style="width: 100%; margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-size: 0.95rem;">
+                            <span style="color: var(--text-dark); font-weight: 600;">Completado</span>
+                            <span style="color: var(--primary-red); font-weight: 700;">85%</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: var(--bg-body); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 85%; height: 100%; background: var(--primary-red); border-radius: 4px; box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);"></div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-value" style="color: #10b981;">Active</span>
-                        <span class="stat-label">Estado</span>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%;">
+                        <div style="background: var(--bg-body); padding: 1rem; border-radius: 15px; text-align: center; border: 1px solid transparent; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--primary-red)'" onmouseout="this.style.borderColor='transparent'">
+                            <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">Email</span>
+                            <span style="font-weight: 700; color: var(--text-dark); font-size: 0.95rem;">Verificado</span>
+                        </div>
+                        <div style="background: var(--bg-body); padding: 1rem; border-radius: 15px; text-align: center; border: 1px solid transparent; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--primary-red)'" onmouseout="this.style.borderColor='transparent'">
+                            <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">Seguridad</span>
+                            <span style="font-weight: 700; color: var(--text-dark); font-size: 0.95rem;">Alta</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div style="margin-top: 2rem; width: 100%; text-align: left;">
-                    <h4 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 1rem; font-weight: 700;">Seguridad</h4>
-                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                        <a href="{{ route('perfil.security') }}" class="btn-secondary-action" style="background: var(--bg-body); color: var(--text-dark); border: 1px solid var(--border-color); justify-content: flex-start; padding-left: 1.5rem; display: flex; align-items: center; gap: 0.8rem; padding: 1rem; border-radius: 12px; text-decoration: none; transition: all 0.2s;">
-                            <i class="fas fa-lock" style="color: var(--primary-red);"></i> Cambiar Contraseña
-                        </a>
-                    </div>
-                </div>
+
             </div>
 
-            <!-- Card Complementario Moderno: Nivel de Perfil -->
-            <div class="profile-card" style="border-top: none; padding: 2rem; align-items: flex-start; text-align: left;">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                    <div style="width: 40px; height: 40px; background: rgba(220, 38, 38, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary-red);">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.1rem; margin: 0; color: var(--text-dark);">Nivel de Perfil</h3>
-                        <span style="font-size: 0.85rem; color: var(--text-muted);">Estadísticas de cuenta</span>
-                    </div>
-                </div>
-
-                <div style="width: 100%; margin-bottom: 1.5rem;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
-                        <span style="color: var(--text-dark); font-weight: 600;">Completado</span>
-                        <span style="color: var(--primary-red);">85%</span>
-                    </div>
-                    <div style="width: 100%; height: 6px; background: var(--bg-body); border-radius: 3px; overflow: hidden;">
-                        <div style="width: 85%; height: 100%; background: var(--primary-red); border-radius: 3px;"></div>
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%;">
-                    <div style="background: var(--bg-body); padding: 1rem; border-radius: 12px; text-align: center;">
-                        <i class="fas fa-check-circle" style="color: #10b981; font-size: 1.2rem; margin-bottom: 0.5rem;"></i>
-                        <span style="display: block; font-size: 0.8rem; color: var(--text-muted);">Email</span>
-                        <span style="font-weight: 600; color: var(--text-dark);">Verificado</span>
-                    </div>
-                    <div style="background: var(--bg-body); padding: 1rem; border-radius: 12px; text-align: center;">
-                        <i class="fas fa-shield-alt" style="color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.5rem;"></i>
-                        <span style="display: block; font-size: 0.8rem; color: var(--text-muted);">Seguridad</span>
-                        <span style="font-weight: 600; color: var(--text-dark);">Alta</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-            <!-- Derecha: Formulario de Edición -->
+            <!-- Derecha: Formulario -->
             <div class="profile-content">
                 <div class="settings-card">
                     <div class="card-header">
@@ -253,7 +255,6 @@
                             </div>
                         </div>
 
-                        <!-- FIX: Use action-btn-red for the submit button -->
                         <div class="form-actions" style="gap: 1.5rem;">
                             <a href="{{ route('perfil.index') }}" class="btn-cancel" style="padding: 1rem 2rem; color: var(--text-dark); text-decoration: none; font-weight: 700; border: 1px solid var(--border-color); border-radius: 12px; transition: all 0.3s;">
                                 Cancelar
