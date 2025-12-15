@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/permisos/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
@@ -124,10 +125,10 @@
                 </tbody>
             </table>
         </div>
-        
-        <div class="pagination-wrapper">
-            {{ $permisos->appends(request()->query())->links() }}
-        </div>
+    </div>
+    
+    <div class="pagination-wrapper">
+        {{ $permisos->appends(request()->query())->links('pages.permisos') }}
     </div>
 </div>
 @endsection
