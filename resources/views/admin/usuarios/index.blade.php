@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/usuarios/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
@@ -144,10 +145,10 @@
                 </tbody>
             </table>
         </div>
-        
-        <div class="pagination-wrapper">
-            {{ $usuarios->appends(request()->query())->links() }}
-        </div>
+    </div>
+    
+    <div class="pagination-wrapper">
+        {{ $usuarios->appends(request()->query())->links('pages.usuarios') }}
     </div>
 </div>
 @endsection
