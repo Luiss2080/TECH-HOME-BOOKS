@@ -1,7 +1,7 @@
 <aside class="dashboard-sidebar" id="systemSidebar">
     <!-- Header del Sidebar -->
     <div class="sidebar-header">
-        <div class="logo-container">
+        <a href="{{ route('admin.dashboard') }}" class="logo-container" style="text-decoration: none;">
             <div class="logo-icon">
                 <img src="{{ asset('images/faviconTH.png') }}" alt="TECH HOME" class="sidebar-logo">
             </div>
@@ -9,7 +9,7 @@
                 <h1 class="brand-name">TECH HOME</h1>
                 <span class="brand-subtitle">Instituto de Robótica</span>
             </div>
-        </div>
+        </a>
     </div>
 
     <!-- Contenedor de Navegación con Scroll -->

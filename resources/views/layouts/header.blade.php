@@ -3,7 +3,11 @@
     <!-- Left: Brand & Search -->
     <div class="header-left">
         <div class="header-brand">
-            <h1 class="brand-text">{{ $header_title ?? '1RO DE JUNIO' }}</h1>
+            <h1 class="brand-text">
+                <a href="{{ route('admin.dashboard') }}" style="text-decoration: none; color: inherit;">
+                    {{ $header_title ?? '1RO DE JUNIO' }}
+                </a>
+            </h1>
         </div>
         <div class="header-search">
             <form action="#" method="GET" class="search-form">
