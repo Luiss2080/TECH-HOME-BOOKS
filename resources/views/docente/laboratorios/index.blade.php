@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/docente/laboratorios/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
@@ -150,10 +151,10 @@
                 </tbody>
             </table>
         </div>
-        
-        <div class="pagination-wrapper">
-            {{ $laboratorios->appends(request()->query())->links() }}
-        </div>
+    </div>
+    
+    <div class="pagination-wrapper">
+        {{ $laboratorios->appends(request()->query())->links('pages.laboratorios') }}
     </div>
 </div>
 @endsection
