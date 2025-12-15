@@ -91,3 +91,7 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     Route::get('/calendario', [App\Http\Controllers\Admin\CalendarioController::class, 'index'])->name('admin.calendario.index');
 });
 
+Route::middleware(['web', 'auth.check'])->group(function () {
+    Route::get('/estudiante/materiales', [App\Http\Controllers\Estudiante\MaterialController::class, 'index'])->name('estudiante.materiales.index');
+});
+
