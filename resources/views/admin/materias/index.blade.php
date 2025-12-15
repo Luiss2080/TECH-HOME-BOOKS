@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/materias/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
 @section('content')
@@ -147,10 +148,10 @@
                 </tbody>
             </table>
         </div>
-        
-        <div class="pagination-wrapper">
-            {{ $materias->appends(request()->query())->links() }}
-        </div>
+    </div>
+    
+    <div class="pagination-wrapper">
+        {{ $materias->appends(request()->query())->links('pages.materias') }}
     </div>
 </div>
 @endsection

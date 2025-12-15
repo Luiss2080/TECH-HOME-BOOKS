@@ -365,7 +365,6 @@
     border: 2px solid var(--bg-surface);
     margin-left: -8px;
 }
-}
 
 .avatar-sm:first-child {
     margin-left: 0;
@@ -447,8 +446,6 @@
 
 /* Pagination */
 .pagination-wrapper {
-    padding: 1.5rem;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    margin-top: 0;
 }
