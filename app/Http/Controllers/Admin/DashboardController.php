@@ -12,12 +12,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Stats Counts
+        // Stats Counts - Expanded
         $stats = [
             'users' => User::count(),
             'students' => \App\Models\Estudiante::count(),
             'teachers' => \App\Models\Docente::count(),
             'courses' => Curso::count(),
+            'materias' => \App\Models\Materia::count(),
+            'colegios' => \App\Models\Colegio::count(),
+            'libros' => \App\Models\Libro::count(),
+            'materiales' => \App\Models\Material::count(),
+            'laboratorios' => \App\Models\Laboratorio::count(),
+            'roles' => \App\Models\Role::count(),
+            'permisos' => \App\Models\Permiso::count(),
+            // 'reportes' => \App\Models\Reporte::count(), // Optional if Reporte model works
         ];
 
         // Recent Users (for Table)
