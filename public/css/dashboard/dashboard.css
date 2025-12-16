@@ -2133,3 +2133,75 @@ body.dark-mode .dashboard-card:hover {
     height: 100%;
     border-radius: 10px;
 }
+
+/* Chart Center Text - ABSOLUTELY ESSENTIAL */
+.chart-center-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+    width: 100%;
+}
+
+.chart-center-text .total-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1;
+    display: block;
+}
+
+.chart-center-text .total-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+body.dark-mode .chart-center-text .total-number {
+    color: #ffffff !important;
+}
+
+/* Legend Grid for Distribution */
+.legend-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem; /* tighter gap */
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.legend-item-compact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    width: 100%;
+}
+
+.legend-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.legend-text {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.legend-value {
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-left: auto; /* Push value to right */
+    font-size: 0.85rem;
+}
+
+body.dark-mode .legend-value {
+    color: #ffffff !important;
+}
