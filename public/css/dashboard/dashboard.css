@@ -1339,11 +1339,12 @@ body.dark-mode .dashboard-table td {
     gap: 0.5rem; /* Tight spacing */
 }
 
+/* Module Row Grid Layout */
 .module-row-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 32px 1fr 60px 40px; /* Icon | Name | Badge | Action */
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.6rem 0.75rem;
+    gap: 0.5rem;
     padding: 0.6rem 0.8rem;
     color: var(--text-secondary);
     text-decoration: none;
@@ -1367,7 +1368,7 @@ body.dark-mode .module-row-item {
     border-color: rgba(220, 38, 38, 0.3);
     transform: translateX(4px);
     position: relative;
-    padding-left: 1rem;
+    padding-left: 0.8rem; /* Maintain padding, grid handles spacing */
 }
 
 .module-row-item:hover::before {
