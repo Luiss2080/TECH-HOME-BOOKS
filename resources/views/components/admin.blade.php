@@ -139,109 +139,98 @@
                     </div>
                 </div>
 
-                <!-- Módulos de Gestión -->
-                <h3 class="modules-section-title">Gestión Académica</h3>
-                <div class="modules-grid">
-                    <a href="{{ route('admin.estudiantes.index') }}" class="module-card">
-                        <div class="module-icon green">
-                            <i class="fas fa-user-graduate"></i>
+                <!-- SECTION: Modules Grid Layout -->
+                <div class="dashboard-modules-section">
+                    
+                    <!-- Card: Gestión Académica -->
+                    <div class="dashboard-card h-100">
+                        <div class="card-header">
+                            <h3 class="card-title">Gestión Académica</h3>
+                            <button class="card-action"><i class="fas fa-graduation-cap"></i></button>
                         </div>
-                        <span class="module-title">Estudiantes</span>
-                        <span class="module-desc">Gestión de alumnos y matrículas</span>
-                    </a>
-                    <a href="{{ route('admin.docentes.index') }}" class="module-card">
-                        <div class="module-icon purple">
-                            <i class="fas fa-chalkboard-teacher"></i>
+                        <div class="card-body">
+                            <div class="modules-grid-compact">
+                                <a href="{{ route('admin.estudiantes.index') }}" class="module-item">
+                                    <div class="module-icon-sm green"><i class="fas fa-user-graduate"></i></div>
+                                    <span class="module-label">Estudiantes</span>
+                                </a>
+                                <a href="{{ route('admin.docentes.index') }}" class="module-item">
+                                    <div class="module-icon-sm purple"><i class="fas fa-chalkboard-teacher"></i></div>
+                                    <span class="module-label">Docentes</span>
+                                </a>
+                                <a href="{{ route('admin.cursos.index') }}" class="module-item">
+                                    <div class="module-icon-sm blue"><i class="fas fa-layer-group"></i></div>
+                                    <span class="module-label">Cursos</span>
+                                </a>
+                                <a href="{{ route('admin.materias.index') }}" class="module-item">
+                                    <div class="module-icon-sm orange"><i class="fas fa-book-open"></i></div>
+                                    <span class="module-label">Materias</span>
+                                </a>
+                                <a href="{{ route('admin.colegios.index') }}" class="module-item">
+                                    <div class="module-icon-sm"><i class="fas fa-school"></i></div>
+                                    <span class="module-label">Colegios</span>
+                                </a>
+                            </div>
                         </div>
-                        <span class="module-title">Docentes</span>
-                        <span class="module-desc">Profesores y asignaciones</span>
-                    </a>
-                    <a href="{{ route('admin.cursos.index') }}" class="module-card">
-                        <div class="module-icon blue">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <span class="module-title">Cursos</span>
-                        <span class="module-desc">Administración de cursos</span>
-                    </a>
-                    <a href="{{ route('admin.materias.index') }}" class="module-card">
-                        <div class="module-icon orange">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <span class="module-title">Materias</span>
-                        <span class="module-desc">Plan de estudios</span>
-                    </a>
-                    <a href="{{ route('admin.colegios.index') }}" class="module-card">
-                        <div class="module-icon">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <span class="module-title">Colegios</span>
-                        <span class="module-desc">Instituciones afiliadas</span>
-                    </a>
-                </div>
+                    </div>
 
-                <h3 class="modules-section-title">Recursos y Laboratorios</h3>
-                <div class="modules-grid">
-                    <a href="{{ route('libros.index') }}" class="module-card">
-                        <div class="module-icon red">
-                            <i class="fas fa-book"></i>
+                    <!-- Card: Recursos -->
+                    <div class="dashboard-card h-100">
+                        <div class="card-header">
+                            <h3 class="card-title">Recursos y Laboratorios</h3>
+                            <button class="card-action"><i class="fas fa-flask"></i></button>
                         </div>
-                        <span class="module-title">Biblioteca</span>
-                        <span class="module-desc">Gestión de libros</span>
-                    </a>
-                    <a href="{{ route('admin.materiales.index') }}" class="module-card">
-                        <div class="module-icon orange">
-                            <i class="fas fa-folder-open"></i>
+                        <div class="card-body">
+                            <div class="modules-grid-compact">
+                                <a href="{{ route('libros.index') }}" class="module-item">
+                                    <div class="module-icon-sm red"><i class="fas fa-book"></i></div>
+                                    <span class="module-label">Biblioteca</span>
+                                </a>
+                                <a href="{{ route('admin.materiales.index') }}" class="module-item">
+                                    <div class="module-icon-sm orange"><i class="fas fa-folder-open"></i></div>
+                                    <span class="module-label">Materiales</span>
+                                </a>
+                                <a href="{{ route('admin.laboratorios.index') }}" class="module-item">
+                                    <div class="module-icon-sm blue"><i class="fas fa-desktop"></i></div>
+                                    <span class="module-label">Laboratorios</span>
+                                </a>
+                            </div>
                         </div>
-                        <span class="module-title">Materiales</span>
-                        <span class="module-desc">Recursos didácticos</span>
-                    </a>
-                    <a href="{{ route('admin.laboratorios.index') }}" class="module-card">
-                        <div class="module-icon blue">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <span class="module-title">Laboratorios</span>
-                        <span class="module-desc">Espacios y equipos</span>
-                    </a>
-                </div>
+                    </div>
 
-                <h3 class="modules-section-title">Administración del Sistema</h3>
-                <div class="modules-grid">
-                    <a href="{{ route('admin.usuarios.index') }}" class="module-card">
-                        <div class="module-icon">
-                            <i class="fas fa-users-cog"></i>
+                    <!-- Card: Administración -->
+                    <div class="dashboard-card h-100 full-width-mobile">
+                        <div class="card-header">
+                            <h3 class="card-title">Administración del Sistema</h3>
+                            <button class="card-action"><i class="fas fa-cogs"></i></button>
                         </div>
-                        <span class="module-title">Usuarios</span>
-                        <span class="module-desc">Control de acceso</span>
-                    </a>
-                    <a href="{{ route('admin.roles.index') }}" class="module-card">
-                        <div class="module-icon purple">
-                            <i class="fas fa-user-tag"></i>
+                        <div class="card-body">
+                            <div class="modules-grid-compact">
+                                <a href="{{ route('admin.usuarios.index') }}" class="module-item">
+                                    <div class="module-icon-sm"><i class="fas fa-users-cog"></i></div>
+                                    <span class="module-label">Usuarios</span>
+                                </a>
+                                <a href="{{ route('admin.roles.index') }}" class="module-item">
+                                    <div class="module-icon-sm purple"><i class="fas fa-user-tag"></i></div>
+                                    <span class="module-label">Roles</span>
+                                </a>
+                                <a href="{{ route('admin.permisos.index') }}" class="module-item">
+                                    <div class="module-icon-sm"><i class="fas fa-key"></i></div>
+                                    <span class="module-label">Permisos</span>
+                                </a>
+                                <a href="{{ route('reportes.index') }}" class="module-item">
+                                    <div class="module-icon-sm blue"><i class="fas fa-chart-line"></i></div>
+                                    <span class="module-label">Reportes</span>
+                                </a>
+                                <a href="{{ route('configuraciones.index') }}" class="module-item">
+                                    <div class="module-icon-sm"><i class="fas fa-sliders-h"></i></div>
+                                    <span class="module-label">Configuración</span>
+                                </a>
+                            </div>
                         </div>
-                        <span class="module-title">Roles</span>
-                        <span class="module-desc">Perfiles y permisos</span>
-                    </a>
-                    <a href="{{ route('admin.permisos.index') }}" class="module-card">
-                        <div class="module-icon">
-                            <i class="fas fa-key"></i>
-                        </div>
-                        <span class="module-title">Permisos</span>
-                        <span class="module-desc">Reglas de autorización</span>
-                    </a>
-                    <a href="{{ route('reportes.index') }}" class="module-card">
-                        <div class="module-icon blue">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <span class="module-title">Reportes</span>
-                        <span class="module-desc">Estadísticas y datos</span>
-                    </a>
-                    <a href="{{ route('configuraciones.index') }}" class="module-card">
-                        <div class="module-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <span class="module-title">Configuración</span>
-                        <span class="module-desc">Ajustes generales</span>
-                    </a>
-                </div>
+                    </div>
+                
+                </div> <!-- End dashboard-modules-section -->
                 
             </div>
             
