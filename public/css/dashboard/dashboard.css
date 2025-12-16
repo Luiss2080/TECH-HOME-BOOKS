@@ -730,15 +730,25 @@ body.dark-mode .stat-right {
 }
 
 /* Decoration */
-/* Decoration */
+.stat-card.rich-stat {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card.rich-stat .stat-left,
+.stat-card.rich-stat .stat-right {
+    position: relative;
+    z-index: 5; /* Ensure text is above icon */
+}
+
 .stat-card.rich-stat .stat-decoration {
     position: absolute;
     bottom: -15px;
     right: -10px;
     font-size: 6.5rem;
-    opacity: 0.4; /* Stronger base visibility */
-    transition: all 0.3s ease;
-    z-index: 0;
+    opacity: 0.3; /* Base visibility */
+    transition: transform 0.3s ease;
+    z-index: 1; /* Above background, below text */
     pointer-events: none;
     top: auto;
     color: var(--text-muted);
@@ -746,14 +756,19 @@ body.dark-mode .stat-right {
 
 /* Ensure visibility in dark mode */
 body.dark-mode .stat-card.rich-stat .stat-decoration {
-    color: rgba(255, 255, 255, 0.2); /* Light watermark in dark mode */
-    opacity: 0.4;
+    color: rgba(
+        255,
+        255,
+        255,
+        0.5
+    ) !important; /* Force white visual (50% solid) */
+    opacity: 1 !important; /* Use color alpha for transparency, keep element opaque */
 }
 
-/* Hover state increase */
+/* Hover state increase - MOVEMENT ONLY */
 .stat-card.rich-stat:hover .stat-decoration {
-    opacity: 0.5;
-    transform: scale(1.05) rotate(-5deg);
+    transform: scale(1.1) rotate(-5deg);
+    /* Opacity remains constant to avoid "appearing" effect */
 }
 
 .stat-card.rich-stat:hover {
