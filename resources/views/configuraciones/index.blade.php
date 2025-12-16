@@ -82,7 +82,7 @@
             <!-- Card: Academic Settings -->
             <div class="config-card">
                 <div class="config-card-header">
-                    <div class="config-card-icon" style="color: var(--config-accent-purple); background: rgba(168, 85, 247, 0.1);">
+                    <div class="config-card-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div>
@@ -132,7 +132,7 @@
         <div class="config-grid">
             <div class="config-card">
                 <div class="config-card-header">
-                    <div class="config-card-icon" style="color: var(--config-accent-red); background: rgba(239, 68, 68, 0.1);">
+                    <div class="config-card-icon">
                         <i class="fas fa-lock"></i>
                     </div>
                     <div>
@@ -179,7 +179,7 @@
         <div class="config-grid">
             <div class="config-card">
                 <div class="config-card-header">
-                    <div class="config-card-icon" style="color: var(--config-accent-green); background: rgba(16, 185, 129, 0.1);">
+                    <div class="config-card-icon">
                         <i class="fas fa-palette"></i>
                     </div>
                     <div>
