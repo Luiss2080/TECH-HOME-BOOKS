@@ -1286,6 +1286,13 @@ body.dark-mode .progress-track {
 
 .dashboard-table td .user-info {
     display: flex;
+    flex-direction: row; /* Horizontal alignment */
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.dashboard-table td .user-info > div {
+    display: flex;
     flex-direction: column;
 }
 

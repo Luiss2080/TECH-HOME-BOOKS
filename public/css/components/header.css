@@ -57,6 +57,8 @@ body.dark-mode .dashboard-header {
 .search-form svg {
     position: absolute;
     left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--text-muted);
     pointer-events: none;
     transition: var(--transition);
@@ -65,23 +67,18 @@ body.dark-mode .dashboard-header {
 /* Search Bar Enhancements */
 .search-input {
     background: var(--input-bg);
-    border: 1px solid var(--border-color); /* Added explicit border */
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 0.6rem 1rem 0.6rem 2.6rem;
     color: var(--header-text-dark);
     font-size: 0.9rem;
     width: 100%;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.dark-mode .search-input {
-    background: rgba(0, 0, 0, 0.3); /* Slightly darker background */
-    border-color: rgba(
-        255,
-        255,
-        255,
-        0.1
-    ); /* Subtle default border in dark mode */
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .search-input:hover {
@@ -94,12 +91,28 @@ body.dark-mode .search-input {
     border-color: var(--primary-red);
     background: var(--bg-surface);
     box-shadow: 0 0 15px rgba(220, 38, 38, 0.15),
-        0 0 0 1px rgba(220, 38, 38, 0.1); /* Neon glow effect */
+        0 0 0 1px rgba(220, 38, 38, 0.1);
+    animation: neonPulse 2s infinite;
+}
+
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 15px rgba(220, 38, 38, 0.15),
+            0 0 0 1px rgba(220, 38, 38, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.3),
+            0 0 0 1px rgba(220, 38, 38, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(220, 38, 38, 0.15),
+            0 0 0 1px rgba(220, 38, 38, 0.1);
+    }
 }
 
 .search-input:focus + svg {
     color: var(--primary-red);
-    filter: drop-shadow(0 0 2px rgba(220, 38, 38, 0.5)); /* Glow for the icon */
+    filter: drop-shadow(0 0 2px rgba(220, 38, 38, 0.5));
 }
 
 /* Right Section Actions */
