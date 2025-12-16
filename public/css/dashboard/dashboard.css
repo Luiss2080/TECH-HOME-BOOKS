@@ -1399,3 +1399,131 @@ body.dark-mode .module-row-item {
     opacity: 0.7;
     font-weight: 500;
 }
+
+/* ============================================
+   AESTHETIC RED & ANIMATIONS
+   ============================================ */
+
+/* entry animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dashboard-card,
+.stat-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Stagger animations */
+.dashboard-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.dashboard-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.dashboard-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* RED ACCENTS & CONTRAST */
+
+/* Module Row Item - Red Hover Effect */
+.module-row-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.module-row-item:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(225, 29, 72, 0.1) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    border-color: rgba(225, 29, 72, 0.3);
+    padding-left: 1rem; /* Shift content slightly */
+}
+
+.module-row-item:hover::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--primary-red);
+    box-shadow: 0 0 10px var(--primary-red);
+}
+
+/* Card Headers - Red Action Links */
+.card-action-link {
+    color: var(--primary-red);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(225, 29, 72, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(225, 29, 72, 0.05);
+}
+
+.card-action-link:hover {
+    background: var(--primary-red);
+    color: white;
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Dashboard Card Borders - Subtle Red Tint in Dark Mode */
+body.dark-mode .dashboard-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+body.dark-mode .dashboard-card:hover {
+    border-color: rgba(225, 29, 72, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(225, 29, 72, 0.1);
+}
+
+/* Panel Titles - Red Accent on Icon? */
+.card-header i {
+    color: var(--primary-red);
+    opacity: 0.8;
+    text-shadow: 0 0 10px rgba(225, 29, 72, 0.3);
+}
+
+/* Table Enhancements */
+.dashboard-table thead th {
+    border-bottom: 2px solid rgba(225, 29, 72, 0.2);
+    color: var(
+        --primary-red
+    ); /* Make headers red? Or just accent? User said "separacion con colores rojos" */
+}
+
+/* Status Dot Pulse */
+.status-dot.online {
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
