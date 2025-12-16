@@ -538,6 +538,7 @@ body {
 }
 
 /* Redefine .stat-card.rich-stat layout */
+/* Redefine .stat-card.rich-stat layout */
 .stat-card.rich-stat {
     display: flex;
     flex-direction: row;
@@ -546,6 +547,12 @@ body {
     padding: 0.75rem 1rem; /* Ultra tight padding */
     gap: 0.75rem;
     min-height: 100px; /* Fixed compact height that fits big icon */
+
+    /* ADDED: Card Visuals */
+    background: #0f172a; /* Dark background */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 /* Left Section: Icon + Main Info */
@@ -564,9 +571,9 @@ body {
     font-size: 1.75rem;
     margin-right: 0;
     border-radius: 18px; /* Soft square */
-    background: rgba(225, 29, 72, 0.2); /* Darker/Subtle red bg */
+    background: rgba(225, 29, 72, 0.15); /* Slightly more transparent */
     color: var(--primary-red);
-    border: 1px solid rgba(225, 29, 72, 0.3);
+    border: 1px solid rgba(225, 29, 72, 0.2);
     transition: all 0.3s ease;
     flex-shrink: 0;
     display: flex;
@@ -578,7 +585,7 @@ body {
     background: var(--primary-red);
     color: white;
     transform: scale(1.02);
-    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
+    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
 }
 
 /* Main Info */
@@ -595,24 +602,25 @@ body {
     line-height: 0.9;
     font-weight: 800;
     letter-spacing: -0.5px;
+    color: white; /* Ensure white text on black card */
 }
 
 .stat-card.rich-stat .stat-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.5px;
     font-weight: 700;
-    color: var(--text-muted);
+    color: #94a3b8; /* Lighter muted text */
     text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* Removed truncation to show full text */
     margin-top: 4px;
+    line-height: 1.1;
 }
 
 .stat-card.rich-stat:hover {
     border-color: var(--primary-red);
-    box-shadow: 0 8px 20px -5px rgba(225, 29, 72, 0.2);
-    background: var(--bg-surface);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    transform: translateY(-2px);
+    background: #0f172a; /* Keep dark background */
 }
 
 .stat-card.rich-stat:hover .stat-value {
