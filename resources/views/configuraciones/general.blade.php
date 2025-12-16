@@ -51,12 +51,18 @@
             <i class="fas fa-university text-red"></i>
             <span>Gestión Académica</span>
         </div>
+        <!-- Added Red Button here -->
+        <div class="header-right">
+             <button class="btn-submit" style="padding: 0.4rem 1rem; font-size: 0.8rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); box-shadow: none;">
+                <i class="fas fa-file-alt"></i> Reporte
+             </button>
+        </div>
     </div>
     
     <div class="form-grid">
         <div class="form-group">
             <label class="form-label"><i class="fas fa-calendar-alt"></i> Periodo Actual</label>
-            <select class="form-input">
+            <select class="form-input form-select">
                 <option>2025 - Gestión I</option>
                 <option>2025 - Gestión II</option>
                 <option>Verano</option>
@@ -80,7 +86,12 @@
             </div>
         </div>
     </div>
-        <div class="form-actions">
+        <div class="form-actions" style="justify-content: space-between;">
+            <!-- Added detail to left of button -->
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span class="stat-pill-mini bg-green-900 text-green-400"><i class="fas fa-check-circle"></i> Sincronizado</span>
+                <span style="font-size: 0.8rem; color: #6b7280;">Habilitado</span>
+            </div>
         <button class="btn-submit"><i class="fas fa-save"></i> Guardar Configuración</button>
     </div>
 </div>
