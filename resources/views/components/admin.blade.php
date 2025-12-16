@@ -345,22 +345,19 @@
                                 <!-- Admin -->
                                 <div class="legend-item-compact">
                                     <div class="legend-box" style="background: #3b82f6;"></div>
-                                    <span class="legend-text">Admin</span>
-                                    <span class="legend-value">{{ round(($roleDistribution['admin'] ?? 0) / $total * 100) }}%</span>
+                                    <span class="legend-text">Admin <span style="opacity: 0.7;">({{ round(($roleDistribution['admin'] ?? 0) / $total * 100) }}%)</span></span>
                                 </div>
 
                                 <!-- Docente -->
                                 <div class="legend-item-compact">
                                     <div class="legend-box" style="background: #a855f7;"></div>
-                                    <span class="legend-text">Docente</span>
-                                    <span class="legend-value">{{ round(($roleDistribution['docente'] ?? 0) / $total * 100) }}%</span>
+                                    <span class="legend-text">Docente <span style="opacity: 0.7;">({{ round(($roleDistribution['docente'] ?? 0) / $total * 100) }}%)</span></span>
                                 </div>
 
                                 <!-- Estudiante -->
                                 <div class="legend-item-compact">
                                     <div class="legend-box" style="background: #10b981;"></div>
-                                    <span class="legend-text">Estud.</span>
-                                    <span class="legend-value">{{ round(($roleDistribution['estudiante'] ?? 0) / $total * 100) }}%</span>
+                                    <span class="legend-text">Estud. <span style="opacity: 0.7;">({{ round(($roleDistribution['estudiante'] ?? 0) / $total * 100) }}%)</span></span>
                                 </div>
                             </div>
                         </div>

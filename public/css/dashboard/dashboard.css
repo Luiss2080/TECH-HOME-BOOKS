@@ -2189,19 +2189,25 @@ body.dark-mode .chart-center-text .total-number {
     flex-shrink: 0;
 }
 
-.legend-text {
+.legend-item-compact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     font-weight: 500;
-    font-size: 0.8rem;
 }
 
+.legend-text {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+body.dark-mode .legend-text {
+    color: #e2e8f0;
+}
+
+/* Remove old legend-value style as it's now inline */
 .legend-value {
-    color: var(--text-dark);
-    font-weight: 700;
-    margin-left: auto; /* Push value to right */
-    font-size: 0.85rem;
-}
-
-body.dark-mode .legend-value {
-    color: #ffffff !important;
+    display: none;
 }
