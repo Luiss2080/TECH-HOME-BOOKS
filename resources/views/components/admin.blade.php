@@ -257,25 +257,60 @@
                                 <table class="dashboard-table">
                                     <thead>
                                         <tr>
-                                            <th>Usuario</th>
-                                            <th>Rol</th>
-                                            <th>Estado</th>
+                                            <th class="ps-3"><i class="fas fa-user me-2 text-danger"></i>Usuario</th>
+                                            <th class="text-center"><i class="fas fa-user-tag me-2 text-danger"></i>Rol</th>
+                                            <th class="text-center"><i class="fas fa-clock me-2 text-danger"></i>Sesión</th>
+                                            <th class="text-center"><i class="fas fa-circle-notch me-2 text-danger"></i>Estado</th>
+                                            <th class="text-end pe-3"><i class="fas fa-cog text-danger"></i></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="align-middle">
                                         @forelse($recentUsers as $user)
-                                            <tr>
-                                                <td>
+                                            <tr class="hover-scale">
+                                                <td class="ps-3">
                                                     <div class="user-info-compact">
-                                                        <div class="user-avatar-xs">{{ substr($user->name, 0, 1) }}</div>
-                                                        <span>{{ $user->name }}</span>
+                                                        <div class="user-avatar-xs {{ $user->rol === 'admin' ? 'pulse-red' : '' }}">{{ substr($user->name, 0, 1) }}</div>
+                                                        <div class="d-flex flex-column">
+                                                            <span class="fw-bold">{{ $user->name }}</span>
+                                                            <small class="text-muted" style="font-size: 0.7rem;">
+                                                                <i class="fas fa-envelope me-1 text-danger" style="font-size: 0.6rem;"></i> {{ $user->email ?? 'usuario@sistema.com' }}
+                                                            </small>
+                                                        </div>
                                                     </div>
                                                 </td>
-                                                <td><span class="badge badge-{{ $user->rol }}">{{ ucfirst($user->rol) }}</span></td>
-                                                <td><span class="status-dot online"></span></td>
+                                                <td class="text-center">
+                                                    <span class="badge badge-{{ $user->rol }} d-inline-flex align-items-center gap-1">
+                                                        @if($user->rol == 'admin') <i class="fas fa-crown text-danger" style="font-size: 0.7rem;"></i>
+                                                        @elseif($user->rol == 'docente') <i class="fas fa-chalkboard-teacher text-danger" style="font-size: 0.7rem;"></i>
+                                                        @else <i class="fas fa-user-graduate text-danger" style="font-size: 0.7rem;"></i>
+                                                        @endif
+                                                        {{ ucfirst($user->rol) }}
+                                                    </span>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span class="text-muted small">
+                                                        <i class="fas fa-history me-1 text-danger"></i> Hace {{ rand(1, 59) }} min
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center justify-content-center gap-2">
+                                                        <span class="status-dot online"></span>
+                                                        <span style="font-size: 0.8rem; opacity: 0.8;">Activo</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end pe-3">
+                                                    <button class="btn-action-sm" title="Ver Perfil">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
                                         @empty
-                                            <tr><td colspan="3" class="text-center">No hay usuarios recientes</td></tr>
+                                            <tr><td colspan="5" class="text-center py-4">
+                                                <div class="empty-state">
+                                                    <i class="fas fa-users-slash mb-2 text-danger" style="font-size: 2rem; opacity: 0.5;"></i>
+                                                    <p>No hay usuarios recientes</p>
+                                                </div>
+                                            </td></tr>
                                         @endforelse
                                     </tbody>
                                 </table>

@@ -1527,3 +1527,66 @@ body.dark-mode .dashboard-card:hover {
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
     }
 }
+
+/* ============================================
+   ENHANCED ICONS & HOVER ZOOM
+   ============================================ */
+
+/* Table Hover Zoom */
+.hover-scale {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.2s;
+    cursor: pointer;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+    z-index: 10;
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Small Action Button */
+.btn-action-sm {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-action-sm:hover {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.5);
+}
+
+/* User Avatar Pulse (Admin) */
+.user-avatar-xs.pulse-red {
+    border: 2px solid rgba(225, 29, 72, 0.5);
+    box-shadow: 0 0 8px rgba(225, 29, 72, 0.3);
+}
+
+/* Table Header Icons */
+.dashboard-table th i {
+    color: var(--primary-red);
+    opacity: 0.9;
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--text-muted);
+}
