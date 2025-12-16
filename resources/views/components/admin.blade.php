@@ -336,49 +336,52 @@
                             </div>
 
                             <!-- Detailed Stats List (New) -->
-                            <!-- Detailed Stats List (Refined) -->
+                            <!-- Detailed Stats List (Compact & Intuitive) -->
                             <div class="distribution-details w-100 px-3">
                                 @php $total = array_sum($roleDistribution ?? []) ?: 1; @endphp
                                 
                                 <!-- Admin -->
-                                <div class="detail-row">
-                                    <div class="detail-header">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <span class="legend-dot" style="background: #3b82f6;"></span>
-                                            <span class="detail-label">Admin</span>
-                                        </div>
-                                        <span class="detail-value">{{ $roleDistribution['admin'] ?? 0 }} <small class="text-muted">({{ round(($roleDistribution['admin'] ?? 0) / $total * 100) }}%)</small></span>
+                                <div class="detail-row d-flex align-items-center justify-content-between mb-2">
+                                    <div class="d-flex align-items-center gap-2" style="width: 35%;">
+                                        <i class="fas fa-user-shield text-primary" style="font-size: 0.9rem;"></i>
+                                        <span class="detail-label">Admin</span>
                                     </div>
-                                    <div class="progress-track small">
+                                    <div class="progress-track small flex-grow-1 mx-2" style="height: 6px; background: rgba(255,255,255,0.05);">
                                         <div class="progress-fill blue" style="width: {{ ($roleDistribution['admin'] ?? 0) / $total * 100 }}%"></div>
+                                    </div>
+                                    <div class="text-end" style="width: 25%;">
+                                        <span class="detail-value">{{ $roleDistribution['admin'] ?? 0 }}</span>
+                                        <small class="text-muted" style="font-size: 0.75rem;">({{ round(($roleDistribution['admin'] ?? 0) / $total * 100) }}%)</small>
                                     </div>
                                 </div>
 
                                 <!-- Docente -->
-                                <div class="detail-row">
-                                    <div class="detail-header">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <span class="legend-dot" style="background: #a855f7;"></span>
-                                            <span class="detail-label">Docente</span>
-                                        </div>
-                                        <span class="detail-value">{{ $roleDistribution['docente'] ?? 0 }} <small class="text-muted">({{ round(($roleDistribution['docente'] ?? 0) / $total * 100) }}%)</small></span>
+                                <div class="detail-row d-flex align-items-center justify-content-between mb-2">
+                                    <div class="d-flex align-items-center gap-2" style="width: 35%;">
+                                        <i class="fas fa-chalkboard-user text-purple" style="color: #a855f7; font-size: 0.9rem;"></i>
+                                        <span class="detail-label">Docente</span>
                                     </div>
-                                    <div class="progress-track small">
+                                    <div class="progress-track small flex-grow-1 mx-2" style="height: 6px; background: rgba(255,255,255,0.05);">
                                         <div class="progress-fill purple" style="width: {{ ($roleDistribution['docente'] ?? 0) / $total * 100 }}%"></div>
+                                    </div>
+                                    <div class="text-end" style="width: 25%;">
+                                        <span class="detail-value">{{ $roleDistribution['docente'] ?? 0 }}</span>
+                                        <small class="text-muted" style="font-size: 0.75rem;">({{ round(($roleDistribution['docente'] ?? 0) / $total * 100) }}%)</small>
                                     </div>
                                 </div>
 
                                 <!-- Estudiante -->
-                                <div class="detail-row mb-0">
-                                    <div class="detail-header">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <span class="legend-dot" style="background: #10b981;"></span>
-                                            <span class="detail-label">Estudiante</span>
-                                        </div>
-                                        <span class="detail-value">{{ $roleDistribution['estudiante'] ?? 0 }} <small class="text-muted">({{ round(($roleDistribution['estudiante'] ?? 0) / $total * 100) }}%)</small></span>
+                                <div class="detail-row d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center gap-2" style="width: 35%;">
+                                        <i class="fas fa-user-graduate text-success" style="color: #10b981; font-size: 0.9rem;"></i>
+                                        <span class="detail-label">Estud.</span>
                                     </div>
-                                    <div class="progress-track small">
+                                    <div class="progress-track small flex-grow-1 mx-2" style="height: 6px; background: rgba(255,255,255,0.05);">
                                         <div class="progress-fill green" style="width: {{ ($roleDistribution['estudiante'] ?? 0) / $total * 100 }}%"></div>
+                                    </div>
+                                    <div class="text-end" style="width: 25%;">
+                                        <span class="detail-value">{{ $roleDistribution['estudiante'] ?? 0 }}</span>
+                                        <small class="text-muted" style="font-size: 0.75rem;">({{ round(($roleDistribution['estudiante'] ?? 0) / $total * 100) }}%)</small>
                                     </div>
                                 </div>
                             </div>
