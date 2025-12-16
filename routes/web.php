@@ -32,9 +32,7 @@ Route::post('/registro/verify', function() {
 })->name('register.verify');
 
 // Dashboard protegido con middleware de autenticación y administrador
-Route::get('/admin/dashboard', function() {
-    return view('components.admin');
-})->middleware(['web', 'auth.check', 'admin.check'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->middleware(['web', 'auth.check', 'admin.check'])->name('admin.dashboard');
 
 // Alias para dashboard
 Route::get('/dashboard', function() {
