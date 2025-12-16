@@ -539,6 +539,7 @@ body {
 
 /* Redefine .stat-card.rich-stat layout */
 /* Redefine .stat-card.rich-stat layout */
+/* Redefine .stat-card.rich-stat layout */
 .stat-card.rich-stat {
     display: flex;
     flex-direction: row;
@@ -548,8 +549,8 @@ body {
     gap: 0.75rem;
     min-height: 100px; /* Fixed compact height that fits big icon */
 
-    /* ADDED: Card Visuals */
-    background: #0f172a; /* Dark background */
+    /* ADDED: Card Visuals - System Dark Match */
+    background: var(--bg-surface-secondary); /* Matches system panels */
     border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
     border-radius: 20px; /* Rounded corners */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
@@ -602,16 +603,19 @@ body {
     line-height: 0.9;
     font-weight: 800;
     letter-spacing: -0.5px;
-    color: white; /* Ensure white text on black card */
+    color: var(--text-dark);
+}
+
+body.dark-mode .stat-card.rich-stat .stat-value {
+    color: #f1f5f9;
 }
 
 .stat-card.rich-stat .stat-label {
     font-size: 0.75rem;
     letter-spacing: 0.5px;
     font-weight: 700;
-    color: #94a3b8; /* Lighter muted text */
+    color: var(--text-muted);
     text-transform: uppercase;
-    /* Removed truncation to show full text */
     margin-top: 4px;
     line-height: 1.1;
 }
@@ -620,14 +624,14 @@ body {
     border-color: var(--primary-red);
     box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.5); /* Stronger shadow */
     transform: translateY(-2px);
-    background: #0f172a; /* Keep dark background */
+    background: var(--bg-surface); /* Lighten slightly on hover */
 }
 
 .stat-card.rich-stat:hover .stat-value {
     color: var(--primary-red);
 }
 
-/* Right Section: Vertical Divider Style */
+/* Right Section: Vertical Divider + Stacked Info */
 .stat-right {
     position: relative;
     z-index: 2;
@@ -637,11 +641,40 @@ body {
     justify-content: center;
     align-items: flex-end;
     padding-left: 1rem;
-    border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
-    height: 60px; /* Match approximate height of visual block */
+    border-left: 1px solid var(--border-color); /* Use variable */
+    height: 60px;
     min-width: auto;
     flex-shrink: 0;
     margin-left: auto;
+    gap: 4px; /* Stack spacing */
+}
+
+/* New Stacked Mini Rows */
+.stat-mini-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+.stat-mini-row strong {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+body.dark-mode .stat-mini-row strong {
+    color: #f1f5f9;
+}
+
+.stat-mini-row.accent strong {
+    color: var(--primary-red);
+}
+
+.stat-mini-row.success strong {
+    color: #10b981;
 }
 
 /* Dark Mode adjustment */

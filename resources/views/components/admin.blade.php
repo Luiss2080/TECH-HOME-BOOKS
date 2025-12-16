@@ -63,11 +63,13 @@
                             </div>
                         </div>
                         <div class="stat-right">
-                            <div class="stat-extra">
-                                <span class="stat-change positive">
-                                    <i class="fas fa-arrow-up"></i> {{ $stats['new_users_count'] ?? 0 }}
-                                </span>
-                                <span class="stat-extra-text">Nuevos (7 días)</span>
+                            <div class="stat-mini-row success">
+                                <span>Nuevos</span>
+                                <strong>+{{ $stats['recent_users_count'] ?? $stats['new_users_count'] ?? 0 }}</strong>
+                            </div>
+                            <div class="stat-mini-row">
+                                <span>Total</span>
+                                <strong>{{ $stats['users'] ?? 0 }}</strong>
                             </div>
                         </div>
                         <div class="stat-decoration">
@@ -87,15 +89,17 @@
                             </div>
                         </div>
                         <div class="stat-right">
-                             <div class="stat-extra">
-                                <span class="stat-change">
-                                    <i class="fas fa-check-circle"></i>
-                                </span>
-                                <span class="stat-extra-text">Activos</span>
+                            <div class="stat-mini-row success">
+                                <span>Activos</span>
+                                <i class="fas fa-check-circle" style="font-size: 0.8rem;"></i>
+                            </div>
+                            <div class="stat-mini-row">
+                                <span>Total</span>
+                                <strong>{{ $stats['students'] ?? 0 }}</strong>
                             </div>
                         </div>
                         <div class="stat-decoration">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="fas fa-certificate"></i>
                         </div>
                     </div>
 
@@ -111,11 +115,13 @@
                             </div>
                         </div>
                         <div class="stat-right">
-                            <div class="stat-extra">
-                                <span class="stat-change">
-                                    <i class="fas fa-chalkboard"></i>
-                                </span>
-                                <span class="stat-extra-text">Académicos</span>
+                            <div class="stat-mini-row">
+                                <span>Activos</span>
+                                <strong>{{ $stats['teachers'] ?? 0 }}</strong>
+                            </div>
+                            <div class="stat-mini-row accent">
+                                <span>Académicos</span>
+                                <i class="fas fa-laptop" style="font-size: 0.8rem;"></i>
                             </div>
                         </div>
                         <div class="stat-decoration">
@@ -135,11 +141,13 @@
                             </div>
                         </div>
                         <div class="stat-right">
-                            <div class="stat-extra">
-                                <span class="stat-change positive">
-                                    <i class="fas fa-plus"></i> {{ $stats['recent_courses_count'] ?? 0 }}
-                                </span>
-                                <span class="stat-extra-text">Recientes</span>
+                            <div class="stat-mini-row success">
+                                <span>Recientes</span>
+                                <strong>+{{ $stats['recent_courses_count'] ?? 0 }}</strong>
+                            </div>
+                            <div class="stat-mini-row">
+                                <span>Total</span>
+                                <strong>{{ $stats['courses'] ?? 0 }}</strong>
                             </div>
                         </div>
                         <div class="stat-decoration">
