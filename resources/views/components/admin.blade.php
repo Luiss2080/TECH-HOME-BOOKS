@@ -270,11 +270,8 @@
                                                 <td class="ps-3">
                                                     <div class="user-info-compact">
                                                         <div class="user-avatar-xs {{ $user->rol === 'admin' ? 'pulse-red' : '' }}">{{ substr($user->name, 0, 1) }}</div>
-                                                        <div class="d-flex flex-column">
+                                                        <div class="d-flex align-items-center">
                                                             <span class="user-name-styled">{{ $user->name }}</span>
-                                                            <small class="user-email-styled">
-                                                                <i class="fas fa-envelope text-danger me-1"></i> {{ $user->email ?? 'usuario@sistema.com' }}
-                                                            </small>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -324,12 +321,32 @@
 
                     <!-- Right: User Distribution Chart -->
                     <div class="dashboard-card glow-effect h-100">
-                        <div class="card-header">
+                        <div class="card-header border-0 pb-0">
                             <h3 class="card-title">Distribución</h3>
-                            <button class="card-action"><i class="fas fa-chart-pie"></i></button>
+                            <span class="badge-modern-red px-2 py-1" style="font-size: 0.7rem;">TOTAL: {{ array_sum($roleDistribution ?? []) }}</span>
                         </div>
-                        <div class="card-body flex-center" style="min-height: 250px;">
-                            <canvas id="userRolesChart"></canvas>
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center pt-2">
+                            <div style="width: 180px; height: 180px; position: relative; margin-bottom: 1.5rem;">
+                                <canvas id="userRolesChart"></canvas>
+                            </div>
+                            <!-- Custom Modern Legend -->
+                            <div class="chart-legend-modern">
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #3b82f6;"></span>
+                                    <span class="legend-label">Admin</span>
+                                    <span class="badge-modern-pill blue">{{ $roleDistribution['admin'] ?? 0 }}</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #a855f7;"></span>
+                                    <span class="legend-label">Docente</span>
+                                    <span class="badge-modern-pill purple">{{ $roleDistribution['docente'] ?? 0 }}</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #10b981;"></span>
+                                    <span class="legend-label">Estudiante</span>
+                                    <span class="badge-modern-pill green">{{ $roleDistribution['estudiante'] ?? 0 }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -139,6 +139,41 @@ function initDashboardCharts(data) {
             },
         });
     }
+
+    // 4. User Roles Chart (Doughnut)
+    const rolesCtx = document.getElementById("userRolesChart");
+    if (rolesCtx) {
+        new Chart(rolesCtx, {
+            type: "doughnut",
+            data: {
+                labels: ["Administradores", "Docentes", "Estudiantes"],
+                datasets: [
+                    {
+                        data: Object.values(
+                            window.appConfig.roleDistribution || {
+                                admin: 1,
+                                docente: 5,
+                                estudiante: 20,
+                            }
+                        ),
+                        backgroundColor: ["#3b82f6", "#a855f7", "#10b981"],
+                        borderWidth: 0,
+                        hoverOffset: 4,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: "70%",
+                plugins: {
+                    legend: {
+                        display: false, // Hide default legend
+                    },
+                },
+            },
+        });
+    }
 }
 
 /**
