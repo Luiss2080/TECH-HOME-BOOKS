@@ -250,7 +250,7 @@
                     <div class="dashboard-card h-100">
                         <div class="card-header">
                             <h3 class="card-title">Usuarios Recientes</h3>
-                            <a href="{{ route('admin.usuarios.index') }}" class="card-action-link">Ver todos</a>
+                            <a href="{{ route('admin.usuarios.index') }}" class="card-action-link" style="color: #fff !important;">Ver todos</a>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive-compact">
@@ -328,27 +328,57 @@
                             <h3 class="card-title">Distribución</h3>
                             <span class="badge-modern-red px-2 py-1" style="font-size: 0.7rem;">TOTAL: {{ array_sum($roleDistribution ?? []) }}</span>
                         </div>
-                        <div class="card-body d-flex flex-column align-items-center justify-content-between pt-2 pb-4 flex-grow-1">
-                            <!-- Maximized Chart Area -->
-                            <div style="width: 100%; flex-grow: 1; min-height: 200px; position: relative; display: flex; align-items: center; justify-content: center;">
-                                <canvas id="userRolesChart" style="max-height: 100%; max-width: 100%;"></canvas>
+                        <div class="card-body d-flex flex-column align-items-center justify-content-start pt-2 pb-4 flex-grow-1" style="gap: 1rem;">
+                            
+                            <!-- Chart Area (Smaller) -->
+                            <div style="width: 100%; height: 160px; position: relative; display: flex; align-items: center; justify-content: center;">
+                                <canvas id="userRolesChart"></canvas>
                             </div>
-                            <!-- Custom Modern Legend -->
-                            <div class="chart-legend-modern mt-3 flex-shrink-0">
-                                <div class="legend-item">
-                                    <span class="legend-dot" style="background: #3b82f6;"></span>
-                                    <span class="legend-label">Admin</span>
-                                    <span class="badge-modern-pill blue">{{ $roleDistribution['admin'] ?? 0 }}</span>
+
+                            <!-- Detailed Stats List (New) -->
+                            <div class="distribution-details w-100 px-3">
+                                @php $total = array_sum($roleDistribution ?? []) ?: 1; @endphp
+                                
+                                <!-- Admin -->
+                                <div class="detail-row mb-2">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="legend-dot" style="background: #3b82f6;"></span>
+                                            <span class="detail-label">Admin</span>
+                                        </div>
+                                        <span class="detail-value text-white">{{ $roleDistribution['admin'] ?? 0 }} <span class="text-muted" style="font-size: 0.7em;">({{ round(($roleDistribution['admin'] ?? 0) / $total * 100) }}%)</span></span>
+                                    </div>
+                                    <div class="progress-track small">
+                                        <div class="progress-fill blue" style="width: {{ ($roleDistribution['admin'] ?? 0) / $total * 100 }}%"></div>
+                                    </div>
                                 </div>
-                                <div class="legend-item">
-                                    <span class="legend-dot" style="background: #a855f7;"></span>
-                                    <span class="legend-label">Docente</span>
-                                    <span class="badge-modern-pill purple">{{ $roleDistribution['docente'] ?? 0 }}</span>
+
+                                <!-- Docente -->
+                                <div class="detail-row mb-2">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="legend-dot" style="background: #a855f7;"></span>
+                                            <span class="detail-label">Docente</span>
+                                        </div>
+                                        <span class="detail-value text-white">{{ $roleDistribution['docente'] ?? 0 }} <span class="text-muted" style="font-size: 0.7em;">({{ round(($roleDistribution['docente'] ?? 0) / $total * 100) }}%)</span></span>
+                                    </div>
+                                    <div class="progress-track small">
+                                        <div class="progress-fill purple" style="width: {{ ($roleDistribution['docente'] ?? 0) / $total * 100 }}%"></div>
+                                    </div>
                                 </div>
-                                <div class="legend-item">
-                                    <span class="legend-dot" style="background: #10b981;"></span>
-                                    <span class="legend-label">Estudiante</span>
-                                    <span class="badge-modern-pill green">{{ $roleDistribution['estudiante'] ?? 0 }}</span>
+
+                                <!-- Estudiante -->
+                                <div class="detail-row">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="legend-dot" style="background: #10b981;"></span>
+                                            <span class="detail-label">Estudiante</span>
+                                        </div>
+                                        <span class="detail-value text-white">{{ $roleDistribution['estudiante'] ?? 0 }} <span class="text-muted" style="font-size: 0.7em;">({{ round(($roleDistribution['estudiante'] ?? 0) / $total * 100) }}%)</span></span>
+                                    </div>
+                                    <div class="progress-track small">
+                                        <div class="progress-fill green" style="width: {{ ($roleDistribution['estudiante'] ?? 0) / $total * 100 }}%"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
