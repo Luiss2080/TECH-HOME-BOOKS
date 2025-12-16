@@ -327,16 +327,17 @@
                         <div class="card-header border-0 pb-0 flex-shrink-0">
                             <h3 class="card-title">Distribución</h3>
                         </div>
-                        <div class="card-body d-flex flex-column align-items-center justify-content-center pt-2 pb-4 flex-grow-1" style="gap: 1.5rem;">
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center pt-2 pb-4 flex-grow-1" style="gap: 2rem;">
                             
                             <!-- Chart Area with Center Text -->
-                            <div style="width: 140px; height: 140px; position: relative;">
+                            <div style="width: 220px; height: 220px; position: relative; margin: 0 auto !important;">
                                 <canvas id="userRolesChart"></canvas>
                                 <div class="chart-center-text">
                                     <span class="total-number">{{ array_sum($roleDistribution ?? []) }}</span>
                                     <span class="total-label">Total</span>
                                 </div>
                             </div>
+
 
                             <!-- Legend Grid (Compact) -->
                             <div class="legend-grid px-3">

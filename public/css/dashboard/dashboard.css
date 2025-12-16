@@ -2147,7 +2147,7 @@ body.dark-mode .dashboard-card:hover {
 }
 
 .chart-center-text .total-number {
-    font-size: 1.8rem;
+    font-size: 2.5rem; /* Increased from 1.8rem */
     font-weight: 800;
     color: var(--text-dark);
     line-height: 1;
@@ -2155,7 +2155,7 @@ body.dark-mode .dashboard-card:hover {
 }
 
 .chart-center-text .total-label {
-    font-size: 0.75rem;
+    font-size: 0.9rem; /* Increased from 0.75rem */
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -2168,8 +2168,9 @@ body.dark-mode .chart-center-text .total-number {
 /* Legend Grid for Distribution */
 .legend-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 1rem; /* tighter gap */
+    grid-template-columns: repeat(2, max-content); /* Compact columns */
+    justify-content: center; /* Center the whole grid */
+    gap: 0.5rem 2rem; /* Gap between items */
     width: 100%;
     margin-top: 0.5rem;
 }
