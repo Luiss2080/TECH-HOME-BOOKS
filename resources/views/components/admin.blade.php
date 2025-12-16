@@ -261,7 +261,7 @@
                                             <th class="text-center"><i class="fas fa-user-tag me-2 text-danger"></i>Rol</th>
                                             <th class="text-center"><i class="fas fa-clock me-2 text-danger"></i>Sesión</th>
                                             <th class="text-center"><i class="fas fa-toggle-on me-2 text-danger"></i>Estado</th>
-                                            <th class="text-end pe-3" style="width: 120px; white-space: nowrap;">ACTIONS <i class="fas fa-cog text-danger ms-1"></i></th>
+                                            <th class="text-center" style="width: 140px; white-space: nowrap;">ACTIONS <i class="fas fa-cog text-danger ms-1"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
@@ -294,8 +294,8 @@
                                                         <span class="status-dot-pulse"></span> Activo
                                                     </span>
                                                 </td>
-                                                <td class="text-end pe-3" style="white-space: nowrap;">
-                                                    <div class="d-flex justify-content-end gap-2 align-items-center">
+                                                <td class="text-center" style="white-space: nowrap;">
+                                                    <div class="d-flex justify-content-center gap-2 align-items-center flex-nowrap">
                                                         <button class="btn-icon-modern red" title="Editar">
                                                             <i class="fas fa-pen"></i>
                                                         </button>
