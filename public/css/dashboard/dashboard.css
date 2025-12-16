@@ -1420,3 +1420,155 @@ body.dark-mode .stat-card.rich-stat:hover {
     background: var(--bg-surface-secondary); /* Slightly lighter on hover */
 }
 
+
+/* ============================================
+   STATS CARDS V3: SIDE-BY-SIDE + RED ANIMATION
+   ============================================ */
+
+/* Redefine .stat-card.rich-stat layout */
+.stat-card.rich-stat {
+    flex-direction: row; /* Horizontal layout */
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem; /* More horizontal padding */
+    gap: 1.5rem;
+}
+
+/* Left Section: Icon + Main Info */
+.stat-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Larger Icon Wrapper */
+.stat-card.rich-stat .stat-icon-wrapper {
+    width: 64px; /* Significantly larger */
+    height: 64px;
+    font-size: 1.75rem;
+    margin-right: 0; /* Handled by gap in parent */
+    border-radius: 16px;
+    background: var(--bg-surface-secondary);
+    color: var(--text-muted);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Main Info Text */
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card.rich-stat .stat-value {
+    font-size: 2.25rem; /* Larger numbers */
+    margin-bottom: 0.1rem;
+}
+
+.stat-card.rich-stat .stat-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* RED HOVER ANIMATION (Unified for all cards) */
+.stat-card.rich-stat:hover {
+    border-color: var(--primary-red);
+    box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.25);
+    background: var(--bg-surface); /* Ensure background stays surface color */
+}
+
+.stat-card.rich-stat:hover .stat-icon-wrapper {
+    background: var(--primary-red);
+    color: white;
+    transform: scale(1.1) rotate(-3deg);
+    box-shadow: 0 5px 15px rgba(225, 29, 72, 0.4);
+}
+
+.stat-card.rich-stat:hover .stat-value {
+    color: var(--primary-red); /* Optional: Colorize number on hover too */
+    transition: color 0.3s ease;
+}
+
+/* Right Section: Extra Data */
+.stat-right {
+    position: relative;
+    z-index: 2;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border-color); /* Separator line */
+    min-width: 120px;
+}
+
+.stat-extra {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.stat-change {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: var(--text-dark); /* Neutral by default */
+}
+
+.stat-change.positive {
+    color: #10b981; /* Green for positive growth */
+}
+
+.stat-extra-text {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Adjust Decoration Position */
+.stat-card.rich-stat .stat-decoration {
+    top: -10px;
+    right: 15%; /* Move it slightly left so it doesn't overlap text too much */
+    font-size: 7rem;
+    opacity: 0.03;
+}
+
+/* Hide footer styles from previous iteration */
+.stat-footer {
+    display: none;
+}
+.stat-main {
+    display: contents; /* Remove layout impact of old wrapper */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1200px) {
+    .stat-card.rich-stat {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+    }
+    
+    .stat-right {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-top: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+    
+    .stat-extra {
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
