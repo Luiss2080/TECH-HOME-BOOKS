@@ -59,7 +59,7 @@
                             </div>
                             <div class="stat-info">
                                 <h3 class="stat-value">{{ $stats['users'] ?? 0 }}</h3>
-                                <p class="stat-label">Usuarios Totales</p>
+                                <p class="stat-label">Usuarios</p>
                             </div>
                         </div>
                         <div class="stat-right">
