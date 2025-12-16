@@ -367,31 +367,31 @@
                                     <div class="icon-box green"><i class="fas fa-user-graduate"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Estudiantes</span>
                                     <span class="badge-modern-pill green me-2">{{ $stats['students'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                                 <a href="{{ route('admin.docentes.index') }}" class="module-row-item">
                                     <div class="icon-box purple"><i class="fas fa-chalkboard-teacher"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Docentes</span>
                                     <span class="badge-modern-pill purple me-2">{{ $stats['teachers'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                                 <a href="{{ route('admin.cursos.index') }}" class="module-row-item">
                                     <div class="icon-box blue"><i class="fas fa-layer-group"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Cursos</span>
                                     <span class="badge-modern-pill blue me-2">{{ $stats['courses'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                                 <a href="{{ route('admin.materias.index') }}" class="module-row-item">
                                     <div class="icon-box orange"><i class="fas fa-book-open"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Materias</span>
                                     <span class="badge-modern-pill orange me-2">{{ $stats['materias'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                                 <a href="{{ route('admin.colegios.index') }}" class="module-row-item">
                                     <div class="icon-box red"><i class="fas fa-school"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Colegios</span>
                                     <span class="badge-modern-pill red me-2">{{ $stats['colegios'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                             </div>
                         </div>
@@ -409,19 +409,19 @@
                                     <div class="icon-box red"><i class="fas fa-book"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Biblioteca</span>
                                     <span class="badge-modern-pill red me-2">{{ $stats['libros'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                                 <a href="{{ route('admin.materiales.index') }}" class="module-row-item">
                                     <div class="icon-box orange"><i class="fas fa-folder-open"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Materiales</span>
                                     <span class="badge-modern-pill orange me-2">{{ $stats['materiales'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                                 <a href="{{ route('admin.laboratorios.index') }}" class="module-row-item">
                                     <div class="icon-box blue"><i class="fas fa-desktop"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Laboratorios</span>
                                     <span class="badge-modern-pill blue me-2">{{ $stats['laboratorios'] }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                             </div>
                         </div>
@@ -445,23 +445,23 @@
                                     <div class="icon-box purple"><i class="fas fa-user-tag"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Roles</span>
                                     <span class="badge-modern-pill purple me-2">{{ count($roleDistribution) ?? 0 }}</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </a>
                                 <div class="module-row-item">
                                     <div class="icon-box gray"><i class="fas fa-key"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Permisos</span>
                                     <span class="badge-modern-pill gray me-2">40</span>
-                                    <div class="btn-icon-modern outline sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </div>
                                 <div class="module-row-item">
                                     <div class="icon-box blue"><i class="fas fa-chart-line"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Reportes</span>
-                                    <div class="btn-icon-modern outline sm ms-auto" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm ms-auto" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </div>
                                 <div class="module-row-item">
                                     <div class="icon-box gray"><i class="fas fa-sliders-h"></i></div>
                                     <span class="flex-grow-1 ms-2 font-weight-bold text-white" style="font-size: 0.9rem;">Configuración</span>
-                                    <div class="btn-icon-modern outline sm ms-auto" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
+                                    <div class="btn-icon-modern red sm ms-auto" style="width: 24px; height: 24px;"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i></div>
                                 </div>
                             </div>
                         </div>
