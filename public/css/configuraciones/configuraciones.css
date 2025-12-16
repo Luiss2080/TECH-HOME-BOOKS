@@ -1,44 +1,57 @@
 /* Configuration Specific Styles */
 
-/* Header & Quick Stats */
-.quick-stats-row {
-    color: white;
-}
-
-.mini-stat {
+/* Header Toolbar (Compact Stats) */
+.stats-toolbar {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* Pill shape */
+    padding: 0.5rem 1.25rem;
+    gap: 1rem;
+    backdrop-filter: blur(10px);
 }
 
-.mini-label {
-    font-size: 0.65rem;
-    color: #9ca3af;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.mini-value {
-    font-weight: 700;
+.toolbar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
     font-size: 0.9rem;
+}
+
+.toolbar-val {
+    font-weight: 600;
     font-family: "Outfit", sans-serif;
+    color: #e5e7eb;
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .text-red {
     color: var(--primary-red, #ef4444);
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.4);
+}
+.text-blue {
+    color: #3b82f6;
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+}
+.text-yellow {
+    color: #f59e0b;
+    text-shadow: 0 0 5px rgba(245, 158, 11, 0.4);
 }
 .text-green {
     color: #10b981;
+    text-shadow: 0 0 5px rgba(16, 185, 129, 0.4);
 }
 
-.spin-on-hover:hover {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
+/* Left Column Stack */
+.left-column-stack {
+    height: fit-content;
 }
 
 /* Compact Red Section Header */
@@ -48,7 +61,7 @@
     align-items: center;
     padding-bottom: 0.75rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid rgba(239, 68, 68, 0.2); /* Red underline */
+    border-bottom: 2px solid rgba(239, 68, 68, 0.2);
     position: relative;
 }
 
@@ -73,8 +86,7 @@
 }
 
 .header-left i {
-    color: var(--primary-red, #ef4444);
-    text-shadow: 0 0 5px rgba(239, 68, 68, 0.4);
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
 }
 
 .icon-btn {
@@ -89,28 +101,11 @@
     color: white;
 }
 
-/* Sidebar Help Section */
+/* Sidebar & Sticky */
 .sticky-sidebar {
     position: sticky;
-    top: 100px; /* Sticks below header */
-    height: fit-content;
+    top: 100px;
     z-index: 10;
-}
-
-.help-tips {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.tip-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tip-card:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Grid */
@@ -129,21 +124,10 @@
     .sticky-sidebar {
         position: static;
         margin-bottom: 2rem;
-        flex-direction: row;
-        align-items: center;
     }
 
-    .panel-content {
-        flex-direction: column;
-        gap: 1rem !important;
-    }
-
-    .quick-stats-row {
-        border-left: none !important;
-        padding-left: 0 !important;
-        justify-content: flex-start !important;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    .stats-toolbar {
+        display: none; /* Hide toolbar on mobile if needed or adjust */
     }
 }
 
@@ -274,27 +258,25 @@ input:checked + .slider:before {
     flex: 1;
     margin-right: 1rem;
 }
-
 .setting-label {
     display: block;
     font-weight: 700;
     color: white;
     font-size: 0.95rem;
 }
-
 .setting-desc {
     display: block;
     font-size: 0.8rem;
     color: #9ca3af;
 }
 
-/* Utilities same as module but specific if needed */
+/* Utilities */
 .mt-4 {
     margin-top: 1rem;
 }
-.pt-4 {
-    padding-top: 1rem;
+.w-full {
+    width: 100%;
 }
-.border-t {
-    border-top-width: 1px;
+.text-red {
+    color: #ef4444;
 }

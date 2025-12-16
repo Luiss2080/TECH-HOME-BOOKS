@@ -20,18 +20,35 @@
                     <p class="subtitle">Gestiona las preferencias generales, seguridad y personalización de la plataforma.</p>
                 </div>
             </div>
-            <!-- Quick Actions / Search -->
+            <!-- Quick Actions -->
             <div class="header-actions">
-                <button class="btn-primary-action">
-                    <i class="fas fa-sync-alt spin-on-hover"></i>
-                    <span>Sincronizar</span>
-                </button>
+               <div class="stats-toolbar">
+                    <div class="toolbar-item">
+                        <i class="fas fa-code-branch text-red"></i>
+                        <span class="toolbar-val">v2.5.0</span>
+                    </div>
+                    <div class="toolbar-divider"></div>
+                    <div class="toolbar-item">
+                        <i class="fab fa-php text-blue"></i>
+                        <span class="toolbar-val">{{ phpversion() }}</span>
+                    </div>
+                    <div class="toolbar-divider"></div>
+                     <div class="toolbar-item">
+                        <i class="fas fa-database text-yellow"></i>
+                        <span class="toolbar-val">MySQL</span>
+                    </div>
+                    <div class="toolbar-divider"></div>
+                    <div class="toolbar-item">
+                        <i class="fas fa-circle text-green" style="font-size: 0.6rem;"></i>
+                        <span class="toolbar-val">Online</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="panel-content" style="display: flex; gap: 2rem; align-items: stretch; flex-wrap: wrap;">
-            <!-- Navigation Tabs (Left Side) -->
-            <div class="stats-group config-tabs-container" style="flex: 2; overflow-x: auto; justify-content: start; gap: 1rem; padding-bottom: 0;">
+        <div class="panel-content" style="padding-top: 0;">
+            <!-- Navigation Tabs (Full Width now that stats are in header) -->
+            <div class="stats-group config-tabs-container" style="width: 100%; overflow-x: auto; justify-content: start; gap: 1rem;">
                 <button class="stat-pill tab-trigger active" data-target="general">
                     <i class="fas fa-sliders-h"></i>
                     <div class="info">
@@ -64,22 +81,6 @@
                     </div>
                 </button>
             </div>
-
-            <!-- Quick Stats (Right Side - Fills empty space) -->
-            <div class="quick-stats-row" style="flex: 1; display: flex; gap: 1rem; justify-content: flex-end; align-items: center; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem;">
-                <div class="mini-stat">
-                    <span class="mini-label">Versión</span>
-                    <span class="mini-value text-red">v2.5.0</span>
-                </div>
-                <div class="mini-stat">
-                    <span class="mini-label">PHP</span>
-                    <span class="mini-value">{{ phpversion() }}</span>
-                </div>
-                <div class="mini-stat">
-                    <span class="mini-label">Estado</span>
-                    <span class="mini-value text-green"><i class="fas fa-circle" style="font-size: 0.6rem;"></i> Online</span>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -87,39 +88,79 @@
     <div class="dashboard-section">
         <div class="profile-container"> 
             
-            <!-- HELP SIDEBAR -->
-            <div class="profile-card sticky-sidebar">
-                <div class="profile-avatar-wrapper" style="width: 80px; height: 80px; margin-bottom: 20px;">
-                   <div style="width: 100%; height: 100%; border-radius: 50%; background: #1f2937; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #ef4444; border: 2px solid #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);">
-                       <i class="fas fa-question"></i>
-                   </div>
-                </div>
+            <!-- LEFT COLUMN (Sidebar) -->
+            <div class="left-column-stack sticky-sidebar" style="display: flex; flex-direction: column; gap: 2rem;">
                 
-                <h2 class="profile-name" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Centro de Ayuda</h2>
-                <span class="profile-role" style="margin-bottom: 2rem;">Soporte Admin</span>
+                <!-- CARD 1: Help Center -->
+                <div class="profile-card">
+                    <div class="profile-avatar-wrapper" style="width: 80px; height: 80px; margin-bottom: 20px;">
+                    <div style="width: 100%; height: 100%; border-radius: 50%; background: #1f2937; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #ef4444; border: 2px solid #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);">
+                        <i class="fas fa-question"></i>
+                    </div>
+                    </div>
+                    
+                    <h2 class="profile-name" style="font-size: 1.2rem; margin-bottom: 0.5rem;">Centro de Ayuda</h2>
+                    <span class="profile-role" style="margin-bottom: 2rem;">Soporte Admin</span>
 
-                <div class="help-tips">
-                    <div class="tip-card" style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border-left: 3px solid #ef4444;">
-                        <h4 style="color: white; font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-lightbulb text-warning mr-2"></i> Tips Rápidos</h4>
-                        <p style="font-size: 0.8rem; color: #9ca3af; line-height: 1.4;">
-                            Usa las pestañas superiores para navegar entre categorías.
-                        </p>
+                    <div class="help-tips">
+                        <div class="tip-card" style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border-left: 3px solid #ef4444;">
+                            <h4 style="color: white; font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-lightbulb text-warning mr-2"></i> Tips Rápidos</h4>
+                            <p style="font-size: 0.8rem; color: #9ca3af; line-height: 1.4;">
+                                Usa los interruptores para activar o desactivar funciones en tiempo real.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 w-100">
+                        <a href="#" class="btn-primary-action w-full justify-center" style="width: 100%;">Contactar Soporte</a>
                     </div>
                 </div>
 
-                <div class="profile-stats">
-                     <div class="stat-item">
-                        <span class="stat-value text-success"><i class="fas fa-check-circle"></i></span>
-                        <span class="stat-label" style="font-size: 0.65rem;">Sistema Estable</span>
+                <!-- CARD 2: Server Resources (New Space Filler) -->
+                <div class="profile-card">
+                     <div class="card-header" style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="font-size: 1rem; color: white; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-microchip text-red"></i> Recursos
+                        </h3>
+                         <span class="stat-pill-mini" style="font-size: 0.7rem; padding: 2px 8px; background: rgba(16, 185, 129, 0.2); color: #10b981; border-radius: 10px;">Stable</span>
                     </div>
-                     <div class="stat-item">
-                        <span class="stat-value text-warning"><i class="fas fa-shield-alt"></i></span>
-                        <span class="stat-label" style="font-size: 0.65rem;">Firewall Activo</span>
+                    
+                    <div style="width: 100%; display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="resource-bar">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                <span style="font-size: 0.8rem; color: #9ca3af;">CPU Load</span>
+                                <span style="font-size: 0.8rem; color: white;">12%</span>
+                            </div>
+                            <div style="width: 100%; height: 6px; background: #374151; border-radius: 3px; overflow: hidden;">
+                                <div style="width: 12%; height: 100%; background: #ef4444; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);"></div>
+                            </div>
+                        </div>
+
+                        <div class="resource-bar">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                <span style="font-size: 0.8rem; color: #9ca3af;">Memory</span>
+                                <span style="font-size: 0.8rem; color: white;">45%</span>
+                            </div>
+                            <div style="width: 100%; height: 6px; background: #374151; border-radius: 3px; overflow: hidden;">
+                                <div style="width: 45%; height: 100%; background: #3b82f6;"></div>
+                            </div>
+                        </div>
+                         
+                         <div class="resource-bar">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                <span style="font-size: 0.8rem; color: #9ca3af;">Disk Space</span>
+                                <span style="font-size: 0.8rem; color: white;">28%</span>
+                            </div>
+                            <div style="width: 100%; height: 6px; background: #374151; border-radius: 3px; overflow: hidden;">
+                                <div style="width: 28%; height: 100%; background: #10b981;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-            <!-- SETTINGS CONTENT -->
+            <!-- RIGHT COLUMN (Settings Content) -->
             <div class="profile-content">
                 
                 <!-- GENERAL -->
@@ -185,6 +226,7 @@
                                 <select class="form-input">
                                     <option>2025 - Gestión I</option>
                                     <option>2025 - Gestión II</option>
+                                    <option>Verano</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -309,7 +351,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Animation for cards
-            const cards = document.querySelectorAll('.settings-card');
+            const cards = document.querySelectorAll('.settings-card, .profile-card'); // Animate sidebars too
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
