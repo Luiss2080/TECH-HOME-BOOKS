@@ -1,18 +1,15 @@
-/**
- * Configuration Page Scripts
- */
-
 document.addEventListener("DOMContentLoaded", function () {
     // Tab Switching Logic
-    const initTabs = () => {
-        const tabs = document.querySelectorAll(".config-tab-btn");
-        const sections = document.querySelectorAll(".config-section");
+    const tabs = document.querySelectorAll(".tab-trigger");
+    const sections = document.querySelectorAll(".config-section");
 
+    if (tabs.length > 0) {
         tabs.forEach((tab) => {
             tab.addEventListener("click", () => {
-                // Remove active class from all tabs
+                // Deactivate all tabs
                 tabs.forEach((t) => t.classList.remove("active"));
-                // Add active class to clicked tab
+
+                // Activate clicked tab
                 tab.classList.add("active");
 
                 // Hide all sections
@@ -28,29 +25,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         });
-    };
+    }
 
-    // Toggle Switch Logic (Mock functionality for UI demo)
-    const initToggles = () => {
-        const toggles = document.querySelectorAll(".switch input");
+    // Toggle Interactions
+    const toggles = document.querySelectorAll(".switch input");
+    toggles.forEach((toggle) => {
+        toggle.addEventListener("change", function () {
+            // Visual feedback via Console or Toast
+            const name = this.getAttribute("name");
+            const status = this.checked ? "Activado" : "Desactivado";
+            console.log(`Configuración [${name}]: ${status}`);
 
-        toggles.forEach((toggle) => {
-            toggle.addEventListener("change", function () {
-                const settingName = this.getAttribute("name");
-                const isChecked = this.checked;
-
-                // Here you would typically send an AJAX request to save the setting
-                console.log(`Setting ${settingName} changed to: ${isChecked}`);
-
-                // Optional: Show a quick toast notification
-                showToast(`Configuración actualizada`);
-            });
+            // Simple Toast
+            showToast(`Configuración actualizada`);
         });
-    };
+    });
 
-    // Simple toast notification helper
-    const showToast = (message) => {
-        // Check if toast container exists, if not create it
+    function showToast(message) {
+        // Create container if it doesn't exist
         let container = document.querySelector(".toast-container");
         if (!container) {
             container = document.createElement("div");
@@ -62,36 +54,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const toast = document.createElement("div");
         toast.className = "config-toast";
-        toast.textContent = message;
+        toast.innerHTML = `<i class="fas fa-check-circle" style="margin-right: 8px;"></i> ${message}`;
         toast.style.cssText = `
             background-color: #1f2937;
             color: #10b981;
             padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
+            border-radius: 12px;
             margin-top: 10px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border: 1px solid #374151;
-            animation: slideInRight 0.3s ease-out;
             display: flex;
             align-items: center;
+            font-weight: 500;
+            animation: slideIn 0.3s ease-out;
         `;
-
-        // Add check icon
-        const icon = document.createElement("i");
-        icon.className = "fas fa-check-circle";
-        icon.style.marginRight = "0.5rem";
-        toast.prepend(icon);
 
         container.appendChild(toast);
 
-        // Remove after 3 seconds
+        // Remove
         setTimeout(() => {
-            toast.style.animation = "fadeOut 0.3s ease-out forwards";
+            toast.style.opacity = "0";
+            toast.style.transform = "translateX(20px)";
+            toast.style.transition = "all 0.3s ease";
             setTimeout(() => toast.remove(), 300);
         }, 3000);
-    };
-
-    // Initialize all components
-    initTabs();
-    initToggles();
+    }
 });
+
+// Add animation keyframes via JS if needed, or rely on CSS
+styleSheet = document.createElement("style");
+styleSheet.innerText = `
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}`;
+document.head.appendChild(styleSheet);
