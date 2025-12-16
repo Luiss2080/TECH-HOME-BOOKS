@@ -730,25 +730,17 @@ body.dark-mode .stat-right {
 }
 
 /* Decoration */
-.stat-card.rich-stat {
-    position: relative;
-    overflow: hidden;
-}
-
-.stat-card.rich-stat .stat-left,
-.stat-card.rich-stat .stat-right {
-    position: relative;
-    z-index: 5; /* Ensure text is above icon */
-}
-
+/* Decoration */
+/* Decoration */
+/* Decoration */
 .stat-card.rich-stat .stat-decoration {
     position: absolute;
     bottom: -15px;
     right: -10px;
     font-size: 6.5rem;
-    opacity: 0.3; /* Base visibility */
+    opacity: 0.3; /* visible in light mode */
     transition: transform 0.3s ease;
-    z-index: 1; /* Above background, below text */
+    z-index: 0;
     pointer-events: none;
     top: auto;
     color: var(--text-muted);
@@ -756,13 +748,8 @@ body.dark-mode .stat-right {
 
 /* Ensure visibility in dark mode */
 body.dark-mode .stat-card.rich-stat .stat-decoration {
-    color: rgba(
-        255,
-        255,
-        255,
-        0.5
-    ) !important; /* Force white visual (50% solid) */
-    opacity: 1 !important; /* Use color alpha for transparency, keep element opaque */
+    color: rgba(255, 255, 255, 0.4) !important; /* Force white visual */
+    opacity: 0.5 !important; /* Force high visibility */
 }
 
 /* Hover state increase - MOVEMENT ONLY */
