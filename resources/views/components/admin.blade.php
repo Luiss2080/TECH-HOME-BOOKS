@@ -147,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+
 
                 <!-- NEW ANALYTICS SECTION -->
                 <div class="analytics-grid">
