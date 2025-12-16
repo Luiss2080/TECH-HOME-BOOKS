@@ -2092,3 +2092,46 @@ body.dark-mode .dashboard-card:hover {
     padding: 1rem;
     color: var(--text-muted);
 }
+
+/* FORCE Action Icons White */
+.btn-icon-modern i,
+.action-buttons-row .btn-icon-modern i {
+    color: #ffffff !important;
+}
+
+/* Fix Distribution Details Layout */
+.distribution-details .detail-row {
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+
+.distribution-details .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.distribution-details .detail-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.distribution-details .detail-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+.distribution-details .progress-track.small {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.distribution-details .progress-fill {
+    height: 100%;
+    border-radius: 10px;
+}
