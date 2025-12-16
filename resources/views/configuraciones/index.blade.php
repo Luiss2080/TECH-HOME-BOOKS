@@ -22,12 +22,6 @@
             </div>
             <!-- Quick Actions -->
             <div class="header-actions">
-               <!-- Search Bar -->
-               <div class="config-search">
-                   <i class="fas fa-search"></i>
-                   <input type="text" placeholder="Buscar configuración...">
-               </div>
-
                <!-- Stats Toolbar -->
                <div class="stats-toolbar">
                     <div class="toolbar-item">
@@ -50,12 +44,6 @@
                         <span class="toolbar-val">Online</span>
                     </div>
                 </div>
-
-                <!-- Notification Bell -->
-                <button class="icon-btn-large relative" title="Notificaciones">
-                    <i class="fas fa-bell text-yellow"></i>
-                    <span class="badge-dot"></span>
-                </button>
             </div>
         </div>
 
