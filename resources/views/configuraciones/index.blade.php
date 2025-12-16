@@ -86,6 +86,22 @@
                     </div>
                 </button>
                 
+                <button class="stat-pill tab-trigger" data-target="notifications">
+                    <i class="fas fa-bell"></i>
+                    <div class="info">
+                        <span class="label">CONFIGURACIÓN</span>
+                        <span class="value">Notificaciones</span>
+                    </div>
+                </button>
+
+                <button class="stat-pill tab-trigger" data-target="backups">
+                    <i class="fas fa-database"></i>
+                    <div class="info">
+                        <span class="label">CONFIGURACIÓN</span>
+                        <span class="value">Respaldos</span>
+                    </div>
+                </button>
+
                 <button class="stat-pill tab-trigger" data-target="system">
                     <i class="fas fa-server"></i>
                     <div class="info">
