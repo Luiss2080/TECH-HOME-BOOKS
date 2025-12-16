@@ -156,9 +156,9 @@
     outline: none;
 }
 
-/* Red Gradient Button */
+/* Red Gradient Button - UPDATED to Solid Red per user request */
 .btn-submit {
-    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    background: var(--primary-red, #ef4444);
     color: white;
     border: none;
     padding: 0.8rem 1.75rem;

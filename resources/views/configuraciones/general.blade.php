@@ -5,7 +5,9 @@
             <span>Información General</span>
         </div>
         <div class="header-right">
-            <button class="icon-btn" title="Reset"><i class="fas fa-undo"></i></button>
+             <button class="btn-submit" style="padding: 0.4rem 1rem; font-size: 0.8rem; background: var(--primary-red, #ef4444); border: none; box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);">
+                <i class="fas fa-sync-alt"></i> Reset
+             </button>
         </div>
     </div>
     
