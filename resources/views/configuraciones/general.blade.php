@@ -52,9 +52,12 @@
             <span>Gestión Académica</span>
         </div>
         <!-- Added Red Button here -->
-        <div class="header-right">
+        <div class="header-right" style="display: flex; gap: 0.5rem;">
              <button class="btn-submit" style="padding: 0.4rem 1rem; font-size: 0.8rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); box-shadow: none;">
                 <i class="fas fa-file-alt"></i> Reporte
+             </button>
+             <button class="btn-submit" style="padding: 0.4rem 1rem; font-size: 0.8rem; background: var(--primary-red, #ef4444); border: none; box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);">
+                <i class="fas fa-sync-alt"></i> Reset
              </button>
         </div>
     </div>
