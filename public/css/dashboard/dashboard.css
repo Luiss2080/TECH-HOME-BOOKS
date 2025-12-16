@@ -542,16 +542,16 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 1.75rem; /* Restored comfortable padding */
-    gap: 1.5rem;
-    min-height: 120px; /* Restored height */
+    padding: 0.85rem 1.25rem; /* Adjusted Compact */
+    gap: 1rem;
+    min-height: 90px; /* Compact height confirmed */
 }
 
 /* Left Section: Icon + Main Info */
 .stat-left {
     display: flex;
     align-items: center;
-    gap: 1.25rem; /* More gap */
+    gap: 1rem;
     position: relative;
     z-index: 2;
     flex: 1;
@@ -560,11 +560,11 @@ body {
 
 /* RED ICON: More visible by default */
 .stat-card.rich-stat .stat-icon-wrapper {
-    width: 64px; /* Restored size */
-    height: 64px;
-    font-size: 1.75rem;
+    width: 56px; /* Compact size */
+    height: 56px;
+    font-size: 1.5rem;
     margin-right: 0;
-    border-radius: 16px;
+    border-radius: 14px;
     background: rgba(225, 29, 72, 0.25); /* More visible red */
     color: var(--primary-red);
     border: 1px solid rgba(225, 29, 72, 0.3);
@@ -591,14 +591,14 @@ body {
 }
 
 .stat-card.rich-stat .stat-value {
-    font-size: 2.25rem; /* Restored large size */
-    margin-bottom: 4px;
+    font-size: 1.85rem; /* Compact but readable */
+    margin-bottom: 2px;
     line-height: 1;
     font-weight: 800;
 }
 
 .stat-card.rich-stat .stat-label {
-    font-size: 0.95rem; /* Readable size */
+    font-size: 0.8rem;
     letter-spacing: 0.5px;
     font-weight: 600;
     color: var(--text-muted);
@@ -1200,4 +1200,69 @@ body.dark-mode .progress-track {
     .panel-body {
         min-height: 200px;
     }
+}
+
+/* ============================================
+   TABLE STYLES (NEW)
+   ============================================ */
+.w-full {
+    width: 100%;
+}
+.text-left {
+    text-align: left;
+}
+
+.dashboard-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dashboard-table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.dashboard-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.dashboard-table tr:last-child td {
+    border-bottom: none;
+}
+
+.dashboard-table td .badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.dashboard-table td .user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-table td .user-name {
+    font-weight: 600;
+}
+
+.dashboard-table td .user-email {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Dark Mode Table overrides */
+body.dark-mode .dashboard-table th {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .dashboard-table td {
+    border-color: rgba(255, 255, 255, 0.05);
 }

@@ -256,7 +256,7 @@
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive-compact">
-                                <table class="compact-table">
+                                <table class="dashboard-table">
                                     <thead>
                                         <tr>
                                             <th>Usuario</th>
