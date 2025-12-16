@@ -634,19 +634,18 @@ body.dark-mode .stat-card.rich-stat .stat-value {
 /* Right Section: Vertical Divider + Stacked Info */
 .stat-right {
     position: relative;
-    z-index: 2;
+    z-index: 10; /* Ensure text is above icon */
     text-align: right;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    padding-left: 1rem;
-    border-left: 1px solid var(--border-color); /* Use variable */
-    height: 60px;
+    padding-left: 1rem; /* Restored padding */
+    border-left: 1px solid var(--border-color); /* Restored separator line */
     min-width: auto;
     flex-shrink: 0;
     margin-left: auto;
-    gap: 4px; /* Stack spacing */
+    gap: 4px;
 }
 
 /* New Stacked Mini Rows */
@@ -658,6 +657,7 @@ body.dark-mode .stat-card.rich-stat .stat-value {
     font-size: 0.75rem;
     color: var(--text-muted);
     line-height: 1;
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .stat-mini-row strong {
@@ -693,7 +693,7 @@ body.dark-mode .stat-right {
 }
 
 .stat-change {
-    font-size: 1.25rem; /* Big number for extra data */
+    font-size: 1.25rem;
     font-weight: 800;
     margin-bottom: 0;
     color: var(--text-dark);
@@ -704,7 +704,7 @@ body.dark-mode .stat-right {
 }
 
 .stat-change i {
-    font-size: 0.8rem; /* Smaller icon */
+    font-size: 0.8rem;
 }
 
 .stat-change.positive {
@@ -721,15 +721,26 @@ body.dark-mode .stat-right {
 
 /* Decoration */
 .stat-card.rich-stat .stat-decoration {
-    top: -5px;
-    right: 30%; /* Move to center-ish to avoid right panel */
-    font-size: 5rem;
-    opacity: 0.04;
+    position: absolute;
+    bottom: -15px; /* Aligned low */
+    right: -10px; /* Aligned right */
+    font-size: 6.5rem; /* Larger icon */
+    opacity: 0.12; /* Visible background opacity */
     transition: all 0.3s ease;
+    z-index: 0; /* Strictly background */
+    pointer-events: none;
+    top: auto; /* Reset top */
+    color: var(--text-muted); /* Ensure it has color context */
+}
+
+/* Dark mode specific for decoration if needed */
+body.dark-mode .stat-card.rich-stat .stat-decoration {
+    color: rgba(255, 255, 255, 0.3); /* Lighter in dark mode */
+    opacity: 0.1;
 }
 
 .stat-card.rich-stat:hover {
-    transform: translateY(-2px); /* Subtle lift */
+    transform: translateY(-2px);
     border-color: var(--primary-red);
 }
 
