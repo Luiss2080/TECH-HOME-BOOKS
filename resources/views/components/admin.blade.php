@@ -49,41 +49,61 @@
             <div class="dashboard-content">
                 
                 <!-- Stats Section -->
+                <!-- Stats Section -->
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon users">
+                    <!-- Users Card -->
+                    <div class="stat-card rich-stat blue-gradient">
+                        <div class="stat-icon-wrapper">
                             <i class="fas fa-users"></i>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value">{{ $stats['users'] ?? 0 }}</span>
-                            <span class="stat-label">Usuarios Totales</span>
+                        <div class="stat-details">
+                            <h3 class="stat-value">{{ $stats['users'] ?? 0 }}</h3>
+                            <p class="stat-label">Usuarios Totales</p>
+                        </div>
+                        <div class="stat-decoration">
+                            <i class="fas fa-chart-area"></i>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon students">
+
+                    <!-- Students Card -->
+                    <div class="stat-card rich-stat green-gradient">
+                        <div class="stat-icon-wrapper">
                             <i class="fas fa-user-graduate"></i>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value">{{ $stats['students'] ?? 0 }}</span>
-                            <span class="stat-label">Estudiantes</span>
+                        <div class="stat-details">
+                            <h3 class="stat-value">{{ $stats['students'] ?? 0 }}</h3>
+                            <p class="stat-label">Estudiantes</p>
+                        </div>
+                        <div class="stat-decoration">
+                            <i class="fas fa-chart-bar"></i>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon teachers">
+
+                    <!-- Teachers Card -->
+                    <div class="stat-card rich-stat purple-gradient">
+                        <div class="stat-icon-wrapper">
                             <i class="fas fa-chalkboard-teacher"></i>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value">{{ $stats['teachers'] ?? 0 }}</span>
-                            <span class="stat-label">Docentes</span>
+                        <div class="stat-details">
+                            <h3 class="stat-value">{{ $stats['teachers'] ?? 0 }}</h3>
+                            <p class="stat-label">Docentes</p>
+                        </div>
+                        <div class="stat-decoration">
+                            <i class="fas fa-chart-pie"></i>
                         </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon courses">
+
+                    <!-- Courses Card -->
+                    <div class="stat-card rich-stat orange-gradient">
+                        <div class="stat-icon-wrapper">
                             <i class="fas fa-book"></i>
                         </div>
-                        <div class="stat-content">
-                            <span class="stat-value">{{ $stats['courses'] ?? 0 }}</span>
-                            <span class="stat-label">Cursos Activos</span>
+                        <div class="stat-details">
+                            <h3 class="stat-value">{{ $stats['courses'] ?? 0 }}</h3>
+                            <p class="stat-label">Cursos Activos</p>
+                        </div>
+                        <div class="stat-decoration">
+                            <i class="fas fa-layer-group"></i>
                         </div>
                     </div>
                 </div>
