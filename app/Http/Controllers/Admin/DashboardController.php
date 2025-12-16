@@ -25,7 +25,10 @@ class DashboardController extends Controller
             'laboratorios' => \App\Models\Laboratorio::count(),
             'roles' => \App\Models\Role::count(),
             'permisos' => \App\Models\Permiso::count(),
-            // 'reportes' => \App\Models\Reporte::count(), // Optional if Reporte model works
+            // Extra Data for Cards
+            'new_users_count' => User::where('created_at', '>=', now()->subDays(7))->count(),
+            'recent_courses_count' => Curso::where('created_at', '>=', now()->subDays(30))->count(),
+            // 'active_students' => \App\Models\Estudiante::where('estado', 'activo')->count(), // Example if 'estado' exists
         ];
 
         // Recent Users (for Table)
