@@ -295,12 +295,15 @@
                                                     </span>
                                                 </td>
                                                 <td class="text-center" style="white-space: nowrap;">
-                                                    <div class="d-flex justify-content-center gap-2 align-items-center flex-nowrap">
+                                                    <div class="action-buttons-row">
                                                         <button class="btn-icon-modern red" title="Editar">
                                                             <i class="fas fa-pen"></i>
                                                         </button>
                                                         <button class="btn-icon-modern red" title="Ver Perfil">
                                                             <i class="fas fa-eye"></i>
+                                                        </button>
+                                                        <button class="btn-icon-modern red" title="Eliminar">
+                                                            <i class="fas fa-trash"></i>
                                                         </button>
                                                     </div>
                                                 </td>

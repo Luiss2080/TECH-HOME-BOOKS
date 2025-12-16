@@ -719,24 +719,41 @@ body.dark-mode .stat-right {
     opacity: 0.8;
 }
 
+/* Actions Row Alignment */
+.action-buttons-row {
+    display: flex;
+    flex-direction: row; /* Force horizontal */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+/* Decoration */
 /* Decoration */
 .stat-card.rich-stat .stat-decoration {
     position: absolute;
-    bottom: -15px; /* Aligned low */
-    right: -10px; /* Aligned right */
-    font-size: 6.5rem; /* Larger icon */
-    opacity: 0.12; /* Visible background opacity */
+    bottom: -15px;
+    right: -10px;
+    font-size: 6.5rem;
+    opacity: 0.4; /* Stronger base visibility */
     transition: all 0.3s ease;
-    z-index: 0; /* Strictly background */
+    z-index: 0;
     pointer-events: none;
-    top: auto; /* Reset top */
-    color: var(--text-muted); /* Ensure it has color context */
+    top: auto;
+    color: var(--text-muted);
 }
 
-/* Dark mode specific for decoration if needed */
+/* Ensure visibility in dark mode */
 body.dark-mode .stat-card.rich-stat .stat-decoration {
-    color: rgba(255, 255, 255, 0.3); /* Lighter in dark mode */
-    opacity: 0.1;
+    color: rgba(255, 255, 255, 0.2); /* Light watermark in dark mode */
+    opacity: 0.4;
+}
+
+/* Hover state increase */
+.stat-card.rich-stat:hover .stat-decoration {
+    opacity: 0.5;
+    transform: scale(1.05) rotate(-5deg);
 }
 
 .stat-card.rich-stat:hover {
