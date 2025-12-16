@@ -542,16 +542,16 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 1rem; /* Ultra Compact */
-    gap: 0.75rem;
-    min-height: 85px; /* Compact height */
+    padding: 1.5rem 1.75rem; /* Restored comfortable padding */
+    gap: 1.5rem;
+    min-height: 120px; /* Restored height */
 }
 
 /* Left Section: Icon + Main Info */
 .stat-left {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
+    gap: 1.25rem; /* More gap */
     position: relative;
     z-index: 2;
     flex: 1;
@@ -560,11 +560,11 @@ body {
 
 /* RED ICON: More visible by default */
 .stat-card.rich-stat .stat-icon-wrapper {
-    width: 54px; /* Slightly smaller for compact feel */
-    height: 54px;
-    font-size: 1.4rem;
+    width: 64px; /* Restored size */
+    height: 64px;
+    font-size: 1.75rem;
     margin-right: 0;
-    border-radius: 12px;
+    border-radius: 16px;
     background: rgba(225, 29, 72, 0.25); /* More visible red */
     color: var(--primary-red);
     border: 1px solid rgba(225, 29, 72, 0.3);
@@ -591,14 +591,14 @@ body {
 }
 
 .stat-card.rich-stat .stat-value {
-    font-size: 1.85rem; /* Balanced size */
-    margin-bottom: 0;
+    font-size: 2.25rem; /* Restored large size */
+    margin-bottom: 4px;
     line-height: 1;
     font-weight: 800;
 }
 
 .stat-card.rich-stat .stat-label {
-    font-size: 0.75rem; /* Smaller to prevent wrap */
+    font-size: 0.95rem; /* Readable size */
     letter-spacing: 0.5px;
     font-weight: 600;
     color: var(--text-muted);
