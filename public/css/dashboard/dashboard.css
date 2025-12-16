@@ -1342,40 +1342,41 @@ body.dark-mode .dashboard-table td {
 /* Module Row Grid Layout */
 .module-row-item {
     display: grid;
-    grid-template-columns: 40px 1fr 80px 50px; /* Icon | Name | Badge (Center) | Action (Right) */
+    grid-template-columns: 50px 1fr 100px 60px; /* Icon | Name | Data (Wide Center) | Action */
     align-items: center;
     gap: 0;
-    padding: 0.6rem 0.8rem;
+    padding: 0.75rem 1rem;
     color: var(--text-secondary);
     text-decoration: none;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    transition: all 0.2s;
+    border-radius: 10px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0.6rem;
 }
 
 body.dark-mode .module-row-item {
-    color: #e2e8f0;
+    color: #cbd5e1;
 }
 
 .module-row-item:hover {
     background: linear-gradient(
         90deg,
-        rgba(220, 38, 38, 0.1) 0%,
-        transparent 100%
+        rgba(220, 38, 38, 0.08) 0%,
+        rgba(255, 255, 255, 0.01) 100%
     );
-    border-color: rgba(220, 38, 38, 0.3);
-    transform: translateX(4px);
-    position: relative;
-    padding-left: 0.8rem; /* Keep padding consistent */
+    border-color: rgba(220, 38, 38, 0.25);
+    transform: translateY(-1px) translateX(2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding-left: 1rem; /* Consistent padding shift */
 }
 
 .module-row-item:hover::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 10%;
-    bottom: 10%;
+    top: 15%;
+    bottom: 15%;
     width: 3px;
     background: var(--primary-red);
     border-radius: 0 4px 4px 0;
@@ -1385,22 +1386,23 @@ body.dark-mode .module-row-item {
 /* Module List Header - Strictly Aligned with Rows */
 .module-list-header {
     display: grid;
-    grid-template-columns: 40px 1fr 80px 50px; /* SAME AS ROW */
+    grid-template-columns: 50px 1fr 100px 60px; /* SAME AS ROW */
     align-items: center;
-    padding: 0 0.8rem;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.5px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.75rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .header-name {
     grid-column: 2;
-    padding-left: 0.5rem;
+    padding-left: 0.25rem;
 }
 .header-data {
     grid-column: 3;
@@ -1409,6 +1411,7 @@ body.dark-mode .module-row-item {
 .header-action {
     grid-column: 4;
     text-align: right;
+    padding-right: 0.5rem;
 }
 
 /* Grid Children Alignment */
