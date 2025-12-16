@@ -533,18 +533,19 @@ body {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 /* Redefine .stat-card.rich-stat layout */
 .stat-card.rich-stat {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0.85rem 1.25rem; /* Adjusted Compact */
-    gap: 1rem;
-    min-height: 90px; /* Compact height confirmed */
+    padding: 0.75rem 1rem; /* Ultra tight padding */
+    gap: 0.75rem;
+    min-height: 100px; /* Fixed compact height that fits big icon */
 }
 
 /* Left Section: Icon + Main Info */
@@ -552,20 +553,18 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    position: relative;
-    z-index: 2;
     flex: 1;
     min-width: 0;
 }
 
-/* RED ICON: More visible by default */
+/* RED ICON: BIG SQUARE as requested */
 .stat-card.rich-stat .stat-icon-wrapper {
-    width: 56px; /* Compact size */
-    height: 56px;
-    font-size: 1.5rem;
+    width: 70px; /* LARGE ICON BOX */
+    height: 70px;
+    font-size: 1.75rem;
     margin-right: 0;
-    border-radius: 14px;
-    background: rgba(225, 29, 72, 0.25); /* More visible red */
+    border-radius: 18px; /* Soft square */
+    background: rgba(225, 29, 72, 0.2); /* Darker/Subtle red bg */
     color: var(--primary-red);
     border: 1px solid rgba(225, 29, 72, 0.3);
     transition: all 0.3s ease;
@@ -578,8 +577,8 @@ body {
 .stat-card.rich-stat:hover .stat-icon-wrapper {
     background: var(--primary-red);
     color: white;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
 }
 
 /* Main Info */
@@ -591,36 +590,36 @@ body {
 }
 
 .stat-card.rich-stat .stat-value {
-    font-size: 1.85rem; /* Compact but readable */
-    margin-bottom: 2px;
-    line-height: 1;
+    font-size: 2rem; /* BIG NUMBER */
+    margin-bottom: 0;
+    line-height: 0.9;
     font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .stat-card.rich-stat .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     letter-spacing: 0.5px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-muted);
+    text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
-/* RED HOVER ANIMATION (Card Border) */
 .stat-card.rich-stat:hover {
     border-color: var(--primary-red);
-    box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.25);
+    box-shadow: 0 8px 20px -5px rgba(225, 29, 72, 0.2);
     background: var(--bg-surface);
 }
 
 .stat-card.rich-stat:hover .stat-value {
     color: var(--primary-red);
-    transition: color 0.3s ease;
 }
 
-/* Right Section: "The Something Else" - A Badge-like Panel */
+/* Right Section: Vertical Divider Style */
 .stat-right {
     position: relative;
     z-index: 2;
@@ -629,22 +628,21 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    padding: 0.4rem 0.8rem;
-    background: rgba(255, 255, 255, 0.03); /* Subtle backdrop */
-    border-radius: 8px; /* Badge shape */
-    border: 1px solid var(--border-color);
-    min-width: 85px;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+    height: 60px; /* Match approximate height of visual block */
+    min-width: auto;
     flex-shrink: 0;
+    margin-left: auto;
 }
 
-/* Dark Mode adjustment for right panel */
+/* Dark Mode adjustment */
 body.dark-mode .stat-right {
-    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .stat-card.rich-stat:hover .stat-right {
-    background: rgba(225, 29, 72, 0.05); /* Red tint on hover */
-    border-color: rgba(225, 29, 72, 0.3);
+    border-color: rgba(225, 29, 72, 0.5);
 }
 
 .stat-extra {
