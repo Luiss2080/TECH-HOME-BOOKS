@@ -174,6 +174,229 @@ function initDashboardCharts(data) {
             },
         });
     }
+
+    // --- NEW ANALYTICS SECTION CHARTS ---
+
+    // 5. Asistencia Mensual (Stacked Bar)
+    const ctxAttendance = document.getElementById("attendanceChart");
+    if (ctxAttendance) {
+        new Chart(ctxAttendance, {
+            type: "bar",
+            data: {
+                labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+                datasets: [
+                    {
+                        label: "Presente",
+                        data: [150, 170, 100, 140, 100, 120, 80],
+                        backgroundColor: "#10b981", // Green
+                        barThickness: 20,
+                        borderRadius: 4,
+                    },
+                    {
+                        label: "Tarde",
+                        data: [50, 60, 70, 80, 80, 90, 110],
+                        backgroundColor: "#3b82f6", // Blue
+                        barThickness: 20,
+                        borderRadius: 4,
+                    },
+                    {
+                        label: "Ausente",
+                        data: [20, 30, 20, 15, 30, 15, 10],
+                        backgroundColor: "#f43f5e", // Pink/Red
+                        barThickness: 20,
+                        borderRadius: 4,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            color: "#94a3b8",
+                            usePointStyle: true,
+                            boxWidth: 8,
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: { display: false },
+                        ticks: { color: "#94a3b8" },
+                    },
+                    y: {
+                        stacked: true,
+                        grid: { color: "rgba(255,255,255,0.05)" },
+                        ticks: { display: true, color: "#94a3b8" },
+                        border: { display: false },
+                    },
+                },
+            },
+        });
+    }
+
+    // 6. Actividad Global (Line - Bottom)
+    const ctxActivityGlobal = document.getElementById("activityGlobalChart");
+    if (ctxActivityGlobal) {
+        new Chart(ctxActivityGlobal, {
+            type: "line",
+            data: {
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                ],
+                datasets: [
+                    {
+                        label: "Actividad",
+                        data: [
+                            500, 2400, 1800, 3200, 4500, 3000, 4200, 3800, 4100,
+                        ],
+                        borderColor: "#3b82f6", // Blue
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        fill: {
+                            target: "origin",
+                            above: (context) => {
+                                const ctx = context.chart.ctx;
+                                const gradient = ctx.createLinearGradient(
+                                    0,
+                                    0,
+                                    0,
+                                    300
+                                );
+                                gradient.addColorStop(
+                                    0,
+                                    "rgba(59, 130, 246, 0.2)"
+                                );
+                                gradient.addColorStop(
+                                    1,
+                                    "rgba(59, 130, 246, 0)"
+                                );
+                                return gradient;
+                            },
+                        },
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: "#94a3b8" },
+                    },
+                    y: {
+                        grid: { color: "rgba(255,255,255,0.05)" },
+                        ticks: { beginAtZero: true, color: "#94a3b8" },
+                    },
+                },
+            },
+        });
+    }
+
+    // 7. Promedios (Horizontal Bar)
+    const ctxGrades = document.getElementById("gradesBarChart");
+    if (ctxGrades) {
+        new Chart(ctxGrades, {
+            type: "bar",
+            indexAxis: "y",
+            data: {
+                labels: [
+                    "Matemáticas",
+                    "Ciencias",
+                    "Historia",
+                    "Arte",
+                    "Física",
+                ],
+                datasets: [
+                    {
+                        label: "Promedio",
+                        data: [95, 88, 75, 92, 85],
+                        backgroundColor: [
+                            "#1e3a8a",
+                            "#1e40af",
+                            "#1d4ed8",
+                            "#2563eb",
+                            "#3b82f6",
+                        ],
+                        borderRadius: 4,
+                        barThickness: 15,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { display: false },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: "#94a3b8", font: { weight: "600" } },
+                        border: { display: false },
+                    },
+                },
+            },
+        });
+    }
+
+    // 8. Recursos (Horizontal Bar Rounded)
+    const ctxResources = document.getElementById("resourcesBarChart");
+    if (ctxResources) {
+        new Chart(ctxResources, {
+            type: "bar",
+            indexAxis: "y",
+            data: {
+                labels: [
+                    "Libros",
+                    "Tablets",
+                    "Proyectores",
+                    "Aulas",
+                    "Laboratorios",
+                ],
+                datasets: [
+                    {
+                        data: [12, 8, 6, 5, 2],
+                        backgroundColor: [
+                            "#fda4af",
+                            "#fb7185",
+                            "#f43f5e",
+                            "#e11d48",
+                            "#be123c",
+                        ],
+                        borderRadius: 10,
+                        barThickness: 12,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { display: false },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: "#94a3b8", font: { weight: "600" } },
+                        border: { display: false },
+                    },
+                },
+            },
+        });
+    }
 }
 
 /**

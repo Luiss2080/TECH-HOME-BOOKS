@@ -367,6 +367,7 @@
 
                 <!-- SECTION: Modules Grid (3 Cols) -->
                 <!-- SECTION: Analytics Grid (New Design) -->
+                <!-- SECTION: Analytics Grid (New Design) -->
                 <div class="analytics-grid" style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem;">
                     
                     <!-- Row 1: Large Charts (Attendance & Activity) -->
@@ -377,9 +378,9 @@
                             <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Asistencia Mensual</h3>
                                 <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Week</button>
-                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Month</button>
-                                    <button type="button" class="btn btn-danger" style="background: var(--primary-red); border: none;">Year</button>
+                                    <button type="button" class="btn btn-outline-light border-0 text-muted">Semana</button>
+                                    <button type="button" class="btn btn-outline-light border-0 text-muted">Mes</button>
+                                    <button type="button" class="btn btn-danger">Año</button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -392,9 +393,9 @@
                             <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Actividad Global</h3>
                                 <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Week</button>
-                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Month</button>
-                                    <button type="button" class="btn btn-danger" style="background: var(--primary-red); border: none;">Year</button>
+                                    <button type="button" class="btn btn-outline-light border-0 text-muted">Semana</button>
+                                    <button type="button" class="btn btn-outline-light border-0 text-muted">Mes</button>
+                                    <button type="button" class="btn btn-danger">Año</button>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -410,7 +411,7 @@
                         <div class="dashboard-card glow-effect h-100">
                             <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Promedios</h3>
-                                <small class="text-white opacity-50 cursor-pointer">See All <i class="fas fa-arrow-right ms-1"></i></small>
+                                <button class="btn btn-sm btn-icon-modern red"><i class="fas fa-arrow-right text-white"></i></button>
                             </div>
                             <div class="card-body">
                                 <canvas id="gradesBarChart" height="200"></canvas>
@@ -421,9 +422,9 @@
                         <div class="dashboard-card glow-effect h-100">
                             <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Recursos</h3>
-                                <small class="text-white opacity-50 cursor-pointer">See All <i class="fas fa-arrow-right ms-1"></i></small>
+                                <button class="btn btn-sm btn-icon-modern red"><i class="fas fa-arrow-right text-white"></i></button>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="position: relative;">
                                 <canvas id="resourcesBarChart" height="200"></canvas>
                             </div>
                         </div>
