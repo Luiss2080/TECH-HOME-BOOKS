@@ -206,6 +206,16 @@
                 <div id="appearance" class="config-section">
                     @include('configuraciones.apariencia')
                 </div>
+
+                <!-- NOTIFICATIONS -->
+                <div id="notifications" class="config-section">
+                    @include('configuraciones.notificaciones')
+                </div>
+
+                <!-- BACKUPS -->
+                <div id="backups" class="config-section">
+                    @include('configuraciones.respaldos')
+                </div>
                 
                 <!-- SYSTEM -->
                 <div id="system" class="config-section">
