@@ -1304,11 +1304,250 @@ body.dark-mode .dashboard-table th {
 }
 body.dark-mode .dashboard-table td {
     border-color: rgba(255, 255, 255, 0.05);
+    vertical-align: middle; /* Ensure vertical centering */
 }
 
 /* ============================================
    COMPACT SPLIT LAYOUT & MODULES
    ============================================ */
+
+/* Responsive Split Layout */
+@media (max-width: 1024px) {
+    .dashboard-split-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Compact Modules List (Vertical) */
+.modules-list-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Tight spacing */
+}
+
+.module-row-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-mode .module-row-item {
+    color: #e2e8f0;
+}
+
+.module-row-item:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(225, 29, 72, 0.08) 0%,
+        rgba(255, 255, 255, 0.01) 100%
+    );
+    border-color: rgba(225, 29, 72, 0.2);
+    padding-left: 0.85rem; /* Subtle shift */
+    text-decoration: none;
+    transform: translateX(4px);
+}
+
+.module-row-item:hover::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--primary-red);
+    box-shadow: 0 0 10px var(--primary-red);
+}
+
+/* Icon Box for Module Items */
+.icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* Icon Colors */
+.icon-box.green {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+.icon-box.purple {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+}
+.icon-box.blue {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+.icon-box.orange {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+.icon-box.red {
+    background: rgba(225, 29, 72, 0.15);
+    color: #e11d48;
+}
+.icon-box.gray {
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+}
+
+.module-row-item:hover .icon-box {
+    filter: brightness(1.2);
+}
+
+.module-row-item small.text-muted {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+/* ============================================
+   AESTHETIC RED, MODERN UI & ANIMATIONS
+   ============================================ */
+
+/* Softened Interactions (No Entry Animation) */
+.dashboard-card,
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dashboard Card Borders - Subtle Red Tint in Dark Mode */
+body.dark-mode .dashboard-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .dashboard-card:hover {
+    border-color: rgba(225, 29, 72, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(225, 29, 72, 0.1);
+}
+
+/* Table Hover Zoom (Super Soft) */
+.hover-scale {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.2s;
+    cursor: pointer;
+}
+
+.hover-scale:hover {
+    transform: scale(1.005); /* Very subtle lift */
+    z-index: 10;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* User Info Centering */
+.user-info-compact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Small Action Button */
+.btn-action-sm {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-action-sm:hover {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.5);
+}
+
+/* User Avatar Pulse (Admin) */
+.user-avatar-xs.pulse-red {
+    border: 2px solid rgba(225, 29, 72, 0.5);
+    box-shadow: 0 0 8px rgba(225, 29, 72, 0.3);
+}
+
+/* Table Header Icons */
+.dashboard-table th i {
+    color: var(--primary-red);
+    opacity: 0.9;
+}
+
+/* Card Action Links */
+.card-action-link {
+    color: var(--primary-red);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(225, 29, 72, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(225, 29, 72, 0.05);
+}
+
+.card-action-link:hover {
+    background: var(--primary-red);
+    color: white;
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--text-muted);
+}
+/* ... existing Split Layout ... */
+
+/* ... (skipping some lines) ... */
+
+/* ============================================
+   ENHANCED ICONS & HOVER ZOOM
+   ============================================ */
+
+/* Table Hover Zoom (Softened) */
+.hover-scale {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.2s;
+    cursor: pointer;
+}
+
+.hover-scale:hover {
+    transform: scale(1.005); /* Very subtle lift */
+    z-index: 10;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
 /* Responsive Split Layout */
 @media (max-width: 1024px) {
@@ -1401,35 +1640,14 @@ body.dark-mode .module-row-item {
 }
 
 /* ============================================
-   AESTHETIC RED & ANIMATIONS
+   AESTHETIC RED & MODERN UI
    ============================================ */
 
-/* entry animation */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* Reduced Animations (Softened) */
 .dashboard-card,
 .stat-card {
-    animation: fadeInUp 0.5s ease-out forwards;
-}
-
-/* Stagger animations */
-.dashboard-card:nth-child(1) {
-    animation-delay: 0.1s;
-}
-.dashboard-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-.dashboard-card:nth-child(3) {
-    animation-delay: 0.3s;
+    /* No entry animation for efficiency/stability */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* RED ACCENTS & CONTRAST */
@@ -1443,11 +1661,11 @@ body.dark-mode .module-row-item {
 .module-row-item:hover {
     background: linear-gradient(
         90deg,
-        rgba(225, 29, 72, 0.1) 0%,
-        rgba(255, 255, 255, 0.02) 100%
+        rgba(225, 29, 72, 0.08) 0%,
+        rgba(255, 255, 255, 0.01) 100%
     );
-    border-color: rgba(225, 29, 72, 0.3);
-    padding-left: 1rem; /* Shift content slightly */
+    border-color: rgba(225, 29, 72, 0.2);
+    padding-left: 0.85rem; /* Subtle shift */
 }
 
 .module-row-item:hover::before {
