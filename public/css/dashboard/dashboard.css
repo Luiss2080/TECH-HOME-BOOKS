@@ -1342,9 +1342,9 @@ body.dark-mode .dashboard-table td {
 /* Module Row Grid Layout */
 .module-row-item {
     display: grid;
-    grid-template-columns: 32px 1fr 60px 40px; /* Icon | Name | Badge | Action */
+    grid-template-columns: 40px 1fr 80px 50px; /* Icon | Name | Badge (Center) | Action (Right) */
     align-items: center;
-    gap: 0.5rem;
+    gap: 0;
     padding: 0.6rem 0.8rem;
     color: var(--text-secondary);
     text-decoration: none;
@@ -1352,7 +1352,6 @@ body.dark-mode .dashboard-table td {
     border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 8px;
     transition: all 0.2s;
-    margin-bottom: 0.5rem;
 }
 
 body.dark-mode .module-row-item {
@@ -1368,7 +1367,7 @@ body.dark-mode .module-row-item {
     border-color: rgba(220, 38, 38, 0.3);
     transform: translateX(4px);
     position: relative;
-    padding-left: 0.8rem; /* Maintain padding, grid handles spacing */
+    padding-left: 0.8rem; /* Keep padding consistent */
 }
 
 .module-row-item:hover::before {
@@ -1381,6 +1380,66 @@ body.dark-mode .module-row-item {
     background: var(--primary-red);
     border-radius: 0 4px 4px 0;
     box-shadow: 0 0 8px var(--primary-red);
+}
+
+/* Module List Header - Strictly Aligned with Rows */
+.module-list-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 80px 50px; /* SAME AS ROW */
+    align-items: center;
+    padding: 0 0.8rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.header-name {
+    grid-column: 2;
+    padding-left: 0.5rem;
+}
+.header-data {
+    grid-column: 3;
+    text-align: center;
+}
+.header-action {
+    grid-column: 4;
+    text-align: right;
+}
+
+/* Grid Children Alignment */
+.module-row-item .icon-box {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    justify-self: start;
+}
+.module-row-item .item-name {
+    grid-column: 2;
+    padding-left: 0.5rem;
+    font-weight: 700;
+    color: white;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.module-row-item .badge-modern-pill {
+    grid-column: 3;
+    justify-self: center;
+    min-width: 40px; /* Ensure visual center */
+    text-align: center;
+}
+.module-row-item .empty-badge {
+    grid-column: 3;
+}
+.module-row-item .btn-icon-modern {
+    grid-column: 4;
+    justify-self: end;
 }
 
 /* Icon Box for Module Items */

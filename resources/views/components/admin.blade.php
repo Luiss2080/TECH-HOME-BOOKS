@@ -364,9 +364,9 @@
                         <div class="card-body pt-0">
                             <!-- Column Headers -->
                             <div class="module-list-header">
-                                <span class="header-name ps-5">NOMBRE</span>
-                                <span class="header-data text-center">DATO</span>
-                                <span class="header-action text-end">ACCIÓN</span>
+                                <span class="header-name">NOMBRE</span>
+                                <span class="header-data">DATO</span>
+                                <span class="header-action">ACCIÓN</span>
                             </div>
                             <div class="modules-list-compact">
                                 <a href="{{ route('admin.estudiantes.index') }}" class="module-row-item">
@@ -412,9 +412,9 @@
                         <div class="card-body pt-0">
                             <!-- Column Headers -->
                             <div class="module-list-header">
-                                <span class="header-name ps-5">NOMBRE</span>
-                                <span class="header-data text-center">DATO</span>
-                                <span class="header-action text-end">ACCIÓN</span>
+                                <span class="header-name">NOMBRE</span>
+                                <span class="header-data">DATO</span>
+                                <span class="header-action">ACCIÓN</span>
                             </div>
                             <div class="modules-list-compact">
                                 <a href="{{ route('libros.index') }}" class="module-row-item">
@@ -448,9 +448,9 @@
                         <div class="card-body pt-0">
                             <!-- Column Headers -->
                             <div class="module-list-header">
-                                <span class="header-name ps-5">NOMBRE</span>
-                                <span class="header-data text-center">DATO</span>
-                                <span class="header-action text-end">ACCIÓN</span>
+                                <span class="header-name">NOMBRE</span>
+                                <span class="header-data">DATO</span>
+                                <span class="header-action">ACCIÓN</span>
                             </div>
                             <div class="modules-list-compact">
                                 <a href="{{ route('admin.usuarios.index') }}" class="module-row-item">
