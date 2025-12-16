@@ -12,13 +12,24 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // Stats Counts
         $stats = [
             'users' => User::count(),
-            'students' => \App\Models\Estudiante::count(), // Assuming Estudiante model exists or using Role check
-            'teachers' => \App\Models\Docente::count(),    // Assuming Docente model exists
+            'students' => \App\Models\Estudiante::count(),
+            'teachers' => \App\Models\Docente::count(),
             'courses' => Curso::count(),
         ];
 
-        return view('components.admin', compact('stats'));
+        // Recent Users (for Table)
+        $recentUsers = User::latest()->take(5)->get();
+
+        // Role Distribution (for Chart)
+        $roleDistribution = [
+            'admin' => User::where('rol', 'admin')->count(),
+            'docente' => User::where('rol', 'docente')->count(),
+            'estudiante' => User::where('rol', 'estudiante')->count(),
+        ];
+
+        return view('components.admin', compact('stats', 'recentUsers', 'roleDistribution'));
     }
 }

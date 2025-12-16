@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Meta tags -->
     <meta name="description" content="Dashboard administrativo de Tech Home Books. Sistema de gestión educativa.">
@@ -83,6 +84,57 @@
                         <div class="stat-content">
                             <span class="stat-value">{{ $stats['courses'] ?? 0 }}</span>
                             <span class="stat-label">Cursos Activos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION: Analytics & Activity (NEW) -->
+                <div class="dashboard-grid-2col">
+                    <!-- Charts Card -->
+                    <div class="dashboard-card glow-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">Resumen de Usuarios</h3>
+                            <button class="card-action"><i class="fas fa-ellipsis-h"></i></button>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="userRolesChart" height="200"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity / Users Table -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Usuarios Recientes</h3>
+                            <a href="{{ route('admin.usuarios.index') }}" class="card-action-link">Ver todos</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive-compact">
+                                <table class="compact-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Usuario</th>
+                                            <th>Rol</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($recentUsers as $user)
+                                            <tr>
+                                                <td>
+                                                    <div class="user-info-compact">
+                                                        <div class="user-avatar-xs">{{ substr($user->name, 0, 1) }}</div>
+                                                        <span>{{ $user->name }}</span>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge badge-{{ $user->rol }}">{{ ucfirst($user->rol) }}</span></td>
+                                                <td><span class="status-dot online"></span></td>
+                                            </tr>
+                                        @empty
+                                            <tr><td colspan="3" class="text-center">No hay usuarios recientes</td></tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,5 +275,49 @@
     
     @stack('scripts')
     <script src="{{ asset('js/dashboard/admin.js') }}"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // User Roles Chart
+            const ctx = document.getElementById('userRolesChart').getContext('2d');
+            const userRolesChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Administradores', 'Docentes', 'Estudiantes'],
+                    datasets: [{
+                        data: [
+                            {{ $roleDistribution['admin'] }}, 
+                            {{ $roleDistribution['docente'] }}, 
+                            {{ $roleDistribution['estudiante'] }}
+                        ],
+                        backgroundColor: [
+                            '#3b82f6', // Blue for Admin
+                            '#a855f7', // Purple for Docente
+                            '#16a34a'  // Green for Estudiante
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    family: "'Montserrat', sans-serif"
+                                }
+                            }
+                        }
+                    },
+                    cutout: '75%'
+                }
+            });
+        });
+    </script>
 </body>
 </html>
