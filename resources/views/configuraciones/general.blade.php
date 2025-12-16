@@ -42,10 +42,15 @@
             </div>
         </div>
     </div>
-    <div class="form-actions">
+    <div class="form-actions" style="justify-content: space-between;">
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <span class="stat-pill-mini bg-green-900 text-green-400"><i class="fas fa-check-circle"></i> Sincronizado</span>
+            <span style="font-size: 0.8rem; color: #6b7280;">Habilitado</span>
+        </div>
         <button class="btn-submit"><i class="fas fa-save"></i> Guardar Cambios</button>
     </div>
 </div>
+
 
 <div class="settings-card mt-4">
     <div class="config-header-compact">
