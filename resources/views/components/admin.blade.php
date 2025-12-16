@@ -366,140 +366,68 @@
                 </div>
 
                 <!-- SECTION: Modules Grid (3 Cols) -->
-                <div class="dashboard-modules-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <!-- SECTION: Analytics Grid (New Design) -->
+                <div class="analytics-grid" style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem;">
                     
-                    <!-- Card: Gestión Académica -->
-                    <div class="dashboard-card h-100">
-                        <div class="card-header border-0 pb-2">
-                            <h3 class="card-title">Gestión Académica</h3>
-                            <i class="fas fa-graduation-cap text-danger" style="opacity: 0.8;"></i>
-                        </div>
-                        <div class="card-body pt-0">
-                            <!-- Column Headers -->
-                            <div class="module-list-header">
-                                <span class="header-name">NOMBRE</span>
-                                <span class="header-data">DATO</span>
-                                <span class="header-action">ACCIÓN</span>
+                    <!-- Row 1: Large Charts (Attendance & Activity) -->
+                    <div class="analytics-row-1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.5rem;">
+                        
+                        <!-- Chart: Asistencia Mensual (Shipment style) -->
+                        <div class="dashboard-card glow-effect h-100">
+                            <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Asistencia Mensual</h3>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Week</button>
+                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Month</button>
+                                    <button type="button" class="btn btn-danger" style="background: var(--primary-red); border: none;">Year</button>
+                                </div>
                             </div>
-                            <div class="modules-list-compact">
-                                <a href="{{ route('admin.estudiantes.index') }}" class="module-row-item">
-                                    <div class="icon-box green"><i class="fas fa-user-graduate"></i></div>
-                                    <span class="item-name">Estudiantes</span>
-                                    <span class="badge-modern-pill green">{{ $stats['students'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <a href="{{ route('admin.docentes.index') }}" class="module-row-item">
-                                    <div class="icon-box purple"><i class="fas fa-chalkboard-teacher"></i></div>
-                                    <span class="item-name">Docentes</span>
-                                    <span class="badge-modern-pill purple">{{ $stats['teachers'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <a href="{{ route('admin.cursos.index') }}" class="module-row-item">
-                                    <div class="icon-box blue"><i class="fas fa-layer-group"></i></div>
-                                    <span class="item-name">Cursos</span>
-                                    <span class="badge-modern-pill blue">{{ $stats['courses'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <a href="{{ route('admin.materias.index') }}" class="module-row-item">
-                                    <div class="icon-box orange"><i class="fas fa-book-open"></i></div>
-                                    <span class="item-name">Materias</span>
-                                    <span class="badge-modern-pill orange">{{ $stats['materias'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <a href="{{ route('admin.colegios.index') }}" class="module-row-item">
-                                    <div class="icon-box red"><i class="fas fa-school"></i></div>
-                                    <span class="item-name">Colegios</span>
-                                    <span class="badge-modern-pill red">{{ $stats['colegios'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
+                            <div class="card-body">
+                                <canvas id="attendanceChart" height="250"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Chart: Actividad Global (Sales style) -->
+                        <div class="dashboard-card glow-effect h-100">
+                            <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Actividad Global</h3>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Week</button>
+                                    <button type="button" class="btn btn-outline-secondary text-white border-0" style="background: rgba(255,255,255,0.05);">Month</button>
+                                    <button type="button" class="btn btn-danger" style="background: var(--primary-red); border: none;">Year</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="activityGlobalChart" height="250"></canvas>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card: Recursos y Laboratorios -->
-                    <div class="dashboard-card h-100">
-                        <div class="card-header border-0 pb-2">
-                            <h3 class="card-title">Recursos</h3>
-                            <i class="fas fa-flask text-danger" style="opacity: 0.8;"></i>
-                        </div>
-                        <div class="card-body pt-0">
-                            <!-- Column Headers -->
-                            <div class="module-list-header">
-                                <span class="header-name">NOMBRE</span>
-                                <span class="header-data">DATO</span>
-                                <span class="header-action">ACCIÓN</span>
+                    <!-- Row 2: Small Charts (Grades, Resources) -->
+                    <div class="analytics-row-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                        
+                        <!-- Chart: Promedios (Av. Check style) -->
+                        <div class="dashboard-card glow-effect h-100">
+                            <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Promedios</h3>
+                                <small class="text-white opacity-50 cursor-pointer">See All <i class="fas fa-arrow-right ms-1"></i></small>
                             </div>
-                            <div class="modules-list-compact">
-                                <a href="{{ route('libros.index') }}" class="module-row-item">
-                                    <div class="icon-box red"><i class="fas fa-book"></i></div>
-                                    <span class="item-name">Biblioteca</span>
-                                    <span class="badge-modern-pill red">{{ $stats['libros'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <a href="{{ route('admin.materiales.index') }}" class="module-row-item">
-                                    <div class="icon-box orange"><i class="fas fa-folder-open"></i></div>
-                                    <span class="item-name">Materiales</span>
-                                    <span class="badge-modern-pill orange">{{ $stats['materiales'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <a href="{{ route('admin.laboratorios.index') }}" class="module-row-item">
-                                    <div class="icon-box blue"><i class="fas fa-desktop"></i></div>
-                                    <span class="item-name">Laboratorios</span>
-                                    <span class="badge-modern-pill blue">{{ $stats['laboratorios'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
+                            <div class="card-body">
+                                <canvas id="gradesBarChart" height="200"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Chart: Recursos (Delivery Time style) -->
+                        <div class="dashboard-card glow-effect h-100">
+                            <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">Recursos</h3>
+                                <small class="text-white opacity-50 cursor-pointer">See All <i class="fas fa-arrow-right ms-1"></i></small>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="resourcesBarChart" height="200"></canvas>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Card: Administración -->
-                    <div class="dashboard-card h-100">
-                        <div class="card-header border-0 pb-2">
-                            <h3 class="card-title">Administración</h3>
-                            <i class="fas fa-cogs text-danger" style="opacity: 0.8;"></i>
-                        </div>
-                        <div class="card-body pt-0">
-                            <!-- Column Headers -->
-                            <div class="module-list-header">
-                                <span class="header-name">NOMBRE</span>
-                                <span class="header-data">DATO</span>
-                                <span class="header-action">ACCIÓN</span>
-                            </div>
-                            <div class="modules-list-compact">
-                                <a href="{{ route('admin.usuarios.index') }}" class="module-row-item">
-                                    <div class="icon-box gray"><i class="fas fa-users"></i></div>
-                                    <span class="item-name">Usuarios</span>
-                                    <span class="badge-modern-pill gray">{{ $stats['users'] }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <a href="{{ route('admin.roles.index') }}" class="module-row-item">
-                                    <div class="icon-box purple"><i class="fas fa-user-tag"></i></div>
-                                    <span class="item-name">Roles</span>
-                                    <span class="badge-modern-pill purple">{{ count($roleDistribution) ?? 0 }}</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </a>
-                                <div class="module-row-item">
-                                    <div class="icon-box gray"><i class="fas fa-key"></i></div>
-                                    <span class="item-name">Permisos</span>
-                                    <span class="badge-modern-pill gray">40</span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </div>
-                                <div class="module-row-item">
-                                    <div class="icon-box blue"><i class="fas fa-chart-line"></i></div>
-                                    <span class="item-name">Reportes</span>
-                                    <span class="empty-badge"></span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </div>
-                                <div class="module-row-item">
-                                    <div class="icon-box gray"><i class="fas fa-sliders-h"></i></div>
-                                    <span class="item-name">Configuración</span>
-                                    <span class="empty-badge"></span>
-                                    <div class="btn-icon-modern red sm"><i class="fas fa-chevron-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 
             </div>
@@ -538,45 +466,7 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // User Roles Chart
-            const ctx = document.getElementById('userRolesChart').getContext('2d');
-            const userRolesChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Administradores', 'Docentes', 'Estudiantes'],
-                    datasets: [{
-                        data: [
-                            {{ $roleDistribution['admin'] }}, 
-                            {{ $roleDistribution['docente'] }}, 
-                            {{ $roleDistribution['estudiante'] }}
-                        ],
-                        backgroundColor: [
-                            '#3b82f6', // Blue for Admin
-                            '#a855f7', // Purple for Docente
-                            '#16a34a'  // Green for Estudiante
-                        ],
-                        borderWidth: 0,
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                usePointStyle: true,
-                                padding: 20,
-                                font: {
-                                    family: "'Montserrat', sans-serif"
-                                }
-                            }
-                        }
-                    },
-                    cutout: '75%'
-                }
-            });
+            // Additional initializations if needed
         });
     </script>
 </body>
