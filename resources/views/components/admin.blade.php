@@ -261,7 +261,7 @@
                                             <th class="text-center"><i class="fas fa-user-tag me-2 text-danger"></i>Rol</th>
                                             <th class="text-center"><i class="fas fa-clock me-2 text-danger"></i>Sesión</th>
                                             <th class="text-center"><i class="fas fa-toggle-on me-2 text-danger"></i>Estado</th>
-                                            <th class="text-end pe-3"><i class="fas fa-cog text-danger"></i></th>
+                                            <th class="text-end pe-3" style="width: 120px; white-space: nowrap;">ACTIONS <i class="fas fa-cog text-danger ms-1"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
@@ -294,12 +294,12 @@
                                                         <span class="status-dot-pulse"></span> Activo
                                                     </span>
                                                 </td>
-                                                <td class="text-end pe-3">
-                                                    <div class="d-flex justify-content-end gap-2">
+                                                <td class="text-end pe-3" style="white-space: nowrap;">
+                                                    <div class="d-flex justify-content-end gap-2 align-items-center">
                                                         <button class="btn-icon-modern red" title="Editar">
                                                             <i class="fas fa-pen"></i>
                                                         </button>
-                                                        <button class="btn-icon-modern outline" title="Ver Perfil">
+                                                        <button class="btn-icon-modern red" title="Ver Perfil">
                                                             <i class="fas fa-eye"></i>
                                                         </button>
                                                     </div>
@@ -320,17 +320,18 @@
                     </div>
 
                     <!-- Right: User Distribution Chart -->
-                    <div class="dashboard-card glow-effect h-100">
-                        <div class="card-header border-0 pb-0">
+                    <div class="dashboard-card glow-effect h-100 d-flex flex-column">
+                        <div class="card-header border-0 pb-0 flex-shrink-0">
                             <h3 class="card-title">Distribución</h3>
                             <span class="badge-modern-red px-2 py-1" style="font-size: 0.7rem;">TOTAL: {{ array_sum($roleDistribution ?? []) }}</span>
                         </div>
-                        <div class="card-body d-flex flex-column align-items-center justify-content-center pt-2">
-                            <div style="width: 180px; height: 180px; position: relative; margin-bottom: 1.5rem;">
-                                <canvas id="userRolesChart"></canvas>
+                        <div class="card-body d-flex flex-column align-items-center justify-content-between pt-2 pb-4 flex-grow-1">
+                            <!-- Maximized Chart Area -->
+                            <div style="width: 100%; flex-grow: 1; min-height: 200px; position: relative; display: flex; align-items: center; justify-content: center;">
+                                <canvas id="userRolesChart" style="max-height: 100%; max-width: 100%;"></canvas>
                             </div>
                             <!-- Custom Modern Legend -->
-                            <div class="chart-legend-modern">
+                            <div class="chart-legend-modern mt-3 flex-shrink-0">
                                 <div class="legend-item">
                                     <span class="legend-dot" style="background: #3b82f6;"></span>
                                     <span class="legend-label">Admin</span>
