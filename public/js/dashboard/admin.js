@@ -5,7 +5,141 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("🚀 Dashboard initialized successfully");
+
+    // Initialize Dashboard Charts if data exists
+    if (window.appConfig && window.appConfig.chartData) {
+        initDashboardCharts(window.appConfig.chartData);
+    }
 });
+
+function initDashboardCharts(data) {
+    // 1. Activity Chart (Line)
+    const ctxActivity = document.getElementById("activityChart");
+    if (ctxActivity) {
+        new Chart(ctxActivity, {
+            type: "line",
+            data: {
+                labels: [
+                    "Ene",
+                    "Feb",
+                    "Mar",
+                    "Abr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Ago",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dic",
+                ],
+                datasets: [
+                    {
+                        label: "Actividad",
+                        data: data.activity || [],
+                        borderColor: "#e11d48", // Primary Red
+                        backgroundColor: (context) => {
+                            const ctx = context.chart.ctx;
+                            const gradient = ctx.createLinearGradient(
+                                0,
+                                0,
+                                0,
+                                200
+                            );
+                            gradient.addColorStop(0, "rgba(225, 29, 72, 0.2)");
+                            gradient.addColorStop(1, "rgba(225, 29, 72, 0)");
+                            return gradient;
+                        },
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: "#e11d48",
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { mode: "index", intersect: false },
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: "#64748b", font: { size: 11 } },
+                    },
+                    y: { display: false, min: 0 },
+                },
+                interaction: { intersect: false, mode: "nearest" },
+            },
+        });
+    }
+
+    // 2. Health Chart (Doughnut as Radial Gauge)
+    const ctxHealth = document.getElementById("healthChart");
+    if (ctxHealth) {
+        new Chart(ctxHealth, {
+            type: "doughnut",
+            data: {
+                labels: ["Salud", "Restante"],
+                datasets: [
+                    {
+                        data: [data.system_health, 100 - data.system_health],
+                        backgroundColor: ["#10b981", "rgba(255,255,255,0.05)"], // Green & Transparent
+                        borderWidth: 0,
+                        borderRadius: 20,
+                        cutout: "85%",
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false },
+                },
+                rotation: -90,
+                circumference: 360,
+            },
+        });
+    }
+
+    // 3. Registrations Chart (Bar)
+    const ctxReg = document.getElementById("registrationsChart");
+    if (ctxReg) {
+        new Chart(ctxReg, {
+            type: "bar",
+            data: {
+                labels: ["L", "M", "X", "J", "V", "S", "D"],
+                datasets: [
+                    {
+                        label: "Registros",
+                        data: data.registrations || [],
+                        backgroundColor: "#3b82f6", // Blue
+                        borderRadius: 4,
+                        barThickness: 10,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: "#64748b", font: { size: 10 } },
+                    },
+                    y: { display: false },
+                },
+            },
+        });
+    }
+}
 
 /**
  * Utility: Toast Notification

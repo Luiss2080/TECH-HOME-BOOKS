@@ -34,13 +34,14 @@ class DashboardController extends Controller
         // Recent Users (for Table)
         $recentUsers = User::latest()->take(5)->get();
 
-        // Role Distribution (for Chart)
-        $roleDistribution = [
-            'admin' => User::where('rol', 'admin')->count(),
-            'docente' => User::where('rol', 'docente')->count(),
-            'estudiante' => User::where('rol', 'estudiante')->count(),
+        // Chart Data (Mocked for Visuals)
+        $chartData = [
+            'activity' => [15, 25, 45, 30, 60, 75, 50, 65, 55, 70, 80, 95], // Monthly Activity
+            'system_health' => 92, // % Health (Radial)
+            'resources' => [65, 42, 28], // Storage, RAM, CPU
+            'registrations' => [5, 12, 19, 8, 22, 18, 30] // Last 7 months/weeks
         ];
 
-        return view('components.admin', compact('stats', 'recentUsers', 'roleDistribution'));
+        return view('components.admin', compact('stats', 'recentUsers', 'roleDistribution', 'chartData'));
     }
 }

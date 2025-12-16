@@ -147,9 +147,96 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
-                <!-- SECTION: Analytics & Activity (NEW) -->
-                <div class="dashboard-grid-2col">
+                <!-- NEW ANALYTICS SECTION -->
+                <div class="analytics-grid">
+                    <!-- 1. Activity Curve (Line Chart) -->
+                    <div class="chart-panel wide-panel glow-effect">
+                        <div class="panel-header">
+                            <div>
+                                <h3 class="panel-title">Resumen de Actividad</h3>
+                                <p class="panel-subtitle">Tráfico del sistema anual</p>
+                            </div>
+                            <div class="panel-actions">
+                                <span class="badge-pill">2024</span>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- 2. System Health (Radial) -->
+                    <div class="chart-panel square-panel glow-effect">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Estado del Sistema</h3>
+                        </div>
+                        <div class="panel-body flex-center">
+                            <div class="health-gauge-wrapper">
+                                <canvas id="healthChart"></canvas>
+                                <div class="health-label">
+                                    <span class="health-percent">{{ $chartData['system_health'] }}%</span>
+                                    <span class="health-text">Óptimo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Resource Usage (Progress) -->
+                    <div class="chart-panel square-panel glow-effect">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Uso de Recursos</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="resource-stack">
+                                <div class="resource-row">
+                                    <div class="res-info">
+                                        <span>Almacenamiento</span>
+                                        <span class="res-val">{{ $chartData['resources'][0] }}%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill red" style="width: {{ $chartData['resources'][0] }}%"></div>
+                                    </div>
+                                </div>
+                                <div class="resource-row">
+                                    <div class="res-info">
+                                        <span>Memoria RAM</span>
+                                        <span class="res-val">{{ $chartData['resources'][1] }}%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill purple" style="width: {{ $chartData['resources'][1] }}%"></div>
+                                    </div>
+                                </div>
+                                <div class="resource-row">
+                                    <div class="res-info">
+                                        <span>CPU</span>
+                                        <span class="res-val">{{ $chartData['resources'][2] }}%</span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill blue" style="width: {{ $chartData['resources'][2] }}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Monthly Registrations (Bar) -->
+                    <div class="chart-panel wide-panel glow-effect">
+                         <div class="panel-header">
+                            <div>
+                                <h3 class="panel-title">Nuevos Registros</h3>
+                                <p class="panel-subtitle">Usuarios por mes</p>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="registrationsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION: Analytics & Activity (OLD - Keeping for now or removing if redundant) -->
+                <div class="dashboard-grid-2col" style="margin-top: 2rem;">
                     <!-- Charts Card -->
                     <div class="dashboard-card glow-effect">
                         <div class="card-header">
@@ -359,7 +446,8 @@
                 id: '{{ session("user_id") }}',
                 name: '{{ session("user_name") }}',
                 role: '{{ session("user_role") }}'
-            }
+            },
+            chartData: @json($chartData ?? [])
         };
     </script>
     
