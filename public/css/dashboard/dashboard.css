@@ -1517,14 +1517,124 @@ body.dark-mode .dashboard-card:hover {
     transform: translateY(-1px);
 }
 
-/* Empty State */
-.empty-state {
+/* ============================================
+   MODERN RED AESTHETIC & BADGES
+   ============================================ */
+
+/* Modern Red Badge (Background Red) */
+.badge-modern-red {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(225, 29, 72, 0.15); /* Red Tint Background */
+    color: #fda4af; /* Soft Red Text */
+    border: 1px solid rgba(225, 29, 72, 0.3);
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.1);
+    width: 130px; /* Fixed width for alignment */
+    justify-content: center;
+}
+
+.badge-modern-red i {
+    color: var(--primary-red);
+    font-size: 0.9rem;
+}
+
+/* Modern Status Badge (Capsule) */
+.badge-modern-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 600;
+}
+
+.badge-modern-status.online {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+.status-dot-pulse {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
+    animation: pulse-green 2s infinite;
+}
+
+/* Modern Icon Buttons */
+.btn-icon-modern {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-icon-modern.red {
+    background: rgba(225, 29, 72, 0.2);
+    color: var(--primary-red);
+    border: 1px solid rgba(225, 29, 72, 0.3);
+}
+
+.btn-icon-modern.red:hover {
+    background: var(--primary-red);
+    color: white;
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-icon-modern.outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-muted);
+}
+
+.btn-icon-modern.outline:hover {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Typography Enhancements */
+.user-name-styled {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff; /* Bright white for name */
+    letter-spacing: 0.3px;
+}
+
+.user-email-styled {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+}
+
+.session-time {
+    font-family: "Courier New", monospace; /* Tech feel */
+    font-weight: 600;
+    color: #e2e8f0;
+    letter-spacing: -0.5px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 /* ... existing Split Layout ... */
 

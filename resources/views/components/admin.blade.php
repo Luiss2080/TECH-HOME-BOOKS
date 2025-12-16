@@ -260,7 +260,7 @@
                                             <th class="ps-3"><i class="fas fa-user me-2 text-danger"></i>Usuario</th>
                                             <th class="text-center"><i class="fas fa-user-tag me-2 text-danger"></i>Rol</th>
                                             <th class="text-center"><i class="fas fa-clock me-2 text-danger"></i>Sesión</th>
-                                            <th class="text-center"><i class="fas fa-circle-notch me-2 text-danger"></i>Estado</th>
+                                            <th class="text-center"><i class="fas fa-toggle-on me-2 text-danger"></i>Estado</th>
                                             <th class="text-end pe-3"><i class="fas fa-cog text-danger"></i></th>
                                         </tr>
                                     </thead>
@@ -271,37 +271,41 @@
                                                     <div class="user-info-compact">
                                                         <div class="user-avatar-xs {{ $user->rol === 'admin' ? 'pulse-red' : '' }}">{{ substr($user->name, 0, 1) }}</div>
                                                         <div class="d-flex flex-column">
-                                                            <span class="fw-bold">{{ $user->name }}</span>
-                                                            <small class="text-muted" style="font-size: 0.7rem;">
-                                                                <i class="fas fa-envelope me-1 text-danger" style="font-size: 0.6rem;"></i> {{ $user->email ?? 'usuario@sistema.com' }}
+                                                            <span class="user-name-styled">{{ $user->name }}</span>
+                                                            <small class="user-email-styled">
+                                                                <i class="fas fa-envelope text-danger me-1"></i> {{ $user->email ?? 'usuario@sistema.com' }}
                                                             </small>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <span class="badge badge-{{ $user->rol }} d-inline-flex align-items-center gap-1">
-                                                        @if($user->rol == 'admin') <i class="fas fa-crown text-danger" style="font-size: 0.7rem;"></i>
-                                                        @elseif($user->rol == 'docente') <i class="fas fa-chalkboard-teacher text-danger" style="font-size: 0.7rem;"></i>
-                                                        @else <i class="fas fa-user-graduate text-danger" style="font-size: 0.7rem;"></i>
+                                                    <span class="badge-modern-red">
+                                                        @if($user->rol == 'admin') <i class="fas fa-crown"></i>
+                                                        @elseif($user->rol == 'docente') <i class="fas fa-chalkboard-teacher"></i>
+                                                        @else <i class="fas fa-user-graduate"></i>
                                                         @endif
                                                         {{ ucfirst($user->rol) }}
                                                     </span>
                                                 </td>
                                                 <td class="text-center">
-                                                    <span class="text-muted small">
-                                                        <i class="fas fa-history me-1 text-danger"></i> Hace {{ rand(1, 59) }} min
+                                                    <span class="session-time">
+                                                        <i class="fas fa-history text-danger me-1"></i> Hace {{ rand(1, 59) }} min
                                                     </span>
                                                 </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center justify-content-center gap-2">
-                                                        <span class="status-dot online"></span>
-                                                        <span style="font-size: 0.8rem; opacity: 0.8;">Activo</span>
-                                                    </div>
+                                                <td class="text-center">
+                                                    <span class="badge-modern-status online">
+                                                        <span class="status-dot-pulse"></span> Activo
+                                                    </span>
                                                 </td>
                                                 <td class="text-end pe-3">
-                                                    <button class="btn-action-sm" title="Ver Perfil">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
+                                                    <div class="d-flex justify-content-end gap-2">
+                                                        <button class="btn-icon-modern red" title="Editar">
+                                                            <i class="fas fa-pen"></i>
+                                                        </button>
+                                                        <button class="btn-icon-modern outline" title="Ver Perfil">
+                                                            <i class="fas fa-eye"></i>
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @empty
