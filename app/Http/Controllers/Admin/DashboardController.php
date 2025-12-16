@@ -42,6 +42,13 @@ class DashboardController extends Controller
             'registrations' => [5, 12, 19, 8, 22, 18, 30] // Last 7 months/weeks
         ];
 
+        // Role Distribution (for Chart)
+        $roleDistribution = [
+            'admin' => User::where('rol', 'admin')->count(),
+            'docente' => User::where('rol', 'docente')->count(),
+            'estudiante' => User::where('rol', 'estudiante')->count(),
+        ];
+
         return view('components.admin', compact('stats', 'recentUsers', 'roleDistribution', 'chartData'));
     }
 }
