@@ -307,12 +307,12 @@ function initDashboardCharts(data) {
         });
     }
 
-    // 7. Promedios (Horizontal Bar)
+    // 7. Promedios (Vertical Bar)
     const ctxGrades = document.getElementById("gradesBarChart");
     if (ctxGrades) {
         new Chart(ctxGrades, {
             type: "bar",
-            indexAxis: "y",
+            // indexAxis: "x" is default (Vertical)
             data: {
                 labels: [
                     "Matemáticas",
@@ -333,22 +333,39 @@ function initDashboardCharts(data) {
                             "#3b82f6",
                         ],
                         borderRadius: 4,
-                        barThickness: 15,
+                        barThickness: 20,
                     },
                 ],
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "bottom",
+                        labels: {
+                            color: "#ffffff",
+                            usePointStyle: true,
+                            boxWidth: 8,
+                            padding: 20,
+                            font: { size: 11 },
+                        },
+                    },
+                },
                 scales: {
-                    x: { display: false },
-                    y: {
+                    x: {
+                        display: true,
                         grid: { display: false },
                         ticks: {
                             color: "#ffffff",
-                            font: { weight: "600", size: 11 },
+                            font: { size: 11, weight: "600" },
                         },
+                        border: { display: false },
+                    },
+                    y: {
+                        grid: { color: "rgba(255,255,255,0.05)" },
+                        ticks: { color: "#94a3b8", font: { size: 10 } },
                         border: { display: false },
                     },
                 },
@@ -356,12 +373,12 @@ function initDashboardCharts(data) {
         });
     }
 
-    // 8. Recursos (Horizontal Bar Rounded)
+    // 8. Recursos (Vertical Bar Rounded)
     const ctxResources = document.getElementById("resourcesBarChart");
     if (ctxResources) {
         new Chart(ctxResources, {
             type: "bar",
-            indexAxis: "y",
+            // indexAxis: "x" is default (Vertical)
             data: {
                 labels: [
                     "Libros",
@@ -372,6 +389,7 @@ function initDashboardCharts(data) {
                 ],
                 datasets: [
                     {
+                        label: "Inventario",
                         data: [12, 8, 6, 5, 2],
                         backgroundColor: [
                             "#fda4af",
@@ -381,22 +399,39 @@ function initDashboardCharts(data) {
                             "#be123c",
                         ],
                         borderRadius: 10,
-                        barThickness: 12,
+                        barThickness: 15,
                     },
                 ],
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "bottom",
+                        labels: {
+                            color: "#ffffff",
+                            usePointStyle: true,
+                            boxWidth: 8,
+                            padding: 20,
+                            font: { size: 11 },
+                        },
+                    },
+                },
                 scales: {
-                    x: { display: false },
-                    y: {
+                    x: {
+                        display: true,
                         grid: { display: false },
                         ticks: {
                             color: "#ffffff",
-                            font: { weight: "600", size: 11 },
+                            font: { size: 11, weight: "600" },
                         },
+                        border: { display: false },
+                    },
+                    y: {
+                        grid: { color: "rgba(255,255,255,0.05)" },
+                        ticks: { color: "#94a3b8", font: { size: 10 } },
                         border: { display: false },
                     },
                 },
