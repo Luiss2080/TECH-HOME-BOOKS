@@ -345,7 +345,10 @@ function initDashboardCharts(data) {
                     x: { display: false },
                     y: {
                         grid: { display: false },
-                        ticks: { color: "#94a3b8", font: { weight: "600" } },
+                        ticks: {
+                            color: "#ffffff",
+                            font: { weight: "600", size: 11 },
+                        },
                         border: { display: false },
                     },
                 },
@@ -390,7 +393,10 @@ function initDashboardCharts(data) {
                     x: { display: false },
                     y: {
                         grid: { display: false },
-                        ticks: { color: "#94a3b8", font: { weight: "600" } },
+                        ticks: {
+                            color: "#ffffff",
+                            font: { weight: "600", size: 11 },
+                        },
                         border: { display: false },
                     },
                 },

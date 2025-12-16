@@ -316,6 +316,11 @@
                         <div class="dashboard-card h-100" style="overflow: hidden !important; background-image: none !important;">
                             <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Promedios</h3>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn" style="background-color: #e11d48 !important; color: #ffffff !important; border: none; border-radius: 8px; padding: 5px 15px; font-weight: 600;">Semana</button>
+                                    <button type="button" class="btn" style="background-color: #e11d48 !important; color: #ffffff !important; border: none; border-radius: 8px; padding: 5px 15px; opacity: 0.6; font-weight: 600;">Mes</button>
+                                    <button type="button" class="btn" style="background-color: #e11d48 !important; color: #ffffff !important; border: none; border-radius: 8px; padding: 5px 15px; opacity: 0.6; font-weight: 600;">Año</button>
+                                </div>
                             </div>
                             <div class="card-body" style="position: relative;">
                                 <canvas id="gradesBarChart" height="200"></canvas>
@@ -326,6 +331,11 @@
                         <div class="dashboard-card h-100" style="overflow: hidden !important; background-image: none !important;">
                             <div class="card-header border-0 pb-0 d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Recursos</h3>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn" style="background-color: #e11d48 !important; color: #ffffff !important; border: none; border-radius: 8px; padding: 5px 15px; font-weight: 600;">Semana</button>
+                                    <button type="button" class="btn" style="background-color: #e11d48 !important; color: #ffffff !important; border: none; border-radius: 8px; padding: 5px 15px; opacity: 0.6; font-weight: 600;">Mes</button>
+                                    <button type="button" class="btn" style="background-color: #e11d48 !important; color: #ffffff !important; border: none; border-radius: 8px; padding: 5px 15px; opacity: 0.6; font-weight: 600;">Año</button>
+                                </div>
                             </div>
                             <div class="card-body" style="position: relative;">
                                 <canvas id="resourcesBarChart" height="200"></canvas>
