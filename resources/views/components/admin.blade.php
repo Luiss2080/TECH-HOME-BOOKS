@@ -243,21 +243,11 @@
                     </div>
                 </div>
 
-                <!-- SECTION: Analytics & Activity (OLD - Keeping for now or removing if redundant) -->
-                <div class="dashboard-grid-2col" style="margin-top: 2rem;">
-                    <!-- Charts Card -->
-                    <div class="dashboard-card glow-effect">
-                        <div class="card-header">
-                            <h3 class="card-title">Resumen de Usuarios</h3>
-                            <button class="card-action"><i class="fas fa-ellipsis-h"></i></button>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="userRolesChart" height="200"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activity / Users Table -->
-                    <div class="dashboard-card">
+                <!-- SECTION: Middle Split (Table + Chart) -->
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-top: 2rem;" class="dashboard-split-layout">
+                    
+                    <!-- Left: Recent Users Table (More space) -->
+                    <div class="dashboard-card h-100">
                         <div class="card-header">
                             <h3 class="card-title">Usuarios Recientes</h3>
                             <a href="{{ route('admin.usuarios.index') }}" class="card-action-link">Ver todos</a>
@@ -292,150 +282,122 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Right: User Distribution Chart -->
+                    <div class="dashboard-card glow-effect h-100">
+                        <div class="card-header">
+                            <h3 class="card-title">Distribución</h3>
+                            <button class="card-action"><i class="fas fa-chart-pie"></i></button>
+                        </div>
+                        <div class="card-body flex-center" style="min-height: 250px;">
+                            <canvas id="userRolesChart"></canvas>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- SECTION: Modules Grid Layout -->
-                <div class="dashboard-modules-section">
+                <!-- SECTION: Modules Grid (3 Cols) -->
+                <div class="dashboard-modules-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
                     
                     <!-- Card: Gestión Académica -->
                     <div class="dashboard-card h-100">
                         <div class="card-header">
                             <h3 class="card-title">Gestión Académica</h3>
-                            <button class="card-action"><i class="fas fa-graduation-cap"></i></button>
+                            <i class="fas fa-graduation-cap text-muted"></i>
                         </div>
                         <div class="card-body">
-                            <div class="modules-grid-compact">
-                                <a href="{{ route('admin.estudiantes.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm green"><i class="fas fa-user-graduate"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Estudiantes</span>
-                                        <span class="module-desc-sm">Gestión de alumnos</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['students'] }}</span>
+                            <div class="modules-list-compact">
+                                <a href="{{ route('admin.estudiantes.index') }}" class="module-row-item">
+                                    <div class="icon-box green"><i class="fas fa-user-graduate"></i></div>
+                                    <span>Estudiantes</span>
+                                    <small class="ms-auto text-muted">{{ $stats['students'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.docentes.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm purple"><i class="fas fa-chalkboard-teacher"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Docentes</span>
-                                        <span class="module-desc-sm">Profesores activos</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['teachers'] }}</span>
+                                <a href="{{ route('admin.docentes.index') }}" class="module-row-item">
+                                    <div class="icon-box purple"><i class="fas fa-chalkboard-teacher"></i></div>
+                                    <span>Docentes</span>
+                                    <small class="ms-auto text-muted">{{ $stats['teachers'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.cursos.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm blue"><i class="fas fa-layer-group"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Cursos</span>
-                                        <span class="module-desc-sm">Cursos ofertados</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['courses'] }}</span>
+                                <a href="{{ route('admin.cursos.index') }}" class="module-row-item">
+                                    <div class="icon-box blue"><i class="fas fa-layer-group"></i></div>
+                                    <span>Cursos</span>
+                                    <small class="ms-auto text-muted">{{ $stats['courses'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.materias.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm orange"><i class="fas fa-book-open"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Materias</span>
-                                        <span class="module-desc-sm">Plan de estudios</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['materias'] }}</span>
+                                <a href="{{ route('admin.materias.index') }}" class="module-row-item">
+                                    <div class="icon-box orange"><i class="fas fa-book-open"></i></div>
+                                    <span>Materias</span>
+                                    <small class="ms-auto text-muted">{{ $stats['materias'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.colegios.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm"><i class="fas fa-school"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Colegios</span>
-                                        <span class="module-desc-sm">Instituciones</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['colegios'] }}</span>
+                                <a href="{{ route('admin.colegios.index') }}" class="module-row-item">
+                                    <div class="icon-box red"><i class="fas fa-school"></i></div>
+                                    <span>Colegios</span>
+                                    <small class="ms-auto text-muted">{{ $stats['colegios'] }}</small>
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card: Recursos -->
+                    <!-- Card: Recursos y Laboratorios -->
                     <div class="dashboard-card h-100">
                         <div class="card-header">
-                            <h3 class="card-title">Recursos y Laboratorios</h3>
-                            <button class="card-action"><i class="fas fa-flask"></i></button>
+                            <h3 class="card-title">Recursos</h3>
+                            <i class="fas fa-flask text-muted"></i>
                         </div>
                         <div class="card-body">
-                            <div class="modules-grid-compact">
-                                <a href="{{ route('libros.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm red"><i class="fas fa-book"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Biblioteca</span>
-                                        <span class="module-desc-sm">Libros disponibles</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['libros'] }}</span>
+                            <div class="modules-list-compact">
+                                <a href="{{ route('libros.index') }}" class="module-row-item">
+                                    <div class="icon-box red"><i class="fas fa-book"></i></div>
+                                    <span>Biblioteca</span>
+                                    <small class="ms-auto text-muted">{{ $stats['libros'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.materiales.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm orange"><i class="fas fa-folder-open"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Materiales</span>
-                                        <span class="module-desc-sm">Recursos didácticos</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['materiales'] }}</span>
+                                <a href="{{ route('admin.materiales.index') }}" class="module-row-item">
+                                    <div class="icon-box orange"><i class="fas fa-folder-open"></i></div>
+                                    <span>Materiales</span>
+                                    <small class="ms-auto text-muted">{{ $stats['materiales'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.laboratorios.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm blue"><i class="fas fa-desktop"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Laboratorios</span>
-                                        <span class="module-desc-sm">Equipos y salas</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['laboratorios'] }}</span>
+                                <a href="{{ route('admin.laboratorios.index') }}" class="module-row-item">
+                                    <div class="icon-box blue"><i class="fas fa-desktop"></i></div>
+                                    <span>Laboratorios</span>
+                                    <small class="ms-auto text-muted">{{ $stats['laboratorios'] }}</small>
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Card: Administración -->
-                    <div class="dashboard-card h-100 full-width-mobile">
+                    <div class="dashboard-card h-100">
                         <div class="card-header">
-                            <h3 class="card-title">Administración del Sistema</h3>
-                            <button class="card-action"><i class="fas fa-cogs"></i></button>
+                            <h3 class="card-title">Administración</h3>
+                            <i class="fas fa-cogs text-muted"></i>
                         </div>
                         <div class="card-body">
-                            <div class="modules-grid-compact">
-                                <a href="{{ route('admin.usuarios.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm"><i class="fas fa-users-cog"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Usuarios</span>
-                                        <span class="module-desc-sm">Control de acceso</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['users'] }}</span>
+                            <div class="modules-list-compact">
+                                <a href="{{ route('admin.usuarios.index') }}" class="module-row-item">
+                                    <div class="icon-box gray"><i class="fas fa-users-cog"></i></div>
+                                    <span>Usuarios</span>
+                                    <small class="ms-auto text-muted">{{ $stats['users'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.roles.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm purple"><i class="fas fa-user-tag"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Roles</span>
-                                        <span class="module-desc-sm">Perfiles del sistema</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['roles'] }}</span>
+                                <a href="{{ route('admin.roles.index') }}" class="module-row-item">
+                                    <div class="icon-box purple"><i class="fas fa-user-tag"></i></div>
+                                    <span>Roles</span>
+                                    <small class="ms-auto text-muted">{{ $stats['roles'] }}</small>
                                 </a>
-                                <a href="{{ route('admin.permisos.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm"><i class="fas fa-key"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Permisos</span>
-                                        <span class="module-desc-sm">Reglas de autorización</span>
-                                    </div>
-                                    <span class="module-badge">{{ $stats['permisos'] }}</span>
+                                <a href="{{ route('admin.permisos.index') }}" class="module-row-item">
+                                    <div class="icon-box gray"><i class="fas fa-key"></i></div>
+                                    <span>Permisos</span>
+                                    <small class="ms-auto text-muted">{{ $stats['permisos'] }}</small>
                                 </a>
-                                <a href="{{ route('reportes.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm blue"><i class="fas fa-chart-line"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Reportes</span>
-                                        <span class="module-desc-sm">Estadísticas</span>
-                                    </div>
+                                <a href="{{ route('reportes.index') }}" class="module-row-item">
+                                    <div class="icon-box blue"><i class="fas fa-chart-line"></i></div>
+                                    <span>Reportes</span>
                                 </a>
-                                <a href="{{ route('configuraciones.index') }}" class="module-item rich">
-                                    <div class="module-icon-sm"><i class="fas fa-sliders-h"></i></div>
-                                    <div class="module-info">
-                                        <span class="module-label">Configuración</span>
-                                        <span class="module-desc-sm">Ajustes generales</span>
-                                    </div>
+                                <a href="{{ route('configuraciones.index') }}" class="module-row-item">
+                                    <div class="icon-box gray"><i class="fas fa-sliders-h"></i></div>
+                                    <span>Configuración</span>
                                 </a>
                             </div>
                         </div>
                     </div>
-                
-                </div> <!-- End dashboard-modules-section -->
+
+                </div>
                 
             </div>
             
