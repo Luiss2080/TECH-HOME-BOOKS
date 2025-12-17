@@ -215,14 +215,15 @@ body.dark-mode .search-input {
 .profile-trigger {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    background: rgba(255, 255, 255, 0.05); /* Slight background */
-    border: 1px solid var(--border-color); /* Visible border */
-    padding: 6px;
-    padding-right: 14px;
+    gap: 1rem; /* More gap */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 8px 20px 8px 8px; /* More right padding */
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 220px; /* Force minimum width */
+    justify-content: space-between; /* Space out items */
 }
 
 body.dark-mode .profile-trigger {
