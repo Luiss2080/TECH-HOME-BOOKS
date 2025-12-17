@@ -301,31 +301,134 @@ body.dark-mode .profile-trigger {
     color: var(--primary-red);
 }
 
-/* ... existing logout btn ... */
+/* Profile Dropdown Content Styles - Premium Redesign */
+.pd-header-compact {
+    padding: 1.5rem;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.03),
+        transparent
+    );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Softer divider */
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.user-avatar-med {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--bg-surface-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    border: 2px solid var(--primary-red); /* Persistent red border */
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.2); /* Soft glow */
+}
+
+.pd-user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.pd-user-info strong {
+    color: var(--header-text-dark);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.pd-user-info small {
+    color: var(--primary-red); /* Highlight email/role in red */
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.pd-grid-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+    gap: 0.75rem;
+}
+
+.pd-grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.01); /* Very subtle fill */
+    border: 1px solid transparent;
+}
+
+.pd-grid-item svg {
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 0 transparent);
+}
+
+.pd-grid-item span {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.pd-grid-item:hover {
+    background: rgba(225, 29, 72, 0.08); /* Red tint */
+    border-color: rgba(225, 29, 72, 0.2);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pd-grid-item:hover svg {
+    color: var(--primary-red);
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(225, 29, 72, 0.6)); /* Neon glow on icon */
+}
+
+.pd-footer-actions {
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.1); /* Darker footer area */
+}
 
 .logout-btn {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem;
+    gap: 0.6rem;
+    padding: 0.9rem;
     background: transparent;
     color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    border-radius: 12px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 14px;
     font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .logout-btn:hover {
-    background: #fef2f2;
-    color: #b91c1c;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ff5f5f;
     border-color: #ef4444;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
 }
 
 /* Dark Mode for Logout Button */

@@ -2,20 +2,19 @@
    DOCENTES CREATE - DASHBOARD STYLE
    ============================================ */
 
-:root {
+/* Scoped styles for this view only */
+.create-container {
     --primary-red: #e11d48;
     --primary-red-hover: #be123c;
-    --bg-surface: #1e1e1e; /* Adjust based on dashboard theme */
+    --bg-surface: #1e1e1e;
     --bg-surface-secondary: #2d2d2d;
     --text-dark: #e5e5e5;
     --text-muted: #a3a3a3;
-    /* Redefine border color to be red-tinted for this view as requested */
+    /* Redefine border color to be red-tinted for this local scope only */
     --border-color: rgba(225, 29, 72, 0.5);
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-    --card-hover-shadow: 0 10px 15px -3px rgba(225, 29, 72, 0.15); /* Red tinted shadow */
-}
+    --card-hover-shadow: 0 10px 15px -3px rgba(225, 29, 72, 0.15);
 
-.create-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
