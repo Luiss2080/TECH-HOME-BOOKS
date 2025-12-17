@@ -42,12 +42,14 @@ class ColegioController extends Controller
 
     public function show($id)
     {
-        //
+        $colegio = \App\Models\Colegio::findOrFail($id);
+        return view('admin.colegios.show', compact('colegio'));
     }
 
     public function edit($id)
     {
-        //
+        $colegio = \App\Models\Colegio::findOrFail($id);
+        return view('admin.colegios.edit', compact('colegio'));
     }
 
     public function update(Request $request, $id)
