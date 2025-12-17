@@ -34,7 +34,8 @@ class CursoController extends Controller
 
     public function create()
     {
-        return view('admin.cursos.create');
+        $colegios = \App\Models\Colegio::where('estado', 'activo')->get();
+        return view('admin.cursos.create', compact('colegios'));
     }
 
     public function store(Request $request)
