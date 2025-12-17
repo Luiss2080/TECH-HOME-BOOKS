@@ -322,11 +322,17 @@
                     </div>
 
                     <div class="form-actions">
-                        <a href="{{ route('admin.docentes.index') }}" class="btn-cancel">Cancelar</a>
-                        <button type="submit" class="btn-submit">
-                            <i class="fas fa-save"></i>
-                            <span>Guardar Docente</span>
-                        </button>
+                        <div class="form-status-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Información Segura</span>
+                        </div>
+                        <div class="action-buttons">
+                            <a href="{{ route('admin.docentes.index') }}" class="btn-cancel">Cancelar</a>
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-save"></i>
+                                <span>Guardar Docente</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
