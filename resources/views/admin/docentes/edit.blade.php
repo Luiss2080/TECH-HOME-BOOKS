@@ -123,7 +123,7 @@
                             <label for="nombre">Nombre Completo <span>*</span></label>
                             <div class="input-wrapper">
                                 <i class="fas fa-user"></i>
-                                <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej: Juan" required value="{{ old('nombre', $docente->nombre) }}">
+                                <input type="text" id="nombre" name="name" class="form-input" placeholder="Ej: Juan" required value="{{ old('name', $docente->user->name) }}">
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
                             <label for="apellido">Apellidos <span>*</span></label>
                             <div class="input-wrapper">
                                 <i class="fas fa-user"></i>
-                                <input type="text" id="apellido" name="apellido" class="form-input" placeholder="Ej: Pérez García" required value="{{ old('apellido', $docente->apellido) }}">
+                                <input type="text" id="apellido" name="apellido" class="form-input" placeholder="Ej: Pérez García" required value="{{ old('apellido', $docente->user->apellido) }}">
                             </div>
                         </div>
 
@@ -139,7 +139,7 @@
                             <label for="ci">Documento de Identidad (CI) <span>*</span></label>
                             <div class="input-wrapper">
                                 <i class="fas fa-id-card"></i>
-                                <input type="text" id="ci" name="ci" class="form-input" placeholder="Ej: 1234567" required value="{{ old('ci', $docente->ci) }}">
+                                <input type="text" id="ci" name="ci" class="form-input" placeholder="Ej: 1234567" required value="{{ old('ci', $docente->user->ci) }}">
                             </div>
                         </div>
 
@@ -147,7 +147,7 @@
                             <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                             <div class="input-wrapper">
                                 <i class="fas fa-calendar-alt"></i>
-                                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-input" value="{{ old('fecha_nacimiento', $docente->fecha_nacimiento) }}">
+                                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-input" value="{{ old('fecha_nacimiento', optional($docente->user->fecha_nacimiento)->format('Y-m-d')) }}">
                             </div>
                         </div>
 
@@ -156,9 +156,9 @@
                             <div class="input-wrapper">
                                 <i class="fas fa-venus-mars"></i>
                                 <select id="genero" name="genero" class="form-select">
-                                    <option value="M" {{ old('genero', $docente->genero) == 'M' ? 'selected' : '' }}>Masculino</option>
-                                    <option value="F" {{ old('genero', $docente->genero) == 'F' ? 'selected' : '' }}>Femenino</option>
-                                    <option value="O" {{ old('genero', $docente->genero) == 'O' ? 'selected' : '' }}>Otro</option>
+                                    <option value="M" {{ old('genero', $docente->user->genero) == 'M' ? 'selected' : '' }}>Masculino</option>
+                                    <option value="F" {{ old('genero', $docente->user->genero) == 'F' ? 'selected' : '' }}>Femenino</option>
+                                    <option value="O" {{ old('genero', $docente->user->genero) == 'O' ? 'selected' : '' }}>Otro</option>
                                 </select>
                                 <i class="fas fa-chevron-down" style="left: auto; right: 1rem;"></i>
                             </div>
@@ -168,7 +168,7 @@
                             <label for="nacionalidad">Nacionalidad</label>
                             <div class="input-wrapper">
                                 <i class="fas fa-globe-americas"></i>
-                                <input type="text" id="nacionalidad" name="nacionalidad" class="form-input" placeholder="Ej: Boliviana" value="{{ old('nacionalidad', $docente->nacionalidad) }}">
+                                <input type="text" id="nacionalidad" name="nacionalidad" class="form-input" placeholder="Ej: Boliviana" value="Boliviana" readonly>
                             </div>
                         </div>
 
@@ -176,7 +176,7 @@
                             <label for="email">Correo Electrónico <span>*</span></label>
                             <div class="input-wrapper">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" id="email" name="email" class="form-input" placeholder="ejemplo@tech-home.com" required value="{{ old('email', $docente->email) }}">
+                                <input type="email" id="email" name="email" class="form-input" placeholder="ejemplo@tech-home.com" required value="{{ old('email', $docente->user->email) }}">
                             </div>
                         </div>
 
@@ -184,7 +184,7 @@
                             <label for="telefono">Tel./Celular</label>
                             <div class="input-wrapper">
                                 <i class="fas fa-phone"></i>
-                                <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+591 ..." value="{{ old('telefono', $docente->telefono) }}">
+                                <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+591 ..." value="{{ old('telefono', $docente->user->telefono) }}">
                             </div>
                         </div>
 
@@ -192,7 +192,7 @@
                             <label for="direccion">Dirección Domiciliaria</label>
                             <div class="input-wrapper">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <input type="text" id="direccion" name="direccion" class="form-input" placeholder="Ej: Av. Principal #123" value="{{ old('direccion', $docente->direccion) }}">
+                                <input type="text" id="direccion" name="direccion" class="form-input" placeholder="Ej: Av. Principal #123" value="{{ old('direccion', $docente->user->direccion) }}">
                             </div>
                         </div>
                     </div>
@@ -243,10 +243,10 @@
                         </div>
 
                         <div class="form-group span-3">
-                            <label for="titulo_academico">Título Académico</label>
+                            <label for="titulo_profesional">Título Académico</label>
                             <div class="input-wrapper">
                                 <i class="fas fa-certificate"></i>
-                                <input type="text" id="titulo_academico" name="titulo_academico" class="form-input" placeholder="Ej: Licenciado" value="{{ old('titulo_academico', $docente->titulo_academico) }}">
+                                <input type="text" id="titulo_profesional" name="titulo_profesional" class="form-input" placeholder="Ej: Licenciado" value="{{ old('titulo_profesional', $docente->titulo_profesional) }}">
                             </div>
                         </div>
 
@@ -259,7 +259,7 @@
                                         $niveles = ['Licenciatura', 'Diplomado', 'Maestría', 'Doctorado'];
                                     @endphp
                                     @foreach($niveles as $nivel)
-                                        <option value="{{ $nivel }}" {{ old('nivel_estudio', $docente->nivel_estudio) == $nivel ? 'selected' : '' }}>{{ $nivel }}</option>
+                                        <option value="{{ $nivel }}" {{ old('nivel_estudio') == $nivel ? 'selected' : '' }}>{{ $nivel }}</option>
                                     @endforeach
                                 </select>
                                 <i class="fas fa-chevron-down" style="left: auto; right: 1rem;"></i>
@@ -267,10 +267,10 @@
                         </div>
 
                         <div class="form-group span-2">
-                           <label for="anos_experiencia">Años Exp.</label>
+                           <label for="experiencia">Años Exp.</label>
                            <div class="input-wrapper">
                                <i class="fas fa-history"></i>
-                               <input type="number" id="anos_experiencia" name="anos_experiencia" class="form-input" placeholder="0" min="0" value="{{ old('anos_experiencia', $docente->anos_experiencia) }}">
+                               <input type="number" id="experiencia" name="experiencia" class="form-input" placeholder="0" min="0" value="{{ old('experiencia', $docente->experiencia) }}">
                            </div>
                        </div>
 

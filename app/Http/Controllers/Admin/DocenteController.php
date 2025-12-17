@@ -46,7 +46,8 @@ class DocenteController extends Controller
 
     public function edit($id)
     {
-        //
+        $docente = Docente::with('user')->findOrFail($id);
+        return view('admin.docentes.edit', compact('docente'));
     }
 
     public function update(Request $request, $id)
