@@ -63,10 +63,6 @@
 
                 <!-- Help Section -->
                 <div class="help-section-container">
-                    <h3 class="help-section-title">
-                        Guía Rápida
-                        <i class="fas fa-info-circle" style="font-size: 0.85rem; opacity: 0.5;"></i>
-                    </h3>
                     <div class="help-cards-list">
                         <div class="help-card-item">
                             <div class="help-icon">

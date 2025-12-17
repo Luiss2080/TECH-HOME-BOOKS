@@ -19,6 +19,7 @@ Gestión de cursos, materias, calificaciones y asistencia.
 
 -   **Email**: `maria.garcia@tech-home.com`
 -   **Contraseña**: `docente123`
+-
 
 ## 👨‍🎓 Estudiante
 
