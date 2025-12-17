@@ -31,32 +31,78 @@
     <form action="{{ route('admin.docentes.store') }}" method="POST" enctype="multipart/form-data" id="createDocenteForm">
         @csrf
         <div class="form-content">
-            <!-- Left Column: Profile Image -->
-            <div class="form-card">
-                <div class="card-header">
-                    <h3>
-                        <i class="fas fa-camera"></i>
-                        Foto de Perfil
-                    </h3>
-                    <p>Suba una foto profesional para el docente (opcional)</p>
-                </div>
-                
-                <div class="profile-upload-section">
-                    <div class="avatar-preview" id="avatarPreview">
-                        <div class="avatar-placeholder">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Sin imagen</span>
-                        </div>
+            <!-- Left Column: Profile Image & Help -->
+            <div class="left-column" style="display: flex; flex-direction: column; gap: 2rem;">
+                <div class="form-card">
+                    <div class="card-header">
+                        <h3>
+                            <i class="fas fa-camera"></i>
+                            Foto de Perfil
+                        </h3>
+                        <p>Suba una foto profesional para el docente (opcional)</p>
                     </div>
                     
-                    <div class="file-input-wrapper">
-                        <div class="btn-upload">
-                            <i class="fas fa-upload"></i>
-                            <span>Seleccionar Foto</span>
+                    <div class="profile-upload-section">
+                        <div class="avatar-preview" id="avatarPreview">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Sin imagen</span>
+                            </div>
                         </div>
-                        <input type="file" name="avatar" id="avatar" accept="image/*">
+                        
+                        <div class="file-input-wrapper">
+                            <div class="btn-upload">
+                                <i class="fas fa-upload"></i>
+                                <span>Seleccionar Foto</span>
+                            </div>
+                            <input type="file" name="avatar" id="avatar" accept="image/*">
+                        </div>
+                        <p class="upload-hint">Formatos: JPG, PNG. Máx: 2MB</p>
                     </div>
-                    <p class="upload-hint">Formatos: JPG, PNG. Máx: 2MB</p>
+                </div>
+
+                <!-- Help Section Moved Here -->
+                <div class="help-section">
+                    <h3 class="help-title">Guía Rápida</h3>
+                    <div class="help-cards-grid">
+                        <div class="help-card">
+                            <div class="help-icon">
+                                <i class="fas fa-camera-retro"></i>
+                            </div>
+                            <div class="help-content">
+                                <h4>Foto de Perfil</h4>
+                                <p>Fondo neutro y vestimenta formal.</p>
+                            </div>
+                        </div>
+                        <div class="help-card">
+                            <div class="help-icon">
+                                <i class="fas fa-file-signature"></i>
+                            </div>
+                            <div class="help-content">
+                                <h4>Contratos</h4>
+                                <p>Verifique carga horaria.</p>
+                            </div>
+                        </div>
+                        <div class="help-card">
+                            <div class="help-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="help-content">
+                                <h4>Validación</h4>
+                                <p>Campos (*) son obligatorios.</p>
+                            </div>
+                        </div>
+                        <div class="help-card action-card">
+                            <div class="help-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="help-content">
+                                <h4>¿Ayuda?</h4>
+                                <p>Soporte técnico disponible.</p>
+                                <button type="button" class="btn-help-action">Contactar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -169,12 +215,42 @@
                     </div>
 
                     <div class="form-group">
-                         <label for="titulo_academico">Título Académico</label>
-                         <div class="input-wrapper">
-                             <i class="fas fa-certificate"></i>
-                             <input type="text" id="titulo_academico" name="titulo_academico" class="form-input" placeholder="Ej: Licenciado en Educación">
-                         </div>
-                    </div>
+                        <label for="titulo_academico">Título Académico</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-certificate"></i>
+                            <input type="text" id="titulo_academico" name="titulo_academico" class="form-input" placeholder="Ej: Licenciado en Educación">
+                        </div>
+                   </div>
+
+                   <div class="form-group">
+                       <label for="institucion_egreso">Institución de Egreso</label>
+                       <div class="input-wrapper">
+                           <i class="fas fa-university"></i>
+                           <input type="text" id="institucion_egreso" name="institucion_egreso" class="form-input" placeholder="Ej: Universidad Mayor de San Andrés">
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                        <label for="nivel_estudio">Nivel de Estudio</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-layer-group"></i>
+                            <select id="nivel_estudio" name="nivel_estudio" class="form-select">
+                                <option value="Licenciatura">Licenciatura</option>
+                                <option value="Diplomado">Diplomado</option>
+                                <option value="Maestría">Maestría</option>
+                                <option value="Doctorado">Doctorado</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="left: auto; right: 1rem;"></i>
+                        </div>
+                   </div>
+
+                   <div class="form-group">
+                       <label for="anos_experiencia">Años de Experiencia</label>
+                       <div class="input-wrapper">
+                           <i class="fas fa-history"></i>
+                           <input type="number" id="anos_experiencia" name="anos_experiencia" class="form-input" placeholder="Ej: 5" min="0">
+                       </div>
+                   </div>
 
                     <div class="form-group">
                         <label for="tipo_contrato">Tipo de Contrato <span>*</span></label>
@@ -186,6 +262,27 @@
                                 <option value="por_horas">Por Horas</option>
                             </select>
                             <i class="fas fa-chevron-down" style="left: auto; right: 1rem;"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="genero">Género</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-venus-mars"></i>
+                            <select id="genero" name="genero" class="form-select">
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="left: auto; right: 1rem;"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nacionalidad">Nacionalidad</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-globe-americas"></i>
+                            <input type="text" id="nacionalidad" name="nacionalidad" class="form-input" placeholder="Ej: Boliviana" value="Boliviana">
                         </div>
                     </div>
 
@@ -201,8 +298,6 @@
 
             </div> <!-- Close form-card -->
         </div>
-    </form>
-</div>
 @endsection
 
 @section('js')
