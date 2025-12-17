@@ -69,25 +69,25 @@
 }
 
 .btn-secondary-action {
-    background: var(--bg-surface-secondary);
-    color: var(--text-muted);
-    padding: 0.875rem 1.5rem;
+    background: var(--primary-red);
+    color: #ffffff; /* White text */
+    padding: 0.875rem 1.75rem;
     border-radius: 14px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    border: 1px solid var(--border-color);
+    border: none;
+    box-shadow: 0 4px 10px rgba(225, 29, 72, 0.3);
 }
 
 .btn-secondary-action:hover {
-    background: var(--bg-card);
-    color: var(--text-dark);
+    background: var(--primary-red-hover);
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-color: var(--primary-red);
+    box-shadow: 0 8px 20px rgba(225, 29, 72, 0.4);
 }
 
 /* Form Layout */
@@ -149,20 +149,28 @@
 }
 
 .card-header h3 i {
-    color: white;
-    font-size: 1rem;
+    width: 48px;
+    height: 48px;
     background: var(--primary-red);
-    padding: 0.5rem;
-    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.4);
+    transition: all 0.3s ease;
     flex-shrink: 0;
-    box-shadow: 0 4px 6px rgba(225, 29, 72, 0.3);
 }
 
 .card-header p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
     margin: 0;
-    padding-left: 0.25rem;
+    color: var(--primary-red);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 10px rgba(225, 29, 72, 0.4); /* Neon Glow */
 }
 
 /* Profile Upload Section */

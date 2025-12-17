@@ -39,7 +39,7 @@
                             <i class="fas fa-camera"></i>
                             Foto de Perfil
                         </h3>
-                        <p>Suba una foto profesional (optional)</p>
+                        <p>Suba una foto profesional</p>
                     </div>
                     
                     <div class="profile-upload-section">
