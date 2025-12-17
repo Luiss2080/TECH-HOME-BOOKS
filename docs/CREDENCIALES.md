@@ -11,6 +11,8 @@ Acceso total al sistema, gestión de usuarios, roles y configuraciones.
 -   **Email**: `admin@tech-home.com`
 -   **Contraseña**: `admin123`
 
+php artisan serve --host=127.0.0.30 --port=9100
+
 ## 👨‍🏫 Docente
 
 Gestión de cursos, materias, calificaciones y asistencia.
