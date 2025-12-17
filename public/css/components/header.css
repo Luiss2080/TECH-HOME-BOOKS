@@ -191,6 +191,10 @@ body.dark-mode .search-input {
     -webkit-backdrop-filter: blur(10px);
 }
 
+.profile-dropdown {
+    min-width: 320px; /* Wider to avoid email wrapping */
+}
+
 .quick-actions-dropdown.show,
 .notification-dropdown.show,
 .profile-dropdown.show {
