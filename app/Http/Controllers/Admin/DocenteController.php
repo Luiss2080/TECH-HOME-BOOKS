@@ -41,7 +41,8 @@ class DocenteController extends Controller
 
     public function show($id)
     {
-        //
+        $docente = Docente::with('user')->findOrFail($id);
+        return view('admin.docentes.show', compact('docente'));
     }
 
     public function edit($id)
