@@ -44,12 +44,14 @@ class EstudianteController extends Controller
 
     public function show($id)
     {
-        //
+        $estudiante = Estudiante::with('user')->findOrFail($id);
+        return view('admin.estudiantes.show', compact('estudiante'));
     }
 
     public function edit($id)
     {
-        return view('admin.estudiantes.edit');
+        $estudiante = Estudiante::with('user')->findOrFail($id);
+        return view('admin.estudiantes.edit', compact('estudiante'));
     }
 
     public function update(Request $request, $id)
