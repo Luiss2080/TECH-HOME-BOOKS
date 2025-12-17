@@ -98,6 +98,26 @@
                             </div>
                             <i class="fas fa-chevron-right help-action-icon"></i>
                         </div>
+                        <div class="help-card-item">
+                            <div class="help-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="help-text">
+                                <h4>Documentación</h4>
+                                <p>Tenga a mano los títulos escaneados.</p>
+                            </div>
+                            <i class="fas fa-chevron-right help-action-icon"></i>
+                        </div>
+                        <div class="help-card-item">
+                            <div class="help-icon">
+                                <i class="fas fa-life-ring"></i>
+                            </div>
+                            <div class="help-text">
+                                <h4>Soporte</h4>
+                                <p>¿Dudas? Contacte al dpto. técnico.</p>
+                            </div>
+                            <i class="fas fa-chevron-right help-action-icon"></i>
+                        </div>
                     </div>
                 </div>
             </div>
