@@ -64,12 +64,12 @@
             <table class="dashboard-table">
                 <thead>
                     <tr>
-                        <th>Docente</th>
-                        <th>Documento</th>
-                        <th>Especialidad</th>
-                        <th>Estado</th>
-                        <th>Contrato</th>
-                        <th>Acciones</th>
+                        <th><i class="fas fa-chalkboard-teacher"></i> DOCENTE</th>
+                        <th><i class="fas fa-id-card"></i> DOCUMENTO</th>
+                        <th><i class="fas fa-book"></i> ESPECIALIDAD</th>
+                        <th><i class="fas fa-toggle-on"></i> ESTADO</th>
+                        <th><i class="fas fa-file-contract"></i> CONTRATO</th>
+                        <th><i class="fas fa-cogs"></i> ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
