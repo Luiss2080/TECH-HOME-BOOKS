@@ -118,6 +118,26 @@
                             </div>
                             <i class="fas fa-chevron-right help-action-icon"></i>
                         </div>
+                        <div class="help-card-item">
+                            <div class="help-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="help-text">
+                                <h4>Evaluación</h4>
+                                <p>Revise el sistema de calificación.</p>
+                            </div>
+                            <i class="fas fa-chevron-right help-action-icon"></i>
+                        </div>
+                        <div class="help-card-item">
+                            <div class="help-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="help-text">
+                                <h4>Recursos</h4>
+                                <p>Acceda a materiales y guías.</p>
+                            </div>
+                            <i class="fas fa-chevron-right help-action-icon"></i>
+                        </div>
                     </div>
                 </div>
             </div>
