@@ -44,12 +44,15 @@ class MateriaController extends Controller
 
     public function show($id)
     {
-        //
+        $materia = \App\Models\Materia::with('curso')->findOrFail($id);
+        return view('admin.materias.show', compact('materia'));
     }
 
     public function edit($id)
     {
-        //
+        $materia = \App\Models\Materia::findOrFail($id);
+        $cursos = \App\Models\Curso::orderBy('nombre', 'asc')->get();
+        return view('admin.materias.edit', compact('materia', 'cursos'));
     }
 
     public function update(Request $request, $id)
