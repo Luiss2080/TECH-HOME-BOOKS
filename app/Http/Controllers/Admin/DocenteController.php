@@ -58,6 +58,14 @@ class DocenteController extends Controller
 
     public function destroy($id)
     {
-        //
+        $docente = Docente::findOrFail($id);
+        $user = $docente->user;
+        
+        $docente->delete();
+        if ($user) {
+            $user->delete();
+        }
+
+        return redirect()->route('admin.docentes.index')->with('success', 'Docente eliminado correctamente.');
     }
 }

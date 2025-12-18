@@ -4,6 +4,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin/docentes/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/docentes/modals.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/paginacion.css') }}">
 @endsection
 
@@ -119,13 +120,12 @@
                                     <a href="{{ route('admin.docentes.edit', $docente->id) }}" class="btn-icon edit" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <button type="button" class="btn-icon delete" onclick="confirmDelete({{ $docente->id }})" title="Eliminar">
+                                    <button type="button" 
+                                            class="btn-icon delete" 
+                                            onclick="openDeleteModal('{{ route('admin.docentes.destroy', $docente->id) }}', '{{ $docente->user->nombre_completo ?? 'Desconocido' }}', '{{ $docente->user->ci ?? '-' }}', '{{ $docente->codigo_docente ?? '-' }}')" 
+                                            title="Eliminar">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
-                                    <form id="delete-form-{{ $docente->id }}" action="{{ route('admin.docentes.destroy', $docente->id) }}" method="POST" style="display: none;">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -145,18 +145,49 @@
         {{ $docentes->appends(request()->query())->links('pages.docentes') }}
     </div>
 </div> <!-- Close docentes-container -->
+
+@include('admin.docentes.mod.delete')
+
 @endsection
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/admin/docentes/index.js') }}"></script>
+    <script src="{{ asset('js/admin/docentes/modals.js') }}"></script>
+
     <script>
-        // Update styling of SweetAlert to match theme
-        const swalTheme = {
-            confirmButtonColor: '#e11d48',
-            cancelButtonColor: '#64748b',
-            background: '#ffffff',
-            color: '#1e293b'
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for Success Message
+            @if(session('success'))
+                Swal.fire({
+                    title: '¡Operación Exitosa!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    background: '#0a0a0a',
+                    color: '#ffffff',
+                    confirmButtonColor: '#e11d48',
+                    confirmButtonText: 'Entendido',
+                    customClass: {
+                        popup: 'neon-alert'
+                    },
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInUp'
+                    }
+                });
+            @endif
+
+            // Check for Error Message
+            @if(session('error'))
+                Swal.fire({
+                    title: '¡Error!',
+                    text: "{{ session('error') }}",
+                    icon: 'error',
+                    background: '#0a0a0a',
+                    color: '#ffffff',
+                    confirmButtonColor: '#e11d48',
+                    confirmButtonText: 'Cerrar'
+                });
+            @endif
+        });
     </script>
 @endsection
