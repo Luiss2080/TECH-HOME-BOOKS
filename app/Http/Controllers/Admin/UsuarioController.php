@@ -38,11 +38,6 @@ class UsuarioController extends Controller
         return view('admin.usuarios.create');
     }
 
-    public function store(Request $request)
-    {
-        // Validation and creation logic here
-    }
-
     public function show($id)
     {
         $usuario = User::findOrFail($id);
