@@ -45,12 +45,15 @@ class CursoController extends Controller
 
     public function show($id)
     {
-        //
+        $curso = Curso::with('colegio')->findOrFail($id);
+        return view('admin.cursos.show', compact('curso'));
     }
 
     public function edit($id)
     {
-        return view('admin.cursos.edit');
+        $curso = Curso::findOrFail($id);
+        $colegios = \App\Models\Colegio::where('estado', 'activo')->get();
+        return view('admin.cursos.edit', compact('curso', 'colegios'));
     }
 
     public function update(Request $request, $id)
