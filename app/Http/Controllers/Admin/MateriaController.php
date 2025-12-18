@@ -33,7 +33,8 @@ class MateriaController extends Controller
 
     public function create()
     {
-        //
+        $cursos = \App\Models\Curso::orderBy('nombre', 'asc')->get();
+        return view('admin.materias.create', compact('cursos'));
     }
 
     public function store(Request $request)
