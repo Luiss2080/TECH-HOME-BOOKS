@@ -34,7 +34,9 @@ class MaterialController extends Controller
 
     public function create()
     {
-        //
+        $materias = \App\Models\Materia::orderBy('nombre')->get();
+        $cursos = \App\Models\Curso::orderBy('nombre')->get();
+        return view('docente.materiales.create', compact('materias', 'cursos'));
     }
 
     public function store(Request $request)
@@ -44,12 +46,16 @@ class MaterialController extends Controller
 
     public function show($id)
     {
-        //
+        $material = \App\Models\Material::with(['materia', 'curso', 'docente'])->findOrFail($id);
+        return view('docente.materiales.show', compact('material'));
     }
 
     public function edit($id)
     {
-        //
+        $material = \App\Models\Material::findOrFail($id);
+        $materias = \App\Models\Materia::orderBy('nombre')->get();
+        $cursos = \App\Models\Curso::orderBy('nombre')->get();
+        return view('docente.materiales.edit', compact('material', 'materias', 'cursos'));
     }
 
     public function update(Request $request, $id)
