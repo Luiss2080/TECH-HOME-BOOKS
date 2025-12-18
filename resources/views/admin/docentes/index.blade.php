@@ -147,6 +147,8 @@
 </div> <!-- Close docentes-container -->
 
 @include('admin.docentes.mod.delete')
+@include('admin.docentes.mod.success')
+@include('admin.docentes.mod.error')
 
 @endsection
 
@@ -157,36 +159,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check for Success Message
             @if(session('success'))
-                Swal.fire({
-                    title: '¡Operación Exitosa!',
-                    text: "{{ session('success') }}",
-                    icon: 'success',
-                    background: '#0a0a0a',
-                    color: '#ffffff',
-                    confirmButtonColor: '#e11d48',
-                    confirmButtonText: 'Entendido',
-                    customClass: {
-                        popup: 'neon-alert'
-                    },
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInUp'
-                    }
-                });
+                openSuccessModal("{{ session('success') }}");
             @endif
 
-            // Check for Error Message
             @if(session('error'))
-                Swal.fire({
-                    title: '¡Error!',
-                    text: "{{ session('error') }}",
-                    icon: 'error',
-                    background: '#0a0a0a',
-                    color: '#ffffff',
-                    confirmButtonColor: '#e11d48',
-                    confirmButtonText: 'Cerrar'
-                });
+                openErrorModal("{{ session('error') }}");
             @endif
         });
     </script>

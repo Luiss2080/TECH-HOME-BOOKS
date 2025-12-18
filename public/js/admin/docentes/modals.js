@@ -40,9 +40,52 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Close on Escape key
+    // Close on Escape key
     document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && modal.classList.contains("active")) {
-            closeDeleteModal();
+        if (e.key === "Escape") {
+            if (modal.classList.contains("active")) closeDeleteModal();
+            const successModal = document.getElementById("successModal");
+            if (successModal && successModal.classList.contains("active"))
+                closeSuccessModal();
+            const errorModal = document.getElementById("errorModal");
+            if (errorModal && errorModal.classList.contains("active"))
+                closeErrorModal();
         }
     });
 });
+
+/* --- Success Modal Logic --- */
+function openSuccessModal(message) {
+    const modal = document.getElementById("successModal");
+    const msgEl = document.getElementById("successMessage");
+    if (msgEl && message) msgEl.textContent = message;
+
+    modal.style.display = "flex";
+    modal.offsetHeight;
+    modal.classList.add("active");
+}
+function closeSuccessModal() {
+    const modal = document.getElementById("successModal");
+    modal.classList.remove("active");
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 300);
+}
+
+/* --- Error Modal Logic --- */
+function openErrorModal(message) {
+    const modal = document.getElementById("errorModal");
+    const msgEl = document.getElementById("errorMessage");
+    if (msgEl && message) msgEl.textContent = message;
+
+    modal.style.display = "flex";
+    modal.offsetHeight;
+    modal.classList.add("active");
+}
+function closeErrorModal() {
+    const modal = document.getElementById("errorModal");
+    modal.classList.remove("active");
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 300);
+}

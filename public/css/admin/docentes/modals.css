@@ -1,8 +1,13 @@
 /* ============================================
-   NEON RED MODALS - HIGH TECH STYLE
+   NEON RED MODALS - HIGH TECH SYSTEM
    ============================================ */
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
+/* --- SHARED VARIABLES & MIXINS (Implicit) --- */
+
+/* ============================================
+   1. CUSTOM DELETE MODAL STYLES
+   ============================================ */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -10,13 +15,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 5, 5, 0.9);
+    background: rgba(5, 5, 5, 0.95);
     backdrop-filter: blur(5px);
-    z-index: 1000;
+    z-index: 9999;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: all 0.3s ease;
+
     /* Grid Background Pattern */
     background-image: linear-gradient(
             rgba(225, 29, 72, 0.03) 1px,
@@ -46,6 +52,11 @@
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+    box-shadow: 0 0 60px rgba(225, 29, 72, 0.3);
+}
+
 /* Decorative Corners */
 .modal-content::before {
     content: "";
@@ -70,11 +81,6 @@
     z-index: 2;
 }
 
-.modal-overlay.active .modal-content {
-    transform: scale(1);
-    box-shadow: 0 0 60px rgba(225, 29, 72, 0.3);
-}
-
 .modal-close {
     position: absolute;
     top: 1rem;
@@ -91,7 +97,6 @@
     transition: all 0.2s;
     font-family: "Share Tech Mono", monospace;
 }
-
 .modal-close:hover {
     background: #e11d48;
     color: black;
@@ -115,7 +120,6 @@
     justify-content: center;
 }
 
-/* Hexagon Shape for Icon */
 .modal-icon.warning {
     width: 100%;
     height: 100%;
@@ -128,7 +132,6 @@
     font-size: 2.5rem;
     position: relative;
     z-index: 2;
-    border: none; /* Handled by pseudo element via glow */
 }
 
 /* Rotating Ring */
@@ -142,7 +145,6 @@
     animation: rotateRing 10s linear infinite;
     opacity: 0.5;
 }
-
 @keyframes rotateRing {
     to {
         transform: rotate(360deg);
@@ -168,7 +170,7 @@
     opacity: 0.8;
 }
 
-/* Modal Body & Target Card */
+/* Target Card */
 .target-card {
     background: rgba(20, 20, 20, 0.8);
     border-left: 4px solid #e11d48;
@@ -180,9 +182,8 @@
     margin-bottom: 2rem;
     overflow: hidden;
 }
-
-/* Scamline effect on card */
 .target-card::after {
+    /* Scanlines */
     content: "";
     position: absolute;
     top: 0;
@@ -198,7 +199,6 @@
     );
     pointer-events: none;
 }
-
 .target-icon {
     width: 50px;
     height: 50px;
@@ -210,11 +210,9 @@
     color: #e11d48;
     border: 1px solid rgba(225, 29, 72, 0.3);
 }
-
 .target-details {
     flex: 1;
 }
-
 .target-label {
     font-family: "Share Tech Mono", monospace;
     font-size: 0.75rem;
@@ -222,7 +220,6 @@
     display: block;
     margin-bottom: 0.25rem;
 }
-
 .target-details h4 {
     margin: 0 0 0.5rem 0;
     color: #ffffff;
@@ -230,12 +227,10 @@
     font-weight: 500;
     letter-spacing: 0.5px;
 }
-
 .target-meta {
     display: flex;
     gap: 1.5rem;
 }
-
 .meta-tag {
     font-family: "Share Tech Mono", monospace;
     color: #e11d48;
@@ -266,7 +261,6 @@
     text-transform: uppercase;
     transition: all 0.3s;
 }
-
 .btn-cancel:hover {
     border-color: #e11d48;
     color: #e11d48;
@@ -288,9 +282,133 @@
     clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
     transition: all 0.3s;
 }
-
 .btn-delete-confirm:hover {
     background: #ff1f55;
     box-shadow: 0 0 20px rgba(225, 29, 72, 0.6);
     transform: translateY(-2px);
+}
+
+/* ============================================
+   2. SWEETALERT2 TECH OVERRIDES (GLOBAL)
+   ============================================ */
+div:where(.swal2-container) div:where(.swal2-popup) {
+    background: #000000 !important;
+    border: 1px solid var(--primary-red, #e11d48);
+    border-radius: 0 !important;
+    padding: 2.5rem !important;
+
+    /* Tech Shape Copy */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+
+    box-shadow: 0 0 40px rgba(225, 29, 72, 0.15) !important;
+    /* Grid Pattern Copy */
+    background-image: linear-gradient(
+            rgba(225, 29, 72, 0.03) 1px,
+            transparent 1px
+        ),
+        linear-gradient(90deg, rgba(225, 29, 72, 0.03) 1px, transparent 1px) !important;
+    background-size: 30px 30px !important;
+}
+
+/* SweetAlert Decorative Corners */
+div:where(.swal2-container) div:where(.swal2-popup)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid #e11d48;
+    border-left: 2px solid #e11d48;
+    z-index: 2;
+}
+div:where(.swal2-container) div:where(.swal2-popup)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid #e11d48;
+    border-right: 2px solid #e11d48;
+    z-index: 2;
+}
+
+/* Success Icon Override */
+div:where(.swal2-icon).swal2-success {
+    border-color: #10b981 !important;
+    color: #10b981 !important;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2) !important;
+}
+div:where(.swal2-icon).swal2-success .swal2-success-ring {
+    border: 0.25em solid rgba(16, 185, 129, 0.3) !important;
+}
+div:where(.swal2-icon).swal2-success [class^="swal2-success-line"] {
+    background-color: #10b981 !important;
+}
+
+/* Error Icon Override */
+div:where(.swal2-icon).swal2-error {
+    border-color: #e11d48 !important;
+    color: #e11d48 !important;
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.2) !important;
+}
+div:where(.swal2-icon).swal2-error [class^="swal2-x-mark-line"] {
+    background-color: #e11d48 !important;
+}
+
+/* Typo */
+div:where(.swal2-title) {
+    color: #ffffff !important;
+    font-family: "Share Tech Mono", monospace !important;
+    font-size: 1.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(225, 29, 72, 0.5);
+    margin-bottom: 0.5rem !important;
+}
+
+div:where(.swal2-html-container) {
+    color: #e5e5e5 !important;
+    font-family: "Share Tech Mono", monospace !important;
+    font-size: 1rem !important;
+}
+
+/* Tech Buttons for SweetAlert */
+div:where(.swal2-actions) button.swal2-confirm {
+    background: #e11d48 !important;
+    border: 1px solid #e11d48 !important;
+    color: #000 !important;
+    font-family: "Share Tech Mono", monospace !important;
+    font-weight: 700 !important;
+    padding: 0.75rem 2rem !important;
+    text-transform: uppercase;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    box-shadow: none !important;
+    margin: 0 0.5rem !important;
+}
+div:where(.swal2-actions) button.swal2-confirm:hover {
+    background: #ff1f55 !important;
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+div:where(.swal2-actions) button.swal2-cancel {
+    background: transparent !important;
+    border: 1px solid #333 !important;
+    color: #888 !important;
+    font-family: "Share Tech Mono", monospace !important;
+    padding: 0.75rem 1.5rem !important;
+    text-transform: uppercase;
+    margin: 0 0.5rem !important;
+}
+div:where(.swal2-actions) button.swal2-cancel:hover {
+    border-color: #e11d48 !important;
+    color: #e11d48 !important;
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.2) !important;
+}
+
+/* Loader */
+.swal2-loader {
+    border-color: #e11d48 transparent #e11d48 transparent !important;
 }
