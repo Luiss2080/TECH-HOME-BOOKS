@@ -10,7 +10,8 @@
                     <i class="fas fa-times"></i>
                 </div>
             </div>
-            <h3>¡Error del Sistema!</h3>
+            <!-- BOLD RED HEADER -->
+            <h3 style="color: #e11d48; text-shadow: 0 0 15px rgba(225, 29, 72, 0.4);">¡Error del Sistema!</h3>
         </div>
 
         <div class="modal-body">
@@ -21,7 +22,7 @@
                 </div>
                 <div class="target-details">
                     <span class="target-label">Reporte de Fallo:</span>
-                    <h4 id="errorMessage">Ha ocurrido un error inesperado</h4>
+                    <h4 id="errorMessage" style="font-family: 'Montserrat', sans-serif;">Ha ocurrido un error inesperado</h4>
                 </div>
             </div>
         </div>

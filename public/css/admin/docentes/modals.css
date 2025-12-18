@@ -1,7 +1,7 @@
 /* ============================================
    NEON RED MODALS - HIGH TECH SYSTEM
    ============================================ */
-@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 /* --- SHARED VARIABLES & MIXINS (Implicit) --- */
 
@@ -81,13 +81,14 @@
     z-index: 2;
 }
 
+/* Replace all Share Tech Mono with Montserrat */
 .modal-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #e11d48;
+    background: #e11d48; /* Solid Red */
+    border: none;
+    color: #ffffff; /* White text */
     width: 32px;
     height: 32px;
     display: flex;
@@ -95,12 +96,21 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Montserrat", sans-serif; /* System Font */
+    border-radius: 4px; /* Slight rounding or keep square? User liked polygon, but close button usually simple. Let's keep it simple or match confirm button. */
+    clip-path: polygon(
+        15% 0,
+        100% 0,
+        100% 85%,
+        85% 100%,
+        0 100%,
+        0 15%
+    ); /* Mini Tech Shape */
 }
 .modal-close:hover {
-    background: #e11d48;
-    color: black;
-    box-shadow: 0 0 10px #e11d48;
+    background: #ff1f55;
+    color: white;
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.6);
 }
 
 /* Header & Icon */
@@ -123,15 +133,40 @@
 .modal-icon.warning {
     width: 100%;
     height: 100%;
-    background: rgba(225, 29, 72, 0.05);
-    color: #e11d48;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    /* Solid Red Background */
+    background: #e11d48;
+    /* Black Icon */
+    color: #000000;
+    /* Circle Shape */
+    clip-path: none;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
     font-size: 2.5rem;
     position: relative;
     z-index: 2;
+    box-shadow: 0 0 30px rgba(225, 29, 72, 0.5);
+}
+
+/* Success Icon - Tech Note Shape */
+.modal-icon.success {
+    width: 100%;
+    height: 100%;
+    background: #e11d48; /* Keep Red as requested */
+    color: #000000;
+    /* Circle Shape */
+    clip-path: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 30px rgba(225, 29, 72, 0.5);
 }
 
 /* Rotating Ring */
@@ -154,7 +189,8 @@
 .modal-header h3 {
     margin: 0;
     color: #ffffff;
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Montserrat", sans-serif; /* System Font */
+    font-weight: 700;
     font-size: 1.75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -163,11 +199,13 @@
 
 .modal-subtitle {
     margin-top: 0.5rem;
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.85rem;
     color: #e11d48;
     text-transform: uppercase;
-    opacity: 0.8;
+    font-weight: 700; /* Bold */
+    opacity: 1; /* Full visibility */
+    letter-spacing: 0.5px;
 }
 
 /* Target Card */
@@ -214,7 +252,7 @@
     flex: 1;
 }
 .target-label {
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Montserrat", sans-serif;
     font-size: 0.75rem;
     color: #6b7280;
     display: block;
@@ -226,13 +264,14 @@
     font-size: 1.25rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    font-family: "Montserrat", sans-serif;
 }
 .target-meta {
     display: flex;
     gap: 1.5rem;
 }
 .meta-tag {
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Montserrat", sans-serif;
     color: #e11d48;
     font-size: 0.9rem;
     display: flex;
@@ -255,7 +294,7 @@
     background: transparent;
     border: 1px solid #333;
     color: #888;
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Montserrat", sans-serif;
     padding: 0.75rem 1.5rem;
     cursor: pointer;
     text-transform: uppercase;
@@ -271,7 +310,7 @@
     background: #e11d48;
     border: 1px solid #e11d48;
     color: #000;
-    font-family: "Share Tech Mono", monospace;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     padding: 0.75rem 2rem;
     cursor: pointer;
@@ -360,7 +399,7 @@ div:where(.swal2-icon).swal2-error [class^="swal2-x-mark-line"] {
 /* Typo */
 div:where(.swal2-title) {
     color: #ffffff !important;
-    font-family: "Share Tech Mono", monospace !important;
+    font-family: "Montserrat", sans-serif !important;
     font-size: 1.75rem !important;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -370,7 +409,7 @@ div:where(.swal2-title) {
 
 div:where(.swal2-html-container) {
     color: #e5e5e5 !important;
-    font-family: "Share Tech Mono", monospace !important;
+    font-family: "Montserrat", sans-serif !important;
     font-size: 1rem !important;
 }
 
@@ -379,7 +418,7 @@ div:where(.swal2-actions) button.swal2-confirm {
     background: #e11d48 !important;
     border: 1px solid #e11d48 !important;
     color: #000 !important;
-    font-family: "Share Tech Mono", monospace !important;
+    font-family: "Montserrat", sans-serif !important;
     font-weight: 700 !important;
     padding: 0.75rem 2rem !important;
     text-transform: uppercase;
@@ -397,7 +436,7 @@ div:where(.swal2-actions) button.swal2-cancel {
     background: transparent !important;
     border: 1px solid #333 !important;
     color: #888 !important;
-    font-family: "Share Tech Mono", monospace !important;
+    font-family: "Montserrat", sans-serif !important;
     padding: 0.75rem 1.5rem !important;
     text-transform: uppercase;
     margin: 0 0.5rem !important;
