@@ -30,6 +30,23 @@ class BibliotecaController extends Controller
         return view('docente.biblioteca.index', compact('libros'));
     }
 
+    public function create()
+    {
+        return view('docente.biblioteca.create');
+    }
+
+    public function show($id)
+    {
+        $libro = \App\Models\Libro::findOrFail($id);
+        return view('docente.biblioteca.show', compact('libro'));
+    }
+
+    public function edit($id)
+    {
+        $libro = \App\Models\Libro::findOrFail($id);
+        return view('docente.biblioteca.edit', compact('libro'));
+    }
+
     public function buscar(Request $request)
     {
         //
