@@ -991,7 +991,7 @@ body.dark-mode .modules-section-title {
 }
 
 body.dark-mode .dashboard-card {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -1010,16 +1010,16 @@ body.dark-mode .dashboard-card:hover {
 }
 
 .card-header {
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--bg-surface-secondary);
+    background: transparent;
 }
 
 body.dark-mode .card-header {
-    background: rgba(0, 0, 0, 0.02);
+    background: transparent;
 }
 
 .card-title {
@@ -2390,3 +2390,55 @@ body.dark-mode .legend-text {
 .legend-value {
     display: none;
 }
+
+/* ============================================
+   ESTILOS PARA CANVAS Y GRÁFICAS
+   ============================================ */
+
+/* Card Body para gráficas */
+.card-body {
+    background: transparent;
+    padding: 1.5rem;
+}
+
+body.dark-mode .card-body {
+    background: transparent;
+}
+
+/* Canvas de Chart.js */
+canvas {
+    background: transparent !important;
+}
+
+/* Asegurar que los contenedores de gráficas tengan el fondo correcto */
+.analytics-grid .dashboard-card {
+    background: var(--bg-surface);
+}
+
+body.dark-mode .analytics-grid .dashboard-card {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Card header consistente */
+.card-header {
+    background: transparent;
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: none;
+}
+
+body.dark-mode .card-header {
+    background: transparent;
+}
+
+.card-title {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+body.dark-mode .card-title {
+    color: #f1f5f9;
+}
+

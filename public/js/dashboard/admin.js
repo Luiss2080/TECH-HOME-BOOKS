@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function initDashboardCharts(data) {
     // Detectar modo oscuro globalmente
     const isDarkMode = document.body.classList.contains('dark-mode');
-    const chartBgColor = isDarkMode ? 'rgba(0, 0, 0, 0.4)' : 'transparent';
+    const chartBgColor = 'transparent'; // Siempre transparente, el fondo lo da el contenedor
     const textColor = isDarkMode ? '#e2e8f0' : '#1e293b';
     const mutedColor = isDarkMode ? '#cbd5e1' : '#64748b';
     const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
