@@ -307,12 +307,17 @@ function initDashboardCharts(data) {
         });
     }
 
-    // 7. Promedios (Vertical Bar)
+    // 7. Promedios (Vertical Bar) - MEJORADO
     const ctxGrades = document.getElementById("gradesBarChart");
     if (ctxGrades) {
+        // Detectar modo oscuro
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        const textColor = isDarkMode ? '#ffffff' : '#1e293b';
+        const mutedColor = isDarkMode ? '#94a3b8' : '#64748b';
+        const gridColor = isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+        
         new Chart(ctxGrades, {
             type: "bar",
-            // indexAxis: "x" is default (Vertical)
             data: {
                 labels: [
                     "Matemáticas",
@@ -332,53 +337,109 @@ function initDashboardCharts(data) {
                             "#2563eb",
                             "#3b82f6",
                         ],
-                        borderRadius: 4,
-                        barThickness: 20,
+                        borderRadius: 8,
+                        barThickness: 30,
+                        borderWidth: 2,
+                        borderColor: [
+                            "#1e3a8a",
+                            "#1e40af",
+                            "#1d4ed8",
+                            "#2563eb",
+                            "#3b82f6",
+                        ],
+                        hoverBackgroundColor: [
+                            "#2563eb",
+                            "#3b82f6",
+                            "#60a5fa",
+                            "#3b82f6",
+                            "#60a5fa",
+                        ],
                     },
                 ],
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutQuart',
+                },
                 plugins: {
                     legend: {
-                        display: true,
-                        position: "bottom",
-                        labels: {
-                            color: "#ffffff",
-                            usePointStyle: true,
-                            boxWidth: 8,
-                            padding: 20,
-                            font: { size: 11 },
-                        },
+                        display: false,
                     },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#e11d48',
+                        borderWidth: 2,
+                        padding: 12,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                return ' Promedio: ' + context.parsed.y + '/100';
+                            },
+                            afterLabel: function(context) {
+                                const percentage = context.parsed.y;
+                                if (percentage >= 90) return '🏆 Excelente';
+                                if (percentage >= 80) return '✅ Muy Bueno';
+                                if (percentage >= 70) return '📊 Bueno';
+                                return '⚠️ Mejorable';
+                            }
+                        }
+                    },
+                    datalabels: false,
                 },
                 scales: {
                     x: {
                         display: true,
                         grid: { display: false },
                         ticks: {
-                            color: "#ffffff",
-                            font: { size: 11, weight: "600" },
+                            color: textColor,
+                            font: { size: 11, weight: "700" },
+                            padding: 8,
                         },
                         border: { display: false },
                     },
                     y: {
-                        grid: { color: "rgba(255,255,255,0.05)" },
-                        ticks: { color: "#94a3b8", font: { size: 10 } },
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { 
+                            color: gridColor,
+                            lineWidth: 1,
+                        },
+                        ticks: { 
+                            color: mutedColor, 
+                            font: { size: 11, weight: "600" },
+                            stepSize: 20,
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
                         border: { display: false },
                     },
+                },
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
                 },
             },
         });
     }
 
-    // 8. Recursos (Vertical Bar Rounded)
+    // 8. Recursos (Vertical Bar Rounded) - MEJORADO
     const ctxResources = document.getElementById("resourcesBarChart");
     if (ctxResources) {
+        // Detectar modo oscuro
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        const textColor = isDarkMode ? '#ffffff' : '#1e293b';
+        const mutedColor = isDarkMode ? '#94a3b8' : '#64748b';
+        const gridColor = isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+        
         new Chart(ctxResources, {
             type: "bar",
-            // indexAxis: "x" is default (Vertical)
             data: {
                 labels: [
                     "Libros",
@@ -398,42 +459,93 @@ function initDashboardCharts(data) {
                             "#e11d48",
                             "#be123c",
                         ],
-                        borderRadius: 10,
-                        barThickness: 15,
+                        borderRadius: 12,
+                        barThickness: 28,
+                        borderWidth: 2,
+                        borderColor: [
+                            "#fb7185",
+                            "#f43f5e",
+                            "#e11d48",
+                            "#be123c",
+                            "#9f1239",
+                        ],
+                        hoverBackgroundColor: [
+                            "#f43f5e",
+                            "#e11d48",
+                            "#be123c",
+                            "#9f1239",
+                            "#881337",
+                        ],
                     },
                 ],
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutQuart',
+                },
                 plugins: {
                     legend: {
-                        display: true,
-                        position: "bottom",
-                        labels: {
-                            color: "#ffffff",
-                            usePointStyle: true,
-                            boxWidth: 8,
-                            padding: 20,
-                            font: { size: 11 },
-                        },
+                        display: false,
                     },
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: 'rgba(225, 29, 72, 0.95)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#ffffff',
+                        borderWidth: 2,
+                        padding: 12,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                return ' Cantidad: ' + context.parsed.y + ' unidades';
+                            },
+                            afterLabel: function(context) {
+                                const icons = {
+                                    'Libros': '📚',
+                                    'Tablets': '📱',
+                                    'Proyectores': '📽️',
+                                    'Aulas': '🏫',
+                                    'Laboratorios': '🔬'
+                                };
+                                return icons[context.label] + ' Disponibles';
+                            }
+                        }
+                    },
+                    datalabels: false,
                 },
                 scales: {
                     x: {
                         display: true,
                         grid: { display: false },
                         ticks: {
-                            color: "#ffffff",
-                            font: { size: 11, weight: "600" },
+                            color: textColor,
+                            font: { size: 11, weight: "700" },
+                            padding: 8,
                         },
                         border: { display: false },
                     },
                     y: {
-                        grid: { color: "rgba(255,255,255,0.05)" },
-                        ticks: { color: "#94a3b8", font: { size: 10 } },
+                        beginAtZero: true,
+                        max: 15,
+                        grid: { 
+                            color: gridColor,
+                            lineWidth: 1,
+                        },
+                        ticks: { 
+                            color: mutedColor, 
+                            font: { size: 11, weight: "600" },
+                            stepSize: 3,
+                        },
                         border: { display: false },
                     },
+                },
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
                 },
             },
         });
