@@ -73,11 +73,11 @@ body.dark-mode .dashboard-header {
 
 /* Search Bar Enhancements - TECH STYLE */
 .search-input {
-    background: rgba(0, 0, 0, 0.4); /* Darker tech bg */
-    border: 1px solid rgba(225, 29, 72, 0.4);
+    background: var(--bg-surface); /* Use theme variable */
+    border: 1px solid rgba(225, 29, 72, 0.3);
     border-radius: 0; /* Removing standard radius for clip-path */
     padding: 1rem 1rem 1rem 3.5rem; /* Bigger padding */
-    color: #ffffff;
+    color: var(--text-dark); /* Use theme variable for text */
     font-size: 1rem;
     width: 100%;
     font-family: "Montserrat", sans-serif;
@@ -94,23 +94,31 @@ body.dark-mode .dashboard-header {
     );
 
     /* Tech Glow Default */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
 body.dark-mode .search-input {
     background: rgba(0, 0, 0, 0.6);
     border-color: rgba(225, 29, 72, 0.4);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 /* HOVER ANIMATION: Tech "Power Up" */
 .search-input:hover {
     border-color: #ff1f55; /* Brighter Red */
-    background: rgba(20, 0, 0, 0.7); /* Subtle red tint bg */
+    background: var(--bg-surface-secondary); /* Use theme variable */
     transform: scaleX(1.01) scaleY(1.05); /* Slight "breathing" expansion */
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.3),
-        /* Outer Glow */ inset 0 0 20px rgba(220, 38, 38, 0.1); /* Inner Glow */
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.15),
+        /* Outer Glow */ inset 0 0 20px rgba(220, 38, 38, 0.05); /* Inner Glow */
     letter-spacing: 0.5px; /* Text expands slightly */
     padding-left: 3.7rem; /* Icon creates space */
+}
+
+body.dark-mode .search-input:hover {
+    background: rgba(20, 0, 0, 0.7); /* Subtle red tint bg for dark mode */
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.3),
+        inset 0 0 20px rgba(220, 38, 38, 0.1);
 }
 
 /* Icon Animation on Hover */
@@ -125,17 +133,27 @@ body.dark-mode .search-input {
     width: 100%;
     outline: none;
     border-color: #ff1f55;
-    background: rgba(0, 0, 0, 0.9);
-    box-shadow: 0 0 40px rgba(220, 38, 38, 0.4),
-        0 0 0 2px rgba(220, 38, 38, 0.2),
-        /* Double border effect */ inset 0 0 30px rgba(220, 38, 38, 0.1);
+    background: var(--bg-surface);
+    box-shadow: 0 0 40px rgba(220, 38, 38, 0.2),
+        0 0 0 2px rgba(220, 38, 38, 0.15);
     padding-left: 3.5rem; /* Reset padding */
     letter-spacing: normal;
 }
 
+body.dark-mode .search-input:focus {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 40px rgba(220, 38, 38, 0.4),
+        0 0 0 2px rgba(220, 38, 38, 0.2),
+        inset 0 0 30px rgba(220, 38, 38, 0.1);
+}
+
 .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
     font-weight: 500;
+}
+
+body.dark-mode .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 /* Right Section Actions */

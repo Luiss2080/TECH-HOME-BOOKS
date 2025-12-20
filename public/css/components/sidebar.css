@@ -80,11 +80,19 @@
     line-height: 1.2;
 }
 
+body.dark-mode .brand-name {
+    color: #f1f5f9;
+}
+
 .brand-subtitle {
     font-family: var(--font-family);
     font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: 500;
+}
+
+body.dark-mode .brand-subtitle {
+    color: #9ca3af;
 }
 
 /* Navigation Content */
@@ -112,6 +120,10 @@
     letter-spacing: 0.05em;
     margin-bottom: 0.8rem;
     padding-left: 0.5rem;
+    opacity: 0.7;
+}
+
+body.dark-mode .section-title {
     opacity: 0.8;
 }
 
@@ -138,6 +150,10 @@
     font-size: 0.85rem; /* Slightly smaller text */
     position: relative;
     border: 1px solid transparent;
+}
+
+body.dark-mode .nav-link {
+    color: #d1d5db;
 }
 
 .nav-link:hover {
@@ -248,6 +264,10 @@
     font-weight: 600;
     font-size: 0.9rem;
     color: var(--header-text-dark);
+}
+
+body.dark-mode .theme-text {
+    color: #f1f5f9;
 }
 
 /* Switch Toggle */

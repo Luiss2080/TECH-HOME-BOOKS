@@ -187,6 +187,11 @@ body {
     box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.1);
 }
 
+body.dark-mode .section-icon {
+    background: rgba(220, 38, 38, 0.15);
+    box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.3);
+}
+
 .section-title-large {
     font-size: 2.5rem;
     font-weight: 800;
@@ -195,9 +200,18 @@ body {
     letter-spacing: -0.02em;
 }
 
+body.dark-mode .section-title-large {
+    color: #f1f5f9;
+}
+
 .section-subtitle {
     font-size: 1.1rem;
     color: var(--text-muted);
+}
+
+body.dark-mode .section-subtitle {
+    color: #9ca3af;
+}
     font-weight: 500;
 }
 
@@ -548,9 +562,15 @@ body {
     min-height: 100px; /* Fixed compact height that fits big icon */
 
     /* ADDED: Card Visuals - System Dark Match */
-    background: var(--bg-surface-secondary); /* Matches system panels */
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+    background: var(--bg-surface); /* Use theme variable */
+    border: 1px solid var(--border-color);
     border-radius: 20px; /* Rounded corners */
+    box-shadow: var(--shadow-sm);
+}
+
+body.dark-mode .stat-card.rich-stat {
+    background: var(--bg-surface-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
@@ -618,11 +638,20 @@ body.dark-mode .stat-card.rich-stat .stat-value {
     line-height: 1.1;
 }
 
+body.dark-mode .stat-card.rich-stat .stat-label {
+    color: #9ca3af;
+}
+
 .stat-card.rich-stat:hover {
     border-color: var(--primary-red);
-    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    box-shadow: 0 8px 25px -5px rgba(220, 38, 38, 0.15);
     transform: translateY(-2px);
-    background: var(--bg-surface); /* Lighten slightly on hover */
+    background: var(--bg-surface-secondary);
+}
+
+body.dark-mode .stat-card.rich-stat:hover {
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.5);
+    background: var(--bg-surface);
 }
 
 .stat-card.rich-stat:hover .stat-value {
@@ -681,6 +710,10 @@ body.dark-mode .stat-right {
 }
 
 .stat-card.rich-stat:hover .stat-right {
+    border-color: rgba(225, 29, 72, 0.3);
+}
+
+body.dark-mode .stat-card.rich-stat:hover .stat-right {
     border-color: rgba(225, 29, 72, 0.5);
 }
 
@@ -794,6 +827,10 @@ body.dark-mode .stat-card.rich-stat .stat-decoration {
     letter-spacing: -0.01em;
     position: relative;
     padding-left: 1rem;
+}
+
+body.dark-mode .modules-section-title {
+    color: #f1f5f9;
 }
 
 .modules-section-title::before {
@@ -1140,9 +1177,17 @@ body.dark-mode .module-icon-sm.red {
     margin-bottom: 2px;
 }
 
+body.dark-mode .panel-title {
+    color: #f1f5f9;
+}
+
 .panel-subtitle {
     font-size: 0.75rem;
     color: var(--text-muted);
+}
+
+body.dark-mode .panel-subtitle {
+    color: #9ca3af;
 }
 
 .badge-pill {
@@ -1189,6 +1234,10 @@ body.dark-mode .module-icon-sm.red {
     font-weight: 800;
     color: var(--text-dark);
     line-height: 1;
+}
+
+body.dark-mode .health-percent {
+    color: #f1f5f9;
 }
 
 .health-text {
@@ -1381,10 +1430,10 @@ body.dark-mode .dashboard-table td {
     align-items: center;
     gap: 0;
     padding: 0.75rem 1rem;
-    color: var(--text-secondary);
+    color: var(--text-dark);
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     margin-bottom: 0.6rem;
@@ -1392,18 +1441,26 @@ body.dark-mode .dashboard-table td {
 
 body.dark-mode .module-row-item {
     color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .module-row-item:hover {
+    background: rgba(220, 38, 38, 0.05);
+    border-color: rgba(220, 38, 38, 0.2);
+    transform: translateY(-1px) translateX(2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+    padding-left: 1rem; /* Consistent padding shift */
+}
+
+body.dark-mode .module-row-item:hover {
     background: linear-gradient(
         90deg,
         rgba(220, 38, 38, 0.08) 0%,
         rgba(255, 255, 255, 0.01) 100%
     );
     border-color: rgba(220, 38, 38, 0.25);
-    transform: translateY(-1px) translateX(2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    padding-left: 1rem; /* Consistent padding shift */
 }
 
 .module-row-item:hover::before {
@@ -1425,14 +1482,20 @@ body.dark-mode .module-row-item {
     align-items: center;
     padding: 0.6rem 1rem;
     margin-bottom: 0.75rem;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--bg-surface-secondary);
     border-radius: 8px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.7rem;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+
+body.dark-mode .module-list-header {
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .header-name {
@@ -1460,11 +1523,15 @@ body.dark-mode .module-row-item {
     grid-column: 2;
     padding-left: 0.5rem;
     font-weight: 700;
-    color: white;
+    color: var(--text-dark);
     font-size: 0.9rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+body.dark-mode .module-row-item .item-name {
+    color: white;
 }
 .module-row-item .badge-modern-pill {
     grid-column: 3;
@@ -1488,9 +1555,13 @@ body.dark-mode .module-row-item {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-surface-secondary);
     font-size: 0.9rem;
     margin-right: 0.8rem;
+}
+
+body.dark-mode .icon-box {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Icon Colors */
