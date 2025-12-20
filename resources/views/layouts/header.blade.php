@@ -97,21 +97,51 @@
             <div class="notification-dropdown" id="notificationDropdown">
                 <div class="dropdown-header">
                     <span>Notificaciones</span>
-                    <a href="#" class="mark-read">Marcar leídas</a>
+                    <a href="#" class="mark-read" onclick="event.preventDefault(); markAllAsRead();">Marcar leídas</a>
                 </div>
-                <!-- Mock Items -->
+                <!-- Notification Items -->
                 <div class="notif-item unread">
-                    <div class="notif-icon blue"><div class="dot"></div></div>
+                    <div class="notif-icon blue">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" stroke="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
                     <div class="notif-content">
                         <p class="notif-title">Nuevo usuario registrado</p>
                         <p class="notif-time">Hace 5 min</p>
                     </div>
                 </div>
-                <div class="notif-item">
-                    <div class="notif-icon green"><div class="dot"></div></div>
+                <div class="notif-item unread">
+                    <div class="notif-icon green">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" stroke="none">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
                     <div class="notif-content">
                         <p class="notif-title">Pago confirmado</p>
                         <p class="notif-time">Hace 1 hora</p>
+                    </div>
+                </div>
+                <div class="notif-item">
+                    <div class="notif-icon yellow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" stroke="none">
+                            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-title">Actualización del sistema disponible</p>
+                        <p class="notif-time">Hace 3 horas</p>
+                    </div>
+                </div>
+                <div class="notif-item">
+                    <div class="notif-icon red">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" stroke="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                        </svg>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-title">Error en el sistema de respaldos</p>
+                        <p class="notif-time">Hace 5 horas</p>
                     </div>
                 </div>
             </div>
