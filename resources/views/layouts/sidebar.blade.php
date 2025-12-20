@@ -285,6 +285,102 @@
                 </li>
             </ul>
         </div>
+        
+        @elseif(session('user_role') === 'estudiante')
+        <!-- Sección: Mi Espacio (ESTUDIANTE) -->
+        <div class="nav-section">
+            <h3 class="section-title">MI ESPACIO</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="{{ route('estudiante.dashboard') }}" class="nav-link {{ request()->routeIs('estudiante.dashboard') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('estudiante.materias.index') }}" class="nav-link {{ request()->routeIs('estudiante.materias.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Mis Materias</span>
+                        <span class="nav-badge">5</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('estudiante.horario.index') }}" class="nav-link {{ request()->routeIs('estudiante.horario.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Horario</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección: Académico (ESTUDIANTE) -->
+        <div class="nav-section">
+            <h3 class="section-title">ACADÉMICO</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="{{ route('estudiante.tareas.index') }}" class="nav-link {{ request()->routeIs('estudiante.tareas.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Tareas</span>
+                        <span class="nav-badge">8</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('estudiante.calificaciones.index') }}" class="nav-link {{ request()->routeIs('estudiante.calificaciones.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Calificaciones</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección: Recursos (ESTUDIANTE) -->
+        <div class="nav-section">
+            <h3 class="section-title">RECURSOS</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="{{ route('estudiante.materiales.index') }}" class="nav-link {{ request()->routeIs('estudiante.materiales.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Materiales</span>
+                        <span class="nav-badge">15</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('libros.index') }}" class="nav-link {{ request()->routeIs('libros.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Biblioteca</span>
+                        <span class="nav-badge">30</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
         @endif
     </div>
 

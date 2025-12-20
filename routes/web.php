@@ -123,7 +123,28 @@ Route::middleware(['web', 'auth.check'])->prefix('docente')->group(function () {
 });
 
 // Rutas para Estudiantes
-Route::middleware(['web', 'auth.check'])->group(function () {
-    Route::get('/estudiante/materiales', [App\Http\Controllers\Estudiante\MaterialController::class, 'index'])->name('estudiante.materiales.index');
+Route::middleware(['web', 'auth.check'])->prefix('estudiante')->group(function () {
+    // Materias
+    Route::get('/materias', function() {
+        return view('components.estudiante'); // Placeholder
+    })->name('estudiante.materias.index');
+    
+    // Calificaciones
+    Route::get('/calificaciones', function() {
+        return view('components.estudiante');
+    })->name('estudiante.calificaciones.index');
+    
+    // Tareas
+    Route::get('/tareas', function() {
+        return view('components.estudiante');
+    })->name('estudiante.tareas.index');
+    
+    // Horario
+    Route::get('/horario', function() {
+        return view('components.estudiante');
+    })->name('estudiante.horario.index');
+    
+    // Materiales
+    Route::get('/materiales', [App\Http\Controllers\Estudiante\MaterialController::class, 'index'])->name('estudiante.materiales.index');
 });
 
