@@ -241,12 +241,11 @@ body.dark-mode .footer-bottom {
     display: block;
 }
 
-.logo-icon-red .robot-emoji {
-    font-size: 26px;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.logo-icon-red .logo-image {
+    width: 28px;
+    height: 28px;
+    display: block;
+    object-fit: contain;
 }
 
 .brand-text {

@@ -98,7 +98,7 @@
             <!-- Brand -->
             <div class="footer-brand-section">
                 <div class="logo-icon-red">
-                    <span class="robot-emoji">🤖</span>
+                    <img src="{{ asset('images/faviconTH.png') }}" alt="Tech Home Logo" class="logo-image">
                 </div>
                 <div class="brand-text">
                     <span class="brand-title">TECH HOME</span>
