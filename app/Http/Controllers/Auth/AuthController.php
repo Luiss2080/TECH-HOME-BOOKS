@@ -66,7 +66,12 @@ class AuthController extends Controller
                     ->update(['ultimo_acceso' => now()]);
 
                 // Redirección según el rol del usuario
-                $redirectRoute = 'admin.dashboard'; // Por defecto para administradores
+                $redirectRoute = match($user->rol) {
+                    'admin' => 'admin.dashboard',
+                    'docente' => 'docente.dashboard',
+                    'estudiante' => 'estudiante.dashboard',
+                    default => 'admin.dashboard'
+                };
                 
                 if ($request->expectsJson()) {
                     return response()->json(['success' => true, 'redirect' => route($redirectRoute)]);

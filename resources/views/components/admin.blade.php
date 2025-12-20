@@ -354,6 +354,8 @@
     
     <!-- Configuración global -->
     <script>
+        // @ts-nocheck
+        /* eslint-disable */
         window.appConfig = {
             csrfToken: '{{ csrf_token() }}',
             baseUrl: '{{ url("/") }}',
@@ -361,9 +363,10 @@
                 id: '{{ session("user_id") }}',
                 name: '{{ session("user_name") }}',
                 role: '{{ session("user_role") }}'
-            },
-            chartData: @json($chartData ?? [])
+            }
         };
+        window.appConfig.chartData = @json($chartData ?? []);
+        /* eslint-enable */
     </script>
     
     <!-- JavaScript del Dashboard -->

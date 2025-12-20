@@ -31,12 +31,21 @@ Route::post('/registro/verify', function() {
     return redirect()->route('login')->with('success', 'Cuenta verificada correctamente.');
 })->name('register.verify');
 
-// Dashboard protegido con middleware de autenticación y administrador
+// Dashboards protegidos con middleware de autenticación
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->middleware(['web', 'auth.check', 'admin.check'])->name('admin.dashboard');
+Route::get('/docente/dashboard', [App\Http\Controllers\Docente\DashboardController::class, 'index'])->middleware(['web', 'auth.check'])->name('docente.dashboard');
+Route::get('/estudiante/dashboard', [App\Http\Controllers\Estudiante\DashboardController::class, 'index'])->middleware(['web', 'auth.check'])->name('estudiante.dashboard');
 
 // Alias para dashboard
 Route::get('/dashboard', function() {
-    return redirect()->route('admin.dashboard');
+    // Redirigir según el rol del usuario
+    $userRole = session('user_role');
+    return match($userRole) {
+        'admin' => redirect()->route('admin.dashboard'),
+        'docente' => redirect()->route('docente.dashboard'),
+        'estudiante' => redirect()->route('estudiante.dashboard'),
+        default => redirect()->route('login')
+    };
 })->name('dashboard');
 
 // Rutas administrativas protegidas (solo administradores)
@@ -89,6 +98,31 @@ Route::middleware(['web', 'auth.check', 'admin.check'])->group(function () {
     Route::get('/calendario', [App\Http\Controllers\Admin\CalendarioController::class, 'index'])->name('admin.calendario.index');
 });
 
+// Rutas para Docentes
+Route::middleware(['web', 'auth.check'])->prefix('docente')->group(function () {
+    // Materias del docente
+    Route::get('/materias', function() {
+        return view('components.docente'); // Placeholder - crear vista específica después
+    })->name('docente.materias.index');
+    
+    // Calificaciones
+    Route::get('/calificaciones', function() {
+        return view('components.docente');
+    })->name('docente.calificaciones.index');
+    
+    // Asistencias
+    Route::get('/asistencias', function() {
+        return view('components.docente');
+    })->name('docente.asistencias.index');
+    
+    // Materiales
+    Route::resource('materiales', App\Http\Controllers\Docente\MaterialController::class)->names('docente.materiales');
+    
+    // Laboratorios
+    Route::resource('laboratorios', App\Http\Controllers\Docente\LaboratorioController::class)->names('docente.laboratorios');
+});
+
+// Rutas para Estudiantes
 Route::middleware(['web', 'auth.check'])->group(function () {
     Route::get('/estudiante/materiales', [App\Http\Controllers\Estudiante\MaterialController::class, 'index'])->name('estudiante.materiales.index');
 });

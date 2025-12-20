@@ -1,7 +1,15 @@
 <aside class="dashboard-sidebar" id="systemSidebar">
     <!-- Header del Sidebar -->
     <div class="sidebar-header">
-        <a href="{{ route('admin.dashboard') }}" class="logo-container" style="text-decoration: none;">
+        @php
+            $dashboardRoute = match(session('user_role')) {
+                'admin' => 'admin.dashboard',
+                'docente' => 'docente.dashboard',
+                'estudiante' => 'estudiante.dashboard',
+                default => 'login'
+            };
+        @endphp
+        <a href="{{ route($dashboardRoute) }}" class="logo-container" style="text-decoration: none;">
             <div class="logo-icon">
                 <img src="{{ asset('images/faviconTH.png') }}" alt="TECH HOME" class="sidebar-logo">
             </div>
@@ -14,7 +22,9 @@
 
     <!-- Contenedor de Navegación con Scroll -->
     <div class="sidebar-scroll-content">
-        <!-- Sección: Gestión Académica -->
+        
+        @if(session('user_role') === 'admin')
+        <!-- Sección: Gestión Académica (ADMIN) -->
         <div class="nav-section">
             <h3 class="section-title">GESTIÓN ACADÉMICA</h3>
             <ul class="nav-list">
@@ -84,11 +94,10 @@
                         <span class="nav-badge">28</span>
                     </a>
                 </li>
-
             </ul>
         </div>
 
-        <!-- Sección: Recursos -->
+        <!-- Sección: Recursos (ADMIN) -->
         <div class="nav-section">
             <h3 class="section-title">RECURSOS</h3>
             <ul class="nav-list">
@@ -103,7 +112,6 @@
                         <span class="nav-badge">30</span>
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a href="{{ route('admin.materiales.index') }}" class="nav-link {{ request()->routeIs('admin.materiales.*') ? 'active' : '' }}">
                         <span class="nav-icon">
@@ -140,7 +148,7 @@
             </ul>
         </div>
 
-        <!-- Sección: Administración -->
+        <!-- Sección: Administración (ADMIN) -->
         <div class="nav-section">
             <h3 class="section-title">ADMINISTRACIÓN</h3>
             <ul class="nav-list">
@@ -179,6 +187,105 @@
                 </li>
             </ul>
         </div>
+        
+        @elseif(session('user_role') === 'docente')
+        <!-- Sección: Mi Espacio (DOCENTE) -->
+        <div class="nav-section">
+            <h3 class="section-title">MI ESPACIO</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="{{ route('docente.dashboard') }}" class="nav-link {{ request()->routeIs('docente.dashboard') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('docente.materias.index') }}" class="nav-link {{ request()->routeIs('docente.materias.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Mis Materias</span>
+                        <span class="nav-badge">5</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección: Evaluaciones (DOCENTE) -->
+        <div class="nav-section">
+            <h3 class="section-title">EVALUACIONES</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="{{ route('docente.calificaciones.index') }}" class="nav-link {{ request()->routeIs('docente.calificaciones.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Calificaciones</span>
+                        <span class="nav-badge">12</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('docente.asistencias.index') }}" class="nav-link {{ request()->routeIs('docente.asistencias.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Asistencias</span>
+                        <span class="nav-badge">85%</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sección: Recursos (DOCENTE) -->
+        <div class="nav-section">
+            <h3 class="section-title">RECURSOS</h3>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="{{ route('docente.materiales.index') }}" class="nav-link {{ request()->routeIs('docente.materiales.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Materiales</span>
+                        <span class="nav-badge">20</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('docente.laboratorios.index') }}" class="nav-link {{ request()->routeIs('docente.laboratorios.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Laboratorios</span>
+                        <span class="nav-badge">5</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('libros.index') }}" class="nav-link {{ request()->routeIs('libros.*') ? 'active' : '' }}">
+                        <span class="nav-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Biblioteca</span>
+                        <span class="nav-badge">30</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        @endif
     </div>
 
     <!-- Footer del Sidebar -->
