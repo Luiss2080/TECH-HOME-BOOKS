@@ -13,6 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initDashboardCharts(data) {
+    // Detectar modo oscuro globalmente
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    const chartBgColor = isDarkMode ? 'rgba(0, 0, 0, 0.4)' : 'transparent';
+    const textColor = isDarkMode ? '#e2e8f0' : '#1e293b';
+    const mutedColor = isDarkMode ? '#cbd5e1' : '#64748b';
+    const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
+    
     // 1. Activity Chart (Line)
     const ctxActivity = document.getElementById("activityChart");
     if (ctxActivity) {
@@ -64,12 +71,18 @@ function initDashboardCharts(data) {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
-                    tooltip: { mode: "index", intersect: false },
+                    tooltip: { 
+                        mode: "index", 
+                        intersect: false,
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                    },
                 },
                 scales: {
                     x: {
                         grid: { display: false },
-                        ticks: { color: "#64748b", font: { size: 11 } },
+                        ticks: { color: mutedColor, font: { size: 11 } },
                     },
                     y: { display: false, min: 0 },
                 },
@@ -81,6 +94,7 @@ function initDashboardCharts(data) {
     // 2. Health Chart (Doughnut as Radial Gauge)
     const ctxHealth = document.getElementById("healthChart");
     if (ctxHealth) {
+        const healthBgColor = isDarkMode ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.05)";
         new Chart(ctxHealth, {
             type: "doughnut",
             data: {
@@ -88,7 +102,7 @@ function initDashboardCharts(data) {
                 datasets: [
                     {
                         data: [data.system_health, 100 - data.system_health],
-                        backgroundColor: ["#10b981", "rgba(255,255,255,0.05)"], // Green & Transparent
+                        backgroundColor: ["#10b981", healthBgColor], // Green & Transparent
                         borderWidth: 0,
                         borderRadius: 20,
                         cutout: "85%",
@@ -100,7 +114,12 @@ function initDashboardCharts(data) {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: { display: false },
-                    tooltip: { enabled: false },
+                    tooltip: { 
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                    },
                 },
                 rotation: -90,
                 circumference: 360,
@@ -128,11 +147,18 @@ function initDashboardCharts(data) {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                    },
+                },
                 scales: {
                     x: {
                         grid: { display: false },
-                        ticks: { color: "#64748b", font: { size: 10 } },
+                        ticks: { color: mutedColor, font: { size: 10 } },
                     },
                     y: { display: false },
                 },
@@ -169,6 +195,11 @@ function initDashboardCharts(data) {
                 plugins: {
                     legend: {
                         display: false, // Hide default legend
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
                     },
                 },
             },
@@ -215,22 +246,29 @@ function initDashboardCharts(data) {
                     legend: {
                         position: "bottom",
                         labels: {
-                            color: "#94a3b8",
+                            color: textColor,
                             usePointStyle: true,
                             boxWidth: 8,
+                            padding: 15,
+                            font: { size: 11, weight: '600' },
                         },
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
                     },
                 },
                 scales: {
                     x: {
                         stacked: true,
                         grid: { display: false },
-                        ticks: { color: "#94a3b8" },
+                        ticks: { color: textColor, font: { size: 11, weight: '600' } },
                     },
                     y: {
                         stacked: true,
-                        grid: { color: "rgba(255,255,255,0.05)" },
-                        ticks: { display: true, color: "#94a3b8" },
+                        grid: { color: gridColor, lineWidth: 1 },
+                        ticks: { display: true, color: mutedColor, font: { size: 10 } },
                         border: { display: false },
                     },
                 },
@@ -262,9 +300,11 @@ function initDashboardCharts(data) {
                             500, 2400, 1800, 3200, 4500, 3000, 4200, 3800, 4100,
                         ],
                         borderColor: "#3b82f6", // Blue
-                        borderWidth: 2,
+                        borderWidth: 3,
                         tension: 0.4,
                         pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: "#3b82f6",
                         fill: {
                             target: "origin",
                             above: (context) => {
@@ -292,15 +332,25 @@ function initDashboardCharts(data) {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#3b82f6',
+                        borderWidth: 2,
+                    },
+                },
                 scales: {
                     x: {
                         grid: { display: false },
-                        ticks: { color: "#94a3b8" },
+                        ticks: { color: textColor, font: { size: 11, weight: '600' } },
                     },
                     y: {
-                        grid: { color: "rgba(255,255,255,0.05)" },
-                        ticks: { beginAtZero: true, color: "#94a3b8" },
+                        grid: { color: gridColor, lineWidth: 1 },
+                        ticks: { beginAtZero: true, color: mutedColor, font: { size: 10 } },
+                        border: { display: false },
                     },
                 },
             },
