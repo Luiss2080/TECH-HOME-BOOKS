@@ -175,10 +175,16 @@ body.dark-mode .nav-link {
     justify-content: center;
     margin-right: 0.6rem;
     transition: transform 0.2s ease;
+    color: var(--primary-red);
+}
+
+body.dark-mode .nav-icon {
+    color: var(--primary-red);
 }
 
 .nav-link:hover .nav-icon {
     transform: scale(1.1);
+    color: var(--primary-red);
 }
 
 .nav-text {
@@ -197,6 +203,10 @@ body.dark-mode .nav-link {
     border-radius: 6px; /* Squircle badge */
     min-width: 1.4rem;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+}
+
+body.dark-mode .nav-badge {
     box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
 }
 

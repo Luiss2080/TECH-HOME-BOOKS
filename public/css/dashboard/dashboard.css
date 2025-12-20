@@ -999,6 +999,10 @@ body.dark-mode .modules-section-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--bg-surface-secondary);
+}
+
+body.dark-mode .card-header {
     background: rgba(0, 0, 0, 0.02);
 }
 
@@ -1010,6 +1014,10 @@ body.dark-mode .modules-section-title {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+body.dark-mode .card-title {
+    color: #f1f5f9;
 }
 
 /* Rich Module Item */
@@ -1337,10 +1345,16 @@ body.dark-mode .progress-track {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--text-muted);
+    color: var(--text-dark);
     font-weight: 700;
     padding: 0.75rem 1rem;
     border-bottom: 2px solid var(--border-color);
+    background: var(--bg-surface-secondary);
+}
+
+body.dark-mode .dashboard-table th {
+    color: var(--text-muted);
+    background: transparent;
 }
 
 .dashboard-table td {
@@ -1646,7 +1660,7 @@ body.dark-mode .dashboard-card:hover {
 /* Small Action Button */
 .btn-action-sm {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     color: var(--text-muted);
     width: 28px;
     height: 28px;
@@ -1655,6 +1669,10 @@ body.dark-mode .dashboard-card:hover {
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
+}
+
+body.dark-mode .btn-action-sm {
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-action-sm:hover {
@@ -1674,6 +1692,10 @@ body.dark-mode .dashboard-card:hover {
 /* Table Header Icons */
 .dashboard-table th i {
     color: var(--primary-red);
+    opacity: 1;
+}
+
+body.dark-mode .dashboard-table th i {
     opacity: 0.9;
 }
 
@@ -1714,12 +1736,19 @@ body.dark-mode .dashboard-card:hover {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    background: rgba(225, 29, 72, 0.15); /* Red Tint Background */
-    color: #fda4af; /* Soft Red Text */
-    border: 1px solid rgba(225, 29, 72, 0.3);
-    box-shadow: 0 0 10px rgba(225, 29, 72, 0.1);
+    background: rgba(225, 29, 72, 0.1);
+    color: #be123c;
+    border: 1px solid rgba(225, 29, 72, 0.25);
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.05);
     width: 130px; /* Fixed width for alignment */
     justify-content: center;
+}
+
+body.dark-mode .badge-modern-red {
+    background: rgba(225, 29, 72, 0.15);
+    color: #fda4af;
+    border: 1px solid rgba(225, 29, 72, 0.3);
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.1);
 }
 
 .badge-modern-red i {
@@ -1734,15 +1763,26 @@ body.dark-mode .dashboard-card:hover {
     gap: 0.5rem;
     padding: 0.3rem 0.75rem;
     border-radius: 20px;
+    background: var(--bg-surface-secondary);
+    border: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+body.dark-mode .badge-modern-status {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.75rem;
     color: white;
-    font-weight: 600;
 }
 
 .badge-modern-status.online {
     background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #059669;
+}
+
+body.dark-mode .badge-modern-status.online {
     border-color: rgba(16, 185, 129, 0.2);
     color: #34d399;
 }
@@ -1770,16 +1810,25 @@ body.dark-mode .dashboard-card:hover {
 }
 
 .btn-icon-modern.red {
-    background: rgba(225, 29, 72, 0.2);
+    background: rgba(225, 29, 72, 0.1);
     color: var(--primary-red);
+    border: 1px solid rgba(225, 29, 72, 0.2);
+}
+
+body.dark-mode .btn-icon-modern.red {
+    background: rgba(225, 29, 72, 0.2);
     border: 1px solid rgba(225, 29, 72, 0.3);
 }
 
 .btn-icon-modern.red:hover {
     background: var(--primary-red);
     color: white;
-    box-shadow: 0 0 15px rgba(225, 29, 72, 0.6);
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.4);
     transform: translateY(-2px);
+}
+
+body.dark-mode .btn-icon-modern.red:hover {
+    box-shadow: 0 0 15px rgba(225, 29, 72, 0.6);
 }
 
 .btn-icon-modern.outline {
@@ -1798,24 +1847,39 @@ body.dark-mode .dashboard-card:hover {
 /* Typography Enhancements */
 .user-name-styled {
     font-weight: 700;
+    color: var(--text-dark);
+}
+
+body.dark-mode .user-name-styled {
+    color: #f1f5f9;
     font-size: 0.95rem;
     color: #fff; /* Bright white for name */
     letter-spacing: 0.3px;
 }
 
 .user-email-styled {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     font-size: 0.75rem;
+}
+
+body.dark-mode .user-email-styled {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .session-time {
     font-family: "Courier New", monospace; /* Tech feel */
     font-weight: 600;
-    color: #e2e8f0;
+    color: var(--text-muted);
     letter-spacing: -0.5px;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--bg-surface-secondary);
     padding: 2px 8px;
     border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+body.dark-mode .session-time {
+    color: #e2e8f0;
+    background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 /* Custom Modern Legend */
@@ -1832,16 +1896,25 @@ body.dark-mode .dashboard-card:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--bg-surface-secondary);
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
     transition: all 0.2s;
 }
 
+body.dark-mode .legend-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .legend-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(225, 29, 72, 0.1);
     transform: translateY(-2px);
+}
+
+body.dark-mode .legend-item:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .legend-dot {
@@ -2162,10 +2235,28 @@ body.dark-mode .dashboard-card:hover {
     color: var(--text-muted);
 }
 
-/* FORCE Action Icons White */
+.empty-state i {
+    opacity: 0.5;
+}
+
+body.dark-mode .empty-state {
+    color: var(--text-muted);
+}
+
+/* FORCE Action Icons White on hover */
+.btn-icon-modern:hover i,
+.action-buttons-row .btn-icon-modern:hover i {
+    color: #ffffff !important;
+}
+
 .btn-icon-modern i,
 .action-buttons-row .btn-icon-modern i {
-    color: #ffffff !important;
+    color: var(--primary-red);
+}
+
+body.dark-mode .btn-icon-modern i,
+body.dark-mode .action-buttons-row .btn-icon-modern i {
+    color: var(--primary-red);
 }
 
 /* Fix Distribution Details Layout */
