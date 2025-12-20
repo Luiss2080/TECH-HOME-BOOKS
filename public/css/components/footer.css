@@ -226,14 +226,14 @@ body.dark-mode .footer-bottom {
 .logo-icon-red {
     width: 42px;
     height: 42px;
-    background: linear-gradient(135deg, #ef4444, #dc2626);
+    background: linear-gradient(135deg, #e11d48, #be123c);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: -2px;
 }
 
 .logo-icon-red svg {
