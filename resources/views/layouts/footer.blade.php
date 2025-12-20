@@ -62,16 +62,28 @@
 
                 <div class="feature-badges">
                     <div class="badge">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                        <span>Certificado</span>
+                        <div class="badge-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                        </div>
+                        <span>Certificado Internacional</span>
                     </div>
                     <div class="badge">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 5.64l-.71-.71c-1.56 1.56-1.56 4.09 0 5.66l2.83-2.83c-.78-.78-.78-2.05 0-2.83m12.72 0l2.83 2.83c1.56-1.56 1.56-4.09 0-5.66l-.71.71c.78.78.78 2.05 0 2.83M12 2C6.47 2 2 6.5 2 12s4.47 10 9.99 10c5.52 0 10-4.5 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m-1-13h2v6h-2z"/></svg>
-                        <span>Innovador</span>
+                        <div class="badge-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 5.64l-.71-.71c-1.56 1.56-1.56 4.09 0 5.66l2.83-2.83c-.78-.78-.78-2.05 0-2.83m12.72 0l2.83 2.83c1.56-1.56 1.56-4.09 0-5.66l-.71.71c.78.78.78 2.05 0 2.83M12 2C6.47 2 2 6.5 2 12s4.47 10 9.99 10c5.52 0 10-4.5 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m-1-13h2v6h-2z"/></svg>
+                        </div>
+                        <span>Innovación Constante</span>
                     </div>
                     <div class="badge">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                        <span>Accesible</span>
+                        <div class="badge-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                        </div>
+                        <span>Acceso 24/7</span>
+                    </div>
+                    <div class="badge">
+                        <div class="badge-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        </div>
+                        <span>Comunidad Activa</span>
                     </div>
                 </div>
 
@@ -85,10 +97,8 @@
         <div class="footer-bottom">
             <!-- Brand -->
             <div class="footer-brand-section">
-                <div class="brand-logo-container">
-                    <div class="logo-icon-red">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2c-1.1 0-2 .9-2 2v1H7c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v2H7c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2h-1v-2h1c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2h-3V4c0-1.1-.9-2-2-2zm-2 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm4 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM8 17h2v2H8v-2zm6 0h2v2h-2v-2z"/></svg>
-                    </div>
+                <div class="logo-icon-red">
+                    <span class="robot-emoji">🤖</span>
                 </div>
                 <div class="brand-text">
                     <span class="brand-title">TECH HOME</span>
