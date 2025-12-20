@@ -169,6 +169,10 @@ body.dark-mode .nav-link {
     border-color: transparent;
 }
 
+.nav-link.active .nav-icon {
+    color: white;
+}
+
 .nav-icon {
     display: flex;
     align-items: center;
