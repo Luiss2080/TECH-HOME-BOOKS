@@ -224,30 +224,34 @@ body.dark-mode .footer-bottom {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+    flex-shrink: 0;
 }
 
 .logo-icon-red svg {
     width: 22px;
     height: 22px;
+    display: block;
 }
 
 .brand-text {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
+    justify-content: center;
 }
 
 .brand-title {
     color: var(--footer-heading);
     font-weight: 800;
     font-size: 1.05rem;
-    line-height: 1;
+    line-height: 1.2;
 }
 
 .brand-subtitle {
     color: var(--footer-text);
     font-size: 0.72rem;
     font-weight: 500;
+    line-height: 1.2;
 }
 
 /* Social Icons */
