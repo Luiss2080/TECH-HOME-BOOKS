@@ -40,7 +40,8 @@ class DashboardController extends Controller
                 ->join('tareas', 'entrega_tareas.tarea_id', '=', 'tareas.id')
                 ->where('entrega_tareas.estudiante_id', $estudianteId)
                 ->whereNull('entrega_tareas.fecha_entrega')
-                ->where('tareas.fecha_limite', '>=', now())
+                ->where('tareas.fecha_entrega', '>=', now())
+                ->where('tareas.estado', 'publicada')
                 ->count(),
             'tareas_completadas' => DB::table('entrega_tareas')
                 ->where('estudiante_id', $estudianteId)
