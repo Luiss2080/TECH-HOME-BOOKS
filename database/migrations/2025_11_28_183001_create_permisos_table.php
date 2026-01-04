@@ -13,18 +13,10 @@ return new class extends Migration
     {
         Schema::create('permisos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique(); // ej: 'crear_tareas', 'ver_calificaciones'
-            $table->text('descripcion')->nullable();
-            $table->string('modulo'); // 'tareas', 'calificaciones', 'usuarios', etc.
-            $table->string('accion'); // 'crear', 'leer', 'actualizar', 'eliminar', 'gestionar'
-            $table->string('recurso')->nullable(); // recurso específico si aplica
-            $table->boolean('activo')->default(true);
-            $table->timestamps();
+            $table->string('nombre', 50);
             
             // Índices
             $table->index('nombre');
-            $table->index(['modulo', 'accion']);
-            $table->index('activo');
         });
     }
 

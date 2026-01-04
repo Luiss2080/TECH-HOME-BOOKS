@@ -13,29 +13,22 @@ return new class extends Migration
     {
         Schema::create('libros', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('materia_id')->nullable()->constrained('materias')->onDelete('set null');
-            $table->string('titulo');
-            $table->string('autor');
-            $table->string('editorial')->nullable();
-            $table->string('isbn')->unique()->nullable();
-            $table->year('ano_publicacion')->nullable();
-            $table->string('categoria');
+            $table->string('codigo', 20);
+            $table->string('titulo', 200);
+            $table->enum('nivel', ['PRIMARIA', 'SECUNDARIA']);
+            $table->string('grado', 50);
+            $table->decimal('precio_venta', 10, 2)->default(0.00);
+            $table->integer('stock_actual')->default(0);
+            $table->integer('stock_minimo')->default(5);
             $table->text('descripcion')->nullable();
-            $table->string('portada')->nullable();
-            $table->string('archivo_pdf'); // ruta del archivo PDF
-            $table->integer('numero_paginas')->nullable();
-            $table->string('idioma')->default('es');
-            $table->enum('nivel_educativo', ['primaria', 'secundaria', 'superior'])->nullable();
-            $table->enum('disponibilidad', ['publico', 'por_curso', 'por_materia', 'restringido'])->default('publico');
-            $table->integer('descargas')->default(0);
-            $table->boolean('destacado')->default(false);
-            $table->enum('estado', ['activo', 'inactivo'])->default('activo');
-            $table->timestamps();
+            $table->boolean('activo')->default(true);
+            $table->timestamp('fecha_registro')->useCurrent();
             
             // Índices
-            $table->index(['categoria', 'estado']);
-            $table->index(['materia_id', 'disponibilidad']);
-            $table->index('isbn');
+            $table->unique('codigo');
+            $table->index('nivel');
+            $table->index('activo');
+            $table->index('stock_actual');
         });
     }
 

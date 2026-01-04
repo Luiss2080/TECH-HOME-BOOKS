@@ -13,17 +13,10 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
-            $table->text('descripcion')->nullable();
-            $table->boolean('es_sistema')->default(false); // roles del sistema (admin, docente, estudiante) no editables
-            $table->boolean('activo')->default(true);
-            $table->json('configuracion_adicional')->nullable(); // configuraciones específicas del rol
-            $table->timestamps();
+            $table->string('nombre', 50);
             
             // Índices
             $table->index('nombre');
-            $table->index('es_sistema');
-            $table->index('activo');
         });
     }
 
