@@ -23,7 +23,7 @@
     <!-- Contenedor de Navegación con Scroll -->
     <div class="sidebar-scroll-content">
         
-        @if(session('user_role') === 'admin')
+        @if(session('user_role_id') == 1)
         <!-- Sección: Gestión Académica (ADMIN) -->
         <div class="nav-section">
             <h3 class="section-title">GESTIÓN ACADÉMICA</h3>
@@ -188,7 +188,7 @@
             </ul>
         </div>
         
-        @elseif(session('user_role') === 'docente')
+        @elseif(in_array(session('user_role_id'), [2, 3, 5, 7, 8, 9]))
         <!-- Sección: Mi Espacio (DOCENTE) -->
         <div class="nav-section">
             <h3 class="section-title">MI ESPACIO</h3>
@@ -286,7 +286,7 @@
             </ul>
         </div>
         
-        @elseif(session('user_role') === 'estudiante')
+        @elseif(session('user_role_id') == 4)
         <!-- Sección: Mi Espacio (ESTUDIANTE) -->
         <div class="nav-section">
             <h3 class="section-title">MI ESPACIO</h3>

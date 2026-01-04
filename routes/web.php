@@ -38,12 +38,13 @@ Route::get('/estudiante/dashboard', [App\Http\Controllers\Estudiante\DashboardCo
 
 // Alias para dashboard
 Route::get('/dashboard', function() {
-    // Redirigir según el rol del usuario
-    $userRole = session('user_role');
-    return match($userRole) {
-        'admin' => redirect()->route('admin.dashboard'),
-        'docente' => redirect()->route('docente.dashboard'),
-        'estudiante' => redirect()->route('estudiante.dashboard'),
+    // Redirigir según el rol_id del usuario
+    $userRoleId = session('user_role_id');
+    return match((int)$userRoleId) {
+        1 => redirect()->route('admin.dashboard'),              // Administrador
+        2, 3, 5, 7, 8, 9 => redirect()->route('docente.dashboard'),  // Profesores
+        4 => redirect()->route('estudiante.dashboard'),         // Invitado/Estudiante
+        11 => redirect()->route('admin.dashboard'),             // Vendedor
         default => redirect()->route('login')
     };
 })->name('dashboard');

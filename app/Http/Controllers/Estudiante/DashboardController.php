@@ -11,8 +11,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Verificar que el usuario esté autenticado
-        if (!Session::has('user_id') || Session::get('user_role') !== 'estudiante') {
+        // Verificar que el usuario esté autenticado y tenga rol de estudiante/invitado
+        $userRoleId = Session::get('user_role_id');
+        if (!Session::has('user_id') || $userRoleId != 4) { // ID 4 = Invitado/Estudiante
             return redirect()->route('login');
         }
         
