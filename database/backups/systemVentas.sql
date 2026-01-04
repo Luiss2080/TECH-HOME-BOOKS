@@ -1208,6 +1208,9 @@ ALTER TABLE `colegios`
 -- Filtros para la tabla `control_prueba_requests`
 --
 ALTER TABLE `control_prueba_requests`
+
+
+
   ADD CONSTRAINT `fk_control_prueba_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --

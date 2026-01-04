@@ -24,8 +24,11 @@ return new class extends Migration
             $table->unsignedBigInteger('usuario_registro')->nullable();
             
             // Índices
-            $table->index('activo');
+            $table->index('nombre_colegio');
             $table->index('departamento');
+            $table->index('nacionalidad');
+            $table->index('activo');
+            $table->index('usuario_registro');
         });
     }
 

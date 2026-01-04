@@ -2,98 +2,47 @@
 
 namespace Database\Seeders;
 
-use App\Models\Libro;
-use App\Models\Materia;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class LibrosSeeder extends Seeder
 {
     public function run(): void
     {
-        $materias = Materia::all();
-        
-        $librosBase = [
-            'Matemáticas' => [
-                ['titulo' => 'Álgebra Fundamental', 'autor' => 'Dr. Juan Pérez', 'editorial' => 'Educativa Plus'],
-                ['titulo' => 'Geometría Básica', 'autor' => 'María González', 'editorial' => 'Matemática Fácil'],
-                ['titulo' => 'Aritmética Práctica', 'autor' => 'Carlos Mendoza', 'editorial' => 'Números y Más']
-            ],
-            'Lenguaje' => [
-                ['titulo' => 'Gramática Española', 'autor' => 'Ana Rodríguez', 'editorial' => 'Letras Claras'],
-                ['titulo' => 'Literatura Infantil', 'autor' => 'Pedro Sánchez', 'editorial' => 'Cuentos y Más'],
-                ['titulo' => 'Comprensión Lectora', 'autor' => 'Laura Martín', 'editorial' => 'Leo y Entiendo']
-            ],
-            'Ciencias Naturales' => [
-                ['titulo' => 'Mi Primer Atlas de Ciencias', 'autor' => 'Roberto Silva', 'editorial' => 'Descubre el Mundo'],
-                ['titulo' => 'Experimentos Divertidos', 'autor' => 'Carmen López', 'editorial' => 'Ciencia Fácil'],
-                ['titulo' => 'El Cuerpo Humano', 'autor' => 'Diego Fernández', 'editorial' => 'Anatomía Básica']
-            ],
-            'Ciencias Sociales' => [
-                ['titulo' => 'Historia de Mi País', 'autor' => 'Elena Torres', 'editorial' => 'Patria Editores'],
-                ['titulo' => 'Geografía Mundial', 'autor' => 'Manuel Ruiz', 'editorial' => 'Atlas Global'],
-                ['titulo' => 'Civismo y Valores', 'autor' => 'Sandra Vega', 'editorial' => 'Ciudadanía Activa']
-            ]
+        // Datos REALES del SQL systemVentas - tabla libros (30 registros)
+        $libros = [
+            ['id' => 1, 'codigo' => 'LIB-P1-001', 'titulo' => 'Libro Digital Primaria 1ro TEST', 'nivel' => 'PRIMARIA', 'grado' => '1ro Primaria', 'precio_venta' => 25.00, 'stock_actual' => 94, 'stock_minimo' => 10, 'descripcion' => 'Libro digital para primer grado de primaria', 'activo' => true, 'fecha_registro' => '2025-10-01 10:00:00'],
+            ['id' => 2, 'codigo' => 'LIB-P2-001', 'titulo' => 'Libro Digital Primaria 2do TEST', 'nivel' => 'PRIMARIA', 'grado' => '2do Primaria', 'precio_venta' => 25.00, 'stock_actual' => 64, 'stock_minimo' => 10, 'descripcion' => 'Libro digital para segundo grado de primaria', 'activo' => true, 'fecha_registro' => '2025-10-01 10:00:00'],
+            ['id' => 3, 'codigo' => 'LIB-S1-001', 'titulo' => 'Libro Digital Secundaria 1ro TEST', 'nivel' => 'SECUNDARIA', 'grado' => '1ro Secundaria', 'precio_venta' => 30.00, 'stock_actual' => 72, 'stock_minimo' => 10, 'descripcion' => 'Libro digital para primer grado de secundaria', 'activo' => true, 'fecha_registro' => '2025-10-01 10:00:00'],
+            ['id' => 4, 'codigo' => 'LIB-S2-001', 'titulo' => 'Libro Digital Secundaria 2do TEST', 'nivel' => 'SECUNDARIA', 'grado' => '2do Secundaria', 'precio_venta' => 30.00, 'stock_actual' => 53, 'stock_minimo' => 10, 'descripcion' => 'Libro digital para segundo grado de secundaria', 'activo' => true, 'fecha_registro' => '2025-10-01 10:00:00'],
+            ['id' => 5, 'codigo' => 'LIB-ARD-001', 'titulo' => 'Guía Arduino Básico TEST', 'nivel' => 'SECUNDARIA', 'grado' => 'Cursos Especiales', 'precio_venta' => 45.00, 'stock_actual' => 49, 'stock_minimo' => 5, 'descripcion' => 'Manual práctico de Arduino para principiantes', 'activo' => true, 'fecha_registro' => '2025-10-01 10:00:00'],
+            ['id' => 6, 'codigo' => 'TEST-001', 'titulo' => 'Libro de Prueba TEST', 'nivel' => 'PRIMARIA', 'grado' => 'Test', 'precio_venta' => 44.00, 'stock_actual' => 22, 'stock_minimo' => 5, 'descripcion' => 'Libro para pruebas del sistema', 'activo' => true, 'fecha_registro' => '2025-10-14 10:55:32'],
+            ['id' => 7, 'codigo' => 'LIB-SS-02', 'titulo' => 'ROBOTICA Y TECNOLOGIA 2', 'nivel' => 'SECUNDARIA', 'grado' => '2do', 'precio_venta' => 150.00, 'stock_actual' => -2, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-10-25 10:59:11'],
+            ['id' => 8, 'codigo' => 'DIS-001', 'titulo' => 'Arduino UNO CH340 con cable', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 120.00, 'stock_actual' => 19, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 11:54:47'],
+            ['id' => 9, 'codigo' => 'MAT-001', 'titulo' => 'Módulo Bluetooth HC-05', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 65.00, 'stock_actual' => 19, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:13:55'],
+            ['id' => 10, 'codigo' => 'MAT-002', 'titulo' => 'Motor reductor amarillo Doble eje', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 20.00, 'stock_actual' => 48, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:19:31'],
+            ['id' => 11, 'codigo' => 'MAT-003', 'titulo' => 'Rueda para motor reductor', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 10.00, 'stock_actual' => 23, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:21:07'],
+            ['id' => 12, 'codigo' => 'MAT-004', 'titulo' => 'Porta pila PAR 3.7 V', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 18.00, 'stock_actual' => 49, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:22:52'],
+            ['id' => 13, 'codigo' => 'MAT-005', 'titulo' => 'Servomotor MG90 eje metálico', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 35.00, 'stock_actual' => 20, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:24:53'],
+            ['id' => 14, 'codigo' => 'MAT-006', 'titulo' => 'Puente H L298N', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 40.00, 'stock_actual' => 29, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:35:18'],
+            ['id' => 15, 'codigo' => 'MAT-007', 'titulo' => 'Cable Jumper 20 cm M-M', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 0.50, 'stock_actual' => 790, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:39:13'],
+            ['id' => 16, 'codigo' => 'MAT-008', 'titulo' => 'Cable Jumper 20 cm H-M', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 0.50, 'stock_actual' => 790, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:41:39'],
+            ['id' => 17, 'codigo' => 'MAT-009', 'titulo' => 'Par pilas Cafini recargable 3.7 V', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 35.00, 'stock_actual' => 24, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:44:32'],
+            ['id' => 18, 'codigo' => 'MAT-010', 'titulo' => 'Interruptor pequeño para proyectos', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 3.00, 'stock_actual' => 49, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:46:33'],
+            ['id' => 19, 'codigo' => 'MAT-011', 'titulo' => 'Estaño BERA 8mm metro', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 6.00, 'stock_actual' => 58, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 16:50:44'],
+            ['id' => 20, 'codigo' => 'MAT-012', 'titulo' => 'Chasis SUMO con 4 tornillos para motor 12.5cm', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 120.00, 'stock_actual' => 9, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:14:06'],
+            ['id' => 21, 'codigo' => 'MAT-013', 'titulo' => 'Pasta para soldar 10gr', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 13.00, 'stock_actual' => 19, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:15:48'],
+            ['id' => 22, 'codigo' => 'MAT-014', 'titulo' => 'Termocontraible 3mm metro', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 5.00, 'stock_actual' => 200, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:19:14'],
+            ['id' => 23, 'codigo' => 'MAT-015', 'titulo' => 'Barra de silicona pequeña', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 2.00, 'stock_actual' => 18, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:30:40'],
+            ['id' => 24, 'codigo' => 'MAT-016', 'titulo' => 'Sensor Ultrasónico HC-SR04', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 35.00, 'stock_actual' => 50, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:34:26'],
+            ['id' => 25, 'codigo' => 'MAT-017', 'titulo' => 'Cable de RED UTP CAT-5', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 6.00, 'stock_actual' => 100, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:37:10'],
+            ['id' => 26, 'codigo' => 'MAT-018', 'titulo' => 'Protoboard mediano 400 pts', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 20.00, 'stock_actual' => 50, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:38:42'],
+            ['id' => 27, 'codigo' => 'MAT-019', 'titulo' => 'Foquito LED 3mm', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 0.50, 'stock_actual' => 1000, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:41:43'],
+            ['id' => 28, 'codigo' => 'MAT-020', 'titulo' => 'Resistencia 1/8 220 Ohm', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 0.50, 'stock_actual' => 1000, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:44:00'],
+            ['id' => 29, 'codigo' => 'MAT-021', 'titulo' => 'Cautin 50W con regulador analógico', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 100.00, 'stock_actual' => 6, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:46:19'],
+            ['id' => 30, 'codigo' => 'MAT-022', 'titulo' => 'Sensor de lluvia YL-83', 'nivel' => 'SECUNDARIA', 'grado' => 'TEC', 'precio_venta' => 40.00, 'stock_actual' => 20, 'stock_minimo' => 5, 'descripcion' => null, 'activo' => true, 'fecha_registro' => '2025-11-21 17:49:39'],
         ];
-        
-        foreach ($materias as $materia) {
-            $nombreMateria = $materia->nombre;
-            $libros = $librosBase[$nombreMateria] ?? [
-                ['titulo' => "Manual de $nombreMateria", 'autor' => 'Varios Autores', 'editorial' => 'Educativa General'],
-                ['titulo' => "Guía Práctica de $nombreMateria", 'autor' => 'Expertos en Educación', 'editorial' => 'Aprende Más'],
-            ];
-            
-            foreach ($libros as $libroData) {
-                Libro::create([
-                    'materia_id' => $materia->id,
-                    'titulo' => $libroData['titulo'],
-                    'autor' => $libroData['autor'],
-                    'editorial' => $libroData['editorial'],
-                    'isbn' => '978-' . rand(1000000000, 9999999999),
-                    'categoria' => $nombreMateria,
-                    'descripcion' => "Libro educativo de {$nombreMateria} diseñado para estudiantes de nivel básico y medio.",
-                    'nivel_educativo' => rand(0, 1) ? 'primaria' : 'secundaria',
-                    'ano_publicacion' => rand(2020, 2025),
-                    'numero_paginas' => rand(150, 400),
-                    'idioma' => 'es',
-                    'archivo_pdf' => "/storage/libros/{$libroData['titulo']}.pdf",
-                    'portada' => "/storage/portadas/{$libroData['titulo']}.jpg",
-                    'disponibilidad' => ['publico', 'por_curso', 'por_materia'][rand(0, 2)],
-                    'descargas' => rand(0, 500),
-                    'destacado' => rand(0, 1) ? true : false,
-                    'estado' => 'activo'
-                ]);
-            }
-        }
-        
-        // Agregar algunos libros generales
-        $librosGenerales = [
-            ['titulo' => 'Metodología de Estudio', 'categoria' => 'Metodología', 'autor' => 'Dr. Estudio Fácil'],
-            ['titulo' => 'Técnicas de Aprendizaje', 'categoria' => 'Pedagogía', 'autor' => 'Prof. Ana Enseña'],
-            ['titulo' => 'Desarrollo Personal', 'categoria' => 'Autoayuda', 'autor' => 'Lic. Crece Más'],
-            ['titulo' => 'Historia Universal', 'categoria' => 'Historia', 'autor' => 'Historiador Mundial'],
-            ['titulo' => 'Ciencias de la Computación', 'categoria' => 'Tecnología', 'autor' => 'Ing. Código Limpio']
-        ];
-        
-        foreach ($librosGenerales as $libro) {
-            Libro::create([
-                'materia_id' => null,
-                'titulo' => $libro['titulo'],
-                'autor' => $libro['autor'],
-                'editorial' => 'Editorial TECH HOME',
-                'isbn' => '978-' . rand(1000000000, 9999999999),
-                'categoria' => $libro['categoria'],
-                'descripcion' => "Libro complementario de {$libro['categoria']} para el desarrollo integral de los estudiantes.",
-                'nivel_educativo' => 'secundaria',
-                'ano_publicacion' => rand(2022, 2025),
-                'numero_paginas' => rand(200, 350),
-                'idioma' => 'es',
-                'archivo_pdf' => "/storage/libros/{$libro['titulo']}.pdf",
-                'portada' => "/storage/portadas/{$libro['titulo']}.jpg",
-                'disponibilidad' => 'publico',
-                'descargas' => rand(100, 1000),
-                'destacado' => true,
-                'estado' => 'activo'
-            ]);
-        }
+
+        DB::table('libros')->insert($libros);
     }
 }

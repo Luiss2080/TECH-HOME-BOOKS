@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
-use App\Models\Permiso;
-use App\Models\RolPermiso;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RolesPermisosSeeder extends Seeder
 {
@@ -14,144 +12,148 @@ class RolesPermisosSeeder extends Seeder
      */
     public function run(): void
     {
-        // Crear roles del sistema
-        $adminRole = Role::create([
-            'nombre' => 'Administrador',
-            'descripcion' => 'Control total del sistema',
-            'es_sistema' => true,
-            'activo' => true,
+        // Insertar roles del SQL original
+        DB::table('roles')->insert([
+            ['id' => 1, 'nombre' => 'Administrador'],
+            ['id' => 2, 'nombre' => 'Profesor Primaria'],
+            ['id' => 3, 'nombre' => 'Profesor Secundaria'],
+            ['id' => 4, 'nombre' => 'Invitado'],
+            ['id' => 5, 'nombre' => 'Profes TECH HOME'],
+            ['id' => 6, 'nombre' => 'Libro muestra primaria y secundaria'],
+            ['id' => 7, 'nombre' => 'Profesor primaria 1'],
+            ['id' => 8, 'nombre' => 'Profesor Secundaria 1'],
+            ['id' => 9, 'nombre' => 'Profesor Secundaria 1, 2 y 3'],
+            ['id' => 10, 'nombre' => 'Libro Primaria y Secundaria'],
+            ['id' => 11, 'nombre' => 'Vendedor'],
         ]);
 
-        $docenteRole = Role::create([
-            'nombre' => 'Docente',
-            'descripcion' => 'Gestión de cursos y evaluaciones',
-            'es_sistema' => true,
-            'activo' => true,
+        // Insertar permisos del SQL original
+        DB::table('permisos')->insert([
+            ['id' => 1, 'nombre' => 'P1'],
+            ['id' => 2, 'nombre' => 'P2'],
+            ['id' => 3, 'nombre' => 'P3'],
+            ['id' => 4, 'nombre' => 'P4'],
+            ['id' => 5, 'nombre' => 'P5'],
+            ['id' => 6, 'nombre' => 'P6'],
+            ['id' => 7, 'nombre' => 'S1'],
+            ['id' => 8, 'nombre' => 'S2'],
+            ['id' => 9, 'nombre' => 'S3'],
+            ['id' => 10, 'nombre' => 'S4'],
+            ['id' => 11, 'nombre' => 'S5'],
+            ['id' => 12, 'nombre' => 'S6'],
+            ['id' => 13, 'nombre' => 'PC1'],
+            ['id' => 14, 'nombre' => 'PC2'],
+            ['id' => 15, 'nombre' => 'PC3'],
+            ['id' => 16, 'nombre' => 'PC4'],
+            ['id' => 17, 'nombre' => 'PC5'],
+            ['id' => 18, 'nombre' => 'PC6'],
+            ['id' => 19, 'nombre' => 'SC1'],
+            ['id' => 20, 'nombre' => 'SC2'],
+            ['id' => 21, 'nombre' => 'SC3'],
+            ['id' => 22, 'nombre' => 'SC4'],
+            ['id' => 23, 'nombre' => 'SC5'],
+            ['id' => 24, 'nombre' => 'SC6'],
+            ['id' => 25, 'nombre' => 'ENTRADA_STOCK'],
+            ['id' => 26, 'nombre' => 'GESTION_CLIENTES'],
+            ['id' => 27, 'nombre' => 'REGISTRO_CLIENTE'],
+            ['id' => 28, 'nombre' => 'NUEVA_VENTA'],
+            ['id' => 29, 'nombre' => 'HISTORIAL_STOCK'],
         ]);
 
-        $estudianteRole = Role::create([
-            'nombre' => 'Estudiante',
-            'descripcion' => 'Acceso a contenidos y entregas',
-            'es_sistema' => true,
-            'activo' => true,
+        // Insertar relaciones rol-permisos del SQL original
+        DB::table('rol_permisos')->insert([
+            ['id' => 13, 'rol_id' => 2, 'permiso_id' => 1],
+            ['id' => 14, 'rol_id' => 2, 'permiso_id' => 2],
+            ['id' => 15, 'rol_id' => 2, 'permiso_id' => 3],
+            ['id' => 16, 'rol_id' => 2, 'permiso_id' => 4],
+            ['id' => 17, 'rol_id' => 2, 'permiso_id' => 5],
+            ['id' => 18, 'rol_id' => 2, 'permiso_id' => 6],
+            ['id' => 19, 'rol_id' => 3, 'permiso_id' => 7],
+            ['id' => 20, 'rol_id' => 3, 'permiso_id' => 8],
+            ['id' => 21, 'rol_id' => 3, 'permiso_id' => 9],
+            ['id' => 22, 'rol_id' => 3, 'permiso_id' => 10],
+            ['id' => 23, 'rol_id' => 3, 'permiso_id' => 11],
+            ['id' => 24, 'rol_id' => 3, 'permiso_id' => 12],
+            ['id' => 108, 'rol_id' => 6, 'permiso_id' => 13],
+            ['id' => 109, 'rol_id' => 6, 'permiso_id' => 14],
+            ['id' => 110, 'rol_id' => 6, 'permiso_id' => 15],
+            ['id' => 111, 'rol_id' => 6, 'permiso_id' => 16],
+            ['id' => 112, 'rol_id' => 6, 'permiso_id' => 17],
+            ['id' => 113, 'rol_id' => 6, 'permiso_id' => 18],
+            ['id' => 114, 'rol_id' => 6, 'permiso_id' => 19],
+            ['id' => 115, 'rol_id' => 6, 'permiso_id' => 20],
+            ['id' => 116, 'rol_id' => 6, 'permiso_id' => 21],
+            ['id' => 117, 'rol_id' => 6, 'permiso_id' => 22],
+            ['id' => 118, 'rol_id' => 6, 'permiso_id' => 23],
+            ['id' => 119, 'rol_id' => 6, 'permiso_id' => 24],
+            ['id' => 121, 'rol_id' => 7, 'permiso_id' => 1],
+            ['id' => 122, 'rol_id' => 7, 'permiso_id' => 2],
+            ['id' => 136, 'rol_id' => 5, 'permiso_id' => 1],
+            ['id' => 137, 'rol_id' => 5, 'permiso_id' => 2],
+            ['id' => 138, 'rol_id' => 5, 'permiso_id' => 3],
+            ['id' => 139, 'rol_id' => 5, 'permiso_id' => 4],
+            ['id' => 140, 'rol_id' => 5, 'permiso_id' => 5],
+            ['id' => 141, 'rol_id' => 5, 'permiso_id' => 6],
+            ['id' => 142, 'rol_id' => 5, 'permiso_id' => 7],
+            ['id' => 143, 'rol_id' => 5, 'permiso_id' => 8],
+            ['id' => 144, 'rol_id' => 5, 'permiso_id' => 9],
+            ['id' => 145, 'rol_id' => 5, 'permiso_id' => 10],
+            ['id' => 146, 'rol_id' => 5, 'permiso_id' => 11],
+            ['id' => 147, 'rol_id' => 5, 'permiso_id' => 12],
+            ['id' => 151, 'rol_id' => 8, 'permiso_id' => 7],
+            ['id' => 152, 'rol_id' => 9, 'permiso_id' => 7],
+            ['id' => 153, 'rol_id' => 9, 'permiso_id' => 8],
+            ['id' => 154, 'rol_id' => 9, 'permiso_id' => 9],
+            ['id' => 155, 'rol_id' => 10, 'permiso_id' => 1],
+            ['id' => 156, 'rol_id' => 10, 'permiso_id' => 2],
+            ['id' => 157, 'rol_id' => 10, 'permiso_id' => 3],
+            ['id' => 158, 'rol_id' => 10, 'permiso_id' => 4],
+            ['id' => 159, 'rol_id' => 10, 'permiso_id' => 5],
+            ['id' => 160, 'rol_id' => 10, 'permiso_id' => 6],
+            ['id' => 161, 'rol_id' => 10, 'permiso_id' => 7],
+            ['id' => 162, 'rol_id' => 10, 'permiso_id' => 8],
+            ['id' => 163, 'rol_id' => 10, 'permiso_id' => 9],
+            ['id' => 164, 'rol_id' => 10, 'permiso_id' => 10],
+            ['id' => 165, 'rol_id' => 10, 'permiso_id' => 11],
+            ['id' => 166, 'rol_id' => 10, 'permiso_id' => 12],
+            ['id' => 183, 'rol_id' => 4, 'permiso_id' => 15],
+            ['id' => 184, 'rol_id' => 4, 'permiso_id' => 19],
+            ['id' => 185, 'rol_id' => 4, 'permiso_id' => 20],
+            ['id' => 186, 'rol_id' => 4, 'permiso_id' => 21],
+            ['id' => 192, 'rol_id' => 11, 'permiso_id' => 25],
+            ['id' => 193, 'rol_id' => 11, 'permiso_id' => 26],
+            ['id' => 194, 'rol_id' => 11, 'permiso_id' => 29],
+            ['id' => 195, 'rol_id' => 11, 'permiso_id' => 28],
+            ['id' => 196, 'rol_id' => 11, 'permiso_id' => 1],
+            ['id' => 197, 'rol_id' => 11, 'permiso_id' => 2],
+            ['id' => 198, 'rol_id' => 11, 'permiso_id' => 3],
+            ['id' => 199, 'rol_id' => 11, 'permiso_id' => 4],
+            ['id' => 200, 'rol_id' => 11, 'permiso_id' => 5],
+            ['id' => 201, 'rol_id' => 11, 'permiso_id' => 6],
+            ['id' => 202, 'rol_id' => 11, 'permiso_id' => 27],
+            ['id' => 203, 'rol_id' => 11, 'permiso_id' => 7],
+            ['id' => 204, 'rol_id' => 11, 'permiso_id' => 8],
+            ['id' => 205, 'rol_id' => 11, 'permiso_id' => 9],
+            ['id' => 206, 'rol_id' => 11, 'permiso_id' => 10],
+            ['id' => 207, 'rol_id' => 11, 'permiso_id' => 11],
+            ['id' => 208, 'rol_id' => 11, 'permiso_id' => 12],
+            ['id' => 209, 'rol_id' => 1, 'permiso_id' => 25],
+            ['id' => 210, 'rol_id' => 1, 'permiso_id' => 26],
+            ['id' => 211, 'rol_id' => 1, 'permiso_id' => 29],
+            ['id' => 212, 'rol_id' => 1, 'permiso_id' => 28],
+            ['id' => 213, 'rol_id' => 1, 'permiso_id' => 1],
+            ['id' => 214, 'rol_id' => 1, 'permiso_id' => 2],
+            ['id' => 215, 'rol_id' => 1, 'permiso_id' => 3],
+            ['id' => 216, 'rol_id' => 1, 'permiso_id' => 4],
+            ['id' => 217, 'rol_id' => 1, 'permiso_id' => 5],
+            ['id' => 218, 'rol_id' => 1, 'permiso_id' => 6],
+            ['id' => 219, 'rol_id' => 1, 'permiso_id' => 27],
+            ['id' => 220, 'rol_id' => 1, 'permiso_id' => 7],
+            ['id' => 221, 'rol_id' => 1, 'permiso_id' => 8],
+            ['id' => 222, 'rol_id' => 1, 'permiso_id' => 9],
+            ['id' => 223, 'rol_id' => 1, 'permiso_id' => 10],
+            ['id' => 224, 'rol_id' => 1, 'permiso_id' => 11],
+            ['id' => 225, 'rol_id' => 1, 'permiso_id' => 12],
         ]);
-
-        // Crear permisos del sistema
-        $permisos = [
-            // Gestión de usuarios
-            ['nombre' => 'gestionar_usuarios', 'descripcion' => 'Crear, editar y eliminar usuarios', 'modulo' => 'usuarios', 'accion' => 'gestionar'],
-            ['nombre' => 'ver_usuarios', 'descripcion' => 'Ver lista de usuarios', 'modulo' => 'usuarios', 'accion' => 'leer'],
-            
-            // Gestión de colegios
-            ['nombre' => 'gestionar_colegios', 'descripcion' => 'Administrar colegios', 'modulo' => 'colegios', 'accion' => 'gestionar'],
-            ['nombre' => 'ver_colegios', 'descripcion' => 'Ver información de colegios', 'modulo' => 'colegios', 'accion' => 'leer'],
-            
-            // Gestión de cursos
-            ['nombre' => 'crear_cursos', 'descripcion' => 'Crear nuevos cursos', 'modulo' => 'cursos', 'accion' => 'crear'],
-            ['nombre' => 'editar_cursos', 'descripcion' => 'Modificar cursos existentes', 'modulo' => 'cursos', 'accion' => 'actualizar'],
-            ['nombre' => 'ver_cursos', 'descripcion' => 'Ver información de cursos', 'modulo' => 'cursos', 'accion' => 'leer'],
-            ['nombre' => 'eliminar_cursos', 'descripcion' => 'Eliminar cursos', 'modulo' => 'cursos', 'accion' => 'eliminar'],
-            
-            // Gestión de materias
-            ['nombre' => 'crear_materias', 'descripcion' => 'Crear nuevas materias', 'modulo' => 'materias', 'accion' => 'crear'],
-            ['nombre' => 'editar_materias', 'descripcion' => 'Modificar materias existentes', 'modulo' => 'materias', 'accion' => 'actualizar'],
-            ['nombre' => 'ver_materias', 'descripcion' => 'Ver información de materias', 'modulo' => 'materias', 'accion' => 'leer'],
-            ['nombre' => 'eliminar_materias', 'descripcion' => 'Eliminar materias', 'modulo' => 'materias', 'accion' => 'eliminar'],
-            
-            // Gestión de tareas
-            ['nombre' => 'crear_tareas', 'descripcion' => 'Crear nuevas tareas', 'modulo' => 'tareas', 'accion' => 'crear'],
-            ['nombre' => 'editar_tareas', 'descripcion' => 'Modificar tareas existentes', 'modulo' => 'tareas', 'accion' => 'actualizar'],
-            ['nombre' => 'ver_tareas', 'descripcion' => 'Ver tareas', 'modulo' => 'tareas', 'accion' => 'leer'],
-            ['nombre' => 'eliminar_tareas', 'descripcion' => 'Eliminar tareas', 'modulo' => 'tareas', 'accion' => 'eliminar'],
-            ['nombre' => 'calificar_tareas', 'descripcion' => 'Calificar entregas de tareas', 'modulo' => 'tareas', 'accion' => 'calificar'],
-            
-            // Gestión de exámenes
-            ['nombre' => 'crear_examenes', 'descripcion' => 'Crear nuevos exámenes', 'modulo' => 'examenes', 'accion' => 'crear'],
-            ['nombre' => 'editar_examenes', 'descripcion' => 'Modificar exámenes existentes', 'modulo' => 'examenes', 'accion' => 'actualizar'],
-            ['nombre' => 'ver_examenes', 'descripcion' => 'Ver exámenes', 'modulo' => 'examenes', 'accion' => 'leer'],
-            ['nombre' => 'eliminar_examenes', 'descripcion' => 'Eliminar exámenes', 'modulo' => 'examenes', 'accion' => 'eliminar'],
-            
-            // Gestión de calificaciones
-            ['nombre' => 'crear_calificaciones', 'descripcion' => 'Registrar calificaciones', 'modulo' => 'calificaciones', 'accion' => 'crear'],
-            ['nombre' => 'editar_calificaciones', 'descripcion' => 'Modificar calificaciones', 'modulo' => 'calificaciones', 'accion' => 'actualizar'],
-            ['nombre' => 'ver_calificaciones', 'descripcion' => 'Ver calificaciones', 'modulo' => 'calificaciones', 'accion' => 'leer'],
-            ['nombre' => 'ver_calificaciones_propias', 'descripcion' => 'Ver calificaciones propias', 'modulo' => 'calificaciones', 'accion' => 'leer'],
-            
-            // Gestión de asistencia
-            ['nombre' => 'registrar_asistencia', 'descripcion' => 'Registrar asistencia de estudiantes', 'modulo' => 'asistencia', 'accion' => 'crear'],
-            ['nombre' => 'ver_asistencia', 'descripcion' => 'Ver registros de asistencia', 'modulo' => 'asistencia', 'accion' => 'leer'],
-            ['nombre' => 'ver_asistencia_propia', 'descripcion' => 'Ver asistencia propia', 'modulo' => 'asistencia', 'accion' => 'leer'],
-            
-            // Gestión de libros y materiales
-            ['nombre' => 'crear_libros', 'descripcion' => 'Agregar libros digitales', 'modulo' => 'libros', 'accion' => 'crear'],
-            ['nombre' => 'editar_libros', 'descripcion' => 'Modificar información de libros', 'modulo' => 'libros', 'accion' => 'actualizar'],
-            ['nombre' => 'ver_libros', 'descripcion' => 'Acceder a libros digitales', 'modulo' => 'libros', 'accion' => 'leer'],
-            ['nombre' => 'eliminar_libros', 'descripcion' => 'Eliminar libros', 'modulo' => 'libros', 'accion' => 'eliminar'],
-            
-            ['nombre' => 'crear_materiales', 'descripcion' => 'Subir materiales educativos', 'modulo' => 'materiales', 'accion' => 'crear'],
-            ['nombre' => 'editar_materiales', 'descripcion' => 'Modificar materiales', 'modulo' => 'materiales', 'accion' => 'actualizar'],
-            ['nombre' => 'ver_materiales', 'descripcion' => 'Acceder a materiales educativos', 'modulo' => 'materiales', 'accion' => 'leer'],
-            ['nombre' => 'eliminar_materiales', 'descripcion' => 'Eliminar materiales', 'modulo' => 'materiales', 'accion' => 'eliminar'],
-            
-            // Reportes
-            ['nombre' => 'generar_reportes', 'descripcion' => 'Generar reportes del sistema', 'modulo' => 'reportes', 'accion' => 'crear'],
-            ['nombre' => 'ver_reportes', 'descripcion' => 'Ver reportes generados', 'modulo' => 'reportes', 'accion' => 'leer'],
-            
-            // Configuraciones
-            ['nombre' => 'gestionar_configuraciones', 'descripcion' => 'Modificar configuraciones del sistema', 'modulo' => 'configuraciones', 'accion' => 'gestionar'],
-            ['nombre' => 'ver_logs', 'descripcion' => 'Ver logs del sistema', 'modulo' => 'logs', 'accion' => 'leer'],
-        ];
-
-        foreach ($permisos as $permiso) {
-            Permiso::create($permiso);
-        }
-
-        // Asignar permisos a roles
-        $todosPermisos = Permiso::all();
-
-        // Administrador: todos los permisos
-        foreach ($todosPermisos as $permiso) {
-            RolPermiso::create([
-                'rol_id' => $adminRole->id,
-                'permiso_id' => $permiso->id,
-                'permitir' => true,
-            ]);
-        }
-
-        // Docente: permisos específicos
-        $permisosDocente = [
-            'ver_cursos', 'ver_materias', 'crear_tareas', 'editar_tareas', 'ver_tareas', 'calificar_tareas',
-            'crear_examenes', 'editar_examenes', 'ver_examenes', 'crear_calificaciones', 'editar_calificaciones',
-            'ver_calificaciones', 'registrar_asistencia', 'ver_asistencia', 'crear_libros', 'editar_libros',
-            'ver_libros', 'crear_materiales', 'editar_materiales', 'ver_materiales', 'generar_reportes', 'ver_reportes'
-        ];
-
-        foreach ($permisosDocente as $nombrePermiso) {
-            $permiso = Permiso::where('nombre', $nombrePermiso)->first();
-            if ($permiso) {
-                RolPermiso::create([
-                    'rol_id' => $docenteRole->id,
-                    'permiso_id' => $permiso->id,
-                    'permitir' => true,
-                ]);
-            }
-        }
-
-        // Estudiante: permisos de solo lectura
-        $permisosEstudiante = [
-            'ver_cursos', 'ver_materias', 'ver_tareas', 'ver_examenes', 'ver_calificaciones_propias',
-            'ver_asistencia_propia', 'ver_libros', 'ver_materiales'
-        ];
-
-        foreach ($permisosEstudiante as $nombrePermiso) {
-            $permiso = Permiso::where('nombre', $nombrePermiso)->first();
-            if ($permiso) {
-                RolPermiso::create([
-                    'rol_id' => $estudianteRole->id,
-                    'permiso_id' => $permiso->id,
-                    'permitir' => true,
-                ]);
-            }
-        }
     }
 }

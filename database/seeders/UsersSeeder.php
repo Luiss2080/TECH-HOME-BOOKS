@@ -2,87 +2,198 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Usuario administrador principal
-        User::create([
-            'name' => 'Administrador',
-            'apellido' => 'Sistema',
-            'email' => 'admin@tech-home.com',
-            'password' => Hash::make('admin123'),
-            'ci' => '12345678',
-            'telefono' => '+591 70000000',
-            'direccion' => 'Oficina Central',
-            'rol' => 'admin',
-            'estado' => 'activo',
-            'email_verified_at' => now(),
-            'biografia' => 'Administrador principal del sistema Tech Home.',
-            'genero' => 'masculino',
-            'profesion' => 'Ingeniero de Sistemas',
-            'nivel_estudios' => 'Maestría',
-            'website' => 'https://tech-home.com',
-            'facebook' => 'admin.tech',
-            'twitter' => '@admin_tech',
-            'linkedin' => 'admin-tech-system'
-        ]);
-        
-        // Usuario docente de ejemplo
-        User::create([
-            'name' => 'María',
-            'apellido' => 'García',
-            'email' => 'maria.garcia@tech-home.com',
-            'password' => Hash::make('docente123'),
-            'ci' => '87654321',
-            'fecha_nacimiento' => '1985-05-15',
-            'telefono' => '+591 70000001',
-            'direccion' => 'Zona Central',
-            'rol' => 'docente',
-            'estado' => 'activo',
-            'email_verified_at' => now(),
-            'biografia' => 'Docente apasionada por la enseñanza de matemáticas.',
-            'genero' => 'femenino',
-            'profesion' => 'Licenciada en Educación',
-            'nivel_estudios' => 'Licenciatura',
-            'linkedin' => 'maria-garcia-edu'
-        ]);
-        
-        // Usuario estudiante de ejemplo
-        User::create([
-            'name' => 'Juan',
-            'apellido' => 'Pérez',
-            'email' => 'juan.perez@estudiante.com',
-            'password' => Hash::make('estudiante123'),
-            'ci' => '11223344',
-            'fecha_nacimiento' => '2008-03-20',
-            'telefono' => '+591 70000002',
-            'direccion' => 'Zona Sur',
-            'rol' => 'estudiante',
-            'estado' => 'activo',
-            'email_verified_at' => now(),
-            'biografia' => 'Estudiante dedicado y curioso.',
-            'genero' => 'masculino',
-            'nivel_estudios' => 'Secundaria'
+        // Usuarios principales del sistema de ventas (SQL systemVentas)
+        DB::table('users')->insert([
+            [
+                'id' => 1,
+                'name' => 'Gustavo',
+                'apellido' => 'Tantani Mamani',
+                'numci' => '6276136',
+                'fenac' => '1984-02-28',
+                'numtel' => '70017480',
+                'nomcol' => 'Nacional el Pari',
+                'email' => 'tantani.m.g@gmail.com',
+                'password' => '$2y$10$CMBouHJBkH9lLlebNQu3/OjHaPBTbMGvdSanSgskviYX5.Q1NGL0a',
+                'rol_id' => 1,
+                'email_verified_at' => '2025-09-19 17:36:53',
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-09-19 17:30:50',
+                'updated_at' => '2025-09-19 17:36:53',
+            ],
+            [
+                'id' => 2,
+                'name' => 'Mauricio',
+                'apellido' => 'Vasquez Menacho',
+                'numci' => '11329595',
+                'fenac' => '2004-06-17',
+                'numtel' => '74181117',
+                'nomcol' => 'Tech Home',
+                'email' => 'mauriciovasquezmenacho@gmail.com',
+                'password' => '$2y$10$BgfhSXllXP4DxP48XigKoeX1m3rjwCL8.wvm0N/hQhg/uS3osXP.O',
+                'rol_id' => 5,
+                'email_verified_at' => '2025-09-19 17:37:17',
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-09-19 17:30:50',
+                'updated_at' => '2025-09-19 17:37:17',
+            ],
+            [
+                'id' => 3,
+                'name' => 'Amilcar',
+                'apellido' => 'Romero',
+                'numci' => '15184153',
+                'fenac' => '1999-07-05',
+                'numtel' => '71024388',
+                'nomcol' => 'TECHHOME',
+                'email' => 'arcamgel20165@gmail.com',
+                'password' => '$2y$10$8Is1FsT5rtiWamLW58OiV.Qd4T7.xq40KIbV3zHip3aAE12cgcG9e',
+                'rol_id' => 5,
+                'email_verified_at' => '2025-09-19 17:37:43',
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-09-19 17:30:50',
+                'updated_at' => '2025-09-19 17:37:43',
+            ],
+            [
+                'id' => 4,
+                'name' => 'Yorbin Afriel',
+                'apellido' => 'Mier Cabrera',
+                'numci' => '7745923',
+                'fenac' => '1999-09-12',
+                'numtel' => '68913948',
+                'nomcol' => 'Ninguno',
+                'email' => 'yorbinmiercabrera@gmail.com',
+                'password' => '$2y$10$eXJ8eornvvrWkAvw1yLEaO1PGhLAjZcQ.4dY2H3qXp./kWM3Jy4rG',
+                'rol_id' => 5,
+                'email_verified_at' => '2025-10-06 16:40:20',
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-09-19 17:30:50',
+                'updated_at' => '2025-10-06 16:40:20',
+            ],
+            [
+                'id' => 47,
+                'name' => 'Luis Mario',
+                'apellido' => 'Rocha Vela',
+                'numci' => '12345001',
+                'fenac' => '1990-01-01',
+                'numtel' => '70000001',
+                'nomcol' => 'TECH HOME BOLIVIA',
+                'email' => 'luisrochavela990@gmail.com',
+                'password' => '$2y$10$Olc7LpuWPGakjNiIe5F8/eVdLxbEAMsIAfp3NSZSR/RO28CszSRwS',
+                'rol_id' => 1,
+                'email_verified_at' => now(),
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-10-24 10:56:32',
+                'updated_at' => '2025-10-24 10:56:32',
+            ],
+            [
+                'id' => 48,
+                'name' => 'Cliente Bot',
+                'apellido' => 'Administrador',
+                'numci' => '12345002',
+                'fenac' => '1990-01-01',
+                'numtel' => '70000002',
+                'nomcol' => 'TECH HOME BOLIVIA',
+                'email' => 'clientebot6001@gmail.com',
+                'password' => '$2y$10$Olc7LpuWPGakjNiIe5F8/eVdLxbEAMsIAfp3NSZSR/RO28CszSRwS',
+                'rol_id' => 1,
+                'email_verified_at' => now(),
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-10-24 10:56:32',
+                'updated_at' => '2025-10-24 10:56:32',
+            ],
+            [
+                'id' => 49,
+                'name' => 'Luis Mario',
+                'apellido' => 'Vendedor Sistema',
+                'numci' => '12345003',
+                'fenac' => '1990-01-01',
+                'numtel' => '70000003',
+                'nomcol' => 'TECH HOME BOLIVIA',
+                'email' => 'lr0900573@gmail.com',
+                'password' => '$2y$10$Olc7LpuWPGakjNiIe5F8/eVdLxbEAMsIAfp3NSZSR/RO28CszSRwS',
+                'rol_id' => 11,
+                'email_verified_at' => now(),
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-10-24 10:56:32',
+                'updated_at' => '2025-10-24 10:56:32',
+            ],
+            [
+                'id' => 50,
+                'name' => 'Jessica Ariana',
+                'apellido' => 'Sandy Arteaga',
+                'numci' => '9727923',
+                'fenac' => '2005-09-20',
+                'numtel' => '73621756',
+                'nomcol' => 'San Simon',
+                'email' => 'jessicasandyarteaga@gmail.com',
+                'password' => '$2y$10$KBaHOZsz13FW1Y4uphuPC.YY05hvVr8MR070Xoii.dLS5nX830xsG',
+                'rol_id' => 11,
+                'email_verified_at' => '2025-10-25 10:46:30',
+                'email_verificado' => true,
+                'activo' => true,
+                'created_at' => '2025-10-25 10:34:13',
+                'updated_at' => '2025-10-25 10:46:30',
+            ],
         ]);
 
-        // Generar 10 usuarios aleatorios adicionales
-        \App\Models\User::factory(10)->create()->each(function ($u) {
-            $u->update([
-                'profesion' => fake()->jobTitle(),
-                'biografia' => fake()->text(100),
-                'genero' => fake()->randomElement(['masculino', 'femenino']),
-                'facebook' => fake()->userName(),
-                'twitter' => '@' . fake()->userName()
-            ]);
-        });
+        // Usuarios de ejemplo adicionales
+        DB::table('users')->insert([
+            [
+                'name' => 'Admin',
+                'apellido' => 'Sistema',
+                'email' => 'admin@techhome.com',
+                'password' => Hash::make('admin123'),
+                'rol_id' => 1,
+                'email_verified_at' => now(),
+                'email_verificado' => true,
+                'activo' => true,
+            ],
+            [
+                'name' => 'Docente',
+                'apellido' => 'Ejemplo',
+                'email' => 'docente@techhome.com',
+                'password' => Hash::make('docente123'),
+                'rol_id' => 2,
+                'email_verified_at' => now(),
+                'email_verificado' => true,
+                'activo' => true,
+            ],
+            [
+                'name' => 'Estudiante',
+                'apellido' => 'Demo',
+                'email' => 'estudiante@techhome.com',
+                'password' => Hash::make('estudiante123'),
+                'rol_id' => 4,
+                'email_verified_at' => now(),
+                'email_verificado' => true,
+                'activo' => true,
+            ],
+        ]);
+
+        // Relaciones usuario_roles
+        DB::table('usuario_roles')->insert([
+            ['user_id' => 1, 'rol_id' => 1, 'fecha_asignacion' => now(), 'activo' => true],
+            ['user_id' => 2, 'rol_id' => 5, 'fecha_asignacion' => now(), 'activo' => true],
+            ['user_id' => 3, 'rol_id' => 5, 'fecha_asignacion' => now(), 'activo' => true],
+            ['user_id' => 4, 'rol_id' => 5, 'fecha_asignacion' => now(), 'activo' => true],
+            ['user_id' => 47, 'rol_id' => 1, 'fecha_asignacion' => now(), 'activo' => true],
+            ['user_id' => 48, 'rol_id' => 1, 'fecha_asignacion' => now(), 'activo' => true],
+            ['user_id' => 49, 'rol_id' => 11, 'fecha_asignacion' => now(), 'activo' => true],
+            ['user_id' => 50, 'rol_id' => 11, 'fecha_asignacion' => now(), 'activo' => true],
+        ]);
     }
 }

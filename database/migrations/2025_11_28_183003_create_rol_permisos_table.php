@@ -15,13 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('rol_id')->constrained('roles')->onDelete('cascade');
             $table->foreignId('permiso_id')->constrained('permisos')->onDelete('cascade');
-            $table->boolean('permitir')->default(true); // true = permitir, false = denegar explícitamente
-            $table->text('condiciones')->nullable(); // condiciones adicionales en JSON
-            $table->timestamps();
             
-            // Índices únicos - un rol no puede tener el mismo permiso duplicado
+            // Índices
             $table->unique(['rol_id', 'permiso_id']);
-            $table->index(['rol_id', 'permitir']);
+            $table->index('rol_id');
             $table->index('permiso_id');
         });
     }

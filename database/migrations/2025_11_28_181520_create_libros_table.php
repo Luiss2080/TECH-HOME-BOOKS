@@ -29,6 +29,7 @@ return new class extends Migration
             $table->index('nivel');
             $table->index('activo');
             $table->index('stock_actual');
+            $table->index('precio_venta');
         });
     }
 
