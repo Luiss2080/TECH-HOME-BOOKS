@@ -1,93 +1,175 @@
-# Credenciales de Acceso
+# Credenciales de Usuarios - TECH HOME BOOKS
 
-Estas son las credenciales por defecto generadas por los seeders del sistema. Úsalas para pruebas y desarrollo.
+## 🔐 Credenciales de Acceso al Sistema
 
-> **NOTA**: En un entorno de producción, estas contraseñas deben ser cambiadas inmediatamente.
+### Usuarios para Testing/Dashboard
 
----
-
-## 👑 Administrador
-
-Acceso total al sistema, gestión de usuarios, roles y configuraciones.
-
--   **Email**: `admin@tech-home.com`
--   **Contraseña**: `admin123`
--   **User ID**: 1
--   **Estado**: ✅ Activo
+| Usuario | Email | Contraseña | Rol | ID Rol | Descripción |
+|---------|-------|------------|-----|--------|-------------|
+| **Admin** | admin@techhome.com | `admin123` | Administrador | 1 | Usuario administrador de prueba |
+| **Docente** | docente@techhome.com | `docente123` | Profesor Primaria | 2 | Usuario docente de prueba |
+| **Estudiante** | estudiante@techhome.com | `estudiante123` | Invitado | 4 | Usuario estudiante de prueba |
 
 ---
 
-## 👨‍🏫 Docente
+## 👥 Usuarios Originales del Sistema (Migrados desde systemVentas.sql)
 
-Gestión de cursos, materias, calificaciones y asistencia.
+| ID | Usuario | Email | Rol | ID Rol |
+|----|---------|-------|-----|--------|
+| 1 | Gustavo | tantani.m.g@gmail.com | Administrador | 1 |
+| 2 | Mauricio | mauriciovasquezmenacho@gmail.com | Profes TECH HOME | 5 |
+| 3 | Amilcar | arcamgel20165@gmail.com | Profes TECH HOME | 5 |
+| 4 | Yorbin Afriel | yorbinmiercabrera@gmail.com | Profes TECH HOME | 5 |
+| 47 | Luis Mario | luisrochavela990@gmail.com | Administrador | 1 |
+| 48 | Cliente Bot | clientebot6001@gmail.com | Administrador | 1 |
+| 49 | Luis Mario | lr0900573@gmail.com | Vendedor | 11 |
+| 50 | Jessica Ariana | jessicasandyarteaga@gmail.com | Vendedor | 11 |
 
--   **Email**: `maria.garcia@tech-home.com`
--   **Contraseña**: `docente123`
--   **User ID**: 21
--   **Docente ID**: 7
--   **Especialidad**: Matemáticas
--   **Estado**: ✅ Activo
-
----
-
-## 👨‍🎓 Estudiantes
-
-Acceso a materiales, visualización de notas y entrega de tareas.
-
-### Estudiante Principal
--   **Email**: `juan.perez@estudiante.com`
--   **Contraseña**: `estudiante123`
--   **User ID**: 3
--   **Código**: EST-001-2025
--   **Estado**: ✅ Activo
-
-### Estudiantes Adicionales
-
-Todos con contraseña: `estudiante123`
-
-| Nombre | Email | User ID | Código Estudiante | Estado |
-|--------|-------|---------|-------------------|--------|
-| María González | `maria.gonzalez@estudiante.com` | 8 | EST-002-2025 | ✅ Activo |
-| Diego López | `diego.lopez@estudiante.com` | 9 | EST-003-2025 | ✅ Activo |
-| Sofia Morales | `sofia.morales@estudiante.com` | 10 | EST-004-2025 | ✅ Activo |
-| Andrés Vargas | `andres.vargas@estudiante.com` | 11 | EST-005-2025 | ✅ Activo |
-| Lucía Herrera | `lucia.herrera@estudiante.com` | 12 | EST-006-2025 | ✅ Activo |
-| Sebastián Cruz | `sebastian.cruz@estudiante.com` | 13 | EST-007-2025 | ✅ Activo |
-| Valentina Silva | `valentina.silva@estudiante.com` | 14 | EST-008-2025 | ✅ Activo |
-| Mateo Ramos | `mateo.ramos@estudiante.com` | 15 | EST-009-2025 | ✅ Activo |
-| Isabella Torres | `isabella.torres@estudiante.com` | 16 | EST-010-2025 | ✅ Activo |
-| Gabriel Méndez | `gabriel.mendez@estudiante.com` | 17 | EST-011-2025 | ✅ Activo |
+> **Nota:** Las contraseñas de los usuarios originales están encriptadas con bcrypt. Para cambiarlas, usar `php artisan tinker` y ejecutar:
+> ```php
+> $user = User::find(ID);
+> $user->password = bcrypt('nueva_contraseña');
+> $user->save();
+> ```
 
 ---
 
-## 🚀 Iniciar el Servidor
+## 📋 Roles del Sistema
 
-Para iniciar el servidor de desarrollo en una IP específica:
+| ID | Nombre del Rol | Descripción |
+|----|----------------|-------------|
+| 1 | Administrador | Acceso completo al sistema |
+| 2 | Profesor Primaria | Docente de nivel primario |
+| 3 | Profesor Secundaria | Docente de nivel secundario |
+| 4 | Invitado | Usuario con permisos limitados |
+| 5 | Profes TECH HOME | Profesores de TECH HOME |
+| 6 | Libro muestra primaria y secundaria | Acceso a libros de muestra |
+| 7 | Profesor primaria 1 | Profesor de primaria nivel 1 |
+| 8 | Profesor Secundaria 1 | Profesor de secundaria nivel 1 |
+| 9 | Profesor Secundaria 1, 2 y 3 | Profesor de secundaria niveles 1-3 |
+| 10 | Libro Primaria y Secundaria | Acceso a libros de ambos niveles |
+| 11 | Vendedor | Usuario con permisos de ventas |
 
+---
+
+## 🎯 Acceso por Dashboard
+
+### Dashboard Administrador
+- **Usuarios con acceso:** Admin (ID: 51), Gustavo (ID: 1), Luis Mario (ID: 47), Cliente Bot (ID: 48)
+- **Rol requerido:** Administrador (ID: 1)
+- **Permisos:** Gestión completa del sistema
+
+### Dashboard Docente
+- **Usuario de prueba:** Docente (ID: 52)
+- **Rol requerido:** Profesor Primaria (ID: 2) u otros roles de profesor
+- **Permisos:** Gestión de cursos, materiales, calificaciones
+
+### Dashboard Estudiante
+- **Usuario de prueba:** Estudiante (ID: 53)
+- **Rol requerido:** Invitado (ID: 4)
+- **Permisos:** Ver cursos, materiales, calificaciones propias
+
+### Dashboard Vendedor
+- **Usuarios:** Luis Mario (ID: 49), Jessica Ariana (ID: 50)
+- **Rol requerido:** Vendedor (ID: 11)
+- **Permisos:** Gestión de ventas, clientes, stock
+
+---
+
+## 🔄 Comandos Útiles
+
+### Crear un nuevo usuario
 ```bash
-php artisan serve --host=127.0.0.30 --port=9100
+php artisan tinker
+```
+```php
+$user = new User();
+$user->name = 'Nombre Usuario';
+$user->email = 'email@ejemplo.com';
+$user->password = bcrypt('contraseña');
+$user->rol_id = 1; // ID del rol
+$user->save();
+```
+
+### Cambiar contraseña de usuario
+```bash
+php artisan tinker
+```
+```php
+$user = User::where('email', 'email@ejemplo.com')->first();
+$user->password = bcrypt('nueva_contraseña');
+$user->save();
+```
+
+### Cambiar rol de usuario
+```bash
+php artisan tinker
+```
+```php
+$user = User::find(ID);
+$user->rol_id = NUEVO_ROL_ID;
+$user->save();
 ```
 
 ---
 
-## 📝 Notas Importantes
+## ⚠️ Notas de Seguridad
 
-1. **Todos los estudiantes** tienen registros válidos en la tabla `estudiantes`
-2. **El docente** tiene su registro correspondiente en la tabla `docentes`
-3. La contraseña por defecto para **todos los estudiantes** es: `estudiante123`
-4. La contraseña por defecto para **todos los docentes** es: `docente123`
-5. La contraseña del **administrador** es: `admin123`
+1. **Cambiar contraseñas de prueba en producción**
+2. Las contraseñas mostradas son solo para entorno de desarrollo
+3. Todos los usuarios originales mantienen sus contraseñas encriptadas del sistema anterior
+4. Usar autenticación de Laravel para login: `Auth::attempt(['email' => $email, 'password' => $password])`
 
-### ⚠️ Verificación de Integridad
+---
 
-Todos los usuarios listados tienen:
-- ✅ Registro en tabla `users`
-- ✅ Registro en su tabla correspondiente (`docentes` o `estudiantes`)
-- ✅ Estado activo
-- ✅ Relación user_id correcta
+## 🌐 Configuración para Entornos (Local vs Producción)
 
-Si necesitas agregar más usuarios, ejecuta los seeders correspondientes:
-```bash
-php artisan db:seed --class=DocentesSeeder
-php artisan db:seed --class=EstudiantesSeeder
+### Entorno Local (Desarrollo)
+El archivo `.env` actual está configurado para desarrollo local:
+```env
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
+SESSION_DOMAIN=null
 ```
+
+### Entorno Producción (Servidor)
+Para el servidor, usar el archivo `.env.production` como referencia:
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://librodigital.techhomebolivia.com
+SESSION_DOMAIN=.techhomebolivia.com
+SESSION_SECURE_COOKIE=true
+```
+
+**Comandos después de cambiar .env:**
+```bash
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+---
+
+## 🔧 Solución de Problemas
+
+### Error 419 (Token CSRF)
+1. Limpiar cookies del navegador (F12 → Application → Cookies → Eliminar)
+2. Verificar `SESSION_DOMAIN` en `.env` (debe ser `null` en local)
+3. Ejecutar: `php artisan config:clear`
+4. Usar modo incógnito para probar
+
+### Error de Conexión en Login
+1. Verificar que la base de datos esté corriendo
+2. Verificar credenciales de DB en `.env`
+3. Asegurar que tabla `sessions` existe: `php artisan migrate`
+4. Limpiar tabla sessions: `TRUNCATE TABLE sessions;`
+
+---
+
+**Última actualización:** 3 de enero de 2026
+**Base de datos:** tech_home_books
+**Total usuarios:** 11
+**Total roles:** 11

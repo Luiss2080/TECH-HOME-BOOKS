@@ -38,11 +38,12 @@ class AuthController extends Controller
         }
 
         try {
-            // Buscar usuario en la base de datos
+            // Buscar usuario en la base de datos con su rol
             $user = DB::table('users')
-                ->select('users.*')
+                ->leftJoin('roles', 'users.rol_id', '=', 'roles.id')
+                ->select('users.*', 'roles.nombre as rol_nombre')
                 ->where('users.email', $email)
-                ->where('users.estado', 'activo')
+                ->where('users.activo', 1)
                 ->first();
 
             if (!$user) {
@@ -58,18 +59,20 @@ class AuthController extends Controller
                 Session::put('user_id', $user->id);
                 Session::put('user_email', $user->email);
                 Session::put('user_name', $user->name . ' ' . ($user->apellido ?? ''));
-                Session::put('user_role', $user->rol);
+                Session::put('user_role_id', $user->rol_id);
+                Session::put('user_role', $user->rol_nombre);
                 
                 // Actualizar último acceso
                 DB::table('users')
                     ->where('id', $user->id)
                     ->update(['ultimo_acceso' => now()]);
 
-                // Redirección según el rol del usuario
-                $redirectRoute = match($user->rol) {
-                    'admin' => 'admin.dashboard',
-                    'docente' => 'docente.dashboard',
-                    'estudiante' => 'estudiante.dashboard',
+                // Redirección según el rol_id del usuario
+                $redirectRoute = match((int)$user->rol_id) {
+                    1 => 'admin.dashboard',              // Administrador
+                    2, 3, 5, 7, 8, 9 => 'docente.dashboard',  // Profesores
+                    4 => 'estudiante.dashboard',         // Invitado/Estudiante
+                    11 => 'admin.dashboard',             // Vendedor (usar admin por ahora)
                     default => 'admin.dashboard'
                 };
                 
@@ -114,19 +117,16 @@ class AuthController extends Controller
      */
     public function showRegistrationForm()
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            switch ($user->rol) {
-                case 'admin':
-                    return redirect()->route('admin.dashboard');
-                case 'docente':
-                    return redirect()->route('docente.dashboard');
-                case 'estudiante':
-                    return redirect()->route('estudiante.dashboard');
-                default:
-                    Auth::logout();
-                    return view('auth.login');
-            }
+        // Si hay sesión activa, redirigir según rol
+        if (Session::has('user_id')) {
+            $roleId = Session::get('user_role_id');
+            return match((int)$roleId) {
+                1 => redirect()->route('admin.dashboard'),
+                2, 3, 5, 7, 8, 9 => redirect()->route('docente.dashboard'),
+                4 => redirect()->route('estudiante.dashboard'),
+                11 => redirect()->route('admin.dashboard'),
+                default => redirect()->route('admin.dashboard')
+            };
         }
         return view('auth.registro');
     }

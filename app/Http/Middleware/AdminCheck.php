@@ -24,8 +24,9 @@ class AdminCheck
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para acceder a esta página.');
         }
 
-        // Verificar si el usuario tiene rol de administrador
-        if (session('user_role') !== 'admin') {
+        // Verificar si el usuario tiene rol de administrador (rol_id = 1)
+        $userRoleId = session('user_role_id');
+        if ($userRoleId != 1) {
             if ($request->expectsJson()) {
                 return response()->json(['error' => 'Acceso denegado'], 403);
             }
